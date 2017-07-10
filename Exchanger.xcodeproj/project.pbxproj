@@ -6,6 +6,21 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		8C2E1D1A1F1384DE00DB0FC2 /* OCLint */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 8C2E1D1D1F1384DF00DB0FC2 /* Build configuration list for PBXAggregateTarget "OCLint" */;
+			buildPhases = (
+				8C2E1D1E1F13907100DB0FC2 /* ShellScript */,
+			);
+			dependencies = (
+				8C1FEFBF1F139F1E0024F046 /* PBXTargetDependency */,
+			);
+			name = OCLint;
+			productName = OCLint;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		8C2E1CE91F13818D00DB0FC2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2E1CE81F13818D00DB0FC2 /* main.m */; };
 		8C2E1CEC1F13818D00DB0FC2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2E1CEB1F13818D00DB0FC2 /* AppDelegate.m */; };
@@ -18,6 +33,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		8C1FEFBE1F139F1E0024F046 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8C2E1CDC1F13818D00DB0FC2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8C2E1CE31F13818D00DB0FC2;
+			remoteInfo = Exchanger;
+		};
 		8C2E1CFE1F13818D00DB0FC2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8C2E1CDC1F13818D00DB0FC2 /* Project object */;
@@ -35,7 +57,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8C2E1CE41F13818D00DB0FC2 /* Exchanger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exchanger.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C1FEFC31F13A2610024F046 /* lint.sh */ = {isa = PBXFileReference; explicitFileType = text.script.sh; fileEncoding = 4; path = lint.sh; sourceTree = "<group>"; };
+		8C2E1CE41F13818D00DB0FC2 /* Avito.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Avito.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C2E1CE81F13818D00DB0FC2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8C2E1CEA1F13818D00DB0FC2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8C2E1CEB1F13818D00DB0FC2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -51,6 +74,7 @@
 		8C2E1D081F13818D00DB0FC2 /* ExchangerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExchangerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C2E1D0C1F13818D00DB0FC2 /* ExchangerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExchangerUITests.m; sourceTree = "<group>"; };
 		8C2E1D0E1F13818D00DB0FC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8C2E1D201F1391B000DB0FC2 /* readme */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +105,8 @@
 		8C2E1CDB1F13818D00DB0FC2 = {
 			isa = PBXGroup;
 			children = (
+				8C2E1D201F1391B000DB0FC2 /* readme */,
+				8C1FEFC31F13A2610024F046 /* lint.sh */,
 				8C2E1CE61F13818D00DB0FC2 /* Exchanger */,
 				8C2E1D001F13818D00DB0FC2 /* ExchangerTests */,
 				8C2E1D0B1F13818D00DB0FC2 /* ExchangerUITests */,
@@ -91,7 +117,7 @@
 		8C2E1CE51F13818D00DB0FC2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8C2E1CE41F13818D00DB0FC2 /* Exchanger.app */,
+				8C2E1CE41F13818D00DB0FC2 /* Avito.app */,
 				8C2E1CFD1F13818D00DB0FC2 /* ExchangerTests.xctest */,
 				8C2E1D081F13818D00DB0FC2 /* ExchangerUITests.xctest */,
 			);
@@ -157,7 +183,7 @@
 			);
 			name = Exchanger;
 			productName = Exchanger;
-			productReference = 8C2E1CE41F13818D00DB0FC2 /* Exchanger.app */;
+			productReference = 8C2E1CE41F13818D00DB0FC2 /* Avito.app */;
 			productType = "com.apple.product-type.application";
 		};
 		8C2E1CFC1F13818D00DB0FC2 /* ExchangerTests */ = {
@@ -212,8 +238,7 @@
 					};
 					8C2E1CFC1F13818D00DB0FC2 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 5PHGGKL9UQ;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						TestTargetID = 8C2E1CE31F13818D00DB0FC2;
 					};
 					8C2E1D071F13818D00DB0FC2 = {
@@ -221,6 +246,11 @@
 						DevelopmentTeam = 5PHGGKL9UQ;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 8C2E1CE31F13818D00DB0FC2;
+					};
+					8C2E1D1A1F1384DE00DB0FC2 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 5PHGGKL9UQ;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -240,6 +270,7 @@
 				8C2E1CE31F13818D00DB0FC2 /* Exchanger */,
 				8C2E1CFC1F13818D00DB0FC2 /* ExchangerTests */,
 				8C2E1D071F13818D00DB0FC2 /* ExchangerUITests */,
+				8C2E1D1A1F1384DE00DB0FC2 /* OCLint */,
 			);
 		};
 /* End PBXProject section */
@@ -271,6 +302,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8C2E1D1E1F13907100DB0FC2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "sh ${SRCROOT}/lint.sh";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8C2E1CE01F13818D00DB0FC2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -301,6 +348,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		8C1FEFBF1F139F1E0024F046 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8C2E1CE31F13818D00DB0FC2 /* Exchanger */;
+			targetProxy = 8C1FEFBE1F139F1E0024F046 /* PBXContainerItemProxy */;
+		};
 		8C2E1CFF1F13818D00DB0FC2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8C2E1CE31F13818D00DB0FC2 /* Exchanger */;
@@ -373,7 +425,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -415,7 +467,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -427,11 +479,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 5PHGGKL9UQ;
 				INFOPLIST_FILE = Exchanger/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = vkaltyrin.Exchanger;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.avito.app;
+				PRODUCT_NAME = Avito;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -439,11 +494,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 5PHGGKL9UQ;
 				INFOPLIST_FILE = Exchanger/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = vkaltyrin.Exchanger;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.avito.app;
+				PRODUCT_NAME = Avito;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
@@ -451,7 +508,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 5PHGGKL9UQ;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ExchangerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vkaltyrin.ExchangerTests;
@@ -464,7 +521,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 5PHGGKL9UQ;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ExchangerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vkaltyrin.ExchangerTests;
@@ -497,6 +554,22 @@
 			};
 			name = Release;
 		};
+		8C2E1D1B1F1384DF00DB0FC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 5PHGGKL9UQ;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8C2E1D1C1F1384DF00DB0FC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 5PHGGKL9UQ;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -516,6 +589,7 @@
 				8C2E1D131F13818D00DB0FC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8C2E1D141F13818D00DB0FC2 /* Build configuration list for PBXNativeTarget "ExchangerTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +598,7 @@
 				8C2E1D161F13818D00DB0FC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8C2E1D171F13818D00DB0FC2 /* Build configuration list for PBXNativeTarget "ExchangerUITests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +607,16 @@
 				8C2E1D191F13818D00DB0FC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8C2E1D1D1F1384DF00DB0FC2 /* Build configuration list for PBXAggregateTarget "OCLint" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C2E1D1B1F1384DF00DB0FC2 /* Debug */,
+				8C2E1D1C1F1384DF00DB0FC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
