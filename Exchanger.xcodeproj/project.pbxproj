@@ -22,6 +22,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		8C1FEFCB1F13A76A0024F046 /* ServiceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1FEFCA1F13A76A0024F046 /* ServiceFactory.m */; };
+		8C1FEFCF1F13A9CB0024F046 /* Cube.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1FEFCE1F13A9CB0024F046 /* Cube.m */; };
 		8C2E1CE91F13818D00DB0FC2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2E1CE81F13818D00DB0FC2 /* main.m */; };
 		8C2E1CEC1F13818D00DB0FC2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2E1CEB1F13818D00DB0FC2 /* AppDelegate.m */; };
 		8C2E1CEF1F13818D00DB0FC2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2E1CEE1F13818D00DB0FC2 /* ViewController.m */; };
@@ -30,6 +32,8 @@
 		8C2E1CF71F13818D00DB0FC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C2E1CF51F13818D00DB0FC2 /* LaunchScreen.storyboard */; };
 		8C2E1D021F13818D00DB0FC2 /* ExchangerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2E1D011F13818D00DB0FC2 /* ExchangerTests.m */; };
 		8C2E1D0D1F13818D00DB0FC2 /* ExchangerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2E1D0C1F13818D00DB0FC2 /* ExchangerUITests.m */; };
+		8C304CFD1F13ACAD00ACE585 /* CurrencyFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C304CFC1F13ACAD00ACE585 /* CurrencyFormatter.m */; };
+		8C304D001F13AF0A00ACE585 /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C304CFF1F13AF0A00ACE585 /* Currency.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +62,10 @@
 
 /* Begin PBXFileReference section */
 		8C1FEFC31F13A2610024F046 /* lint.sh */ = {isa = PBXFileReference; explicitFileType = text.script.sh; fileEncoding = 4; path = lint.sh; sourceTree = "<group>"; };
+		8C1FEFC91F13A76A0024F046 /* ServiceFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceFactory.h; path = Services/ServiceFactory.h; sourceTree = "<group>"; };
+		8C1FEFCA1F13A76A0024F046 /* ServiceFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceFactory.m; path = Services/ServiceFactory.m; sourceTree = "<group>"; };
+		8C1FEFCD1F13A9CB0024F046 /* Cube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Cube.h; path = Networking/Cube.h; sourceTree = "<group>"; };
+		8C1FEFCE1F13A9CB0024F046 /* Cube.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Cube.m; path = Networking/Cube.m; sourceTree = "<group>"; };
 		8C2E1CE41F13818D00DB0FC2 /* Avito.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Avito.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C2E1CE81F13818D00DB0FC2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8C2E1CEA1F13818D00DB0FC2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -75,6 +83,11 @@
 		8C2E1D0C1F13818D00DB0FC2 /* ExchangerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExchangerUITests.m; sourceTree = "<group>"; };
 		8C2E1D0E1F13818D00DB0FC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C2E1D201F1391B000DB0FC2 /* readme */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme; sourceTree = "<group>"; };
+		8C304CFA1F13AC8300ACE585 /* CurrencyType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrencyType.h; path = Networking/CurrencyType.h; sourceTree = "<group>"; };
+		8C304CFB1F13ACAD00ACE585 /* CurrencyFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyFormatter.h; sourceTree = "<group>"; };
+		8C304CFC1F13ACAD00ACE585 /* CurrencyFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyFormatter.m; sourceTree = "<group>"; };
+		8C304CFE1F13AF0A00ACE585 /* Currency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Currency.h; sourceTree = "<group>"; };
+		8C304CFF1F13AF0A00ACE585 /* Currency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Currency.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +115,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C1FEFC61F13A6C90024F046 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				8C1FEFC91F13A76A0024F046 /* ServiceFactory.h */,
+				8C1FEFCA1F13A76A0024F046 /* ServiceFactory.m */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		8C1FEFCC1F13A90D0024F046 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				8C1FEFCD1F13A9CB0024F046 /* Cube.h */,
+				8C1FEFCE1F13A9CB0024F046 /* Cube.m */,
+				8C304CFA1F13AC8300ACE585 /* CurrencyType.h */,
+				8C304CFB1F13ACAD00ACE585 /* CurrencyFormatter.h */,
+				8C304CFC1F13ACAD00ACE585 /* CurrencyFormatter.m */,
+				8C304CFE1F13AF0A00ACE585 /* Currency.h */,
+				8C304CFF1F13AF0A00ACE585 /* Currency.m */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
 		8C2E1CDB1F13818D00DB0FC2 = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +163,8 @@
 		8C2E1CE61F13818D00DB0FC2 /* Exchanger */ = {
 			isa = PBXGroup;
 			children = (
+				8C1FEFCC1F13A90D0024F046 /* Networking */,
+				8C1FEFC61F13A6C90024F046 /* Services */,
 				8C2E1CEA1F13818D00DB0FC2 /* AppDelegate.h */,
 				8C2E1CEB1F13818D00DB0FC2 /* AppDelegate.m */,
 				8C2E1CED1F13818D00DB0FC2 /* ViewController.h */,
@@ -323,8 +361,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C1FEFCF1F13A9CB0024F046 /* Cube.m in Sources */,
+				8C304CFD1F13ACAD00ACE585 /* CurrencyFormatter.m in Sources */,
+				8C1FEFCB1F13A76A0024F046 /* ServiceFactory.m in Sources */,
 				8C2E1CEF1F13818D00DB0FC2 /* ViewController.m in Sources */,
 				8C2E1CEC1F13818D00DB0FC2 /* AppDelegate.m in Sources */,
+				8C304D001F13AF0A00ACE585 /* Currency.m in Sources */,
 				8C2E1CE91F13818D00DB0FC2 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
