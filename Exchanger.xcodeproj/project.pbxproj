@@ -22,6 +22,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		2D9A60EAD27A2EFF8A0EA557 /* libPods-Exchanger.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A46A0D61B3F31B4C0C77D2B7 /* libPods-Exchanger.a */; };
+		68C8AC0CEC9D9ED7064AFBD1 /* libPods-ExchangerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 065BDAA0B52E5D049A00B783 /* libPods-ExchangerTests.a */; };
 		8C1FEFCB1F13A76A0024F046 /* ServiceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1FEFCA1F13A76A0024F046 /* ServiceFactory.m */; };
 		8C1FEFCF1F13A9CB0024F046 /* Cube.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1FEFCE1F13A9CB0024F046 /* Cube.m */; };
 		8C2E1CE91F13818D00DB0FC2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2E1CE81F13818D00DB0FC2 /* main.m */; };
@@ -34,6 +36,13 @@
 		8C2E1D0D1F13818D00DB0FC2 /* ExchangerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2E1D0C1F13818D00DB0FC2 /* ExchangerUITests.m */; };
 		8C304CFD1F13ACAD00ACE585 /* CurrencyFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C304CFC1F13ACAD00ACE585 /* CurrencyFormatter.m */; };
 		8C304D001F13AF0A00ACE585 /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C304CFF1F13AF0A00ACE585 /* Currency.m */; };
+		8C304D031F13C6F500ACE585 /* Sender.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C304D021F13C6F500ACE585 /* Sender.m */; };
+		8C304D061F13C72500ACE585 /* Envelope.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C304D051F13C72500ACE585 /* Envelope.m */; };
+		8C304D091F13CC6400ACE585 /* ExchangeRatesService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C304D081F13CC6400ACE585 /* ExchangeRatesService.m */; };
+		8C304D0C1F13CCE100ACE585 /* ExchangeRatesData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C304D0B1F13CCE100ACE585 /* ExchangeRatesData.m */; };
+		8C304D0F1F13D4DE00ACE585 /* XMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C304D0E1F13D4DE00ACE585 /* XMLParser.m */; };
+		8C304D121F13DC1800ACE585 /* ExchangeRatesUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C304D111F13DC1800ACE585 /* ExchangeRatesUpdater.m */; };
+		F4B97656FC1AA746D81776B8 /* libPods-ExchangerUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 228D4FAA2C2C7FB35FC8A6FF /* libPods-ExchangerUITests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +70,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		065BDAA0B52E5D049A00B783 /* libPods-ExchangerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ExchangerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		228D4FAA2C2C7FB35FC8A6FF /* libPods-ExchangerUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ExchangerUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A61991DAEB98C839D7E3370 /* Pods-Exchanger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Exchanger.release.xcconfig"; path = "Pods/Target Support Files/Pods-Exchanger/Pods-Exchanger.release.xcconfig"; sourceTree = "<group>"; };
+		72F62204F1A8827488E4665A /* Pods-ExchangerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExchangerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExchangerTests/Pods-ExchangerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8C1FEFC31F13A2610024F046 /* lint.sh */ = {isa = PBXFileReference; explicitFileType = text.script.sh; fileEncoding = 4; path = lint.sh; sourceTree = "<group>"; };
 		8C1FEFC91F13A76A0024F046 /* ServiceFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceFactory.h; path = Services/ServiceFactory.h; sourceTree = "<group>"; };
 		8C1FEFCA1F13A76A0024F046 /* ServiceFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceFactory.m; path = Services/ServiceFactory.m; sourceTree = "<group>"; };
@@ -88,6 +101,23 @@
 		8C304CFC1F13ACAD00ACE585 /* CurrencyFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyFormatter.m; sourceTree = "<group>"; };
 		8C304CFE1F13AF0A00ACE585 /* Currency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Currency.h; sourceTree = "<group>"; };
 		8C304CFF1F13AF0A00ACE585 /* Currency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Currency.m; sourceTree = "<group>"; };
+		8C304D011F13C6F500ACE585 /* Sender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sender.h; sourceTree = "<group>"; };
+		8C304D021F13C6F500ACE585 /* Sender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sender.m; sourceTree = "<group>"; };
+		8C304D041F13C72500ACE585 /* Envelope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Envelope.h; sourceTree = "<group>"; };
+		8C304D051F13C72500ACE585 /* Envelope.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Envelope.m; sourceTree = "<group>"; };
+		8C304D071F13CC6400ACE585 /* ExchangeRatesService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeRatesService.h; sourceTree = "<group>"; };
+		8C304D081F13CC6400ACE585 /* ExchangeRatesService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeRatesService.m; sourceTree = "<group>"; };
+		8C304D0A1F13CCE100ACE585 /* ExchangeRatesData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeRatesData.h; sourceTree = "<group>"; };
+		8C304D0B1F13CCE100ACE585 /* ExchangeRatesData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeRatesData.m; sourceTree = "<group>"; };
+		8C304D0D1F13D4DE00ACE585 /* XMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLParser.h; sourceTree = "<group>"; };
+		8C304D0E1F13D4DE00ACE585 /* XMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLParser.m; sourceTree = "<group>"; };
+		8C304D101F13DC1800ACE585 /* ExchangeRatesUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeRatesUpdater.h; sourceTree = "<group>"; };
+		8C304D111F13DC1800ACE585 /* ExchangeRatesUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeRatesUpdater.m; sourceTree = "<group>"; };
+		9389B4E6B11F4B0BB56B0F37 /* Pods-ExchangerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExchangerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExchangerUITests/Pods-ExchangerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		A46A0D61B3F31B4C0C77D2B7 /* libPods-Exchanger.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Exchanger.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAEDD35F473571BE7C61E79D /* Pods-Exchanger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Exchanger.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Exchanger/Pods-Exchanger.debug.xcconfig"; sourceTree = "<group>"; };
+		B15BF0ACF5593372A8301FB5 /* Pods-ExchangerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExchangerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExchangerTests/Pods-ExchangerTests.release.xcconfig"; sourceTree = "<group>"; };
+		F29A4AD09A77BA9D010BA1AE /* Pods-ExchangerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExchangerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExchangerUITests/Pods-ExchangerUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D9A60EAD27A2EFF8A0EA557 /* libPods-Exchanger.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +133,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68C8AC0CEC9D9ED7064AFBD1 /* libPods-ExchangerTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,17 +141,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4B97656FC1AA746D81776B8 /* libPods-ExchangerUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		25B80CD0B0D63B7F3B934078 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AAEDD35F473571BE7C61E79D /* Pods-Exchanger.debug.xcconfig */,
+				6A61991DAEB98C839D7E3370 /* Pods-Exchanger.release.xcconfig */,
+				72F62204F1A8827488E4665A /* Pods-ExchangerTests.debug.xcconfig */,
+				B15BF0ACF5593372A8301FB5 /* Pods-ExchangerTests.release.xcconfig */,
+				9389B4E6B11F4B0BB56B0F37 /* Pods-ExchangerUITests.debug.xcconfig */,
+				F29A4AD09A77BA9D010BA1AE /* Pods-ExchangerUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		8C1FEFC61F13A6C90024F046 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				8C1FEFC91F13A76A0024F046 /* ServiceFactory.h */,
 				8C1FEFCA1F13A76A0024F046 /* ServiceFactory.m */,
+				8C304D101F13DC1800ACE585 /* ExchangeRatesUpdater.h */,
+				8C304D111F13DC1800ACE585 /* ExchangeRatesUpdater.m */,
+				8C304D071F13CC6400ACE585 /* ExchangeRatesService.h */,
+				8C304D081F13CC6400ACE585 /* ExchangeRatesService.m */,
+				8C304D0A1F13CCE100ACE585 /* ExchangeRatesData.h */,
+				8C304D0B1F13CCE100ACE585 /* ExchangeRatesData.m */,
+				8C304D0D1F13D4DE00ACE585 /* XMLParser.h */,
+				8C304D0E1F13D4DE00ACE585 /* XMLParser.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -134,6 +188,10 @@
 				8C304CFC1F13ACAD00ACE585 /* CurrencyFormatter.m */,
 				8C304CFE1F13AF0A00ACE585 /* Currency.h */,
 				8C304CFF1F13AF0A00ACE585 /* Currency.m */,
+				8C304D011F13C6F500ACE585 /* Sender.h */,
+				8C304D021F13C6F500ACE585 /* Sender.m */,
+				8C304D041F13C72500ACE585 /* Envelope.h */,
+				8C304D051F13C72500ACE585 /* Envelope.m */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -147,6 +205,8 @@
 				8C2E1D001F13818D00DB0FC2 /* ExchangerTests */,
 				8C2E1D0B1F13818D00DB0FC2 /* ExchangerUITests */,
 				8C2E1CE51F13818D00DB0FC2 /* Products */,
+				25B80CD0B0D63B7F3B934078 /* Pods */,
+				C4D7318F40CE453F21240F76 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -204,6 +264,16 @@
 			path = ExchangerUITests;
 			sourceTree = "<group>";
 		};
+		C4D7318F40CE453F21240F76 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A46A0D61B3F31B4C0C77D2B7 /* libPods-Exchanger.a */,
+				065BDAA0B52E5D049A00B783 /* libPods-ExchangerTests.a */,
+				228D4FAA2C2C7FB35FC8A6FF /* libPods-ExchangerUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -211,9 +281,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8C2E1D111F13818D00DB0FC2 /* Build configuration list for PBXNativeTarget "Exchanger" */;
 			buildPhases = (
+				4A897E46A301948C5770139F /* [CP] Check Pods Manifest.lock */,
 				8C2E1CE01F13818D00DB0FC2 /* Sources */,
 				8C2E1CE11F13818D00DB0FC2 /* Frameworks */,
 				8C2E1CE21F13818D00DB0FC2 /* Resources */,
+				3D166C22C9647A8D8D01D530 /* [CP] Embed Pods Frameworks */,
+				9745BA645FE540CCA4F1E1DA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -228,9 +301,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8C2E1D141F13818D00DB0FC2 /* Build configuration list for PBXNativeTarget "ExchangerTests" */;
 			buildPhases = (
+				B2E2FEBBC873AAB56A744C91 /* [CP] Check Pods Manifest.lock */,
 				8C2E1CF91F13818D00DB0FC2 /* Sources */,
 				8C2E1CFA1F13818D00DB0FC2 /* Frameworks */,
 				8C2E1CFB1F13818D00DB0FC2 /* Resources */,
+				1AE08A7BCEB697B2CB4F8190 /* [CP] Embed Pods Frameworks */,
+				C290CE6AAAA386B0D01AD523 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -246,9 +322,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8C2E1D171F13818D00DB0FC2 /* Build configuration list for PBXNativeTarget "ExchangerUITests" */;
 			buildPhases = (
+				11A13FEE4C6B4AF8ED6F41C1 /* [CP] Check Pods Manifest.lock */,
 				8C2E1D041F13818D00DB0FC2 /* Sources */,
 				8C2E1D051F13818D00DB0FC2 /* Frameworks */,
 				8C2E1D061F13818D00DB0FC2 /* Resources */,
+				C5BFA68F4F66D294361B828C /* [CP] Embed Pods Frameworks */,
+				1EA391346FE2C33C709AE9D9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -341,6 +420,81 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		11A13FEE4C6B4AF8ED6F41C1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		1AE08A7BCEB697B2CB4F8190 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ExchangerTests/Pods-ExchangerTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1EA391346FE2C33C709AE9D9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ExchangerUITests/Pods-ExchangerUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3D166C22C9647A8D8D01D530 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Exchanger/Pods-Exchanger-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4A897E46A301948C5770139F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		8C2E1D1E1F13907100DB0FC2 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -354,6 +508,66 @@
 			shellPath = /bin/sh;
 			shellScript = "sh ${SRCROOT}/lint.sh";
 		};
+		9745BA645FE540CCA4F1E1DA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Exchanger/Pods-Exchanger-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B2E2FEBBC873AAB56A744C91 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C290CE6AAAA386B0D01AD523 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ExchangerTests/Pods-ExchangerTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C5BFA68F4F66D294361B828C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ExchangerUITests/Pods-ExchangerUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -361,13 +575,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C304D121F13DC1800ACE585 /* ExchangeRatesUpdater.m in Sources */,
 				8C1FEFCF1F13A9CB0024F046 /* Cube.m in Sources */,
 				8C304CFD1F13ACAD00ACE585 /* CurrencyFormatter.m in Sources */,
 				8C1FEFCB1F13A76A0024F046 /* ServiceFactory.m in Sources */,
 				8C2E1CEF1F13818D00DB0FC2 /* ViewController.m in Sources */,
+				8C304D0F1F13D4DE00ACE585 /* XMLParser.m in Sources */,
+				8C304D091F13CC6400ACE585 /* ExchangeRatesService.m in Sources */,
+				8C304D031F13C6F500ACE585 /* Sender.m in Sources */,
 				8C2E1CEC1F13818D00DB0FC2 /* AppDelegate.m in Sources */,
 				8C304D001F13AF0A00ACE585 /* Currency.m in Sources */,
+				8C304D061F13C72500ACE585 /* Envelope.m in Sources */,
 				8C2E1CE91F13818D00DB0FC2 /* main.m in Sources */,
+				8C304D0C1F13CCE100ACE585 /* ExchangeRatesData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,6 +739,7 @@
 		};
 		8C2E1D121F13818D00DB0FC2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AAEDD35F473571BE7C61E79D /* Pods-Exchanger.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -534,6 +755,7 @@
 		};
 		8C2E1D131F13818D00DB0FC2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A61991DAEB98C839D7E3370 /* Pods-Exchanger.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -548,6 +770,7 @@
 		};
 		8C2E1D151F13818D00DB0FC2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 72F62204F1A8827488E4665A /* Pods-ExchangerTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = "";
@@ -561,6 +784,7 @@
 		};
 		8C2E1D161F13818D00DB0FC2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B15BF0ACF5593372A8301FB5 /* Pods-ExchangerTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = "";
@@ -574,6 +798,7 @@
 		};
 		8C2E1D181F13818D00DB0FC2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9389B4E6B11F4B0BB56B0F37 /* Pods-ExchangerUITests.debug.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 5PHGGKL9UQ;
 				INFOPLIST_FILE = ExchangerUITests/Info.plist;
@@ -586,6 +811,7 @@
 		};
 		8C2E1D191F13818D00DB0FC2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F29A4AD09A77BA9D010BA1AE /* Pods-ExchangerUITests.release.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 5PHGGKL9UQ;
 				INFOPLIST_FILE = ExchangerUITests/Info.plist;
