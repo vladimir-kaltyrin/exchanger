@@ -1,0 +1,16 @@
+Steps to build the project:
+1. Make sure you're familiar with Cocoapods
+2. Run in bash
+
+$ pod install
+
+Steps to lint the project:
+
+1. If OCLint is not installed, then run is bash:
+$ brew tap oclint/formulae
+$ brew install oclint
+
+1. If xcpretty is not installed, then run in bash:
+$ gem install xcpretty
+
+2. Run target 'OCLint'
