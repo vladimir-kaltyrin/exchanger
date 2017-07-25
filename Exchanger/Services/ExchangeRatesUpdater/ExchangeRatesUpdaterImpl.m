@@ -29,7 +29,7 @@
     [self stop];
     
     __weak typeof(self) weakSelf = self;
-    self.timer = [NSTimer timerWithTimeInterval:100 repeats:YES block:^(NSTimer * _Nonnull timer) {
+    self.timer = [NSTimer timerWithTimeInterval:10 repeats:YES block:^(NSTimer * _Nonnull timer) {
         [weakSelf fetch];
     }];
 }
