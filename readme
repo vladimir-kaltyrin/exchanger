@@ -1,16 +1,17 @@
 Steps to build the project:
-1. Make sure you're familiar with Cocoapods
-2. Run in bash
 
+1. Run in terminal
 $ pod install
+
+2. Open Exchanger.xcworkspace
 
 Steps to lint the project:
 
-1. If OCLint is not installed, then run is bash:
+1. If OCLint is not installed, then run is terminal:
 $ brew tap oclint/formulae
 $ brew install oclint
 
-1. If xcpretty is not installed, then run in bash:
+2. If xcpretty is not installed, then run in terminal:
 $ gem install xcpretty
 
-2. Run target 'OCLint'
+3. Run target 'OCLint'
