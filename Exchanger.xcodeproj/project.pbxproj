@@ -25,23 +25,41 @@
 		2D9A60EAD27A2EFF8A0EA557 /* libPods-Exchanger.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A46A0D61B3F31B4C0C77D2B7 /* libPods-Exchanger.a */; };
 		68C8AC0CEC9D9ED7064AFBD1 /* libPods-ExchangerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 065BDAA0B52E5D049A00B783 /* libPods-ExchangerTests.a */; };
 		8C1FEFCB1F13A76A0024F046 /* ServiceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1FEFCA1F13A76A0024F046 /* ServiceFactory.m */; };
-		8C1FEFCF1F13A9CB0024F046 /* Cube.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1FEFCE1F13A9CB0024F046 /* Cube.m */; };
-		8C2E1CE91F13818D00DB0FC2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2E1CE81F13818D00DB0FC2 /* main.m */; };
-		8C2E1CEC1F13818D00DB0FC2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2E1CEB1F13818D00DB0FC2 /* AppDelegate.m */; };
-		8C2E1CEF1F13818D00DB0FC2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2E1CEE1F13818D00DB0FC2 /* ViewController.m */; };
-		8C2E1CF21F13818D00DB0FC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C2E1CF01F13818D00DB0FC2 /* Main.storyboard */; };
 		8C2E1CF41F13818D00DB0FC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C2E1CF31F13818D00DB0FC2 /* Assets.xcassets */; };
-		8C2E1CF71F13818D00DB0FC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C2E1CF51F13818D00DB0FC2 /* LaunchScreen.storyboard */; };
 		8C2E1D021F13818D00DB0FC2 /* ExchangerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2E1D011F13818D00DB0FC2 /* ExchangerTests.m */; };
 		8C2E1D0D1F13818D00DB0FC2 /* ExchangerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2E1D0C1F13818D00DB0FC2 /* ExchangerUITests.m */; };
-		8C304CFD1F13ACAD00ACE585 /* CurrencyFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C304CFC1F13ACAD00ACE585 /* CurrencyFormatter.m */; };
-		8C304D001F13AF0A00ACE585 /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C304CFF1F13AF0A00ACE585 /* Currency.m */; };
-		8C304D031F13C6F500ACE585 /* Sender.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C304D021F13C6F500ACE585 /* Sender.m */; };
-		8C304D061F13C72500ACE585 /* Envelope.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C304D051F13C72500ACE585 /* Envelope.m */; };
-		8C304D091F13CC6400ACE585 /* ExchangeRatesService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C304D081F13CC6400ACE585 /* ExchangeRatesService.m */; };
-		8C304D0C1F13CCE100ACE585 /* ExchangeRatesData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C304D0B1F13CCE100ACE585 /* ExchangeRatesData.m */; };
-		8C304D0F1F13D4DE00ACE585 /* XMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C304D0E1F13D4DE00ACE585 /* XMLParser.m */; };
-		8C304D121F13DC1800ACE585 /* ExchangeRatesUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C304D111F13DC1800ACE585 /* ExchangeRatesUpdater.m */; };
+		8C36E9891F261B4F009BDDC0 /* UIView+Properties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C36E9881F261B4F009BDDC0 /* UIView+Properties.m */; };
+		8C36E9921F2634C9009BDDC0 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C36E9911F2634C9009BDDC0 /* BaseViewController.m */; };
+		8C36E99B1F2653D8009BDDC0 /* ExchangeRatesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C36E99A1F2653D8009BDDC0 /* ExchangeRatesResponse.m */; };
+		8CC705F61F27CBDA008770E2 /* CurrencyFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC705F51F27CBDA008770E2 /* CurrencyFormatterTests.m */; };
+		8CC705FA1F27CF51008770E2 /* ExchangeRatesData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC705F91F27CF51008770E2 /* ExchangeRatesData.m */; };
+		8CD786161F14F21F00AF7A8D /* ExchangeMoneyAssemblyImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD786151F14F21F00AF7A8D /* ExchangeMoneyAssemblyImpl.m */; };
+		8CD7861A1F14F22600AF7A8D /* ExchangeMoneyInteractorImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD786191F14F22600AF7A8D /* ExchangeMoneyInteractorImpl.m */; };
+		8CD786201F14F22D00AF7A8D /* ExchangeMoneyPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD7861E1F14F22D00AF7A8D /* ExchangeMoneyPresenter.m */; };
+		8CD786251F14F23400AF7A8D /* ExchangeMoneyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD786221F14F23400AF7A8D /* ExchangeMoneyView.m */; };
+		8CD786261F14F23400AF7A8D /* ExchangeMoneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD786241F14F23400AF7A8D /* ExchangeMoneyViewController.m */; };
+		8CD786291F14F23C00AF7A8D /* ExchangeMoneyRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD786281F14F23C00AF7A8D /* ExchangeMoneyRouter.m */; };
+		8CD7862F1F14F24600AF7A8D /* ExchangeRatesServiceImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD7862D1F14F24600AF7A8D /* ExchangeRatesServiceImpl.m */; };
+		8CD786331F14F26700AF7A8D /* ExchangeRatesUpdaterImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD786321F14F26700AF7A8D /* ExchangeRatesUpdaterImpl.m */; };
+		8CD786391F14F27F00AF7A8D /* ExchangeMoneyService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD786361F14F27F00AF7A8D /* ExchangeMoneyService.m */; };
+		8CD7863A1F14F27F00AF7A8D /* MoneyData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD786381F14F27F00AF7A8D /* MoneyData.m */; };
+		8CD7863E1F14F29000AF7A8D /* XMLParserImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD7863D1F14F29000AF7A8D /* XMLParserImpl.m */; };
+		8CD786421F14F2A000AF7A8D /* CurrencyFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD786411F14F2A000AF7A8D /* CurrencyFormatter.m */; };
+		8CD786491F14F2B800AF7A8D /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD786441F14F2B800AF7A8D /* Currency.m */; };
+		8CD7864E1F14F32600AF7A8D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD7864D1F14F32600AF7A8D /* User.m */; };
+		8CD786531F14F7B700AF7A8D /* BaseAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD786521F14F7B700AF7A8D /* BaseAssembly.m */; };
+		8CD786561F14F82000AF7A8D /* AssemblySeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD786551F14F82000AF7A8D /* AssemblySeed.m */; };
+		8CD786591F14F86100AF7A8D /* AssemblyFactoryImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD786581F14F86100AF7A8D /* AssemblyFactoryImpl.m */; };
+		8CF964171F165C24009852B9 /* AssembledViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF964161F165C24009852B9 /* AssembledViewController.m */; };
+		8CF9641C1F165C31009852B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF964191F165C31009852B9 /* AppDelegate.m */; };
+		8CF9641D1F165C31009852B9 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8CF9641A1F165C31009852B9 /* Info.plist */; };
+		8CF9641E1F165C31009852B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF9641B1F165C31009852B9 /* main.m */; };
+		8CF9643D1F17D84E009852B9 /* KeyboardObservingServiceImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF9643C1F17D84E009852B9 /* KeyboardObservingServiceImpl.m */; };
+		8CF964481F1CC4EE009852B9 /* ExchangeMoneyPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF964471F1CC4EE009852B9 /* ExchangeMoneyPageViewController.m */; };
+		8CF9644B1F1CC81D009852B9 /* ExchangeMoneyCurrencyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF9644A1F1CC81D009852B9 /* ExchangeMoneyCurrencyViewController.m */; };
+		8CF964511F1CCC0D009852B9 /* ExchangeMoneyCurrencyViewData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF964501F1CCC0D009852B9 /* ExchangeMoneyCurrencyViewData.m */; };
+		8CF964541F1CCECA009852B9 /* ExchangeMoneyBalanceViewData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF964531F1CCECA009852B9 /* ExchangeMoneyBalanceViewData.m */; };
+		8CF9645A1F1CD11B009852B9 /* ExchangeMoneyCurrencyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF964591F1CD11B009852B9 /* ExchangeMoneyCurrencyView.m */; };
 		F4B97656FC1AA746D81776B8 /* libPods-ExchangerUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 228D4FAA2C2C7FB35FC8A6FF /* libPods-ExchangerUITests.a */; };
 /* End PBXBuildFile section */
 
@@ -77,18 +95,8 @@
 		8C1FEFC31F13A2610024F046 /* lint.sh */ = {isa = PBXFileReference; explicitFileType = text.script.sh; fileEncoding = 4; path = lint.sh; sourceTree = "<group>"; };
 		8C1FEFC91F13A76A0024F046 /* ServiceFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceFactory.h; path = Services/ServiceFactory.h; sourceTree = "<group>"; };
 		8C1FEFCA1F13A76A0024F046 /* ServiceFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceFactory.m; path = Services/ServiceFactory.m; sourceTree = "<group>"; };
-		8C1FEFCD1F13A9CB0024F046 /* Cube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Cube.h; path = Networking/Cube.h; sourceTree = "<group>"; };
-		8C1FEFCE1F13A9CB0024F046 /* Cube.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Cube.m; path = Networking/Cube.m; sourceTree = "<group>"; };
 		8C2E1CE41F13818D00DB0FC2 /* Avito.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Avito.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8C2E1CE81F13818D00DB0FC2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		8C2E1CEA1F13818D00DB0FC2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		8C2E1CEB1F13818D00DB0FC2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8C2E1CED1F13818D00DB0FC2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		8C2E1CEE1F13818D00DB0FC2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		8C2E1CF11F13818D00DB0FC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8C2E1CF31F13818D00DB0FC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8C2E1CF61F13818D00DB0FC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		8C2E1CF81F13818D00DB0FC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C2E1CFD1F13818D00DB0FC2 /* ExchangerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExchangerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C2E1D011F13818D00DB0FC2 /* ExchangerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExchangerTests.m; sourceTree = "<group>"; };
 		8C2E1D031F13818D00DB0FC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -97,22 +105,78 @@
 		8C2E1D0E1F13818D00DB0FC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C2E1D201F1391B000DB0FC2 /* readme */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme; sourceTree = "<group>"; };
 		8C304CFA1F13AC8300ACE585 /* CurrencyType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrencyType.h; path = Networking/CurrencyType.h; sourceTree = "<group>"; };
-		8C304CFB1F13ACAD00ACE585 /* CurrencyFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyFormatter.h; sourceTree = "<group>"; };
-		8C304CFC1F13ACAD00ACE585 /* CurrencyFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyFormatter.m; sourceTree = "<group>"; };
-		8C304CFE1F13AF0A00ACE585 /* Currency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Currency.h; sourceTree = "<group>"; };
-		8C304CFF1F13AF0A00ACE585 /* Currency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Currency.m; sourceTree = "<group>"; };
-		8C304D011F13C6F500ACE585 /* Sender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sender.h; sourceTree = "<group>"; };
-		8C304D021F13C6F500ACE585 /* Sender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sender.m; sourceTree = "<group>"; };
-		8C304D041F13C72500ACE585 /* Envelope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Envelope.h; sourceTree = "<group>"; };
-		8C304D051F13C72500ACE585 /* Envelope.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Envelope.m; sourceTree = "<group>"; };
-		8C304D071F13CC6400ACE585 /* ExchangeRatesService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeRatesService.h; sourceTree = "<group>"; };
-		8C304D081F13CC6400ACE585 /* ExchangeRatesService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeRatesService.m; sourceTree = "<group>"; };
-		8C304D0A1F13CCE100ACE585 /* ExchangeRatesData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeRatesData.h; sourceTree = "<group>"; };
-		8C304D0B1F13CCE100ACE585 /* ExchangeRatesData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeRatesData.m; sourceTree = "<group>"; };
-		8C304D0D1F13D4DE00ACE585 /* XMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLParser.h; sourceTree = "<group>"; };
-		8C304D0E1F13D4DE00ACE585 /* XMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLParser.m; sourceTree = "<group>"; };
-		8C304D101F13DC1800ACE585 /* ExchangeRatesUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeRatesUpdater.h; sourceTree = "<group>"; };
-		8C304D111F13DC1800ACE585 /* ExchangeRatesUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeRatesUpdater.m; sourceTree = "<group>"; };
+		8C36E9871F261B4F009BDDC0 /* UIView+Properties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Properties.h"; path = "Categories/UIView+Properties.h"; sourceTree = "<group>"; };
+		8C36E9881F261B4F009BDDC0 /* UIView+Properties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Properties.m"; path = "Categories/UIView+Properties.m"; sourceTree = "<group>"; };
+		8C36E98E1F263392009BDDC0 /* ViewLifeCycleObservable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ViewLifeCycleObservable.h; path = Protocols/ViewLifeCycleObservable.h; sourceTree = "<group>"; };
+		8C36E9901F2634C9009BDDC0 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseViewController.h; path = Core/BaseViewController.h; sourceTree = "<group>"; };
+		8C36E9911F2634C9009BDDC0 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = Core/BaseViewController.m; sourceTree = "<group>"; };
+		8C36E9931F264053009BDDC0 /* SafeBlocks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SafeBlocks.h; path = Core/SafeBlocks.h; sourceTree = "<group>"; };
+		8C36E9941F26451B009BDDC0 /* ExchangeRatesUpdaterImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ExchangeRatesUpdaterImpl.h; path = Services/ExchangeRatesUpdater/ExchangeRatesUpdaterImpl.h; sourceTree = "<group>"; };
+		8C36E9951F264587009BDDC0 /* ExchangeRatesServiceImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ExchangeRatesServiceImpl.h; path = Services/ExchangeRatesService/ExchangeRatesServiceImpl.h; sourceTree = "<group>"; };
+		8C36E9991F2653D8009BDDC0 /* ExchangeRatesResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeRatesResponse.h; sourceTree = "<group>"; };
+		8C36E99A1F2653D8009BDDC0 /* ExchangeRatesResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeRatesResponse.m; sourceTree = "<group>"; };
+		8CC705F51F27CBDA008770E2 /* CurrencyFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyFormatterTests.m; sourceTree = "<group>"; };
+		8CC705F71F27CE0A008770E2 /* XMLParserImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XMLParserImpl.h; path = Services/XMLParser/XMLParserImpl.h; sourceTree = "<group>"; };
+		8CC705F81F27CF51008770E2 /* ExchangeRatesData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeRatesData.h; path = Services/ExchangeRatesService/ExchangeRatesData.h; sourceTree = "<group>"; };
+		8CC705F91F27CF51008770E2 /* ExchangeRatesData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExchangeRatesData.m; path = Services/ExchangeRatesService/ExchangeRatesData.m; sourceTree = "<group>"; };
+		8CD786141F14F21F00AF7A8D /* ExchangeMoneyAssemblyImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeMoneyAssemblyImpl.h; path = Modules/ExchangeMoney/Assembly/ExchangeMoneyAssemblyImpl.h; sourceTree = "<group>"; };
+		8CD786151F14F21F00AF7A8D /* ExchangeMoneyAssemblyImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExchangeMoneyAssemblyImpl.m; path = Modules/ExchangeMoney/Assembly/ExchangeMoneyAssemblyImpl.m; sourceTree = "<group>"; };
+		8CD786171F14F22600AF7A8D /* ExchangeMoneyInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeMoneyInteractor.h; path = Modules/ExchangeMoney/Interactor/ExchangeMoneyInteractor.h; sourceTree = "<group>"; };
+		8CD786181F14F22600AF7A8D /* ExchangeMoneyInteractorImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeMoneyInteractorImpl.h; path = Modules/ExchangeMoney/Interactor/ExchangeMoneyInteractorImpl.h; sourceTree = "<group>"; };
+		8CD786191F14F22600AF7A8D /* ExchangeMoneyInteractorImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExchangeMoneyInteractorImpl.m; path = Modules/ExchangeMoney/Interactor/ExchangeMoneyInteractorImpl.m; sourceTree = "<group>"; };
+		8CD7861B1F14F22D00AF7A8D /* ExchangeMoneyModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeMoneyModule.h; path = Modules/ExchangeMoney/Presenter/ExchangeMoneyModule.h; sourceTree = "<group>"; };
+		8CD7861D1F14F22D00AF7A8D /* ExchangeMoneyPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeMoneyPresenter.h; path = Modules/ExchangeMoney/Presenter/ExchangeMoneyPresenter.h; sourceTree = "<group>"; };
+		8CD7861E1F14F22D00AF7A8D /* ExchangeMoneyPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExchangeMoneyPresenter.m; path = Modules/ExchangeMoney/Presenter/ExchangeMoneyPresenter.m; sourceTree = "<group>"; };
+		8CD786211F14F23400AF7A8D /* ExchangeMoneyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeMoneyView.h; path = Modules/ExchangeMoney/View/ExchangeMoneyView.h; sourceTree = "<group>"; };
+		8CD786221F14F23400AF7A8D /* ExchangeMoneyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExchangeMoneyView.m; path = Modules/ExchangeMoney/View/ExchangeMoneyView.m; sourceTree = "<group>"; };
+		8CD786231F14F23400AF7A8D /* ExchangeMoneyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeMoneyViewController.h; path = Modules/ExchangeMoney/View/ExchangeMoneyViewController.h; sourceTree = "<group>"; };
+		8CD786241F14F23400AF7A8D /* ExchangeMoneyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExchangeMoneyViewController.m; path = Modules/ExchangeMoney/View/ExchangeMoneyViewController.m; sourceTree = "<group>"; };
+		8CD786271F14F23C00AF7A8D /* ExchangeMoneyRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeMoneyRouter.h; path = Modules/ExchangeMoney/Router/ExchangeMoneyRouter.h; sourceTree = "<group>"; };
+		8CD786281F14F23C00AF7A8D /* ExchangeMoneyRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExchangeMoneyRouter.m; path = Modules/ExchangeMoney/Router/ExchangeMoneyRouter.m; sourceTree = "<group>"; };
+		8CD7862C1F14F24600AF7A8D /* ExchangeRatesService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeRatesService.h; path = Services/ExchangeRatesService/ExchangeRatesService.h; sourceTree = "<group>"; };
+		8CD7862D1F14F24600AF7A8D /* ExchangeRatesServiceImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExchangeRatesServiceImpl.m; path = Services/ExchangeRatesService/ExchangeRatesServiceImpl.m; sourceTree = "<group>"; };
+		8CD786311F14F26700AF7A8D /* ExchangeRatesUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeRatesUpdater.h; path = Services/ExchangeRatesUpdater/ExchangeRatesUpdater.h; sourceTree = "<group>"; };
+		8CD786321F14F26700AF7A8D /* ExchangeRatesUpdaterImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExchangeRatesUpdaterImpl.m; path = Services/ExchangeRatesUpdater/ExchangeRatesUpdaterImpl.m; sourceTree = "<group>"; };
+		8CD786351F14F27F00AF7A8D /* ExchangeMoneyService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeMoneyService.h; path = Services/ExchangeMoneyService/ExchangeMoneyService.h; sourceTree = "<group>"; };
+		8CD786361F14F27F00AF7A8D /* ExchangeMoneyService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExchangeMoneyService.m; path = Services/ExchangeMoneyService/ExchangeMoneyService.m; sourceTree = "<group>"; };
+		8CD786371F14F27F00AF7A8D /* MoneyData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoneyData.h; path = Services/ExchangeMoneyService/MoneyData.h; sourceTree = "<group>"; };
+		8CD786381F14F27F00AF7A8D /* MoneyData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoneyData.m; path = Services/ExchangeMoneyService/MoneyData.m; sourceTree = "<group>"; };
+		8CD7863C1F14F29000AF7A8D /* XMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMLParser.h; path = Services/XMLParser/XMLParser.h; sourceTree = "<group>"; };
+		8CD7863D1F14F29000AF7A8D /* XMLParserImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMLParserImpl.m; path = Services/XMLParser/XMLParserImpl.m; sourceTree = "<group>"; };
+		8CD786401F14F2A000AF7A8D /* CurrencyFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrencyFormatter.h; path = Formatters/CurrencyFormatter.h; sourceTree = "<group>"; };
+		8CD786411F14F2A000AF7A8D /* CurrencyFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrencyFormatter.m; path = Formatters/CurrencyFormatter.m; sourceTree = "<group>"; };
+		8CD786431F14F2B800AF7A8D /* Currency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Currency.h; path = Networking/Currency.h; sourceTree = "<group>"; };
+		8CD786441F14F2B800AF7A8D /* Currency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Currency.m; path = Networking/Currency.m; sourceTree = "<group>"; };
+		8CD7864C1F14F32600AF7A8D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = Services/ExchangeMoneyService/User.h; sourceTree = "<group>"; };
+		8CD7864D1F14F32600AF7A8D /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = Services/ExchangeMoneyService/User.m; sourceTree = "<group>"; };
+		8CD7864F1F14F65800AF7A8D /* ExchangeMoneyAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeMoneyAssembly.h; path = Modules/ExchangeMoney/Assembly/ExchangeMoneyAssembly.h; sourceTree = "<group>"; };
+		8CD786511F14F7B700AF7A8D /* BaseAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseAssembly.h; path = DI/BaseAssembly.h; sourceTree = "<group>"; };
+		8CD786521F14F7B700AF7A8D /* BaseAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseAssembly.m; path = DI/BaseAssembly.m; sourceTree = "<group>"; };
+		8CD786541F14F82000AF7A8D /* AssemblySeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AssemblySeed.h; path = DI/AssemblySeed.h; sourceTree = "<group>"; };
+		8CD786551F14F82000AF7A8D /* AssemblySeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AssemblySeed.m; path = DI/AssemblySeed.m; sourceTree = "<group>"; };
+		8CD786571F14F86100AF7A8D /* AssemblyFactoryImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AssemblyFactoryImpl.h; path = DI/AssemblyFactoryImpl.h; sourceTree = "<group>"; };
+		8CD786581F14F86100AF7A8D /* AssemblyFactoryImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AssemblyFactoryImpl.m; path = DI/AssemblyFactoryImpl.m; sourceTree = "<group>"; };
+		8CD7865A1F14F87400AF7A8D /* AssemblyFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AssemblyFactory.h; path = DI/AssemblyFactory.h; sourceTree = "<group>"; };
+		8CD7865E1F14FD5200AF7A8D /* ExchangeMoneyViewInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeMoneyViewInput.h; path = Modules/ExchangeMoney/View/ExchangeMoneyViewInput.h; sourceTree = "<group>"; };
+		8CF964151F165C24009852B9 /* AssembledViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AssembledViewController.h; path = DI/AssembledViewController.h; sourceTree = "<group>"; };
+		8CF964161F165C24009852B9 /* AssembledViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AssembledViewController.m; path = DI/AssembledViewController.m; sourceTree = "<group>"; };
+		8CF964181F165C31009852B9 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Application/AppDelegate.h; sourceTree = "<group>"; };
+		8CF964191F165C31009852B9 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Application/AppDelegate.m; sourceTree = "<group>"; };
+		8CF9641A1F165C31009852B9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Application/Info.plist; sourceTree = "<group>"; };
+		8CF9641B1F165C31009852B9 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Application/main.m; sourceTree = "<group>"; };
+		8CF9643B1F17D84E009852B9 /* KeyboardObservingServiceImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyboardObservingServiceImpl.h; path = Services/KeyboardObservingService/KeyboardObservingServiceImpl.h; sourceTree = "<group>"; };
+		8CF9643C1F17D84E009852B9 /* KeyboardObservingServiceImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeyboardObservingServiceImpl.m; path = Services/KeyboardObservingService/KeyboardObservingServiceImpl.m; sourceTree = "<group>"; };
+		8CF9643F1F17D8B7009852B9 /* KeyboardObservingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardObservingService.h; sourceTree = "<group>"; };
+		8CF964461F1CC4EE009852B9 /* ExchangeMoneyPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeMoneyPageViewController.h; path = Modules/ExchangeMoney/View/ExchangeMoneyPageViewController.h; sourceTree = "<group>"; };
+		8CF964471F1CC4EE009852B9 /* ExchangeMoneyPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExchangeMoneyPageViewController.m; path = Modules/ExchangeMoney/View/ExchangeMoneyPageViewController.m; sourceTree = "<group>"; };
+		8CF964491F1CC81D009852B9 /* ExchangeMoneyCurrencyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeMoneyCurrencyViewController.h; path = Modules/ExchangeMoney/View/ExchangeMoneyCurrencyViewController.h; sourceTree = "<group>"; };
+		8CF9644A1F1CC81D009852B9 /* ExchangeMoneyCurrencyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExchangeMoneyCurrencyViewController.m; path = Modules/ExchangeMoney/View/ExchangeMoneyCurrencyViewController.m; sourceTree = "<group>"; };
+		8CF9644F1F1CCC0D009852B9 /* ExchangeMoneyCurrencyViewData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeMoneyCurrencyViewData.h; path = Modules/ExchangeMoney/View/ExchangeMoneyCurrencyViewData.h; sourceTree = "<group>"; };
+		8CF964501F1CCC0D009852B9 /* ExchangeMoneyCurrencyViewData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExchangeMoneyCurrencyViewData.m; path = Modules/ExchangeMoney/View/ExchangeMoneyCurrencyViewData.m; sourceTree = "<group>"; };
+		8CF964521F1CCECA009852B9 /* ExchangeMoneyBalanceViewData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeMoneyBalanceViewData.h; path = Modules/ExchangeMoney/View/ExchangeMoneyBalanceViewData.h; sourceTree = "<group>"; };
+		8CF964531F1CCECA009852B9 /* ExchangeMoneyBalanceViewData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExchangeMoneyBalanceViewData.m; path = Modules/ExchangeMoney/View/ExchangeMoneyBalanceViewData.m; sourceTree = "<group>"; };
+		8CF964581F1CD11B009852B9 /* ExchangeMoneyCurrencyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeMoneyCurrencyView.h; path = Modules/ExchangeMoney/View/ExchangeMoneyCurrencyView.h; sourceTree = "<group>"; };
+		8CF964591F1CD11B009852B9 /* ExchangeMoneyCurrencyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExchangeMoneyCurrencyView.m; path = Modules/ExchangeMoney/View/ExchangeMoneyCurrencyView.m; sourceTree = "<group>"; };
 		9389B4E6B11F4B0BB56B0F37 /* Pods-ExchangerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExchangerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExchangerUITests/Pods-ExchangerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A46A0D61B3F31B4C0C77D2B7 /* libPods-Exchanger.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Exchanger.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAEDD35F473571BE7C61E79D /* Pods-Exchanger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Exchanger.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Exchanger/Pods-Exchanger.debug.xcconfig"; sourceTree = "<group>"; };
@@ -166,14 +230,11 @@
 			children = (
 				8C1FEFC91F13A76A0024F046 /* ServiceFactory.h */,
 				8C1FEFCA1F13A76A0024F046 /* ServiceFactory.m */,
-				8C304D101F13DC1800ACE585 /* ExchangeRatesUpdater.h */,
-				8C304D111F13DC1800ACE585 /* ExchangeRatesUpdater.m */,
-				8C304D071F13CC6400ACE585 /* ExchangeRatesService.h */,
-				8C304D081F13CC6400ACE585 /* ExchangeRatesService.m */,
-				8C304D0A1F13CCE100ACE585 /* ExchangeRatesData.h */,
-				8C304D0B1F13CCE100ACE585 /* ExchangeRatesData.m */,
-				8C304D0D1F13D4DE00ACE585 /* XMLParser.h */,
-				8C304D0E1F13D4DE00ACE585 /* XMLParser.m */,
+				8CF9643E1F17D852009852B9 /* KeyboardObservingService */,
+				8CD7863B1F14F28700AF7A8D /* XMLParser */,
+				8CD786341F14F26A00AF7A8D /* ExchangeMoneyService */,
+				8CD786301F14F24700AF7A8D /* ExchangeRatesUpdater */,
+				8CD786131F14F15900AF7A8D /* ExchangeRatesService */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -181,17 +242,11 @@
 		8C1FEFCC1F13A90D0024F046 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				8C1FEFCD1F13A9CB0024F046 /* Cube.h */,
-				8C1FEFCE1F13A9CB0024F046 /* Cube.m */,
 				8C304CFA1F13AC8300ACE585 /* CurrencyType.h */,
-				8C304CFB1F13ACAD00ACE585 /* CurrencyFormatter.h */,
-				8C304CFC1F13ACAD00ACE585 /* CurrencyFormatter.m */,
-				8C304CFE1F13AF0A00ACE585 /* Currency.h */,
-				8C304CFF1F13AF0A00ACE585 /* Currency.m */,
-				8C304D011F13C6F500ACE585 /* Sender.h */,
-				8C304D021F13C6F500ACE585 /* Sender.m */,
-				8C304D041F13C72500ACE585 /* Envelope.h */,
-				8C304D051F13C72500ACE585 /* Envelope.m */,
+				8CD786431F14F2B800AF7A8D /* Currency.h */,
+				8CD786441F14F2B800AF7A8D /* Currency.m */,
+				8C36E9991F2653D8009BDDC0 /* ExchangeRatesResponse.h */,
+				8C36E99A1F2653D8009BDDC0 /* ExchangeRatesResponse.m */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -223,27 +278,18 @@
 		8C2E1CE61F13818D00DB0FC2 /* Exchanger */ = {
 			isa = PBXGroup;
 			children = (
+				8C36E98F1F2634B4009BDDC0 /* Core */,
+				8C36E98D1F26336F009BDDC0 /* Protocols */,
+				8C36E9861F261B26009BDDC0 /* Categories */,
+				8CF964141F165BF3009852B9 /* Application */,
+				8CD786501F14F7A500AF7A8D /* DI */,
+				8CD7863F1F14F29600AF7A8D /* Formatters */,
+				8CD785EC1F14EE3900AF7A8D /* Modules */,
 				8C1FEFCC1F13A90D0024F046 /* Networking */,
 				8C1FEFC61F13A6C90024F046 /* Services */,
-				8C2E1CEA1F13818D00DB0FC2 /* AppDelegate.h */,
-				8C2E1CEB1F13818D00DB0FC2 /* AppDelegate.m */,
-				8C2E1CED1F13818D00DB0FC2 /* ViewController.h */,
-				8C2E1CEE1F13818D00DB0FC2 /* ViewController.m */,
-				8C2E1CF01F13818D00DB0FC2 /* Main.storyboard */,
 				8C2E1CF31F13818D00DB0FC2 /* Assets.xcassets */,
-				8C2E1CF51F13818D00DB0FC2 /* LaunchScreen.storyboard */,
-				8C2E1CF81F13818D00DB0FC2 /* Info.plist */,
-				8C2E1CE71F13818D00DB0FC2 /* Supporting Files */,
 			);
 			path = Exchanger;
-			sourceTree = "<group>";
-		};
-		8C2E1CE71F13818D00DB0FC2 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				8C2E1CE81F13818D00DB0FC2 /* main.m */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		8C2E1D001F13818D00DB0FC2 /* ExchangerTests */ = {
@@ -251,6 +297,7 @@
 			children = (
 				8C2E1D011F13818D00DB0FC2 /* ExchangerTests.m */,
 				8C2E1D031F13818D00DB0FC2 /* Info.plist */,
+				8CC705F51F27CBDA008770E2 /* CurrencyFormatterTests.m */,
 			);
 			path = ExchangerTests;
 			sourceTree = "<group>";
@@ -262,6 +309,205 @@
 				8C2E1D0E1F13818D00DB0FC2 /* Info.plist */,
 			);
 			path = ExchangerUITests;
+			sourceTree = "<group>";
+		};
+		8C36E9861F261B26009BDDC0 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				8C36E9871F261B4F009BDDC0 /* UIView+Properties.h */,
+				8C36E9881F261B4F009BDDC0 /* UIView+Properties.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		8C36E98D1F26336F009BDDC0 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				8C36E98E1F263392009BDDC0 /* ViewLifeCycleObservable.h */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		8C36E98F1F2634B4009BDDC0 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				8C36E9901F2634C9009BDDC0 /* BaseViewController.h */,
+				8C36E9911F2634C9009BDDC0 /* BaseViewController.m */,
+				8C36E9931F264053009BDDC0 /* SafeBlocks.h */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		8CD785EC1F14EE3900AF7A8D /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				8CD785F11F14EE9D00AF7A8D /* ExchangeMoney */,
+			);
+			name = Modules;
+			sourceTree = "<group>";
+		};
+		8CD785F11F14EE9D00AF7A8D /* ExchangeMoney */ = {
+			isa = PBXGroup;
+			children = (
+				8CD7860C1F14EFB000AF7A8D /* Assembly */,
+				8CD785F21F14EEA900AF7A8D /* Interactor */,
+				8CD785F31F14EEAD00AF7A8D /* Presenter */,
+				8CD785F41F14EEB100AF7A8D /* View */,
+				8CD785F51F14EEB500AF7A8D /* Router */,
+			);
+			name = ExchangeMoney;
+			sourceTree = "<group>";
+		};
+		8CD785F21F14EEA900AF7A8D /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				8CD786171F14F22600AF7A8D /* ExchangeMoneyInteractor.h */,
+				8CD786181F14F22600AF7A8D /* ExchangeMoneyInteractorImpl.h */,
+				8CD786191F14F22600AF7A8D /* ExchangeMoneyInteractorImpl.m */,
+			);
+			name = Interactor;
+			sourceTree = "<group>";
+		};
+		8CD785F31F14EEAD00AF7A8D /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				8CD7861B1F14F22D00AF7A8D /* ExchangeMoneyModule.h */,
+				8CD7861D1F14F22D00AF7A8D /* ExchangeMoneyPresenter.h */,
+				8CD7861E1F14F22D00AF7A8D /* ExchangeMoneyPresenter.m */,
+			);
+			name = Presenter;
+			sourceTree = "<group>";
+		};
+		8CD785F41F14EEB100AF7A8D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8CD7865E1F14FD5200AF7A8D /* ExchangeMoneyViewInput.h */,
+				8CD786211F14F23400AF7A8D /* ExchangeMoneyView.h */,
+				8CD786221F14F23400AF7A8D /* ExchangeMoneyView.m */,
+				8CD786231F14F23400AF7A8D /* ExchangeMoneyViewController.h */,
+				8CD786241F14F23400AF7A8D /* ExchangeMoneyViewController.m */,
+				8CF964461F1CC4EE009852B9 /* ExchangeMoneyPageViewController.h */,
+				8CF964471F1CC4EE009852B9 /* ExchangeMoneyPageViewController.m */,
+				8CF964491F1CC81D009852B9 /* ExchangeMoneyCurrencyViewController.h */,
+				8CF9644A1F1CC81D009852B9 /* ExchangeMoneyCurrencyViewController.m */,
+				8CF964581F1CD11B009852B9 /* ExchangeMoneyCurrencyView.h */,
+				8CF964591F1CD11B009852B9 /* ExchangeMoneyCurrencyView.m */,
+				8CF9644F1F1CCC0D009852B9 /* ExchangeMoneyCurrencyViewData.h */,
+				8CF964501F1CCC0D009852B9 /* ExchangeMoneyCurrencyViewData.m */,
+				8CF964521F1CCECA009852B9 /* ExchangeMoneyBalanceViewData.h */,
+				8CF964531F1CCECA009852B9 /* ExchangeMoneyBalanceViewData.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		8CD785F51F14EEB500AF7A8D /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				8CD786271F14F23C00AF7A8D /* ExchangeMoneyRouter.h */,
+				8CD786281F14F23C00AF7A8D /* ExchangeMoneyRouter.m */,
+			);
+			name = Router;
+			sourceTree = "<group>";
+		};
+		8CD7860C1F14EFB000AF7A8D /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				8CD7864F1F14F65800AF7A8D /* ExchangeMoneyAssembly.h */,
+				8CD786141F14F21F00AF7A8D /* ExchangeMoneyAssemblyImpl.h */,
+				8CD786151F14F21F00AF7A8D /* ExchangeMoneyAssemblyImpl.m */,
+			);
+			name = Assembly;
+			sourceTree = "<group>";
+		};
+		8CD786131F14F15900AF7A8D /* ExchangeRatesService */ = {
+			isa = PBXGroup;
+			children = (
+				8CD7862C1F14F24600AF7A8D /* ExchangeRatesService.h */,
+				8C36E9951F264587009BDDC0 /* ExchangeRatesServiceImpl.h */,
+				8CD7862D1F14F24600AF7A8D /* ExchangeRatesServiceImpl.m */,
+				8CC705F81F27CF51008770E2 /* ExchangeRatesData.h */,
+				8CC705F91F27CF51008770E2 /* ExchangeRatesData.m */,
+			);
+			name = ExchangeRatesService;
+			sourceTree = "<group>";
+		};
+		8CD786301F14F24700AF7A8D /* ExchangeRatesUpdater */ = {
+			isa = PBXGroup;
+			children = (
+				8CD786311F14F26700AF7A8D /* ExchangeRatesUpdater.h */,
+				8C36E9941F26451B009BDDC0 /* ExchangeRatesUpdaterImpl.h */,
+				8CD786321F14F26700AF7A8D /* ExchangeRatesUpdaterImpl.m */,
+			);
+			name = ExchangeRatesUpdater;
+			sourceTree = "<group>";
+		};
+		8CD786341F14F26A00AF7A8D /* ExchangeMoneyService */ = {
+			isa = PBXGroup;
+			children = (
+				8CD786351F14F27F00AF7A8D /* ExchangeMoneyService.h */,
+				8CD786361F14F27F00AF7A8D /* ExchangeMoneyService.m */,
+				8CD7864C1F14F32600AF7A8D /* User.h */,
+				8CD7864D1F14F32600AF7A8D /* User.m */,
+				8CD786371F14F27F00AF7A8D /* MoneyData.h */,
+				8CD786381F14F27F00AF7A8D /* MoneyData.m */,
+			);
+			name = ExchangeMoneyService;
+			sourceTree = "<group>";
+		};
+		8CD7863B1F14F28700AF7A8D /* XMLParser */ = {
+			isa = PBXGroup;
+			children = (
+				8CD7863C1F14F29000AF7A8D /* XMLParser.h */,
+				8CC705F71F27CE0A008770E2 /* XMLParserImpl.h */,
+				8CD7863D1F14F29000AF7A8D /* XMLParserImpl.m */,
+			);
+			name = XMLParser;
+			sourceTree = "<group>";
+		};
+		8CD7863F1F14F29600AF7A8D /* Formatters */ = {
+			isa = PBXGroup;
+			children = (
+				8CD786401F14F2A000AF7A8D /* CurrencyFormatter.h */,
+				8CD786411F14F2A000AF7A8D /* CurrencyFormatter.m */,
+			);
+			name = Formatters;
+			sourceTree = "<group>";
+		};
+		8CD786501F14F7A500AF7A8D /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				8CF964151F165C24009852B9 /* AssembledViewController.h */,
+				8CF964161F165C24009852B9 /* AssembledViewController.m */,
+				8CD786541F14F82000AF7A8D /* AssemblySeed.h */,
+				8CD786551F14F82000AF7A8D /* AssemblySeed.m */,
+				8CD786511F14F7B700AF7A8D /* BaseAssembly.h */,
+				8CD786521F14F7B700AF7A8D /* BaseAssembly.m */,
+				8CD7865A1F14F87400AF7A8D /* AssemblyFactory.h */,
+				8CD786571F14F86100AF7A8D /* AssemblyFactoryImpl.h */,
+				8CD786581F14F86100AF7A8D /* AssemblyFactoryImpl.m */,
+			);
+			name = DI;
+			sourceTree = "<group>";
+		};
+		8CF964141F165BF3009852B9 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				8CF964181F165C31009852B9 /* AppDelegate.h */,
+				8CF964191F165C31009852B9 /* AppDelegate.m */,
+				8CF9641A1F165C31009852B9 /* Info.plist */,
+				8CF9641B1F165C31009852B9 /* main.m */,
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
+		8CF9643E1F17D852009852B9 /* KeyboardObservingService */ = {
+			isa = PBXGroup;
+			children = (
+				8CF9643F1F17D8B7009852B9 /* KeyboardObservingService.h */,
+				8CF9643B1F17D84E009852B9 /* KeyboardObservingServiceImpl.h */,
+				8CF9643C1F17D84E009852B9 /* KeyboardObservingServiceImpl.m */,
+			);
+			name = KeyboardObservingService;
 			sourceTree = "<group>";
 		};
 		C4D7318F40CE453F21240F76 /* Frameworks */ = {
@@ -397,9 +643,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C2E1CF71F13818D00DB0FC2 /* LaunchScreen.storyboard in Resources */,
+				8CF9641D1F165C31009852B9 /* Info.plist in Resources */,
 				8C2E1CF41F13818D00DB0FC2 /* Assets.xcassets in Resources */,
-				8C2E1CF21F13818D00DB0FC2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -575,19 +820,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C304D121F13DC1800ACE585 /* ExchangeRatesUpdater.m in Sources */,
-				8C1FEFCF1F13A9CB0024F046 /* Cube.m in Sources */,
-				8C304CFD1F13ACAD00ACE585 /* CurrencyFormatter.m in Sources */,
+				8CD786251F14F23400AF7A8D /* ExchangeMoneyView.m in Sources */,
+				8CC705FA1F27CF51008770E2 /* ExchangeRatesData.m in Sources */,
+				8CF9645A1F1CD11B009852B9 /* ExchangeMoneyCurrencyView.m in Sources */,
+				8C36E99B1F2653D8009BDDC0 /* ExchangeRatesResponse.m in Sources */,
+				8CD786261F14F23400AF7A8D /* ExchangeMoneyViewController.m in Sources */,
+				8CD786331F14F26700AF7A8D /* ExchangeRatesUpdaterImpl.m in Sources */,
+				8CD786491F14F2B800AF7A8D /* Currency.m in Sources */,
+				8CD786161F14F21F00AF7A8D /* ExchangeMoneyAssemblyImpl.m in Sources */,
+				8CD786291F14F23C00AF7A8D /* ExchangeMoneyRouter.m in Sources */,
+				8CD7861A1F14F22600AF7A8D /* ExchangeMoneyInteractorImpl.m in Sources */,
 				8C1FEFCB1F13A76A0024F046 /* ServiceFactory.m in Sources */,
-				8C2E1CEF1F13818D00DB0FC2 /* ViewController.m in Sources */,
-				8C304D0F1F13D4DE00ACE585 /* XMLParser.m in Sources */,
-				8C304D091F13CC6400ACE585 /* ExchangeRatesService.m in Sources */,
-				8C304D031F13C6F500ACE585 /* Sender.m in Sources */,
-				8C2E1CEC1F13818D00DB0FC2 /* AppDelegate.m in Sources */,
-				8C304D001F13AF0A00ACE585 /* Currency.m in Sources */,
-				8C304D061F13C72500ACE585 /* Envelope.m in Sources */,
-				8C2E1CE91F13818D00DB0FC2 /* main.m in Sources */,
-				8C304D0C1F13CCE100ACE585 /* ExchangeRatesData.m in Sources */,
+				8CD786591F14F86100AF7A8D /* AssemblyFactoryImpl.m in Sources */,
+				8CD7864E1F14F32600AF7A8D /* User.m in Sources */,
+				8C36E9921F2634C9009BDDC0 /* BaseViewController.m in Sources */,
+				8CF9643D1F17D84E009852B9 /* KeyboardObservingServiceImpl.m in Sources */,
+				8CF964171F165C24009852B9 /* AssembledViewController.m in Sources */,
+				8CD7863A1F14F27F00AF7A8D /* MoneyData.m in Sources */,
+				8CD786421F14F2A000AF7A8D /* CurrencyFormatter.m in Sources */,
+				8CF964481F1CC4EE009852B9 /* ExchangeMoneyPageViewController.m in Sources */,
+				8CF9644B1F1CC81D009852B9 /* ExchangeMoneyCurrencyViewController.m in Sources */,
+				8CF9641E1F165C31009852B9 /* main.m in Sources */,
+				8CD786561F14F82000AF7A8D /* AssemblySeed.m in Sources */,
+				8CD7862F1F14F24600AF7A8D /* ExchangeRatesServiceImpl.m in Sources */,
+				8CF964511F1CCC0D009852B9 /* ExchangeMoneyCurrencyViewData.m in Sources */,
+				8CF964541F1CCECA009852B9 /* ExchangeMoneyBalanceViewData.m in Sources */,
+				8CD786391F14F27F00AF7A8D /* ExchangeMoneyService.m in Sources */,
+				8CF9641C1F165C31009852B9 /* AppDelegate.m in Sources */,
+				8CD7863E1F14F29000AF7A8D /* XMLParserImpl.m in Sources */,
+				8CD786531F14F7B700AF7A8D /* BaseAssembly.m in Sources */,
+				8CD786201F14F22D00AF7A8D /* ExchangeMoneyPresenter.m in Sources */,
+				8C36E9891F261B4F009BDDC0 /* UIView+Properties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -596,6 +859,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C2E1D021F13818D00DB0FC2 /* ExchangerTests.m in Sources */,
+				8CC705F61F27CBDA008770E2 /* CurrencyFormatterTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -626,25 +890,6 @@
 			targetProxy = 8C2E1D091F13818D00DB0FC2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		8C2E1CF01F13818D00DB0FC2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8C2E1CF11F13818D00DB0FC2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		8C2E1CF51F13818D00DB0FC2 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8C2E1CF61F13818D00DB0FC2 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		8C2E1D0F1F13818D00DB0FC2 /* Debug */ = {
@@ -744,7 +989,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 5PHGGKL9UQ;
-				INFOPLIST_FILE = Exchanger/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Exchanger/Application/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.avito.app;
 				PRODUCT_NAME = Avito;
@@ -760,7 +1005,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 5PHGGKL9UQ;
-				INFOPLIST_FILE = Exchanger/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Exchanger/Application/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.avito.app;
 				PRODUCT_NAME = Avito;
