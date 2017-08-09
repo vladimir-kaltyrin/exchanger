@@ -31,6 +31,7 @@
 		8C36E9891F261B4F009BDDC0 /* UIView+Properties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C36E9881F261B4F009BDDC0 /* UIView+Properties.m */; };
 		8C36E9921F2634C9009BDDC0 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C36E9911F2634C9009BDDC0 /* BaseViewController.m */; };
 		8C36E99B1F2653D8009BDDC0 /* ExchangeRatesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C36E99A1F2653D8009BDDC0 /* ExchangeRatesResponse.m */; };
+		8C73267C1F3B345000301720 /* KeyboardData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C73267B1F3B345000301720 /* KeyboardData.m */; };
 		8CC705F61F27CBDA008770E2 /* CurrencyFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC705F51F27CBDA008770E2 /* CurrencyFormatterTests.m */; };
 		8CC705FA1F27CF51008770E2 /* ExchangeRatesData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC705F91F27CF51008770E2 /* ExchangeRatesData.m */; };
 		8CD786161F14F21F00AF7A8D /* ExchangeMoneyAssemblyImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD786151F14F21F00AF7A8D /* ExchangeMoneyAssemblyImpl.m */; };
@@ -54,7 +55,7 @@
 		8CF9641C1F165C31009852B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF964191F165C31009852B9 /* AppDelegate.m */; };
 		8CF9641D1F165C31009852B9 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8CF9641A1F165C31009852B9 /* Info.plist */; };
 		8CF9641E1F165C31009852B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF9641B1F165C31009852B9 /* main.m */; };
-		8CF9643D1F17D84E009852B9 /* KeyboardObservingServiceImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF9643C1F17D84E009852B9 /* KeyboardObservingServiceImpl.m */; };
+		8CF9643D1F17D84E009852B9 /* KeyboardObserverImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF9643C1F17D84E009852B9 /* KeyboardObserverImpl.m */; };
 		8CF964481F1CC4EE009852B9 /* ExchangeMoneyPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF964471F1CC4EE009852B9 /* ExchangeMoneyPageViewController.m */; };
 		8CF9644B1F1CC81D009852B9 /* ExchangeMoneyCurrencyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF9644A1F1CC81D009852B9 /* ExchangeMoneyCurrencyViewController.m */; };
 		8CF964511F1CCC0D009852B9 /* ExchangeMoneyCurrencyViewData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF964501F1CCC0D009852B9 /* ExchangeMoneyCurrencyViewData.m */; };
@@ -115,6 +116,8 @@
 		8C36E9951F264587009BDDC0 /* ExchangeRatesServiceImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ExchangeRatesServiceImpl.h; path = Services/ExchangeRatesService/ExchangeRatesServiceImpl.h; sourceTree = "<group>"; };
 		8C36E9991F2653D8009BDDC0 /* ExchangeRatesResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeRatesResponse.h; sourceTree = "<group>"; };
 		8C36E99A1F2653D8009BDDC0 /* ExchangeRatesResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeRatesResponse.m; sourceTree = "<group>"; };
+		8C73267A1F3B345000301720 /* KeyboardData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyboardData.h; path = Services/KeyboardObservingService/KeyboardData.h; sourceTree = "<group>"; };
+		8C73267B1F3B345000301720 /* KeyboardData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeyboardData.m; path = Services/KeyboardObservingService/KeyboardData.m; sourceTree = "<group>"; };
 		8CC705F51F27CBDA008770E2 /* CurrencyFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyFormatterTests.m; sourceTree = "<group>"; };
 		8CC705F71F27CE0A008770E2 /* XMLParserImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XMLParserImpl.h; path = Services/XMLParser/XMLParserImpl.h; sourceTree = "<group>"; };
 		8CC705F81F27CF51008770E2 /* ExchangeRatesData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeRatesData.h; path = Services/ExchangeRatesService/ExchangeRatesData.h; sourceTree = "<group>"; };
@@ -164,9 +167,9 @@
 		8CF964191F165C31009852B9 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Application/AppDelegate.m; sourceTree = "<group>"; };
 		8CF9641A1F165C31009852B9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Application/Info.plist; sourceTree = "<group>"; };
 		8CF9641B1F165C31009852B9 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Application/main.m; sourceTree = "<group>"; };
-		8CF9643B1F17D84E009852B9 /* KeyboardObservingServiceImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyboardObservingServiceImpl.h; path = Services/KeyboardObservingService/KeyboardObservingServiceImpl.h; sourceTree = "<group>"; };
-		8CF9643C1F17D84E009852B9 /* KeyboardObservingServiceImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeyboardObservingServiceImpl.m; path = Services/KeyboardObservingService/KeyboardObservingServiceImpl.m; sourceTree = "<group>"; };
-		8CF9643F1F17D8B7009852B9 /* KeyboardObservingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardObservingService.h; sourceTree = "<group>"; };
+		8CF9643B1F17D84E009852B9 /* KeyboardObserverImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyboardObserverImpl.h; path = Services/KeyboardObservingService/KeyboardObserverImpl.h; sourceTree = "<group>"; };
+		8CF9643C1F17D84E009852B9 /* KeyboardObserverImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeyboardObserverImpl.m; path = Services/KeyboardObservingService/KeyboardObserverImpl.m; sourceTree = "<group>"; };
+		8CF9643F1F17D8B7009852B9 /* KeyboardObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardObserver.h; sourceTree = "<group>"; };
 		8CF964461F1CC4EE009852B9 /* ExchangeMoneyPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeMoneyPageViewController.h; path = Modules/ExchangeMoney/View/ExchangeMoneyPageViewController.h; sourceTree = "<group>"; };
 		8CF964471F1CC4EE009852B9 /* ExchangeMoneyPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExchangeMoneyPageViewController.m; path = Modules/ExchangeMoney/View/ExchangeMoneyPageViewController.m; sourceTree = "<group>"; };
 		8CF964491F1CC81D009852B9 /* ExchangeMoneyCurrencyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeMoneyCurrencyViewController.h; path = Modules/ExchangeMoney/View/ExchangeMoneyCurrencyViewController.h; sourceTree = "<group>"; };
@@ -503,9 +506,11 @@
 		8CF9643E1F17D852009852B9 /* KeyboardObservingService */ = {
 			isa = PBXGroup;
 			children = (
-				8CF9643F1F17D8B7009852B9 /* KeyboardObservingService.h */,
-				8CF9643B1F17D84E009852B9 /* KeyboardObservingServiceImpl.h */,
-				8CF9643C1F17D84E009852B9 /* KeyboardObservingServiceImpl.m */,
+				8C73267A1F3B345000301720 /* KeyboardData.h */,
+				8C73267B1F3B345000301720 /* KeyboardData.m */,
+				8CF9643F1F17D8B7009852B9 /* KeyboardObserver.h */,
+				8CF9643B1F17D84E009852B9 /* KeyboardObserverImpl.h */,
+				8CF9643C1F17D84E009852B9 /* KeyboardObserverImpl.m */,
 			);
 			name = KeyboardObservingService;
 			sourceTree = "<group>";
@@ -834,12 +839,13 @@
 				8CD786591F14F86100AF7A8D /* AssemblyFactoryImpl.m in Sources */,
 				8CD7864E1F14F32600AF7A8D /* User.m in Sources */,
 				8C36E9921F2634C9009BDDC0 /* BaseViewController.m in Sources */,
-				8CF9643D1F17D84E009852B9 /* KeyboardObservingServiceImpl.m in Sources */,
+				8CF9643D1F17D84E009852B9 /* KeyboardObserverImpl.m in Sources */,
 				8CF964171F165C24009852B9 /* AssembledViewController.m in Sources */,
 				8CD7863A1F14F27F00AF7A8D /* MoneyData.m in Sources */,
 				8CD786421F14F2A000AF7A8D /* CurrencyFormatter.m in Sources */,
 				8CF964481F1CC4EE009852B9 /* ExchangeMoneyPageViewController.m in Sources */,
 				8CF9644B1F1CC81D009852B9 /* ExchangeMoneyCurrencyViewController.m in Sources */,
+				8C73267C1F3B345000301720 /* KeyboardData.m in Sources */,
 				8CF9641E1F165C31009852B9 /* main.m in Sources */,
 				8CD786561F14F82000AF7A8D /* AssemblySeed.m in Sources */,
 				8CD7862F1F14F24600AF7A8D /* ExchangeRatesServiceImpl.m in Sources */,

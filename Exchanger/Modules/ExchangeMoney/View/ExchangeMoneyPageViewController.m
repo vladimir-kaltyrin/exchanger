@@ -8,6 +8,22 @@
 
 @implementation ExchangeMoneyPageViewController
 
+// MARK: - ExchangeMoneyPageViewController
+
+- (void)setViewData:(NSArray<ExchangeMoneyCurrencyViewData *> *)viewData {
+    _viewData = viewData;
+    
+    if ([_viewData count] == 0)
+        return;
+    
+    ExchangeMoneyCurrencyViewController *viewController = [[ExchangeMoneyCurrencyViewController alloc] initWithViewData:_viewData.firstObject index:0];
+    
+    [self.pageViewController setViewControllers:@[viewController]
+                                      direction:UIPageViewControllerNavigationDirectionForward
+                                       animated:YES
+                                     completion:nil];
+}
+
 // MARK: - ViewController life-cycle
 
 - (void)viewDidLoad {
@@ -19,7 +35,7 @@
     self.pageViewController.view.frame = self.view.bounds;
     [self.view addSubview:self.pageViewController.view];
     
-    self.pageViewController.view.backgroundColor = [UIColor clearColor];
+    self.pageViewController.view.backgroundColor = [UIColor redColor];
     [self.pageViewController didMoveToParentViewController:self];
 }
 

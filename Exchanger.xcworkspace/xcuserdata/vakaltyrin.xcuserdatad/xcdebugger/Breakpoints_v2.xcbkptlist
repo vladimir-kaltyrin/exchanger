@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Exchanger/Modules/ExchangeMoney/Presenter/ExchangeMoneyPresenter.m"
-            timestampString = "522603579.658971"
+            filePath = "Exchanger/Modules/ExchangeMoney/View/ExchangeMoneyPageViewController.m"
+            timestampString = "522705462.558285"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "-setUpView"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "-pageViewController:viewControllerBeforeViewController:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Exchanger/Services/ExchangeRatesUpdater/ExchangeRatesUpdaterImpl.m"
-            timestampString = "522604048.472498"
+            filePath = "Exchanger/Modules/ExchangeMoney/View/ExchangeMoneyPageViewController.m"
+            timestampString = "522705463.623002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "-fetch"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "-pageViewController:viewControllerAfterViewController:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Exchanger/Modules/ExchangeMoney/View/ExchangeMoneyPageViewController.m"
+            timestampString = "522705464.672236"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "-pageViewController:willTransitionToViewControllers:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

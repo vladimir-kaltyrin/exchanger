@@ -1,9 +1,10 @@
 #import <Foundation/Foundation.h>
 #import "MoneyData.h"
+#import "ExchangeRatesData.h"
 
 @protocol ExchangeMoneyInteractor <NSObject>
 
-- (void)setOnUpdate:(void(^)())onUpdate;
+- (void)setOnUpdate:(void(^)(ExchangeRatesData *))onUpdate;
 
 - (void)startFetching;
 

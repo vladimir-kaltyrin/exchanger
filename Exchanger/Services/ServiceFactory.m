@@ -1,9 +1,14 @@
 #import "ServiceFactory.h"
+#import "KeyboardObserverImpl.h"
 #import "ExchangeRatesServiceImpl.h"
 #import "ExchangeRatesUpdaterImpl.h"
 #import "XMLParserImpl.h"
 
 @implementation ServiceFactory
+
+- (id<KeyboardObserver>)keyboardObserver {
+    return [[KeyboardObserverImpl alloc] init];
+}
 
 - (id<ExchangeRatesService>)exchangeRatesService {
     return [[ExchangeRatesServiceImpl alloc] initWithParser:[self xmlParser]];

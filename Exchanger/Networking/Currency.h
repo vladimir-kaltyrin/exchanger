@@ -7,6 +7,8 @@
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 
+- (NSString *)currencyTypeToString;
+
 + (NSArray<Currency *> *)arrayOfObjects: (NSArray<NSDictionary *> *)arrayOfDictionaries;
 
 @end
