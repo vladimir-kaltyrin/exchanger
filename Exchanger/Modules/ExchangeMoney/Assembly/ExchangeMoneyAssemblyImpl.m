@@ -33,7 +33,8 @@
 
 - (id<ExchangeMoneyModule>)presenter {
     ExchangeMoneyPresenter *presenter = [[ExchangeMoneyPresenter alloc] initWithInteractor:[self interactor]
-                                                       router:[self router]];
+                                                                                    router:[self router]
+                                                                          keyboardObserver:[self.serviceFactory keyboardObserver]];
     presenter.view = [self viewController];
     
     return presenter;

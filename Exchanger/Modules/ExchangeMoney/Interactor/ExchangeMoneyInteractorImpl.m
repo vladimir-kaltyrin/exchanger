@@ -1,6 +1,7 @@
 #import "ExchangeMoneyInteractorImpl.h"
 #import "ExchangeRatesUpdater.h"
 #import "ExchangeMoneyService.h"
+#import "SafeBlocks.h"
 #import "User.h"
 
 @interface ExchangeMoneyInteractorImpl()
@@ -40,9 +41,9 @@
     [self.exchangeRatesUpdater start];
 }
 
-- (void)setOnUpdate:(void (^)())onUpdate {
+- (void)setOnUpdate:(void(^)(ExchangeRatesData *))onUpdate; {
     [self.exchangeRatesUpdater setOnUpdate:^(ExchangeRatesData * data) {
-        onUpdate();
+        executeIfNotNil(onUpdate, data);
     }];
 }
 

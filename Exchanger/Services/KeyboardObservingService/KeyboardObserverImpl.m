@@ -1,8 +1,9 @@
 #import <UIKit/UIKit.h>
-#import "KeyboardObservingServiceImpl.h"
+#import "KeyboardObserverImpl.h"
+#import "KeyboardData.h"
 
-@implementation KeyboardObservingServiceImpl
-@synthesize onKeyboardSize;
+@implementation KeyboardObserverImpl
+@synthesize onKeyboardData;
 
 - (instancetype)init {
     self = [super init];
@@ -26,7 +27,10 @@
     NSDictionary *info = notification.userInfo;
     NSString *keyboardFrameBeginKey = UIKeyboardFrameBeginUserInfoKey;
     NSValue *keyboardFrameBegin = [info objectForKey:keyboardFrameBeginKey];
-    onKeyboardSize(keyboardFrameBegin.CGRectValue.size);
+    
+    KeyboardData *keyboardData = [[KeyboardData alloc] initWithSize:keyboardFrameBegin.CGRectValue.size];
+    
+    onKeyboardData(keyboardData);
 }
 
 @end

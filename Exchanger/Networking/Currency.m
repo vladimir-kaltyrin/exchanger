@@ -7,7 +7,7 @@
     if (self = [super init]) {
         @try {
             self.currencyType = [CurrencyFormatter fromString:[dictionary objectForKey:@"_currency"]];
-            self.rate = [dictionary objectForKey:@"_rate"];
+            self.rate = @([[dictionary objectForKey:@"_rate"] floatValue]);
         } @catch (NSException *exception) {
             NSLog(@"Wrong data.");
             self.currencyType = CurrencyTypeNotFound;
@@ -15,6 +15,10 @@
         }
     }
     return self;
+}
+
+- (NSString *)currencyTypeToString {
+    return [CurrencyFormatter toString:self.currencyType];
 }
 
 + (NSArray<Currency *> *)arrayOfObjects:(NSArray<NSDictionary *> *)arrayOfDictionaries {

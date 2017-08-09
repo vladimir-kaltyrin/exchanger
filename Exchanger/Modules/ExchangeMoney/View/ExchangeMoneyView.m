@@ -1,14 +1,14 @@
 #import "ExchangeMoneyView.h"
 #import "ExchangeMoneyPageViewController.h"
-#import "KeyboardObservingServiceImpl.h"
+#import "KeyboardObserverImpl.h"
 #import "ExchangeMoneyCurrencyViewData.h"
+#import "KeyboardData.h"
 #import "UIView+Properties.h"
 
 @interface ExchangeMoneyView()
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, strong) ExchangeMoneyPageViewController *sourceExchangeView;
 @property (nonatomic, strong) ExchangeMoneyPageViewController *targetExchangeView;
-@property (nonatomic, strong) id<KeyboardObservingService> keyboardObservingService;
 @property (nonatomic, assign) CGFloat contentHeight;
 @end
 
@@ -21,13 +21,6 @@
         self.backgroundColor = [UIColor greenColor];
         
         self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-        
-        self.keyboardObservingService = [[KeyboardObservingServiceImpl alloc] init];
-        __weak typeof(self) weakSelf = self;
-        [self.keyboardObservingService setOnKeyboardSize:^(CGSize keyboardSize) {
-            weakSelf.contentHeight = keyboardSize.height;
-            [weakSelf setNeedsLayout];
-        }];
         
         self.sourceExchangeView = [[ExchangeMoneyPageViewController alloc] init];
         self.sourceExchangeView.view.backgroundColor = [UIColor redColor];
@@ -44,6 +37,11 @@
 }
 
 // MARK: - ExchangeMoneyView
+
+- (void)updateKeyboardData:(KeyboardData *)keyboardData {
+    self.contentHeight = keyboardData.size.height;
+    [self setNeedsLayout];
+}
 
 - (void)setSourceCurrencyViewData:(NSArray<ExchangeMoneyCurrencyViewData *> *)viewData {
     self.sourceExchangeView.viewData = viewData;

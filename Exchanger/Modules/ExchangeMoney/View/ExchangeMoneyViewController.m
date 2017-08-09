@@ -1,6 +1,8 @@
 #import "ExchangeMoneyViewController.h"
 #import "ExchangeMoneyView.h"
 
+@class KeyboardData;
+
 @interface ExchangeMoneyViewController ()
 @property (nonatomic, strong) ExchangeMoneyView* exchangeMoneyView;
 @end
@@ -22,6 +24,10 @@
 }
 
 // MARK: - ExchangeMoneyViewInput
+
+- (void)updateKeyboardData:(KeyboardData *)keyboardData {
+    [self.exchangeMoneyView updateKeyboardData:keyboardData];
+}
 
 - (void)setSourceCurrencyViewData:(NSArray<ExchangeMoneyCurrencyViewData *> *)viewData {
     [self.exchangeMoneyView setSourceCurrencyViewData:viewData];
