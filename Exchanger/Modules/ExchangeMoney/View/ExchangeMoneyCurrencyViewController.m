@@ -31,10 +31,4 @@
     self.view = view;
 }
 
-// MARK: - ExchangeMoneyCurrencyViewController
-
-- (NSInteger)pageIndex {
-    return self.pageIndex;
-}
-
 @end

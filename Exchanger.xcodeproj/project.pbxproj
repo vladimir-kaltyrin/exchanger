@@ -32,6 +32,7 @@
 		8C36E9921F2634C9009BDDC0 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C36E9911F2634C9009BDDC0 /* BaseViewController.m */; };
 		8C36E99B1F2653D8009BDDC0 /* ExchangeRatesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C36E99A1F2653D8009BDDC0 /* ExchangeRatesResponse.m */; };
 		8C73267C1F3B345000301720 /* KeyboardData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C73267B1F3B345000301720 /* KeyboardData.m */; };
+		8C73267E1F3C80B100301720 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C73267D1F3C80B100301720 /* LaunchScreen.storyboard */; };
 		8CC705F61F27CBDA008770E2 /* CurrencyFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC705F51F27CBDA008770E2 /* CurrencyFormatterTests.m */; };
 		8CC705FA1F27CF51008770E2 /* ExchangeRatesData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC705F91F27CF51008770E2 /* ExchangeRatesData.m */; };
 		8CD786161F14F21F00AF7A8D /* ExchangeMoneyAssemblyImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD786151F14F21F00AF7A8D /* ExchangeMoneyAssemblyImpl.m */; };
@@ -118,6 +119,7 @@
 		8C36E99A1F2653D8009BDDC0 /* ExchangeRatesResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeRatesResponse.m; sourceTree = "<group>"; };
 		8C73267A1F3B345000301720 /* KeyboardData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyboardData.h; path = Services/KeyboardObservingService/KeyboardData.h; sourceTree = "<group>"; };
 		8C73267B1F3B345000301720 /* KeyboardData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeyboardData.m; path = Services/KeyboardObservingService/KeyboardData.m; sourceTree = "<group>"; };
+		8C73267D1F3C80B100301720 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Application/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8CC705F51F27CBDA008770E2 /* CurrencyFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyFormatterTests.m; sourceTree = "<group>"; };
 		8CC705F71F27CE0A008770E2 /* XMLParserImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XMLParserImpl.h; path = Services/XMLParser/XMLParserImpl.h; sourceTree = "<group>"; };
 		8CC705F81F27CF51008770E2 /* ExchangeRatesData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeRatesData.h; path = Services/ExchangeRatesService/ExchangeRatesData.h; sourceTree = "<group>"; };
@@ -495,6 +497,7 @@
 		8CF964141F165BF3009852B9 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				8C73267D1F3C80B100301720 /* LaunchScreen.storyboard */,
 				8CF964181F165C31009852B9 /* AppDelegate.h */,
 				8CF964191F165C31009852B9 /* AppDelegate.m */,
 				8CF9641A1F165C31009852B9 /* Info.plist */,
@@ -648,6 +651,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C73267E1F3C80B100301720 /* LaunchScreen.storyboard in Resources */,
 				8CF9641D1F165C31009852B9 /* Info.plist in Resources */,
 				8C2E1CF41F13818D00DB0FC2 /* Assets.xcassets in Resources */,
 			);
