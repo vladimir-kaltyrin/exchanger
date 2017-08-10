@@ -11,6 +11,37 @@
 @synthesize onViewWillDisappear;
 @synthesize onViewDidDisappear;
 
+// MARK: - Init
+
+- (instancetype)init {
+    if (self = [super init]) {
+        [self setUp];
+    }
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        [self setUp];
+    }
+    return self;
+}
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+        [self setUp];
+    }
+    return self;
+}
+
+// MARK: - Private
+
+- (void)setUp {
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+}
+
+// MARK: - ViewController Life-Cycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     

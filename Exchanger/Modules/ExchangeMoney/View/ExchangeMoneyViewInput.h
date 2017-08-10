@@ -6,7 +6,7 @@
 
 @protocol ExchangeMoneyViewInput <ViewLifeCycleObservable>
 
-- (void)updateKeyboardData:(KeyboardData)keyboardData;
+- (void)updateKeyboardData:(KeyboardData *)keyboardData;
 - (void)setSourceCurrencyViewData:(NSArray<ExchangeMoneyCurrencyViewData *> *)viewData;
 - (void)setTargetCurrencyViewData:(NSArray<ExchangeMoneyCurrencyViewData *> *)viewData;
 - (void)startActivity;

@@ -154,7 +154,7 @@ CGFloat const kSmallFontSize = 10.0;
 {
     [self setBalance:viewData.balance];
     [self setCurrency:viewData.currency];
-    
+    [self setRate:viewData.rate];
     [self setOnTextChange:viewData.onTextChange];
     
     [self setNeedsLayout];
