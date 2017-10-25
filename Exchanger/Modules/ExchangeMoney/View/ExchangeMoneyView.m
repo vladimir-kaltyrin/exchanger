@@ -98,23 +98,17 @@ NSString * const kCurrencyRateCellId = @"kCurrencyRateCellId";
         cell = [[CurrencyRateCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCurrencyRateCellId];
     }
     
-    GalleryPreviewPageData *page1 = [[GalleryPreviewPageData alloc] initWithPlaceholder:nil
-                                                                               imageUrl:@"https://picsum.photos/320/480"
-                                                                          currencyTitle:@"title1"
+    GalleryPreviewPageData *page1 = [[GalleryPreviewPageData alloc] initWithCurrencyTitle:@"title1"
                                                                          currencyAmount:@"amount1"
                                                                               remainder:@"remainder1"
                                                                                    rate:@"rate1"];
     
-    GalleryPreviewPageData *page2 = [[GalleryPreviewPageData alloc] initWithPlaceholder:nil
-                                                                               imageUrl:@"https://picsum.photos/320/480"
-                                                                          currencyTitle:@"title2"
+    GalleryPreviewPageData *page2 = [[GalleryPreviewPageData alloc] initWithCurrencyTitle:@"title2"
                                                                          currencyAmount:@"amount2"
                                                                               remainder:@"remainder2"
                                                                                    rate:@"rate2"];
     
-    GalleryPreviewPageData *page3 = [[GalleryPreviewPageData alloc] initWithPlaceholder:nil
-                                                                               imageUrl:@"https://picsum.photos/320/480"
-                                                                          currencyTitle:@"title3"
+    GalleryPreviewPageData *page3 = [[GalleryPreviewPageData alloc] initWithCurrencyTitle:@"title3"
                                                                          currencyAmount:@"amount3"
                                                                               remainder:@"remainder3"
                                                                                    rate:@"rate3"];
