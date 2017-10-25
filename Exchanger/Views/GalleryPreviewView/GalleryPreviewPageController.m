@@ -1,5 +1,6 @@
 #import "GalleryPreviewPageController.h"
 #import "GalleryPreviewPage.h"
+#import "GalleryPreviewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

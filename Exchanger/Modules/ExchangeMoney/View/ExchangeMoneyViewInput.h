@@ -5,7 +5,6 @@
 @class KeyboardData;
 
 @protocol ExchangeMoneyViewInput <ViewLifeCycleObservable>
-@property (nonatomic, strong) void(^onCurrencyShown)();
 @property (nonatomic, strong) void(^onExchangeTap)();
 @property (nonatomic, strong) void(^onCancelTap)();
 

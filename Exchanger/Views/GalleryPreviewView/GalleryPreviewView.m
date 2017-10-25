@@ -2,21 +2,32 @@
 #import "GalleryPreviewPageController.h"
 #import "GalleryPreviewData.h"
 #import "GalleryPreviewController.h"
+#import "GalleryPreviewPageIndicator.h"
+#import "SafeBlocks.h"
 #import "MoveFailableLongPressGestureRecognizer.h"
 
 @interface GalleryPreviewView () <UIGestureRecognizerDelegate>
 @property (nonatomic, strong) void(^onTap)();
-@property (nonatomic, strong) GalleryPreviewData *currentData;
 @property (nonatomic, strong) GalleryPreviewController *galleryPreview;
+@property (nonatomic, strong) GalleryPreviewPageIndicator *pageIndicator;
 @end
 
 @implementation GalleryPreviewView
     
-- (instancetype)init {
-    if (self = [super initWithFrame:CGRectZero]) {
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
         self.galleryPreview = [[GalleryPreviewController alloc] init];
+        self.pageIndicator = [[GalleryPreviewPageIndicator alloc] init];
+        
+        __weak typeof(self) weakSelf = self;
+        self.galleryPreview.onPageChange = ^(NSInteger current, NSInteger total) {
+            [weakSelf.pageIndicator setCurrentPage:current ofTotal:total];
+        };
         
         [self addSubview:self.galleryPreview.view];
+        [self addSubview:self.pageIndicator];
+        
+        [self.pageIndicator setUserInteractionEnabled:NO];
         
         [self setupRecognizer];
     }
@@ -26,6 +37,7 @@
 
 - (void)prepareForReuse {
     [self.galleryPreview prepareForReuse];
+    [self.pageIndicator setCurrentPage:0 ofTotal:0];
 }
     
 // MARK: - Public
@@ -36,6 +48,21 @@
     
 - (void (^)(NSInteger, NSInteger))onPageChange {
     return self.galleryPreview.onPageChange;
+}
+    
+- (void)setViewData:(GalleryPreviewData *)data {
+    [self.pageIndicator setCurrentPage:0 ofTotal:data.pages.count];
+    [self.galleryPreview setData:data.pages];
+    self.onTap = data.onTap;
+}
+
+// MARK: - Layout
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    self.pageIndicator.frame = self.bounds;
+    self.galleryPreview.view.frame = self.bounds;
 }
     
 // MARK: - UIGestureRecognizerDelegate
@@ -62,14 +89,14 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 - (void)onSelect:(UIGestureRecognizer *)sender {
     switch (sender.state) {
         case UIGestureRecognizerStateBegan:
-            self.onSelect(YES);
+            executeIfNotNil(self.onSelect, YES);
             break;
         case UIGestureRecognizerStateEnded:
-            self.onSelect(NO);
+            executeIfNotNil(self.onSelect, NO);
             break;
         case UIGestureRecognizerStateCancelled:
         case UIGestureRecognizerStateFailed:
-            self.onSelect(NO);
+            executeIfNotNil(self.onSelect, NO);
             break;
         case UIGestureRecognizerStatePossible:
         case UIGestureRecognizerStateChanged:
