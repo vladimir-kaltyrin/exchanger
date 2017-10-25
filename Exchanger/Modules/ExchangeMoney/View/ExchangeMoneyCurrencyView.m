@@ -7,9 +7,9 @@
 
 // MARK: - Private consts
 
-CGFloat const kBigFontSize = 34.0;
-CGFloat const kMediumFontSize = 20.0;
-CGFloat const kSmallFontSize = 10.0;
+CGFloat const kkBigFontSize = 34.0;
+CGFloat const kkMediumFontSize = 20.0;
+CGFloat const kkSmallFontSize = 10.0;
 
 @interface ExchangeMoneyCurrencyView()
 @property (nonatomic, strong) UILabel *balanceLabel;
@@ -41,23 +41,23 @@ CGFloat const kSmallFontSize = 10.0;
 - (void)setup
 {
     self.balanceLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.balanceLabel.font = [UIFont systemFontOfSize:kSmallFontSize];
+    self.balanceLabel.font = [UIFont systemFontOfSize:kkSmallFontSize];
     [self addSubview:self.balanceLabel];
     
     self.currencyLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     self.currencyLabel.textColor = [UIColor whiteColor];
-    self.currencyLabel.font = [UIFont systemFontOfSize:kBigFontSize];
+    self.currencyLabel.font = [UIFont systemFontOfSize:kkBigFontSize];
     [self addSubview:self.currencyLabel];
     
     self.exchangeTextField = [[TextField alloc] initWithFrame:CGRectZero];
     self.exchangeTextField.textColor = [UIColor whiteColor];
-    self.exchangeTextField.font = [UIFont systemFontOfSize:kBigFontSize];
+    self.exchangeTextField.font = [UIFont systemFontOfSize:kkBigFontSize];
     self.exchangeTextField.keyboardType = UIKeyboardTypeDecimalPad;
     [self addSubview:self.exchangeTextField];
     
     self.rateLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     self.rateLabel.textColor = [[UIColor whiteColor] colorWithAlphaComponent:0.8];
-    self.rateLabel.font = [UIFont systemFontOfSize:kSmallFontSize];
+    self.rateLabel.font = [UIFont systemFontOfSize:kkSmallFontSize];
     [self addSubview:self.rateLabel];
     
     __weak typeof(self) weakSelf = self;

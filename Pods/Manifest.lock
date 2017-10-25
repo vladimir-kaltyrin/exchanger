@@ -1,12 +1,23 @@
 PODS:
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
   - XMLDictionary (1.4.1)
 
 DEPENDENCIES:
+  - AFNetworking/UIKit (~> 3.1.0)
   - XMLDictionary (~> 1.4.1)
 
 SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   XMLDictionary: fa07b6ff422b3a91d47a5de9bc82e3fc04fbd167
 
-PODFILE CHECKSUM: 9ac56095b09ca5735bdb4271679b0be95e11762d
+PODFILE CHECKSUM: 362909cde4ce255916e992ea84f815d2266ceee3
 
 COCOAPODS: 1.2.1

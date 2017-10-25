@@ -40,6 +40,8 @@
 		8C64235E1FA0793F00A95479 /* ObservableImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C64235D1FA0793F00A95479 /* ObservableImageView.m */; };
 		8C6423611FA091D000A95479 /* GalleryPreviewData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6423601FA091D000A95479 /* GalleryPreviewData.m */; };
 		8C6423641FA0966500A95479 /* MoveFailableLongPressGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6423631FA0966500A95479 /* MoveFailableLongPressGestureRecognizer.m */; };
+		8C6423711FA0B23C00A95479 /* ObservableTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6423701FA0B23C00A95479 /* ObservableTextField.m */; };
+		8C6423761FA0BB7400A95479 /* CurrencyRateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6423751FA0BB7400A95479 /* CurrencyRateCell.m */; };
 		8C73267C1F3B345000301720 /* KeyboardData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C73267B1F3B345000301720 /* KeyboardData.m */; };
 		8C73267E1F3C80B100301720 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C73267D1F3C80B100301720 /* LaunchScreen.storyboard */; };
 		8C7326831F3C8D5800301720 /* UserServiceImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7326821F3C8D5800301720 /* UserServiceImpl.m */; };
@@ -149,6 +151,10 @@
 		8C6423601FA091D000A95479 /* GalleryPreviewData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GalleryPreviewData.m; path = Views/GalleryPreviewView/GalleryPreviewData.m; sourceTree = "<group>"; };
 		8C6423621FA0966500A95479 /* MoveFailableLongPressGestureRecognizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MoveFailableLongPressGestureRecognizer.h; path = Core/MoveFailableLongPressGestureRecognizer.h; sourceTree = "<group>"; };
 		8C6423631FA0966500A95479 /* MoveFailableLongPressGestureRecognizer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MoveFailableLongPressGestureRecognizer.m; path = Core/MoveFailableLongPressGestureRecognizer.m; sourceTree = "<group>"; };
+		8C64236F1FA0B23C00A95479 /* ObservableTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ObservableTextField.h; path = Core/ObservableTextField.h; sourceTree = "<group>"; };
+		8C6423701FA0B23C00A95479 /* ObservableTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ObservableTextField.m; path = Core/ObservableTextField.m; sourceTree = "<group>"; };
+		8C6423741FA0BB7400A95479 /* CurrencyRateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrencyRateCell.h; path = Modules/ExchangeMoney/View/Cells/CurrencyRateCell.h; sourceTree = "<group>"; };
+		8C6423751FA0BB7400A95479 /* CurrencyRateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrencyRateCell.m; path = Modules/ExchangeMoney/View/Cells/CurrencyRateCell.m; sourceTree = "<group>"; };
 		8C73267A1F3B345000301720 /* KeyboardData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyboardData.h; path = Services/KeyboardObservingService/KeyboardData.h; sourceTree = "<group>"; };
 		8C73267B1F3B345000301720 /* KeyboardData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeyboardData.m; path = Services/KeyboardObservingService/KeyboardData.m; sourceTree = "<group>"; };
 		8C73267D1F3C80B100301720 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Application/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -390,6 +396,8 @@
 				8C94B4DF1F3E10C600B2B9FC /* BarButton.m */,
 				8C64235C1FA0793F00A95479 /* ObservableImageView.h */,
 				8C64235D1FA0793F00A95479 /* ObservableImageView.m */,
+				8C64236F1FA0B23C00A95479 /* ObservableTextField.h */,
+				8C6423701FA0B23C00A95479 /* ObservableTextField.m */,
 				8C6423621FA0966500A95479 /* MoveFailableLongPressGestureRecognizer.h */,
 				8C6423631FA0966500A95479 /* MoveFailableLongPressGestureRecognizer.m */,
 			);
@@ -425,6 +433,41 @@
 			name = GalleryPreviewView;
 			sourceTree = "<group>";
 		};
+		8C6423651FA0A78A00A95479 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				8C6423661FA0A7A100A95479 /* MoneyRate */,
+			);
+			name = Modules;
+			sourceTree = "<group>";
+		};
+		8C6423661FA0A7A100A95479 /* MoneyRate */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = MoneyRate;
+			sourceTree = "<group>";
+		};
+		8C6423671FA0A81D00A95479 /* Legacy */ = {
+			isa = PBXGroup;
+			children = (
+				8CF964461F1CC4EE009852B9 /* ExchangeMoneyPageViewController.h */,
+				8CF964471F1CC4EE009852B9 /* ExchangeMoneyPageViewController.m */,
+				8CF964491F1CC81D009852B9 /* ExchangeMoneyCurrencyViewController.h */,
+				8CF9644A1F1CC81D009852B9 /* ExchangeMoneyCurrencyViewController.m */,
+			);
+			name = Legacy;
+			sourceTree = "<group>";
+		};
+		8C6423721FA0BB3A00A95479 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8C6423741FA0BB7400A95479 /* CurrencyRateCell.h */,
+				8C6423751FA0BB7400A95479 /* CurrencyRateCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		8C73267F1F3C8D2400301720 /* UserService */ = {
 			isa = PBXGroup;
 			children = (
@@ -449,6 +492,7 @@
 				8CD7860C1F14EFB000AF7A8D /* Assembly */,
 				8CD785F21F14EEA900AF7A8D /* Interactor */,
 				8CD785F31F14EEAD00AF7A8D /* Presenter */,
+				8C6423651FA0A78A00A95479 /* Modules */,
 				8CD785F41F14EEB100AF7A8D /* View */,
 				8CD785F51F14EEB500AF7A8D /* Router */,
 			);
@@ -478,15 +522,13 @@
 		8CD785F41F14EEB100AF7A8D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8C6423721FA0BB3A00A95479 /* Cells */,
+				8C6423671FA0A81D00A95479 /* Legacy */,
 				8CD7865E1F14FD5200AF7A8D /* ExchangeMoneyViewInput.h */,
 				8CD786211F14F23400AF7A8D /* ExchangeMoneyView.h */,
 				8CD786221F14F23400AF7A8D /* ExchangeMoneyView.m */,
 				8CD786231F14F23400AF7A8D /* ExchangeMoneyViewController.h */,
 				8CD786241F14F23400AF7A8D /* ExchangeMoneyViewController.m */,
-				8CF964461F1CC4EE009852B9 /* ExchangeMoneyPageViewController.h */,
-				8CF964471F1CC4EE009852B9 /* ExchangeMoneyPageViewController.m */,
-				8CF964491F1CC81D009852B9 /* ExchangeMoneyCurrencyViewController.h */,
-				8CF9644A1F1CC81D009852B9 /* ExchangeMoneyCurrencyViewController.m */,
 				8CF964581F1CD11B009852B9 /* ExchangeMoneyCurrencyView.h */,
 				8CF964591F1CD11B009852B9 /* ExchangeMoneyCurrencyView.m */,
 				8CF9644F1F1CCC0D009852B9 /* ExchangeMoneyCurrencyViewData.h */,
@@ -958,8 +1000,10 @@
 				8CD786561F14F82000AF7A8D /* AssemblySeed.m in Sources */,
 				8CD7862F1F14F24600AF7A8D /* ExchangeRatesServiceImpl.m in Sources */,
 				8C6423581FA075AC00A95479 /* GalleryPreviewPageIndicator.m in Sources */,
+				8C6423711FA0B23C00A95479 /* ObservableTextField.m in Sources */,
 				8CF964511F1CCC0D009852B9 /* ExchangeMoneyCurrencyViewData.m in Sources */,
 				8CF964541F1CCECA009852B9 /* ExchangeMoneyBalanceViewData.m in Sources */,
+				8C6423761FA0BB7400A95479 /* CurrencyRateCell.m in Sources */,
 				8C6423521FA0757600A95479 /* GalleryPreviewPageController.m in Sources */,
 				8CD786391F14F27F00AF7A8D /* ExchangeMoneyService.m in Sources */,
 				8C94B4E61F3E162B00B2B9FC /* ExchangeMoneyTitleView.m in Sources */,

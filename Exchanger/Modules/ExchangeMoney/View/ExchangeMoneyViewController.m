@@ -70,14 +70,6 @@
     return self.exchangeBarButton.onBarButtonTap;
 }
 
-- (void)setOnCurrencyShown:(void (^)())onCurrencyShown {
-    [self.exchangeMoneyView setOnCurrencyShown:onCurrencyShown];
-}
-
-- (void (^)())onCurrencyShown {
-    return [self.exchangeMoneyView onCurrencyShown];
-}
-
 - (void)focusOnStart {
     [self.exchangeMoneyView focusOnStart];
 }

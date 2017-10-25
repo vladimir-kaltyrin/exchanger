@@ -5,6 +5,7 @@ target 'Exchanger' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
   # use_frameworks!
   pod 'XMLDictionary', '~> 1.4.1'
+  pod 'AFNetworking/UIKit', '~> 3.1.0'
 
   # Pods for Exchanger
 

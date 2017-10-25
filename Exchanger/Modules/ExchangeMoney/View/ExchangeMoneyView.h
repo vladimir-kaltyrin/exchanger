@@ -4,7 +4,6 @@
 @class KeyboardData;
 
 @interface ExchangeMoneyView : UIView
-@property (nonatomic, strong) void(^onCurrencyShown)();
 @property (nonatomic, assign) UIEdgeInsets contentInsets;
 - (void)focusOnStart;
 - (void)updateKeyboardData:(KeyboardData *)keyboardData;

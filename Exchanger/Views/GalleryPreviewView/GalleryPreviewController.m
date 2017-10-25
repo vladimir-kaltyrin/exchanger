@@ -1,6 +1,7 @@
 #import "GalleryPreviewController.h"
 #import "GalleryPreviewPageData.h"
 #import "GalleryPreviewPageController.h"
+#import "SafeBlocks.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -37,9 +38,8 @@ NS_ASSUME_NONNULL_END
         self.dataSource = nil;
     }
     
-    if ([self.viewControllers count] > 0) {
-        UIViewController *firstController = [self viewControllerAt:0];
-        
+    UIViewController *firstController = [self viewControllerAt:0];
+    if (firstController != nil) {
         [self setViewControllers:@[firstController]
                        direction:UIPageViewControllerNavigationDirectionForward
                         animated:NO
@@ -119,15 +119,7 @@ NS_ASSUME_NONNULL_END
 }
     
 // MARK: - UIPageViewControllerDelegate
-    
-- (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController {
-    return self.data.count;
-}
-    
-- (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {
-    return [self currentPage];
-}
-    
+
 - (void)pageViewController:(UIPageViewController *)pageViewController
         didFinishAnimating:(BOOL)finished
    previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers
@@ -136,8 +128,7 @@ NS_ASSUME_NONNULL_END
     UIViewController *firstController = self.viewControllers.firstObject;
     if ([firstController isKindOfClass:[GalleryPreviewPageController class]]) {
         NSInteger currentIndex = [((GalleryPreviewPageController *)firstController) index];
-        
-        self.onPageChange(currentIndex + 1, self.data.count);
+        executeIfNotNil(self.onPageChange, currentIndex + 1, self.data.count)
     }
 }
 
