@@ -3,17 +3,18 @@
 #import "ExchangeMoneyBalanceViewData.h"
 #import "UIView+Properties.h"
 #import "SafeBlocks.h"
+#import "TextField.h"
 
 // MARK: - Private consts
 
-CGFloat const kBigFontSize = 24.0;
+CGFloat const kBigFontSize = 34.0;
 CGFloat const kMediumFontSize = 20.0;
 CGFloat const kSmallFontSize = 10.0;
 
 @interface ExchangeMoneyCurrencyView()
 @property (nonatomic, strong) UILabel *balanceLabel;
 @property (nonatomic, strong) UILabel *currencyLabel;
-@property (nonatomic, strong) UITextField *exchangeTextField;
+@property (nonatomic, strong) TextField *exchangeTextField;
 @property (nonatomic, strong) UILabel *rateLabel;
 @property (nonatomic, strong) void(^onTextChange)();
 @end
@@ -48,18 +49,16 @@ CGFloat const kSmallFontSize = 10.0;
     self.currencyLabel.font = [UIFont systemFontOfSize:kBigFontSize];
     [self addSubview:self.currencyLabel];
     
-    self.exchangeTextField = [[UITextField alloc] initWithFrame:CGRectZero];
+    self.exchangeTextField = [[TextField alloc] initWithFrame:CGRectZero];
     self.exchangeTextField.textColor = [UIColor whiteColor];
     self.exchangeTextField.font = [UIFont systemFontOfSize:kBigFontSize];
-    self.exchangeTextField.keyboardType = UIKeyboardTypeNumberPad;
+    self.exchangeTextField.keyboardType = UIKeyboardTypeDecimalPad;
     [self addSubview:self.exchangeTextField];
     
     self.rateLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     self.rateLabel.textColor = [[UIColor whiteColor] colorWithAlphaComponent:0.8];
     self.rateLabel.font = [UIFont systemFontOfSize:kSmallFontSize];
     [self addSubview:self.rateLabel];
-    
-    self.backgroundColor = [UIColor darkGrayColor];
     
     __weak typeof(self) weakSelf = self;
     [[NSNotificationCenter defaultCenter] addObserverForName:UITextFieldTextDidChangeNotification
@@ -127,8 +126,9 @@ CGFloat const kSmallFontSize = 10.0;
     self.balanceLabel.top = self.currencyLabel.bottom + [self verticalOffsetBetweenLabels];
     self.balanceLabel.left = self.currencyLabel.x;
     
-    CGSize exchangeTextFieldSize = [self.currencyLabel sizeThatFits:contentFrame.size];
-    self.exchangeTextField.size = exchangeTextFieldSize;
+    CGSize exchangeTextFieldSize = [self.exchangeTextField sizeThatFits:contentFrame.size];
+    self.exchangeTextField.width = 190;
+    self.exchangeTextField.height = 90;
     self.exchangeTextField.right = contentFrame.origin.x + contentFrame.size.width;
     self.exchangeTextField.top = contentFrame.origin.y;
     
@@ -144,9 +144,13 @@ CGFloat const kSmallFontSize = 10.0;
     return [self.exchangeTextField becomeFirstResponder];
 }
 
-- (BOOL)isFirstResponder {
-    return [self.exchangeTextField isFirstResponder];
+- (BOOL)resignFirstResponder {
+    return [self.exchangeTextField resignFirstResponder];
 }
+
+//- (BOOL)isFirstResponder {
+//    return [self.exchangeTextField isFirstResponder];
+//}
 
 // MARK: - ExchangeMoneyCurrencyView
 

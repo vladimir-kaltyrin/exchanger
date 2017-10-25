@@ -6,6 +6,7 @@
 #import "ExchangeMoneyRouter.h"
 #import "ExchangeMoneyViewInput.h"
 #import "ExchangeMoneyViewController.h"
+#import "User.h"
 
 @interface ExchangeMoneyAssemblyImpl()
 @property (nonatomic, strong) ExchangeMoneyViewController *viewController;
@@ -21,7 +22,7 @@
 // MARK: - Private
 
 - (id<ExchangeMoneyInteractor>)interactor {
-    return [[ExchangeMoneyInteractorImpl alloc] initWithUser:nil
+    return [[ExchangeMoneyInteractorImpl alloc] initWithUserService:[self.serviceFactory userService]
                                         exchangeMoneyService:[self.serviceFactory exchangeMoneyService]
                                         exchangeRatesUpdater:[self.serviceFactory exchangeRatesUpdater]
             ];

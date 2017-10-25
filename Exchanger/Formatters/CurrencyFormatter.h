@@ -3,8 +3,10 @@
 
 @interface CurrencyFormatter : NSObject
 
-+ (NSString *)toString: (CurrencyType)currencyType;
++ (NSString *)toCodeString:(CurrencyType)currencyType;
 
-+ (CurrencyType)fromString: (NSString *)string;
++ (NSString *)toSignString:(CurrencyType)currencyType;
+
++ (CurrencyType)currencyTypeFromString:(NSString *)string;
 
 @end

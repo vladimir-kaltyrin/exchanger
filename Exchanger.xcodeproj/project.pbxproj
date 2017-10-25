@@ -31,8 +31,22 @@
 		8C36E9891F261B4F009BDDC0 /* UIView+Properties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C36E9881F261B4F009BDDC0 /* UIView+Properties.m */; };
 		8C36E9921F2634C9009BDDC0 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C36E9911F2634C9009BDDC0 /* BaseViewController.m */; };
 		8C36E99B1F2653D8009BDDC0 /* ExchangeRatesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C36E99A1F2653D8009BDDC0 /* ExchangeRatesResponse.m */; };
+		8C6423491FA0747500A95479 /* GalleryPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6423481FA0747500A95479 /* GalleryPreviewView.m */; };
+		8C64234C1FA0753500A95479 /* GalleryPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C64234B1FA0753500A95479 /* GalleryPreviewController.m */; };
+		8C6423521FA0757600A95479 /* GalleryPreviewPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6423511FA0757600A95479 /* GalleryPreviewPageController.m */; };
+		8C6423551FA0758C00A95479 /* GalleryPreviewPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6423541FA0758B00A95479 /* GalleryPreviewPage.m */; };
+		8C6423581FA075AC00A95479 /* GalleryPreviewPageIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6423571FA075AC00A95479 /* GalleryPreviewPageIndicator.m */; };
+		8C64235B1FA0761400A95479 /* GalleryPreviewPageData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C64235A1FA0761300A95479 /* GalleryPreviewPageData.m */; };
+		8C64235E1FA0793F00A95479 /* ObservableImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C64235D1FA0793F00A95479 /* ObservableImageView.m */; };
+		8C6423611FA091D000A95479 /* GalleryPreviewData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6423601FA091D000A95479 /* GalleryPreviewData.m */; };
+		8C6423641FA0966500A95479 /* MoveFailableLongPressGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6423631FA0966500A95479 /* MoveFailableLongPressGestureRecognizer.m */; };
 		8C73267C1F3B345000301720 /* KeyboardData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C73267B1F3B345000301720 /* KeyboardData.m */; };
 		8C73267E1F3C80B100301720 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C73267D1F3C80B100301720 /* LaunchScreen.storyboard */; };
+		8C7326831F3C8D5800301720 /* UserServiceImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7326821F3C8D5800301720 /* UserServiceImpl.m */; };
+		8C94B4DA1F3DEB8700B2B9FC /* UIViewController+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C94B4D91F3DEB8700B2B9FC /* UIViewController+Extensions.m */; };
+		8C94B4DD1F3DFD5E00B2B9FC /* TextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C94B4DC1F3DFD5E00B2B9FC /* TextField.m */; };
+		8C94B4E01F3E10C600B2B9FC /* BarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C94B4DF1F3E10C600B2B9FC /* BarButton.m */; };
+		8C94B4E61F3E162B00B2B9FC /* ExchangeMoneyTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C94B4E51F3E162B00B2B9FC /* ExchangeMoneyTitleView.m */; };
 		8CC705F61F27CBDA008770E2 /* CurrencyFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC705F51F27CBDA008770E2 /* CurrencyFormatterTests.m */; };
 		8CC705FA1F27CF51008770E2 /* ExchangeRatesData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC705F91F27CF51008770E2 /* ExchangeRatesData.m */; };
 		8CD786161F14F21F00AF7A8D /* ExchangeMoneyAssemblyImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD786151F14F21F00AF7A8D /* ExchangeMoneyAssemblyImpl.m */; };
@@ -117,9 +131,38 @@
 		8C36E9951F264587009BDDC0 /* ExchangeRatesServiceImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ExchangeRatesServiceImpl.h; path = Services/ExchangeRatesService/ExchangeRatesServiceImpl.h; sourceTree = "<group>"; };
 		8C36E9991F2653D8009BDDC0 /* ExchangeRatesResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeRatesResponse.h; sourceTree = "<group>"; };
 		8C36E99A1F2653D8009BDDC0 /* ExchangeRatesResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeRatesResponse.m; sourceTree = "<group>"; };
+		8C6423471FA0747500A95479 /* GalleryPreviewView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GalleryPreviewView.h; path = Views/GalleryPreviewView/GalleryPreviewView.h; sourceTree = "<group>"; };
+		8C6423481FA0747500A95479 /* GalleryPreviewView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GalleryPreviewView.m; path = Views/GalleryPreviewView/GalleryPreviewView.m; sourceTree = "<group>"; };
+		8C64234A1FA0753500A95479 /* GalleryPreviewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GalleryPreviewController.h; path = Views/GalleryPreviewView/GalleryPreviewController.h; sourceTree = "<group>"; };
+		8C64234B1FA0753500A95479 /* GalleryPreviewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GalleryPreviewController.m; path = Views/GalleryPreviewView/GalleryPreviewController.m; sourceTree = "<group>"; };
+		8C6423501FA0757600A95479 /* GalleryPreviewPageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GalleryPreviewPageController.h; path = Views/GalleryPreviewView/GalleryPreviewPageController.h; sourceTree = "<group>"; };
+		8C6423511FA0757600A95479 /* GalleryPreviewPageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GalleryPreviewPageController.m; path = Views/GalleryPreviewView/GalleryPreviewPageController.m; sourceTree = "<group>"; };
+		8C6423531FA0758B00A95479 /* GalleryPreviewPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GalleryPreviewPage.h; path = Views/GalleryPreviewView/GalleryPreviewPage.h; sourceTree = "<group>"; };
+		8C6423541FA0758B00A95479 /* GalleryPreviewPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GalleryPreviewPage.m; path = Views/GalleryPreviewView/GalleryPreviewPage.m; sourceTree = "<group>"; };
+		8C6423561FA075AC00A95479 /* GalleryPreviewPageIndicator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GalleryPreviewPageIndicator.h; path = Views/GalleryPreviewView/GalleryPreviewPageIndicator.h; sourceTree = "<group>"; };
+		8C6423571FA075AC00A95479 /* GalleryPreviewPageIndicator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GalleryPreviewPageIndicator.m; path = Views/GalleryPreviewView/GalleryPreviewPageIndicator.m; sourceTree = "<group>"; };
+		8C6423591FA0761300A95479 /* GalleryPreviewPageData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GalleryPreviewPageData.h; path = Views/GalleryPreviewView/GalleryPreviewPageData.h; sourceTree = "<group>"; };
+		8C64235A1FA0761300A95479 /* GalleryPreviewPageData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GalleryPreviewPageData.m; path = Views/GalleryPreviewView/GalleryPreviewPageData.m; sourceTree = "<group>"; };
+		8C64235C1FA0793F00A95479 /* ObservableImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ObservableImageView.h; path = Core/ObservableImageView.h; sourceTree = "<group>"; };
+		8C64235D1FA0793F00A95479 /* ObservableImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ObservableImageView.m; path = Core/ObservableImageView.m; sourceTree = "<group>"; };
+		8C64235F1FA091D000A95479 /* GalleryPreviewData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GalleryPreviewData.h; path = Views/GalleryPreviewView/GalleryPreviewData.h; sourceTree = "<group>"; };
+		8C6423601FA091D000A95479 /* GalleryPreviewData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GalleryPreviewData.m; path = Views/GalleryPreviewView/GalleryPreviewData.m; sourceTree = "<group>"; };
+		8C6423621FA0966500A95479 /* MoveFailableLongPressGestureRecognizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MoveFailableLongPressGestureRecognizer.h; path = Core/MoveFailableLongPressGestureRecognizer.h; sourceTree = "<group>"; };
+		8C6423631FA0966500A95479 /* MoveFailableLongPressGestureRecognizer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MoveFailableLongPressGestureRecognizer.m; path = Core/MoveFailableLongPressGestureRecognizer.m; sourceTree = "<group>"; };
 		8C73267A1F3B345000301720 /* KeyboardData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyboardData.h; path = Services/KeyboardObservingService/KeyboardData.h; sourceTree = "<group>"; };
 		8C73267B1F3B345000301720 /* KeyboardData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeyboardData.m; path = Services/KeyboardObservingService/KeyboardData.m; sourceTree = "<group>"; };
 		8C73267D1F3C80B100301720 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Application/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8C7326801F3C8D4700301720 /* UserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserService.h; path = Services/UserService/UserService.h; sourceTree = "<group>"; };
+		8C7326811F3C8D5800301720 /* UserServiceImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserServiceImpl.h; path = Services/UserService/UserServiceImpl.h; sourceTree = "<group>"; };
+		8C7326821F3C8D5800301720 /* UserServiceImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserServiceImpl.m; path = Services/UserService/UserServiceImpl.m; sourceTree = "<group>"; };
+		8C94B4D81F3DEB8700B2B9FC /* UIViewController+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Extensions.h"; path = "Categories/UIViewController+Extensions.h"; sourceTree = "<group>"; };
+		8C94B4D91F3DEB8700B2B9FC /* UIViewController+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Extensions.m"; path = "Categories/UIViewController+Extensions.m"; sourceTree = "<group>"; };
+		8C94B4DB1F3DFD5E00B2B9FC /* TextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextField.h; sourceTree = "<group>"; };
+		8C94B4DC1F3DFD5E00B2B9FC /* TextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextField.m; sourceTree = "<group>"; };
+		8C94B4DE1F3E10C600B2B9FC /* BarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BarButton.h; path = Core/BarButton.h; sourceTree = "<group>"; };
+		8C94B4DF1F3E10C600B2B9FC /* BarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BarButton.m; path = Core/BarButton.m; sourceTree = "<group>"; };
+		8C94B4E41F3E162B00B2B9FC /* ExchangeMoneyTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeMoneyTitleView.h; path = Modules/ExchangeMoney/View/ExchangeMoneyTitleView.h; sourceTree = "<group>"; };
+		8C94B4E51F3E162B00B2B9FC /* ExchangeMoneyTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExchangeMoneyTitleView.m; path = Modules/ExchangeMoney/View/ExchangeMoneyTitleView.m; sourceTree = "<group>"; };
 		8CC705F51F27CBDA008770E2 /* CurrencyFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyFormatterTests.m; sourceTree = "<group>"; };
 		8CC705F71F27CE0A008770E2 /* XMLParserImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XMLParserImpl.h; path = Services/XMLParser/XMLParserImpl.h; sourceTree = "<group>"; };
 		8CC705F81F27CF51008770E2 /* ExchangeRatesData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeRatesData.h; path = Services/ExchangeRatesService/ExchangeRatesData.h; sourceTree = "<group>"; };
@@ -235,6 +278,7 @@
 			children = (
 				8C1FEFC91F13A76A0024F046 /* ServiceFactory.h */,
 				8C1FEFCA1F13A76A0024F046 /* ServiceFactory.m */,
+				8C73267F1F3C8D2400301720 /* UserService */,
 				8CF9643E1F17D852009852B9 /* KeyboardObservingService */,
 				8CD7863B1F14F28700AF7A8D /* XMLParser */,
 				8CD786341F14F26A00AF7A8D /* ExchangeMoneyService */,
@@ -283,6 +327,7 @@
 		8C2E1CE61F13818D00DB0FC2 /* Exchanger */ = {
 			isa = PBXGroup;
 			children = (
+				8C6423451FA0744D00A95479 /* Views */,
 				8C36E98F1F2634B4009BDDC0 /* Core */,
 				8C36E98D1F26336F009BDDC0 /* Protocols */,
 				8C36E9861F261B26009BDDC0 /* Categories */,
@@ -321,6 +366,8 @@
 			children = (
 				8C36E9871F261B4F009BDDC0 /* UIView+Properties.h */,
 				8C36E9881F261B4F009BDDC0 /* UIView+Properties.m */,
+				8C94B4D81F3DEB8700B2B9FC /* UIViewController+Extensions.h */,
+				8C94B4D91F3DEB8700B2B9FC /* UIViewController+Extensions.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -339,8 +386,53 @@
 				8C36E9901F2634C9009BDDC0 /* BaseViewController.h */,
 				8C36E9911F2634C9009BDDC0 /* BaseViewController.m */,
 				8C36E9931F264053009BDDC0 /* SafeBlocks.h */,
+				8C94B4DE1F3E10C600B2B9FC /* BarButton.h */,
+				8C94B4DF1F3E10C600B2B9FC /* BarButton.m */,
+				8C64235C1FA0793F00A95479 /* ObservableImageView.h */,
+				8C64235D1FA0793F00A95479 /* ObservableImageView.m */,
+				8C6423621FA0966500A95479 /* MoveFailableLongPressGestureRecognizer.h */,
+				8C6423631FA0966500A95479 /* MoveFailableLongPressGestureRecognizer.m */,
 			);
 			name = Core;
+			sourceTree = "<group>";
+		};
+		8C6423451FA0744D00A95479 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8C6423461FA0745200A95479 /* GalleryPreviewView */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		8C6423461FA0745200A95479 /* GalleryPreviewView */ = {
+			isa = PBXGroup;
+			children = (
+				8C6423531FA0758B00A95479 /* GalleryPreviewPage.h */,
+				8C6423541FA0758B00A95479 /* GalleryPreviewPage.m */,
+				8C6423471FA0747500A95479 /* GalleryPreviewView.h */,
+				8C6423481FA0747500A95479 /* GalleryPreviewView.m */,
+				8C64234A1FA0753500A95479 /* GalleryPreviewController.h */,
+				8C64234B1FA0753500A95479 /* GalleryPreviewController.m */,
+				8C6423501FA0757600A95479 /* GalleryPreviewPageController.h */,
+				8C6423511FA0757600A95479 /* GalleryPreviewPageController.m */,
+				8C6423561FA075AC00A95479 /* GalleryPreviewPageIndicator.h */,
+				8C6423571FA075AC00A95479 /* GalleryPreviewPageIndicator.m */,
+				8C6423591FA0761300A95479 /* GalleryPreviewPageData.h */,
+				8C64235A1FA0761300A95479 /* GalleryPreviewPageData.m */,
+				8C64235F1FA091D000A95479 /* GalleryPreviewData.h */,
+				8C6423601FA091D000A95479 /* GalleryPreviewData.m */,
+			);
+			name = GalleryPreviewView;
+			sourceTree = "<group>";
+		};
+		8C73267F1F3C8D2400301720 /* UserService */ = {
+			isa = PBXGroup;
+			children = (
+				8C7326801F3C8D4700301720 /* UserService.h */,
+				8C7326811F3C8D5800301720 /* UserServiceImpl.h */,
+				8C7326821F3C8D5800301720 /* UserServiceImpl.m */,
+			);
+			name = UserService;
 			sourceTree = "<group>";
 		};
 		8CD785EC1F14EE3900AF7A8D /* Modules */ = {
@@ -401,6 +493,10 @@
 				8CF964501F1CCC0D009852B9 /* ExchangeMoneyCurrencyViewData.m */,
 				8CF964521F1CCECA009852B9 /* ExchangeMoneyBalanceViewData.h */,
 				8CF964531F1CCECA009852B9 /* ExchangeMoneyBalanceViewData.m */,
+				8C94B4E41F3E162B00B2B9FC /* ExchangeMoneyTitleView.h */,
+				8C94B4E51F3E162B00B2B9FC /* ExchangeMoneyTitleView.m */,
+				8C94B4DB1F3DFD5E00B2B9FC /* TextField.h */,
+				8C94B4DC1F3DFD5E00B2B9FC /* TextField.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -831,17 +927,24 @@
 			files = (
 				8CD786251F14F23400AF7A8D /* ExchangeMoneyView.m in Sources */,
 				8CC705FA1F27CF51008770E2 /* ExchangeRatesData.m in Sources */,
+				8C94B4DD1F3DFD5E00B2B9FC /* TextField.m in Sources */,
+				8C64234C1FA0753500A95479 /* GalleryPreviewController.m in Sources */,
 				8CF9645A1F1CD11B009852B9 /* ExchangeMoneyCurrencyView.m in Sources */,
 				8C36E99B1F2653D8009BDDC0 /* ExchangeRatesResponse.m in Sources */,
 				8CD786261F14F23400AF7A8D /* ExchangeMoneyViewController.m in Sources */,
 				8CD786331F14F26700AF7A8D /* ExchangeRatesUpdaterImpl.m in Sources */,
+				8C6423611FA091D000A95479 /* GalleryPreviewData.m in Sources */,
 				8CD786491F14F2B800AF7A8D /* Currency.m in Sources */,
 				8CD786161F14F21F00AF7A8D /* ExchangeMoneyAssemblyImpl.m in Sources */,
 				8CD786291F14F23C00AF7A8D /* ExchangeMoneyRouter.m in Sources */,
 				8CD7861A1F14F22600AF7A8D /* ExchangeMoneyInteractorImpl.m in Sources */,
 				8C1FEFCB1F13A76A0024F046 /* ServiceFactory.m in Sources */,
+				8C6423551FA0758C00A95479 /* GalleryPreviewPage.m in Sources */,
+				8C7326831F3C8D5800301720 /* UserServiceImpl.m in Sources */,
 				8CD786591F14F86100AF7A8D /* AssemblyFactoryImpl.m in Sources */,
 				8CD7864E1F14F32600AF7A8D /* User.m in Sources */,
+				8C94B4E01F3E10C600B2B9FC /* BarButton.m in Sources */,
+				8C94B4DA1F3DEB8700B2B9FC /* UIViewController+Extensions.m in Sources */,
 				8C36E9921F2634C9009BDDC0 /* BaseViewController.m in Sources */,
 				8CF9643D1F17D84E009852B9 /* KeyboardObserverImpl.m in Sources */,
 				8CF964171F165C24009852B9 /* AssembledViewController.m in Sources */,
@@ -849,18 +952,25 @@
 				8CD786421F14F2A000AF7A8D /* CurrencyFormatter.m in Sources */,
 				8CF964481F1CC4EE009852B9 /* ExchangeMoneyPageViewController.m in Sources */,
 				8CF9644B1F1CC81D009852B9 /* ExchangeMoneyCurrencyViewController.m in Sources */,
+				8C64235B1FA0761400A95479 /* GalleryPreviewPageData.m in Sources */,
 				8C73267C1F3B345000301720 /* KeyboardData.m in Sources */,
 				8CF9641E1F165C31009852B9 /* main.m in Sources */,
 				8CD786561F14F82000AF7A8D /* AssemblySeed.m in Sources */,
 				8CD7862F1F14F24600AF7A8D /* ExchangeRatesServiceImpl.m in Sources */,
+				8C6423581FA075AC00A95479 /* GalleryPreviewPageIndicator.m in Sources */,
 				8CF964511F1CCC0D009852B9 /* ExchangeMoneyCurrencyViewData.m in Sources */,
 				8CF964541F1CCECA009852B9 /* ExchangeMoneyBalanceViewData.m in Sources */,
+				8C6423521FA0757600A95479 /* GalleryPreviewPageController.m in Sources */,
 				8CD786391F14F27F00AF7A8D /* ExchangeMoneyService.m in Sources */,
+				8C94B4E61F3E162B00B2B9FC /* ExchangeMoneyTitleView.m in Sources */,
 				8CF9641C1F165C31009852B9 /* AppDelegate.m in Sources */,
 				8CD7863E1F14F29000AF7A8D /* XMLParserImpl.m in Sources */,
+				8C6423491FA0747500A95479 /* GalleryPreviewView.m in Sources */,
 				8CD786531F14F7B700AF7A8D /* BaseAssembly.m in Sources */,
 				8CD786201F14F22D00AF7A8D /* ExchangeMoneyPresenter.m in Sources */,
 				8C36E9891F261B4F009BDDC0 /* UIView+Properties.m in Sources */,
+				8C6423641FA0966500A95479 /* MoveFailableLongPressGestureRecognizer.m in Sources */,
+				8C64235E1FA0793F00A95479 /* ObservableImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
