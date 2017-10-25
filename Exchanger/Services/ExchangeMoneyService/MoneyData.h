@@ -2,6 +2,6 @@
 #import "Currency.h"
 
 @interface MoneyData : NSObject
-@property (nonatomic, strong) Currency *currency;
+@property (nonatomic, assign) CurrencyType currencyType;
 @property (nonatomic, strong) NSNumber *amount;
 @end

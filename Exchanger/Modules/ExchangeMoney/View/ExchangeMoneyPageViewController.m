@@ -1,9 +1,10 @@
 #import "ExchangeMoneyPageViewController.h"
 #import "ExchangeMoneyCurrencyViewController.h"
+#import "SafeBlocks.h"
 
 @interface ExchangeMoneyPageViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 @property (nonatomic, strong) UIPageViewController *pageViewController;
-
+@property (nonatomic, assign) NSInteger currentIndex;
 @end
 
 @implementation ExchangeMoneyPageViewController
@@ -29,13 +30,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor clearColor];
+    self.pageViewController.view.backgroundColor = [UIColor lightGrayColor];
     
     [self addChildViewController:self.pageViewController];
     self.pageViewController.view.frame = self.view.bounds;
     [self.view addSubview:self.pageViewController.view];
     
-    self.pageViewController.view.backgroundColor = [UIColor redColor];
     [self.pageViewController didMoveToParentViewController:self];
 }
 
@@ -66,23 +66,76 @@
 
 // MARK: - UIPageViewControllerDelegate
 
+- (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController {
+    return [self.viewData count];
+}
+
+- (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {
+    return 0;
+}
+
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
       viewControllerBeforeViewController:(UIViewController *)viewController
 {
-    NSInteger newIndex = [((ExchangeMoneyCurrencyViewController *) viewController) pageIndex] - 1;
-    return [self viewControllerForIndex:newIndex];
+    NSInteger index = [((ExchangeMoneyCurrencyViewController *) viewController) pageIndex] - 1;
+    
+    if (index < 0) {
+        index = [self.viewData count] - 1;
+    }
+    
+    return [self viewControllerForIndex:index];
 }
 
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
        viewControllerAfterViewController:(UIViewController *)viewController
 {
-    NSInteger newIndex = [((ExchangeMoneyCurrencyViewController *) viewController) pageIndex] + 1;
-    return [self viewControllerForIndex:newIndex];
+    NSInteger index = [((ExchangeMoneyCurrencyViewController *) viewController) pageIndex] + 1;
+    
+    if (index >= [self.viewData count]) {
+        index = 0;
+    }
+    
+    return [self viewControllerForIndex:index];
 }
 
-- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers {
+- (void)pageViewController:(UIPageViewController *)pageViewController
+        didFinishAnimating:(BOOL)finished
+   previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers
+       transitionCompleted:(BOOL)completed
+{
+    __strong ExchangeMoneyCurrencyViewController *controller = [pageViewController.viewControllers firstObject];
+
+    self.currentIndex = [controller pageIndex];
     
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [controller becomeFirstResponder];
+    }];
+    
+    ExchangeMoneyCurrencyViewData *viewData = [self.viewData objectAtIndex:self.currentIndex];
+    
+    executeIfNotNil(viewData.onShow);
 }
+
+// MARK: - FirstResponder
+
+- (BOOL)becomeFirstResponder {
+    
+    ExchangeMoneyCurrencyViewController *controller = (ExchangeMoneyCurrencyViewController *)[self viewControllerForIndex:self.currentIndex];
+    
+    return [controller becomeFirstResponder];
+}
+
+- (BOOL)resignFirstResponder {
+    ExchangeMoneyCurrencyViewController *controller = (ExchangeMoneyCurrencyViewController *)[self viewControllerForIndex:self.currentIndex];
+    
+    return [controller resignFirstResponder];
+}
+
+//- (BOOL)isFirstResponder {
+//    ExchangeMoneyCurrencyViewController *controller = (ExchangeMoneyCurrencyViewController *)[self viewControllerForIndex:self.currentIndex];
+//    
+//    return [controller isFirstResponder];
+//}
 
 @end

@@ -6,22 +6,24 @@
 
 @interface ExchangeMoneyInteractorImpl()
 @property (nonatomic, strong) User *user;
-@property (nonatomic, strong) Currency *currency;
+@property (nonatomic, strong) id<UserService> userService;
 @property (nonatomic, strong) id<IExchangeMoneyService> exchangeMoneyService;
 @property (nonatomic, strong) id<ExchangeRatesUpdater> exchangeRatesUpdater;
 @end
 
 @implementation ExchangeMoneyInteractorImpl
+@synthesize sourceCurrency;
+@synthesize targetCurrency;
 
 // MARK: - Init
 
-- (instancetype)initWithUser:(User *)user
+- (instancetype)initWithUserService:(id<UserService>)userService
         exchangeMoneyService:(id<IExchangeMoneyService>)exchangeMoneyService
         exchangeRatesUpdater:(id<ExchangeRatesUpdater>)exchangeRatesUpdater;
 {
     self = [super init];
     if (self) {
-        self.user = user;
+        self.userService = userService;
         self.exchangeMoneyService = exchangeMoneyService;
         self.exchangeRatesUpdater = exchangeRatesUpdater;
     }
@@ -31,10 +33,23 @@
 
 // MARK: - EchangeMoneyInteractor
 
+- (void)convertedCurrency:(void (^)(Currency *))onConvert {
+    [self.exchangeMoneyService convertedCurrencyWithSourceCurrency:self.sourceCurrency
+                                                    targetCurrency:self.targetCurrency
+                                                         onConvert:^(Currency *currency)
+    {
+        onConvert(currency);
+    }];
+}
+
 - (void)exchange:(void (^)(MoneyData *))onExchange {
-    [self.exchangeMoneyService exchange:self.user.moneyData
-                             toCurrency:self.currency
-                               onResult:onExchange];
+    
+    MoneyData *moneyData = [self.user moneyDataWithCurrencyType:self.sourceCurrency.currencyType];
+    
+    [self.exchangeMoneyService exchangeMoney:moneyData.amount
+                              sourceCurrency:self.sourceCurrency
+                              targetCurrency:self.targetCurrency
+                                    onResult:onExchange];
 }
 
 - (void)startFetching {
@@ -45,6 +60,10 @@
     [self.exchangeRatesUpdater setOnUpdate:^(ExchangeRatesData * data) {
         executeIfNotNil(onUpdate, data);
     }];
+}
+
+- (void)fetchUser:(void (^)(User *))onUser {
+    [self.userService currentUser:onUser];
 }
 
 @end

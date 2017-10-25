@@ -9,7 +9,7 @@
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, strong) ExchangeMoneyPageViewController *sourceExchangeView;
 @property (nonatomic, strong) ExchangeMoneyPageViewController *targetExchangeView;
-@property (nonatomic, assign) CGFloat contentHeight;
+@property (nonatomic, assign) CGFloat keyboardHeight;
 @end
 
 @implementation ExchangeMoneyView
@@ -23,15 +23,20 @@
         self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
         
         self.sourceExchangeView = [[ExchangeMoneyPageViewController alloc] init];
-        self.sourceExchangeView.view.backgroundColor = [UIColor redColor];
+        self.sourceExchangeView.view.backgroundColor = [UIColor colorWithRed:33
+                                                                       green:33
+                                                                        blue:33
+                                                                       alpha:1];
         
         self.targetExchangeView = [[ExchangeMoneyPageViewController alloc] init];
-        self.targetExchangeView.view.backgroundColor = [UIColor blueColor];
+        self.targetExchangeView.view.backgroundColor = [UIColor colorWithRed:11
+                                                                       green:11
+                                                                        blue:11
+                                                                       alpha:1];
         
         [self addSubview:self.sourceExchangeView.view];
-        //[self addSubview:self.targetExchangeView.view];
+        [self addSubview:self.targetExchangeView.view];
         [self addSubview:self.activityIndicator];
-        
     }
     
     return self;
@@ -39,8 +44,20 @@
 
 // MARK: - ExchangeMoneyView
 
+- (void)setOnCurrencyShown:(void (^)())onCurrencyShown {
+    [self.sourceExchangeView setOnPageShown:onCurrencyShown];
+}
+
+- (void (^)())onCurrencyShown {
+    return [self.sourceExchangeView onPageShown];
+}
+
+- (void)focusOnStart {
+    [self.sourceExchangeView becomeFirstResponder];
+}
+
 - (void)updateKeyboardData:(KeyboardData *)keyboardData {
-    self.contentHeight = keyboardData.size.height;
+    self.keyboardHeight = keyboardData.size.height;
     [self setNeedsLayout];
 }
 
@@ -67,7 +84,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    CGFloat height = self.contentHeight == 0 ? [UIScreen mainScreen].bounds.size.height : self.contentHeight;
+    CGFloat height = self.bounds.size.height - self.contentInsets.top - self.keyboardHeight;
     
     self.sourceExchangeView.view.height = height / 2;
     self.sourceExchangeView.view.width = self.bounds.size.width;

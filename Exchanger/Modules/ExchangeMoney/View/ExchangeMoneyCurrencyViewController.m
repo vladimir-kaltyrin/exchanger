@@ -4,6 +4,7 @@
 
 @interface ExchangeMoneyCurrencyViewController ()
 @property (nonatomic, strong) ExchangeMoneyCurrencyViewData *viewData;
+@property (nonatomic, strong) ExchangeMoneyCurrencyView* currencyView;
 @property (nonatomic) NSInteger pageIndex;
 @end
 
@@ -18,6 +19,9 @@
     if (self) {
         self.viewData = viewData;
         self.pageIndex = pageIndex;
+        
+        self.currencyView = [[ExchangeMoneyCurrencyView alloc] init];
+        
     }
     return self;
 }
@@ -25,10 +29,24 @@
 // MARK: - ViewController life-cycle
 
 - (void)loadView {
-    ExchangeMoneyCurrencyView *view = [[ExchangeMoneyCurrencyView alloc] init];
-    [view setViewData:self.viewData];
+    [self.currencyView setViewData:self.viewData];
     
-    self.view = view;
+    self.view = self.currencyView;
 }
+
+// MARK: - FirstResponder
+
+- (BOOL)becomeFirstResponder {
+    return [self.currencyView becomeFirstResponder];
+}
+
+- (BOOL)resignFirstResponder {
+    return [self.currencyView resignFirstResponder];
+}
+
+//
+//- (BOOL)isFirstResponder {
+//    return [self.currencyView isFirstResponder];
+//}
 
 @end

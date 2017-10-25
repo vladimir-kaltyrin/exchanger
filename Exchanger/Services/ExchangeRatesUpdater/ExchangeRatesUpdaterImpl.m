@@ -2,6 +2,8 @@
 #import "ExchangeRatesService.h"
 #import "SafeBlocks.h"
 
+NSTimeInterval const kUpdateFrequency = 30.0f;
+
 @interface ExchangeRatesUpdaterImpl()
 @property (nonatomic, strong) id<ExchangeRatesService> exchangeRatesService;
 @property (nonatomic, strong) NSTimer *timer;
@@ -13,7 +15,8 @@
 
 // MARK: - Init
 
-- (instancetype)initWithExchangeRatesService:(id<ExchangeRatesService>)exchangeRatesService {
+- (instancetype)initWithExchangeRatesService:(id<ExchangeRatesService>)exchangeRatesService
+{
     self = [super init];
     if (self) {
         self.exchangeRatesService = exchangeRatesService;
@@ -29,7 +32,10 @@
     [self stop];
     
     __weak typeof(self) weakSelf = self;
-    self.timer = [NSTimer timerWithTimeInterval:10 repeats:YES block:^(NSTimer * _Nonnull timer) {
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:kUpdateFrequency
+                                                 repeats:YES
+                                                   block:^(NSTimer * _Nonnull timer)
+    {
         [weakSelf fetch];
     }];
 }

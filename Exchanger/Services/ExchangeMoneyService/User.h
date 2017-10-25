@@ -2,5 +2,9 @@
 #import "MoneyData.h"
 
 @interface User : NSObject
-@property (nonatomic, strong) MoneyData *moneyData;
+
+- (instancetype)initWithWallet:(NSArray<MoneyData *> *)wallet;
+
+- (MoneyData *)moneyDataWithCurrencyType:(CurrencyType)currencyType;
+
 @end

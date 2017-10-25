@@ -7,4 +7,5 @@
 @property (nonatomic, strong) NSString *difference;
 @property (nonatomic, strong) NSString *rate;
 @property (nonatomic, strong) void(^onTextChange)();
+@property (nonatomic, strong) void(^onShow)();
 @end

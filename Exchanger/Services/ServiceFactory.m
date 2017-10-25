@@ -3,6 +3,7 @@
 #import "ExchangeRatesServiceImpl.h"
 #import "ExchangeRatesUpdaterImpl.h"
 #import "XMLParserImpl.h"
+#import "UserServiceImpl.h"
 
 @implementation ServiceFactory
 
@@ -20,6 +21,10 @@
 
 - (id<IExchangeMoneyService>)exchangeMoneyService {
     return [[ExchangeMoneyService alloc] init];
+}
+
+- (id<UserService>)userService {
+    return [[UserServiceImpl alloc] init];
 }
 
 - (id<XMLParser>)xmlParser {

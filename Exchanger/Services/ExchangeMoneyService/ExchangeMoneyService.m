@@ -4,39 +4,41 @@
 
 // MARK: - IExchangeMoneyService
 
-- (void)exchange:(MoneyData *)moneyData
-      toCurrency:(Currency *)currency
-        onResult:(void (^)(MoneyData *))onResult
+- (void)exchangeMoney:(NSNumber *)money
+       sourceCurrency:(Currency *)sourceCurrency
+       targetCurrency:(Currency *)targetCurrency
+             onResult:(void(^)(MoneyData *))onResult;
 {
-    Currency *resultCurrency = [self calculateFromCurrency:moneyData.currency
-                                                toCurrency:currency];
+    __weak typeof(self) weakSelf = self;
+    [self convertedCurrencyWithSourceCurrency:sourceCurrency targetCurrency:targetCurrency onConvert:^(Currency *convertedCurrency) {
+        MoneyData *resultMoneyData = [weakSelf exchangeMoney:money
+                                            withCurrency:convertedCurrency];
+        onResult(resultMoneyData);
+    }];
+}
+
+- (void)convertedCurrencyWithSourceCurrency:(Currency *)sourceCurrency
+                             targetCurrency:(Currency *)targetCurrency
+                                  onConvert:(void (^)(Currency *))onConvert
+{
+    Currency *result = [[Currency alloc] init];
+    result.currencyType = targetCurrency.currencyType;
+    result.rate = @(targetCurrency.rate.floatValue / sourceCurrency.rate.floatValue);
     
-    MoneyData *resultMoneyData = [self exchangeMoneyData:moneyData
-                                            withCurrency:resultCurrency];
-    
-    onResult(resultMoneyData);
+    onConvert(result);
 }
 
 // MARK: - Private
 
-- (MoneyData *)exchangeMoneyData:(MoneyData *)moneyData
+- (MoneyData *)exchangeMoney:(NSNumber *)money
                     withCurrency:(Currency *)currency
 {
     MoneyData *resultMoneyData = [[MoneyData alloc] init];
-    resultMoneyData.amount = @(moneyData.amount.floatValue * currency.rate.floatValue);
-    resultMoneyData.currency = currency;
+    resultMoneyData.amount = @(money.floatValue * currency.rate.floatValue);
+    resultMoneyData.currencyType = currency.currencyType;
     
     return resultMoneyData;
 }
 
-- (Currency *)calculateFromCurrency:(Currency *)fromCurrency
-                         toCurrency:(Currency *)toCurrency
-{
-    Currency *result = [[Currency alloc] init];
-    result.currencyType = toCurrency.currencyType;
-    result.rate = @(toCurrency.rate.floatValue / fromCurrency.rate.floatValue);
-    
-    return result;
-}
 
 @end

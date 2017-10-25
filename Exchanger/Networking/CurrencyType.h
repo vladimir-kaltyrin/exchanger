@@ -2,6 +2,7 @@
 #define CurrencyType_h
 
 typedef NS_ENUM(NSInteger, CurrencyType) {
+    CurrencyTypeEUR,
     CurrencyTypeUSD,
     CurrencyTypeJPY,
     CurrencyTypeBGN,
