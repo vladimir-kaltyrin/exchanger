@@ -40,11 +40,5 @@ NS_ASSUME_NONNULL_END
 - (void)loadView {
     self.view = self.pageView;
 }
-    
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    [self.view.superview setUserInteractionEnabled:NO];
-}
 
 @end
