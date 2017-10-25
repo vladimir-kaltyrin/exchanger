@@ -1,8 +1,6 @@
 #import "GalleryPreviewPage.h"
-#import "ObservableImageView.h"
 #import "GalleryPreviewPageData.h"
 #import "UIView+Properties.h"
-#import <UIImageView+AFNetworking.h>
 
 CGFloat const kBigFontSize = 34.0;
 CGFloat const kSmallFontSize = 12.0;
@@ -10,12 +8,10 @@ CGFloat const kSmallFontSize = 12.0;
 NS_ASSUME_NONNULL_BEGIN
 
 @interface GalleryPreviewPage()
-@property (nonatomic, strong) ObservableImageView *imageView;
 @property (nonatomic, strong) UILabel *currencyTitleLabel;
 @property (nonatomic, strong) UITextField *currencyAmountTextField;
 @property (nonatomic, strong) UILabel *remainderLabel;
 @property (nonatomic, strong) UILabel *currencyRateLabel;
-@property (nonatomic, strong) UIVisualEffectView *visualEffectView;
 @end
 
 @implementation GalleryPreviewPage
@@ -42,20 +38,6 @@ NS_ASSUME_NONNULL_BEGIN
         self.currencyRateLabel.font = [UIFont systemFontOfSize:kSmallFontSize];
         self.currencyRateLabel.textColor = [UIColor whiteColor];
         
-        self.imageView = [[ObservableImageView alloc] initWithFrame:CGRectZero];
-        self.imageView.clipsToBounds = YES;
-        
-        self.visualEffectView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect
-                                                                            effectWithStyle:UIBlurEffectStyleDark]];
-        
-        
-        __weak typeof(self) weakSelf = self;
-        self.imageView.onImageChange = ^(UIImage * _Nonnull nullable) {
-            [weakSelf onImageChange];
-        };
-        
-        [self addSubview:self.imageView];
-        [self addSubview:self.visualEffectView];
         [self addSubview:self.currencyTitleLabel];
         [self addSubview:self.currencyAmountTextField];
         [self addSubview:self.remainderLabel];
@@ -75,8 +57,6 @@ NS_ASSUME_NONNULL_BEGIN
 // MARK: - Public
     
 - (void)setViewData:(GalleryPreviewPageData *)data {
-    [self.imageView setImageWithURL:[NSURL URLWithString:data.imageUrl]];
-    
     self.currencyTitleLabel.text = data.currencyTitle;
     self.currencyAmountTextField.text = data.currencyAmount;
     self.remainderLabel.text = data.remainder;
@@ -84,8 +64,6 @@ NS_ASSUME_NONNULL_BEGIN
 }
     
 - (void)prepareForReuse {
-    [self.imageView cancelImageDownloadTask];
-    self.imageView.image = nil;
     self.currencyTitleLabel.text = nil;
     self.currencyAmountTextField.text = nil;
     self.remainderLabel.text = nil;
@@ -94,15 +72,8 @@ NS_ASSUME_NONNULL_BEGIN
     
 // MARK: - Private
     
-- (void)onImageChange {
-    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
-}
-    
 - (void)layoutSubviews {
     [super layoutSubviews];
-    
-    self.imageView.frame = self.bounds;
-    self.visualEffectView.frame = self.bounds;
     
     CGRect contentFrame = UIEdgeInsetsInsetRect(self.bounds, [self contentInsets]);
     CGFloat verticalOffsetBetweenLabels = 12.f;
