@@ -20,7 +20,6 @@ NS_ASSUME_NONNULL_BEGIN
     
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        [self setUserInteractionEnabled:NO];
         
         self.currencyTitleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         self.currencyTitleLabel.font = [UIFont systemFontOfSize:kBigFontSize];
@@ -29,6 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
         self.currencyAmountTextField = [[UITextField alloc] initWithFrame:CGRectZero];
         self.currencyAmountTextField.font = [UIFont systemFontOfSize:kBigFontSize];
         self.currencyAmountTextField.textColor = [UIColor whiteColor];
+        self.currencyAmountTextField.textAlignment = NSTextAlignmentRight;
         
         self.remainderLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         self.remainderLabel.font = [UIFont systemFontOfSize:kSmallFontSize];
@@ -37,6 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
         self.currencyRateLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         self.currencyRateLabel.font = [UIFont systemFontOfSize:kSmallFontSize];
         self.currencyRateLabel.textColor = [UIColor whiteColor];
+        self.currencyRateLabel.textAlignment = NSTextAlignmentRight;
         
         [self addSubview:self.currencyTitleLabel];
         [self addSubview:self.currencyAmountTextField];
@@ -89,14 +90,14 @@ NS_ASSUME_NONNULL_BEGIN
     self.remainderLabel.left = self.currencyTitleLabel.x;
     
     self.currencyAmountTextField.width = 190;
-    self.currencyAmountTextField.height = 90;
+    self.currencyAmountTextField.height = self.currencyTitleLabel.height;
     self.currencyAmountTextField.right = contentFrame.origin.x + contentFrame.size.width;
-    self.currencyAmountTextField.top = contentFrame.origin.y;
+    self.currencyAmountTextField.top = self.currencyTitleLabel.top;
     
     CGSize currencyRateLabelSize = [self.currencyRateLabel sizeThatFits:contentFrame.size];
     self.currencyRateLabel.size = currencyRateLabelSize;
     self.currencyRateLabel.right = self.currencyAmountTextField.right;
-    self.currencyRateLabel.top = self.currencyAmountTextField.bottom + verticalOffsetBetweenLabels;
+    self.currencyRateLabel.top = self.remainderLabel.top;
 }
 
 @end

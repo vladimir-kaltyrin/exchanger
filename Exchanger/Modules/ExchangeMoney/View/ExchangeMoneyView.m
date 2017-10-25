@@ -79,7 +79,7 @@ NSString * const kCurrencyRateCellId = @"kCurrencyRateCellId";
 // MARK: - UITableViewDelegate
     
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 200;
+    return self.bounds.size.height / 2 - self.keyboardHeight;
 }
     
 // MARK: - UITableViewDataSource
