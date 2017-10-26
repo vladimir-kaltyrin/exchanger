@@ -1,6 +1,7 @@
 #import "ExchangeMoneyViewController.h"
 #import "ExchangeMoneyView.h"
 #import "ExchangeMoneyTitleView.h"
+#import "ExchangeMoneyViewData.h"
 #import "UIViewController+Extensions.h"
 #import "BarButton.h"
 
@@ -10,7 +11,7 @@
 @property (nonatomic, strong) ExchangeMoneyView* exchangeMoneyView;
 @property (nonatomic, strong) ExchangeMoneyTitleView *exchangeMoneyTitleView;
 @property (nonatomic, strong) BarButton *exchangeBarButton;
-@property (nonatomic, strong) BarButton *cancelBarButton;
+@property (nonatomic, strong) BarButton *resetBarButton;
 @end
 
 @implementation ExchangeMoneyViewController
@@ -21,7 +22,7 @@
     if (self) {
         self.exchangeMoneyView = [[ExchangeMoneyView alloc] init];
         self.exchangeBarButton = [[BarButton alloc] initWithTitle:@"Exchange"];
-        self.cancelBarButton = [[BarButton alloc] initWithTitle:@"Cancel"];
+        self.resetBarButton = [[BarButton alloc] initWithTitle:@"Reset"];
         
         self.exchangeMoneyTitleView = [[ExchangeMoneyTitleView alloc] init];
         self.exchangeMoneyTitleView.frame = CGRectMake(0, 0, 150, 36);
@@ -38,7 +39,7 @@
     [super viewDidLoad];
     
     self.navigationItem.rightBarButtonItem = self.exchangeBarButton.barButtonItem;
-    self.navigationItem.leftBarButtonItem = self.cancelBarButton.barButtonItem;
+    self.navigationItem.leftBarButtonItem = self.resetBarButton.barButtonItem;
     self.navigationItem.titleView = self.exchangeMoneyTitleView;
 }
 
@@ -54,12 +55,12 @@
     [self.exchangeMoneyTitleView setTitle:title];
 }
 
-- (void)setOnCancelTap:(void (^)())onCancelTap {
-    self.cancelBarButton.onBarButtonTap = onCancelTap;
+- (void)setOnResetTap:(void (^)())onResetTap {
+    self.resetBarButton.onBarButtonTap = onResetTap;
 }
 
-- (void (^)())onCancelTap {
-    return self.cancelBarButton.onBarButtonTap;
+- (void (^)())onResetTap {
+    return self.resetBarButton.onBarButtonTap;
 }
 
 - (void)setOnExchangeTap:(void (^)())onExchangeTap {
@@ -78,12 +79,8 @@
     [self.exchangeMoneyView updateKeyboardData:keyboardData];
 }
 
-- (void)setSourceCurrencyViewData:(NSArray<ExchangeMoneyCurrencyViewData *> *)viewData {
-    [self.exchangeMoneyView setSourceCurrencyViewData:viewData];
-}
-
-- (void)setTargetCurrencyViewData:(NSArray<ExchangeMoneyCurrencyViewData *> *)viewData {
-    [self.exchangeMoneyView setTargetCurrencyViewData:viewData];
+- (void)setViewData:(ExchangeMoneyViewData *)viewData {
+    [self.exchangeMoneyView setViewData:viewData];
 }
 
 - (void)startActivity {

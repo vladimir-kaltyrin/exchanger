@@ -1,8 +1,16 @@
 #import "ExchangeMoneyPresenter.h"
 #import "ExchangeRatesData.h"
+#import "ExchangeMoneyViewData.h"
 #import "ExchangeMoneyCurrencyViewData.h"
+#import "GalleryPreviewPageData.h"
+#import "GalleryPreviewData.h"
 #import "KeyboardObserver.h"
 #import "SafeBlocks.h"
+
+typedef NS_ENUM(NSInteger, CurrencyExchangeType) {
+    CurrencyExchangeSourceType,
+    CurrencyExchangeTargetType
+};
 
 @interface ExchangeMoneyPresenter()
 @property (nonatomic, strong) id<ExchangeMoneyInteractor> interactor;
@@ -52,7 +60,7 @@
         
     }];
     
-    [self.view setOnCancelTap:^{
+    [self.view setOnResetTap:^{
         executeIfNotNil(weakSelf.onFinish);
     }];
     
@@ -85,13 +93,53 @@
     __weak typeof(self) weakSelf = self;
     
     [self.interactor fetchUser:^(User *user) {
-        NSArray *sourceViewDataList = [weakSelf sourceCurrencyViewDataListWithUser:user exchangeRates:ratesData];
-        NSArray *targetViewDataList = [weakSelf targetCurrencyViewDataListWithUser:user exchangeRates:ratesData];
+
+        GalleryPreviewData *sourceData = [weakSelf previewDataWithCurrencyExchangeType:CurrencyExchangeSourceType
+                                                                                  user:user
+                                                                            currencies:ratesData.currencies];
         
-        [weakSelf.view setSourceCurrencyViewData:sourceViewDataList];
-        [weakSelf.view setTargetCurrencyViewData:targetViewDataList];
+        GalleryPreviewData *targetData = [weakSelf previewDataWithCurrencyExchangeType:CurrencyExchangeTargetType
+                                                                                  user:user
+                                                                            currencies:ratesData.currencies];
+        
+        ExchangeMoneyViewData *viewData = [[ExchangeMoneyViewData alloc] initWithSourceData:sourceData
+                                                                                 targetData:targetData];
+        
+        [weakSelf.view setViewData:viewData];
         
         executeIfNotNil(onUpdate);
+    }];
+}
+
+- (GalleryPreviewData *)previewDataWithCurrencyExchangeType:(CurrencyExchangeType)currencyExchangeType
+                                                       user:(User *)user
+                                                 currencies:(NSArray<Currency *> *)currencies
+{
+    NSMutableArray<GalleryPreviewPageData *> *pages = [NSMutableArray array];
+    
+    for (Currency *currency in currencies) {
+        
+        NSString *currencyTitle = currency.currencyCode;
+        NSString *remainder = [self balanceWithUser:user currencyType:currency.currencyType];
+        NSString *rate;
+        switch (currencyExchangeType) {
+            case CurrencyExchangeSourceType:
+                rate = @"";
+                break;
+            case CurrencyExchangeTargetType:
+                rate = currency.rate.stringValue;
+                break;
+        }
+        
+        GalleryPreviewPageData *pageData = [[GalleryPreviewPageData alloc] initWithCurrencyTitle:currencyTitle
+                                                                                  currencyAmount:@""
+                                                                                       remainder:remainder
+                                                                                            rate:rate];
+        [pages addObject:pageData];
+    }
+    
+    return [[GalleryPreviewData alloc] initWithPages:pages onTap:^{
+        NSLog(@"onTap");
     }];
 }
 
@@ -99,58 +147,6 @@
     [self.interactor exchange:^(MoneyData *moneyData) {
         
     }];
-}
-
-- (NSArray<ExchangeMoneyCurrencyViewData *> *)sourceCurrencyViewDataListWithUser:(User *)user
-                                                                   exchangeRates:(ExchangeRatesData *)ratesData
-{
-    __weak typeof(self) weakSelf = self;
-    
-    NSMutableArray *viewDatas = [NSMutableArray array];
-    for (Currency *currency in ratesData.currencies) {
-        ExchangeMoneyCurrencyViewData *viewData = [[ExchangeMoneyCurrencyViewData alloc] init];
-        viewData.currency = [currency currencyCode];
-        
-        ExchangeMoneyBalanceViewData *balanceViewData = [[ExchangeMoneyBalanceViewData alloc] init];
-        balanceViewData.balanceValue = [self balanceWithUser:user
-                                                currencyType:currency.currencyType];
-        
-        viewData.balance = balanceViewData;
-        
-        [viewData setOnShow:^{
-            [weakSelf.interactor setSourceCurrency:currency];
-            [weakSelf updateNavigationTitleRate:nil];
-        }];
-        
-        [viewDatas addObject:viewData];
-    }
-    return viewDatas;
-}
-
-- (NSArray<ExchangeMoneyCurrencyViewData *> *)targetCurrencyViewDataListWithUser:(User *)user
-                                                                   exchangeRates:(ExchangeRatesData *)ratesData {
-    __weak typeof(self) weakSelf = self;
-    
-    NSMutableArray *viewDatas = [NSMutableArray array];
-    for (Currency *currency in ratesData.currencies) {
-        ExchangeMoneyCurrencyViewData *viewData = [[ExchangeMoneyCurrencyViewData alloc] init];
-        viewData.currency = [currency currencyCode];
-        viewData.rate = currency.rate.stringValue;
-        
-        ExchangeMoneyBalanceViewData *balanceViewData = [[ExchangeMoneyBalanceViewData alloc] init];
-        balanceViewData.balanceValue = [self balanceWithUser:user
-                                                currencyType:currency.currencyType];
-        
-        viewData.balance = balanceViewData;
-        
-        [viewData setOnShow:^{
-            [weakSelf.interactor setTargetCurrency:currency];
-            [weakSelf updateNavigationTitleRate:nil];
-        }];
-        
-        [viewDatas addObject:viewData];
-    }
-    return viewDatas;
 }
 
 - (NSString *)balanceWithUser:(User *)user currencyType:(CurrencyType)currencyType {
