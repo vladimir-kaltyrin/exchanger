@@ -54,6 +54,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (UIEdgeInsets)contentInsets {
     return UIEdgeInsetsMake(16, 16, 16, 16);
 }
+
+- (BOOL)isFirstResponder {
+    return [self.currencyAmountTextField isFirstResponder];
+}
+
+- (BOOL)becomeFirstResponder {
+    return [self.currencyAmountTextField becomeFirstResponder];
+}
     
 // MARK: - Public
     

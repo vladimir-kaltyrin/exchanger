@@ -128,6 +128,7 @@ NS_ASSUME_NONNULL_END
     UIViewController *firstController = self.viewControllers.firstObject;
     if ([firstController isKindOfClass:[GalleryPreviewPageController class]]) {
         NSInteger currentIndex = [((GalleryPreviewPageController *)firstController) index];
+        
         executeIfNotNil(self.onPageChange, currentIndex + 1, self.data.count)
     }
 }

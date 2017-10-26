@@ -2,13 +2,13 @@
 #import "ExchangeMoneyCurrencyViewData.h"
 
 @class KeyboardData;
+@class ExchangeMoneyViewData;
 
 @interface ExchangeMoneyView : UIView
 @property (nonatomic, assign) UIEdgeInsets contentInsets;
 - (void)focusOnStart;
 - (void)updateKeyboardData:(KeyboardData *)keyboardData;
-- (void)setSourceCurrencyViewData:(NSArray<ExchangeMoneyCurrencyViewData *> *)viewData;
-- (void)setTargetCurrencyViewData:(NSArray<ExchangeMoneyCurrencyViewData *> *)viewData;
+- (void)setViewData:(ExchangeMoneyViewData *)viewData;
 - (void)startActivity;
 - (void)stopActivity;
 @end

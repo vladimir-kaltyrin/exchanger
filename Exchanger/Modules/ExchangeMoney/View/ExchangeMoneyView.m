@@ -1,5 +1,6 @@
 #import "ExchangeMoneyView.h"
 #import "ExchangeMoneyPageViewController.h"
+#import "ExchangeMoneyViewData.h"
 #import "KeyboardObserverImpl.h"
 #import "ExchangeMoneyCurrencyViewData.h"
 #import "GalleryPreviewData.h"
@@ -7,13 +8,16 @@
 #import "KeyboardData.h"
 #import "CurrencyRateCell.h"
 #import "UIView+Properties.h"
+#import <AFNetworking/UIImageView+AFNetworking.h>
 
 NSString * const kCurrencyRateCellId = @"kCurrencyRateCellId";
 
 @interface ExchangeMoneyView() <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, strong) UIImageView *backgroundImageView;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, assign) CGFloat keyboardHeight;
+@property (nonatomic, strong) ExchangeMoneyViewData *viewData;
 @end
 
 @implementation ExchangeMoneyView
@@ -24,15 +28,25 @@ NSString * const kCurrencyRateCellId = @"kCurrencyRateCellId";
     if (self) {
         self.backgroundColor = [UIColor greenColor];
         
+        self.backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+        
         self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
+        self.tableView.backgroundColor = [UIColor clearColor];
+        self.tableView.separatorColor = [UIColor clearColor];
+        self.tableView.scrollEnabled = NO;
         [self.tableView registerClass:[CurrencyRateCell class] forCellReuseIdentifier:kCurrencyRateCellId];
         
         self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
         
+        [self addSubview:self.backgroundImageView];
         [self addSubview:self.tableView];
         [self addSubview:self.activityIndicator];
+        
+        self.backgroundImageView.backgroundColor = [UIColor blueColor];
+        
+        [self.backgroundImageView setImageWithURL:[NSURL URLWithString:@"https://picsum.photos/800/600"]];
     }
     
     return self;
@@ -49,12 +63,10 @@ NSString * const kCurrencyRateCellId = @"kCurrencyRateCellId";
     [self setNeedsLayout];
 }
 
-- (void)setSourceCurrencyViewData:(NSArray<ExchangeMoneyCurrencyViewData *> *)viewData {
+- (void)setViewData:(ExchangeMoneyViewData *)viewData {
+    _viewData = viewData;
     
-}
-
-- (void)setTargetCurrencyViewData:(NSArray<ExchangeMoneyCurrencyViewData *> *)viewData {
-    
+    [self.tableView reloadData];
 }
 
 - (void)startActivity {
@@ -72,6 +84,7 @@ NSString * const kCurrencyRateCellId = @"kCurrencyRateCellId";
 - (void)layoutSubviews {
     [super layoutSubviews];
     
+    self.backgroundImageView.frame = self.bounds;
     self.activityIndicator.center = self.center;
     self.tableView.frame = self.bounds;
 }
@@ -93,31 +106,16 @@ NSString * const kCurrencyRateCellId = @"kCurrencyRateCellId";
 }
     
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CurrencyRateCell *cell = (CurrencyRateCell *)[tableView dequeueReusableCellWithIdentifier:kCurrencyRateCellId];
-    if (cell == nil) {
-        cell = [[CurrencyRateCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCurrencyRateCellId];
+    
+    CurrencyRateCell *cell;
+    
+    if (indexPath.row == 0) {
+        cell = [[CurrencyRateCell alloc] initWithStyle:CurrencyRateCellStyleLight reuseIdentifier:kCurrencyRateCellId];
+        [cell updateWithModel:self.viewData.sourceData];
+    } else {
+        cell = [[CurrencyRateCell alloc] initWithStyle:CurrencyRateCellStyleDark reuseIdentifier:kCurrencyRateCellId];
+        [cell updateWithModel:self.viewData.targetData];
     }
-    
-    GalleryPreviewPageData *page1 = [[GalleryPreviewPageData alloc] initWithCurrencyTitle:@"title1"
-                                                                         currencyAmount:@"amount1"
-                                                                              remainder:@"remainder1"
-                                                                                   rate:@"rate1"];
-    
-    GalleryPreviewPageData *page2 = [[GalleryPreviewPageData alloc] initWithCurrencyTitle:@"title2"
-                                                                         currencyAmount:@"amount2"
-                                                                              remainder:@"remainder2"
-                                                                                   rate:@"rate2"];
-    
-    GalleryPreviewPageData *page3 = [[GalleryPreviewPageData alloc] initWithCurrencyTitle:@"title3"
-                                                                         currencyAmount:@"amount3"
-                                                                              remainder:@"remainder3"
-                                                                                   rate:@"rate3"];
-    
-    GalleryPreviewData *data = [[GalleryPreviewData alloc] initWithPages:@[page1, page2, page3] onTap:^{
-        NSLog(@"Tap");
-    }];
-    
-    [cell updateWithModel:data];
     
     return cell;
 }
