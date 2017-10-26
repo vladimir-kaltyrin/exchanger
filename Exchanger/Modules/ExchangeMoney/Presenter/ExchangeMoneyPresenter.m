@@ -66,11 +66,24 @@ typedef NS_ENUM(NSInteger, CurrencyExchangeType) {
     
     [self.interactor setOnUpdate:^(ExchangeRatesData *data) {
         [weakSelf.view stopActivity];
-        [weakSelf updateExchangeRates:data onUpdate:nil];
-        [weakSelf updateNavigationTitleRate:nil];
+        [weakSelf updateViewWithData:data];
     }];
     
-    [self.interactor startFetching];
+    [self.view startActivity];
+    [self.interactor fetchRates:^(ExchangeRatesData *data) {
+        [weakSelf.view stopActivity];
+        [weakSelf.interactor resetCurrenciesWithData:data onReset:^{
+            [weakSelf updateViewWithData:data];
+            [weakSelf.interactor startFetching];
+        }];
+    } onError:^(NSError *error) {
+        
+    }];
+}
+
+- (void)updateViewWithData:(ExchangeRatesData *)data {
+    [self updateExchangeRates:data onUpdate:nil];
+    [self updateNavigationTitleRate:nil];
 }
 
 - (void)updateNavigationTitleRate:(void(^)())onUpdate {
