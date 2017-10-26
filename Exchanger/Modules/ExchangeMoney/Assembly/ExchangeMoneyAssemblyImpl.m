@@ -23,7 +23,8 @@
 
 - (id<ExchangeMoneyInteractor>)interactor {
     return [[ExchangeMoneyInteractorImpl alloc] initWithUserService:[self.serviceFactory userService]
-                                        exchangeMoneyService:[self.serviceFactory exchangeMoneyService]
+                                               exchangeRatesService:[self.serviceFactory exchangeRatesService]
+                                               exchangeMoneyService:[self.serviceFactory exchangeMoneyService]
                                         exchangeRatesUpdater:[self.serviceFactory exchangeRatesUpdater]
             ];
 }

@@ -17,4 +17,9 @@
 
 - (void)fetchUser:(void(^)(User *))onUser;
 
+- (void)fetchRates:(void(^)(ExchangeRatesData *))onRates
+           onError:(void(^)(NSError *))onError;
+
+- (void)resetCurrenciesWithData:(ExchangeRatesData *)data onReset:(void(^)())onReset;
+
 @end

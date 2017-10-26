@@ -9,6 +9,7 @@
 @interface ExchangeMoneyInteractorImpl : NSObject<ExchangeMoneyInteractor>
 
 - (instancetype)initWithUserService:(id<UserService>)userService
+               exchangeRatesService:(id<ExchangeRatesService>)exchangeRatesService
                exchangeMoneyService:(id<IExchangeMoneyService>)exchangeMoneyService
                exchangeRatesUpdater:(id<ExchangeRatesUpdater>)exchangeRatesUpdater;
 
