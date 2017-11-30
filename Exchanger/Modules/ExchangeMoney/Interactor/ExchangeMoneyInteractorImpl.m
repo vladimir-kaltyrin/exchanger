@@ -61,7 +61,7 @@
 
 - (void)setOnUpdate:(void(^)(ExchangeRatesData *))onUpdate; {
     [self.exchangeRatesUpdater setOnUpdate:^(ExchangeRatesData * data) {
-        executeIfNotNil(onUpdate, data);
+        block(onUpdate, data);
     }];
 }
 
@@ -79,7 +79,7 @@
 - (void)resetCurrenciesWithData:(ExchangeRatesData *)data onReset:(void (^)())onReset {
     self.sourceCurrency = [self findCurrencyWithType:CurrencyTypeUSD inData:data];
     self.targetCurrency = [self findCurrencyWithType:CurrencyTypeEUR inData:data];
-    executeIfNotNil(onReset);
+    block(onReset);
 }
 
 // MARK: - Private

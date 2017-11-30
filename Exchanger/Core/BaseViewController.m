@@ -45,31 +45,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    executeIfNotNil(self.onViewDidLoad)
+    block(self.onViewDidLoad)
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    executeIfNotNil(self.onViewDidAppear)
+    block(self.onViewDidAppear)
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    executeIfNotNil(self.onViewWillAppear)
+    block(self.onViewWillAppear)
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    executeIfNotNil(self.onViewWillDisappear)
+    block(self.onViewWillDisappear)
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     
-    executeIfNotNil(self.onViewDidDisappear)
+    block(self.onViewDidDisappear)
 }
 
 @end

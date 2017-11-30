@@ -38,12 +38,8 @@
     __weak typeof(self) weakSelf = self;
     
     [self.view setOnStartTap:^{
-        [weakSelf.router showDemoWith:^(id<ExchangeMoneyModule> module) {
-            
-        }];
+        [weakSelf.router showDemoWith:nil];
     }];
 }
-
-// MARK: - IntroModule
 
 @end

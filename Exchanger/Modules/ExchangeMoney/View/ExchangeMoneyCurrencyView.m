@@ -66,7 +66,7 @@ CGFloat const kkSmallFontSize = 10.0;
                                                        queue:[NSOperationQueue mainQueue]
                                                   usingBlock:^(NSNotification * _Nonnull note)
     {
-        executeIfNotNil(weakSelf.onTextChange);
+        block(weakSelf.onTextChange);
     }];
 }
 
