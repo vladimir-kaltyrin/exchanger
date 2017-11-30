@@ -1,5 +1,6 @@
 #import "AssemblyFactoryImpl.h"
 #import "ExchangeMoneyAssemblyImpl.h"
+#import "IntroAssemblyImpl.h"
 #import "AssemblySeed.h"
 #import "ServiceFactory.h"
 #import "AssemblyFactory.h"
@@ -8,6 +9,10 @@
 
 - (id<ExchangeMoneyAssembly>)exchangeMoneyAssembly {
     return [[ExchangeMoneyAssemblyImpl alloc] initWithAssemblySeed:[self assemblySeed]];
+}
+
+- (id<IntroAssembly>)introAssembly {
+    return [[IntroAssemblyImpl alloc] initWithAssemblySeed:[self assemblySeed]];
 }
 
 // MARK: - Private

@@ -38,6 +38,8 @@
 		8C45F6601FD01DE4005B3892 /* IntroPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C45F65F1FD01DE4005B3892 /* IntroPresenter.m */; };
 		8C45F6631FD01E2D005B3892 /* IntroInteractorImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C45F6621FD01E2D005B3892 /* IntroInteractorImpl.m */; };
 		8C45F6661FD01F17005B3892 /* IntroRouterImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C45F6651FD01F17005B3892 /* IntroRouterImpl.m */; };
+		8C45F6691FD02EA7005B3892 /* BaseUIKitRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C45F6681FD02EA7005B3892 /* BaseUIKitRouter.m */; };
+		8C45F66C1FD03222005B3892 /* BaseRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C45F66B1FD03222005B3892 /* BaseRouter.m */; };
 		8C6423491FA0747500A95479 /* GalleryPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6423481FA0747500A95479 /* GalleryPreviewView.m */; };
 		8C64234C1FA0753500A95479 /* GalleryPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C64234B1FA0753500A95479 /* GalleryPreviewController.m */; };
 		8C6423521FA0757600A95479 /* GalleryPreviewPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6423511FA0757600A95479 /* GalleryPreviewPageController.m */; };
@@ -159,6 +161,10 @@
 		8C45F6621FD01E2D005B3892 /* IntroInteractorImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = IntroInteractorImpl.m; path = Modules/Intro/Interactor/IntroInteractorImpl.m; sourceTree = "<group>"; };
 		8C45F6641FD01F17005B3892 /* IntroRouterImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IntroRouterImpl.h; path = Modules/Intro/Router/IntroRouterImpl.h; sourceTree = "<group>"; };
 		8C45F6651FD01F17005B3892 /* IntroRouterImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = IntroRouterImpl.m; path = Modules/Intro/Router/IntroRouterImpl.m; sourceTree = "<group>"; };
+		8C45F6671FD02EA7005B3892 /* BaseUIKitRouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BaseUIKitRouter.h; path = Core/BaseUIKitRouter.h; sourceTree = "<group>"; };
+		8C45F6681FD02EA7005B3892 /* BaseUIKitRouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BaseUIKitRouter.m; path = Core/BaseUIKitRouter.m; sourceTree = "<group>"; };
+		8C45F66A1FD03222005B3892 /* BaseRouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BaseRouter.h; path = Core/BaseRouter.h; sourceTree = "<group>"; };
+		8C45F66B1FD03222005B3892 /* BaseRouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BaseRouter.m; path = Core/BaseRouter.m; sourceTree = "<group>"; };
 		8C6423471FA0747500A95479 /* GalleryPreviewView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GalleryPreviewView.h; path = Views/GalleryPreviewView/GalleryPreviewView.h; sourceTree = "<group>"; };
 		8C6423481FA0747500A95479 /* GalleryPreviewView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GalleryPreviewView.m; path = Views/GalleryPreviewView/GalleryPreviewView.m; sourceTree = "<group>"; };
 		8C64234A1FA0753500A95479 /* GalleryPreviewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GalleryPreviewController.h; path = Views/GalleryPreviewView/GalleryPreviewController.h; sourceTree = "<group>"; };
@@ -426,6 +432,10 @@
 				8C6423701FA0B23C00A95479 /* ObservableTextField.m */,
 				8C6423621FA0966500A95479 /* MoveFailableLongPressGestureRecognizer.h */,
 				8C6423631FA0966500A95479 /* MoveFailableLongPressGestureRecognizer.m */,
+				8C45F6671FD02EA7005B3892 /* BaseUIKitRouter.h */,
+				8C45F6681FD02EA7005B3892 /* BaseUIKitRouter.m */,
+				8C45F66A1FD03222005B3892 /* BaseRouter.h */,
+				8C45F66B1FD03222005B3892 /* BaseRouter.m */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -1079,9 +1089,11 @@
 				8C6423551FA0758C00A95479 /* GalleryPreviewPage.m in Sources */,
 				8C7326831F3C8D5800301720 /* UserServiceImpl.m in Sources */,
 				8CD786591F14F86100AF7A8D /* AssemblyFactoryImpl.m in Sources */,
+				8C45F66C1FD03222005B3892 /* BaseRouter.m in Sources */,
 				8CD7864E1F14F32600AF7A8D /* User.m in Sources */,
 				8C94B4E01F3E10C600B2B9FC /* BarButton.m in Sources */,
 				8C94B4DA1F3DEB8700B2B9FC /* UIViewController+Extensions.m in Sources */,
+				8C45F6691FD02EA7005B3892 /* BaseUIKitRouter.m in Sources */,
 				8C36E9921F2634C9009BDDC0 /* BaseViewController.m in Sources */,
 				8C43EB6D1FA1EC1900EE87FD /* ExchangeMoneyViewData.m in Sources */,
 				8CF9643D1F17D84E009852B9 /* KeyboardObserverImpl.m in Sources */,

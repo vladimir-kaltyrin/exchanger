@@ -1,6 +1,4 @@
 #import "IntroPresenter.h"
-#import "IntroInteractor.h"
-#import "IntroRouter.h"
 
 @interface IntroPresenter()
 @property (nonatomic, strong) id<IntroInteractor> interactor;
@@ -21,6 +19,29 @@
     }
     
     return self;
+}
+
+// MARK: - Public
+
+- (void)setView:(id<IntroViewInput>)view {
+    _view = view;
+    
+    [self setUpView];
+}
+
+// MARK: - Private
+
+- (void)setUpView {
+    [self.view setStartButtonTitle:@"Start Demo"];
+    [self.view setResetButtonTitle:@"Reset State"];
+    
+    __weak typeof(self) weakSelf = self;
+    
+    [self.view setOnStartTap:^{
+        [weakSelf.router showDemoWith:^(id<ExchangeMoneyModule> module) {
+            
+        }];
+    }];
 }
 
 // MARK: - IntroModule
