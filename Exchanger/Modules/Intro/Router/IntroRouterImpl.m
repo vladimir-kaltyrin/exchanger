@@ -9,7 +9,7 @@
     id<ExchangeMoneyAssembly> assembly = [self.assemblyFactory exchangeMoneyAssembly];
     AssembledViewController *assembledViewController = [assembly module];
     
-    executeIfNotNil(configure, assembledViewController.module);
+    block(configure, assembledViewController.module);
     
     [self push:assembledViewController.viewController animated:YES];
 }

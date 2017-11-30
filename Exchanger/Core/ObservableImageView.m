@@ -63,7 +63,7 @@ static void * Context = &Context;
     if (context == Context) {
         if ([keyPath isEqualToString:NSStringFromSelector(@selector(setImage:))]) {
             UIImage *newImage = [change objectForKey:NSKeyValueChangeNewKey];
-            executeIfNotNil(_onImageChange, newImage)
+            block(_onImageChange, newImage)
         }
     }
 }

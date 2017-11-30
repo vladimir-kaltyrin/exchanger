@@ -1,1 +1,1 @@
-#define executeIfNotNil(block, ...) if (block != nil) { block(__VA_ARGS__); }
+#define block(block, ...) if (block != nil) { block(__VA_ARGS__); }

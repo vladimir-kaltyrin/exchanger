@@ -89,14 +89,14 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 - (void)onSelect:(UIGestureRecognizer *)sender {
     switch (sender.state) {
         case UIGestureRecognizerStateBegan:
-            executeIfNotNil(self.onSelect, YES);
+            block(self.onSelect, YES);
             break;
         case UIGestureRecognizerStateEnded:
-            executeIfNotNil(self.onSelect, NO);
+            block(self.onSelect, NO);
             break;
         case UIGestureRecognizerStateCancelled:
         case UIGestureRecognizerStateFailed:
-            executeIfNotNil(self.onSelect, NO);
+            block(self.onSelect, NO);
             break;
         case UIGestureRecognizerStatePossible:
         case UIGestureRecognizerStateChanged:

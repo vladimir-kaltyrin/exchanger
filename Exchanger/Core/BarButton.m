@@ -32,7 +32,7 @@
 // MARK: - Private
 
 - (void)onBarButtonTap:(id)sender {
-    executeIfNotNil(self.onBarButtonTap);
+    block(self.onBarButtonTap);
 }
 
 @end

@@ -114,7 +114,7 @@
     
     ExchangeMoneyCurrencyViewData *viewData = [self.viewData objectAtIndex:self.currentIndex];
     
-    executeIfNotNil(viewData.onShow);
+    block(viewData.onShow);
 }
 
 // MARK: - FirstResponder

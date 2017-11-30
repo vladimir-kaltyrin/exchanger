@@ -68,11 +68,11 @@
 // MARK: - Actions
 
 - (void)onResetButtonTap:(UIButton *)sender {
-    executeIfNotNil(self.onResetTap);
+    block(self.onResetTap);
 }
 
 - (void)onStartButtonTap:(UIButton *)sender {
-    executeIfNotNil(self.onStartTap);
+    block(self.onStartTap);
 }
 
 @end

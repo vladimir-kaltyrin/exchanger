@@ -61,7 +61,7 @@ typedef NS_ENUM(NSInteger, CurrencyExchangeType) {
     }];
     
     [self.view setOnResetTap:^{
-        executeIfNotNil(weakSelf.onFinish);
+        block(weakSelf.onFinish);
     }];
     
     [self.interactor setOnUpdate:^(ExchangeRatesData *data) {
@@ -97,7 +97,7 @@ typedef NS_ENUM(NSInteger, CurrencyExchangeType) {
                                  convertedCurrencySign
                                  ];
         [weakSelf.view setNavigationTitle:currentRate];
-        executeIfNotNil(onUpdate);
+        block(onUpdate);
     }];
 }
 
@@ -120,7 +120,7 @@ typedef NS_ENUM(NSInteger, CurrencyExchangeType) {
         
         [weakSelf.view setViewData:viewData];
         
-        executeIfNotNil(onUpdate);
+        block(onUpdate);
     }];
 }
 
