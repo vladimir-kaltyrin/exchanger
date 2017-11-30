@@ -2,7 +2,7 @@
 #import "ExchangeMoneyAssemblyImpl.h"
 #import "IntroAssemblyImpl.h"
 #import "AssemblySeed.h"
-#import "ServiceFactory.h"
+#import "ServiceFactoryImpl.h"
 #import "AssemblyFactory.h"
 
 @implementation AssemblyFactoryImpl
@@ -19,7 +19,7 @@
 
 - (AssemblySeed *)assemblySeed {
     AssemblySeed *result = [[AssemblySeed alloc] init];
-    result.serviceFactory = [[ServiceFactory alloc] init];
+    result.serviceFactory = [[ServiceFactoryImpl alloc] init];
     result.assemblyFactory = [[AssemblyFactoryImpl alloc] init];
     return result;
 }

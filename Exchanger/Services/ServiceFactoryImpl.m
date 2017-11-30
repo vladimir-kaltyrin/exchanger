@@ -1,11 +1,11 @@
-#import "ServiceFactory.h"
+#import "ServiceFactoryImpl.h"
 #import "KeyboardObserverImpl.h"
 #import "ExchangeRatesServiceImpl.h"
 #import "ExchangeRatesUpdaterImpl.h"
 #import "XMLParserImpl.h"
 #import "UserServiceImpl.h"
 
-@implementation ServiceFactory
+@implementation ServiceFactoryImpl
 
 - (id<KeyboardObserver>)keyboardObserver {
     return [[KeyboardObserverImpl alloc] init];
