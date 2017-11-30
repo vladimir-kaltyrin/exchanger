@@ -5,7 +5,7 @@
 
 @interface BaseAssembly : NSObject
 @property (nonatomic, strong) id<AssemblyFactory> assemblyFactory;
-@property (nonatomic, strong) id<IServiceFactory> serviceFactory;
+@property (nonatomic, strong) id<ServiceFactory> serviceFactory;
 
 - (instancetype)initWithAssemblySeed:(AssemblySeed *)assemblySeed;
 
