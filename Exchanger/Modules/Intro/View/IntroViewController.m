@@ -31,11 +31,11 @@
 
 // MARK: - IntroViewInput
 
-- (void)setOnResetTap:(void (^)())onResetTap {
-    self.introView.onResetTap = onResetTap;
+- (void)setOnResetTap:(void (^)())onBackTap {
+    self.introView.onResetTap = onBackTap;
 }
 
-- (void (^)())onResetTap {
+- (void (^)())onBackTap {
     return self.introView.onResetTap;
 }
 

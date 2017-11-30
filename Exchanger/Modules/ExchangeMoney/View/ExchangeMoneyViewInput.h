@@ -7,7 +7,7 @@
 
 @protocol ExchangeMoneyViewInput <ViewLifeCycleObservable>
 @property (nonatomic, strong) void(^onExchangeTap)();
-@property (nonatomic, strong) void(^onResetTap)();
+@property (nonatomic, strong) void(^onBackTap)();
 
 - (void)setNavigationTitle:(NSString *)title;
 - (void)focusOnStart;

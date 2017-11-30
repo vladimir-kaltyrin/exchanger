@@ -24,6 +24,7 @@
 /* Begin PBXBuildFile section */
 		2D9A60EAD27A2EFF8A0EA557 /* libPods-Exchanger.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A46A0D61B3F31B4C0C77D2B7 /* libPods-Exchanger.a */; };
 		68C8AC0CEC9D9ED7064AFBD1 /* libPods-ExchangerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 065BDAA0B52E5D049A00B783 /* libPods-ExchangerTests.a */; };
+		8C076B9F1FD03DF4003F4D42 /* DisposeBag.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C076B9E1FD03DF4003F4D42 /* DisposeBag.m */; };
 		8C1FEFCB1F13A76A0024F046 /* ServiceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1FEFCA1F13A76A0024F046 /* ServiceFactory.m */; };
 		8C2E1CF41F13818D00DB0FC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C2E1CF31F13818D00DB0FC2 /* Assets.xcassets */; };
 		8C2E1D021F13818D00DB0FC2 /* ExchangerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2E1D011F13818D00DB0FC2 /* ExchangerTests.m */; };
@@ -119,6 +120,9 @@
 		228D4FAA2C2C7FB35FC8A6FF /* libPods-ExchangerUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ExchangerUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A61991DAEB98C839D7E3370 /* Pods-Exchanger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Exchanger.release.xcconfig"; path = "Pods/Target Support Files/Pods-Exchanger/Pods-Exchanger.release.xcconfig"; sourceTree = "<group>"; };
 		72F62204F1A8827488E4665A /* Pods-ExchangerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExchangerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExchangerTests/Pods-ExchangerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8C076B9D1FD03DF4003F4D42 /* DisposeBag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DisposeBag.h; path = Core/DisposeBag.h; sourceTree = "<group>"; };
+		8C076B9E1FD03DF4003F4D42 /* DisposeBag.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DisposeBag.m; path = Core/DisposeBag.m; sourceTree = "<group>"; };
+		8C076BA01FD03EFA003F4D42 /* DisposeBagHolder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DisposeBagHolder.h; path = Protocols/DisposeBagHolder.h; sourceTree = "<group>"; };
 		8C1FEFC31F13A2610024F046 /* lint.sh */ = {isa = PBXFileReference; explicitFileType = text.script.sh; fileEncoding = 4; path = lint.sh; sourceTree = "<group>"; };
 		8C1FEFC91F13A76A0024F046 /* ServiceFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceFactory.h; path = Services/ServiceFactory.h; sourceTree = "<group>"; };
 		8C1FEFCA1F13A76A0024F046 /* ServiceFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceFactory.m; path = Services/ServiceFactory.m; sourceTree = "<group>"; };
@@ -365,6 +369,7 @@
 		8C2E1CE61F13818D00DB0FC2 /* Exchanger */ = {
 			isa = PBXGroup;
 			children = (
+				8CD785EC1F14EE3900AF7A8D /* Modules */,
 				8C6423451FA0744D00A95479 /* Views */,
 				8C36E98F1F2634B4009BDDC0 /* Core */,
 				8C36E98D1F26336F009BDDC0 /* Protocols */,
@@ -372,7 +377,6 @@
 				8CF964141F165BF3009852B9 /* Application */,
 				8CD786501F14F7A500AF7A8D /* DI */,
 				8CD7863F1F14F29600AF7A8D /* Formatters */,
-				8CD785EC1F14EE3900AF7A8D /* Modules */,
 				8C1FEFCC1F13A90D0024F046 /* Networking */,
 				8C1FEFC61F13A6C90024F046 /* Services */,
 				8C2E1CF31F13818D00DB0FC2 /* Assets.xcassets */,
@@ -414,6 +418,7 @@
 			isa = PBXGroup;
 			children = (
 				8C36E98E1F263392009BDDC0 /* ViewLifeCycleObservable.h */,
+				8C076BA01FD03EFA003F4D42 /* DisposeBagHolder.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -436,6 +441,8 @@
 				8C45F6681FD02EA7005B3892 /* BaseUIKitRouter.m */,
 				8C45F66A1FD03222005B3892 /* BaseRouter.h */,
 				8C45F66B1FD03222005B3892 /* BaseRouter.m */,
+				8C076B9D1FD03DF4003F4D42 /* DisposeBag.h */,
+				8C076B9E1FD03DF4003F4D42 /* DisposeBag.m */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -1104,6 +1111,7 @@
 				8CF964481F1CC4EE009852B9 /* ExchangeMoneyPageViewController.m in Sources */,
 				8CF9644B1F1CC81D009852B9 /* ExchangeMoneyCurrencyViewController.m in Sources */,
 				8C64235B1FA0761400A95479 /* GalleryPreviewPageData.m in Sources */,
+				8C076B9F1FD03DF4003F4D42 /* DisposeBag.m in Sources */,
 				8C73267C1F3B345000301720 /* KeyboardData.m in Sources */,
 				8CF9641E1F165C31009852B9 /* main.m in Sources */,
 				8CD786561F14F82000AF7A8D /* AssemblySeed.m in Sources */,

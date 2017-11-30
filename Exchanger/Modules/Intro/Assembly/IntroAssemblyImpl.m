@@ -11,8 +11,13 @@
 @implementation IntroAssemblyImpl
 
 - (AssembledViewController *)module {
+    
+    id<IntroModule> presenter = [self presenter];
+    [self.viewController addDisposable:presenter];
+    
     return [[AssembledViewController alloc] initWithViewController:self.viewController
-                                                            module:[self presenter]];
+                                                            module:presenter];
+
 }
 
 // MARK: - Private

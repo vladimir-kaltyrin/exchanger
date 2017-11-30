@@ -15,6 +15,10 @@
 @implementation ExchangeMoneyAssemblyImpl
 
 - (AssembledViewController *)module {
+    
+    id<ExchangeMoneyModule> presenter = [self presenter];
+    [self.viewController addDisposable:presenter];
+    
     return [[AssembledViewController alloc] initWithViewController:self.viewController
                                                             module:[self presenter]];
 }
@@ -30,7 +34,7 @@
 }
 
 - (id<ExchangeMoneyRouter>)router {
-    return [[ExchangeMoneyRouterImpl alloc] init];
+    return [[ExchangeMoneyRouterImpl alloc] initWithAssemblyFactory:self.assemblyFactory viewController:self.viewController];
 }
 
 - (id<ExchangeMoneyModule>)presenter {

@@ -11,7 +11,7 @@
 @property (nonatomic, strong) ExchangeMoneyView* exchangeMoneyView;
 @property (nonatomic, strong) ExchangeMoneyTitleView *exchangeMoneyTitleView;
 @property (nonatomic, strong) BarButton *exchangeBarButton;
-@property (nonatomic, strong) BarButton *resetBarButton;
+@property (nonatomic, strong) BarButton *backBarButton;
 @end
 
 @implementation ExchangeMoneyViewController
@@ -22,7 +22,7 @@
     if (self) {
         self.exchangeMoneyView = [[ExchangeMoneyView alloc] init];
         self.exchangeBarButton = [[BarButton alloc] initWithTitle:@"Exchange"];
-        self.resetBarButton = [[BarButton alloc] initWithTitle:@"Reset"];
+        self.backBarButton = [[BarButton alloc] initWithTitle:@"Back"];
         
         self.exchangeMoneyTitleView = [[ExchangeMoneyTitleView alloc] init];
         self.exchangeMoneyTitleView.frame = CGRectMake(0, 0, 150, 36);
@@ -39,7 +39,7 @@
     [super viewDidLoad];
     
     self.navigationItem.rightBarButtonItem = self.exchangeBarButton.barButtonItem;
-    self.navigationItem.leftBarButtonItem = self.resetBarButton.barButtonItem;
+    self.navigationItem.leftBarButtonItem = self.backBarButton.barButtonItem;
     self.navigationItem.titleView = self.exchangeMoneyTitleView;
 }
 
@@ -55,12 +55,12 @@
     [self.exchangeMoneyTitleView setTitle:title];
 }
 
-- (void)setOnResetTap:(void (^)())onResetTap {
-    self.resetBarButton.onBarButtonTap = onResetTap;
+- (void)setOnBackTap:(void (^)())onBackTap {
+    self.backBarButton.onBarButtonTap = onBackTap;
 }
 
-- (void (^)())onResetTap {
-    return self.resetBarButton.onBarButtonTap;
+- (void (^)())onBackTap {
+    return self.backBarButton.onBarButtonTap;
 }
 
 - (void)setOnExchangeTap:(void (^)())onExchangeTap {

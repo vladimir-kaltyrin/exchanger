@@ -2,4 +2,8 @@
 
 @implementation ExchangeMoneyRouterImpl
 
+- (void)dismissModule {
+    [self dismissCurrentModule];
+}
+
 @end

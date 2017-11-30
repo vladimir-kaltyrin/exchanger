@@ -1,8 +1,10 @@
 #import <Foundation/Foundation.h>
+#import "BaseRouter.h"
 
 @protocol ExchangeMoneyRouter <NSObject>
+- (void)dismissModule;
 @end
 
-@interface ExchangeMoneyRouterImpl : NSObject<ExchangeMoneyRouter>
+@interface ExchangeMoneyRouterImpl : BaseRouter<ExchangeMoneyRouter>
 
 @end

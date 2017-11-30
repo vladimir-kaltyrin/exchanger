@@ -60,8 +60,9 @@ typedef NS_ENUM(NSInteger, CurrencyExchangeType) {
         
     }];
     
-    [self.view setOnResetTap:^{
-        block(weakSelf.onFinish);
+    // TODO: fix retain-reference cycle
+    [self.view setOnBackTap:^{
+        block(self.onFinish);
     }];
     
     [self.interactor setOnUpdate:^(ExchangeRatesData *data) {
@@ -165,6 +166,10 @@ typedef NS_ENUM(NSInteger, CurrencyExchangeType) {
 - (NSString *)balanceWithUser:(User *)user currencyType:(CurrencyType)currencyType {
     MoneyData *moneyData = [user moneyDataWithCurrencyType:currencyType];
     return [NSString stringWithFormat:@"You have %@", [moneyData.amount stringValue]];
+}
+
+- (void)dismissModule {
+    [self.router dismissModule];
 }
 
 @end

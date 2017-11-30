@@ -1,7 +1,9 @@
 #import "BaseViewController.h"
 #import "SafeBlocks.h"
+#import "DisposeBag.h"
 
 @interface BaseViewController ()
+@property (nonatomic, strong) DisposeBag *disposeBag;
 @end
 
 @implementation BaseViewController
@@ -37,6 +39,7 @@
 // MARK: - Private
 
 - (void)setUp {
+    self.disposeBag = [[DisposeBag alloc] init];
     self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
@@ -70,6 +73,12 @@
     [super viewDidDisappear:animated];
     
     block(self.onViewDidDisappear)
+}
+
+// MARK: - DisposeBagHolder
+
+- (void)addDisposable:(id)disposable {
+    [self.disposeBag addDisposable:disposable];
 }
 
 @end
