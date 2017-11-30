@@ -5,7 +5,7 @@
 #import "IntroRouter.h"
 
 @interface IntroPresenter : NSObject<IntroModule>
-@property (nonatomic, strong) id<IntroViewInput> view;
+@property (nonatomic, weak) id<IntroViewInput> view;
 
 - (instancetype)initWithInteractor:(id<IntroInteractor>)interactor
                             router:(id<IntroRouter>)router;

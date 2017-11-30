@@ -38,7 +38,12 @@
     __weak typeof(self) weakSelf = self;
     
     [self.view setOnStartTap:^{
-        [weakSelf.router showDemoWith:nil];
+        [weakSelf.router showDemoWith:^(id<ExchangeMoneyModule> module) {
+            __weak typeof(module) weakModule = module;
+            module.onFinish = ^{
+                [weakModule dismissModule];
+            };
+        }];
     }];
 }
 
