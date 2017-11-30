@@ -22,7 +22,8 @@
 }
 
 - (id<IntroRouter>)router {
-    return [[IntroRouterImpl alloc] init];
+    return [[IntroRouterImpl alloc] initWithAssemblyFactory:self.assemblyFactory
+                                             viewController:self.viewController];
 }
 
 - (id<IntroModule>)presenter {

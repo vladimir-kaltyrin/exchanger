@@ -14,7 +14,7 @@
 {
     self.assemblyFactory = [[AssemblyFactoryImpl alloc] init];
     
-    id<ExchangeMoneyAssembly> rootAssembly = [[self assemblyFactory] exchangeMoneyAssembly];
+    id<IntroAssembly> rootAssembly = [[self assemblyFactory] introAssembly];
     self.rootModule = [rootAssembly module];
     
     [self makeWindowKeyAndVisibleWith:self.rootModule.viewController];

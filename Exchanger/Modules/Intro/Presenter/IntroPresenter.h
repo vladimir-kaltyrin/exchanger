@@ -1,6 +1,8 @@
 #import <Foundation/Foundation.h>
 #import "IntroModule.h"
 #import "IntroViewInput.h"
+#import "IntroInteractor.h"
+#import "IntroRouter.h"
 
 @interface IntroPresenter : NSObject<IntroModule>
 @property (nonatomic, strong) id<IntroViewInput> view;

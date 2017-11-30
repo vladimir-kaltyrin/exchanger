@@ -7,6 +7,7 @@
 
 @implementation IntroViewController
 
+
 // MARK: - Init
 
 - (instancetype)init {
@@ -24,8 +25,34 @@
     self.view = self.introView;
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+}
+
 // MARK: - IntroViewInput
 
+- (void)setOnResetTap:(void (^)())onResetTap {
+    self.introView.onResetTap = onResetTap;
+}
 
+- (void (^)())onResetTap {
+    return self.introView.onResetTap;
+}
+
+- (void)setOnStartTap:(void (^)())onStartTap {
+    self.introView.onStartTap = onStartTap;
+}
+
+- (void (^)())onStartTap {
+    return self.introView.onStartTap;
+}
+
+- (void)setResetButtonTitle:(NSString *)resetButtonTitle {
+    [self.introView setResetButtonTitle:resetButtonTitle];
+}
+
+- (void)setStartButtonTitle:(NSString *)startButtonTitle {
+    [self.introView setStartButtonTitle:startButtonTitle];
+}
 
 @end
