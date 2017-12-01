@@ -4,6 +4,7 @@
 #import "User.h"
 
 @protocol ExchangeMoneyService <NSObject>
+
 - (void)exchangeMoney:(NSNumber *)money
        sourceCurrency:(Currency *)sourceCurrency
        targetCurrency:(Currency *)targetCurrency
