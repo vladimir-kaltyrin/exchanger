@@ -164,8 +164,8 @@ typedef NS_ENUM(NSInteger, CurrencyExchangeType) {
 }
 
 - (NSString *)balanceWithUser:(User *)user currencyType:(CurrencyType)currencyType {
-    MoneyData *moneyData = [user moneyDataWithCurrencyType:currencyType];
-    return [NSString stringWithFormat:@"You have %@", [moneyData.amount stringValue]];
+    Wallet *wallet = [user walletWithCurrencyType:currencyType];
+    return [NSString stringWithFormat:@"You have %@", [wallet.amount stringValue]];
 }
 
 - (void)dismissModule {

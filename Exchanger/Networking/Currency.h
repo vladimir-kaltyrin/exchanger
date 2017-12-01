@@ -12,4 +12,6 @@
 
 + (NSArray<Currency *> *)arrayOfObjects: (NSArray<NSDictionary *> *)arrayOfDictionaries;
 
++ (Currency *)currencyWithType:(CurrencyType)currencyType;
+
 @end
