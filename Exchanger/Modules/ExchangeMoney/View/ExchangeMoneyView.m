@@ -45,10 +45,6 @@ CGFloat const kFontSize = 34.0;
         self.currencyAmountTextField.textColor = [UIColor whiteColor];
         self.currencyAmountTextField.textAlignment = NSTextAlignmentRight;
         self.currencyAmountTextField.keyboardType = UIKeyboardTypeDecimalPad;
-        self.currencyAmountTextField.layer.borderWidth = 2;
-        self.currencyAmountTextField.layer.borderColor = [UIColor whiteColor].CGColor;
-        self.currencyAmountTextField.layer.cornerRadius = 2.5f;
-        self.currencyAmountTextField.placeholder = @"Input amount";
         
         self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
         
