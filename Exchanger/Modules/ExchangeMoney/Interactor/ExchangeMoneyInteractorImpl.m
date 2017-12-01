@@ -5,7 +5,6 @@
 #import "User.h"
 
 @interface ExchangeMoneyInteractorImpl()
-@property (nonatomic, strong) User *user;
 @property (nonatomic, strong) id<UserService> userService;
 @property (nonatomic, strong) id<ExchangeRatesService> exchangeRatesService;
 @property (nonatomic, strong) id<ExchangeMoneyService> exchangeMoneyService;
@@ -47,18 +46,21 @@
 
 - (void)exchange:(void (^)(Wallet *))onExchange {
     
-    Wallet *wallet = [self.user walletWithCurrencyType:self.sourceCurrency.currencyType];
-    
-    [self.exchangeMoneyService exchangeWithUser:self.user
-                                    moneyAmount:wallet.amount
-                                 sourceCurrency:self.sourceCurrency
-                                 targetCurrency:self.targetCurrency
-                                       onResult:^(ExchangeMoneyResult *result) {
-                                           
-                                           // TODO:
-                                           block(onExchange, result.targetWallet);
-                                           
-                                       }];
+    __weak typeof(self) weakSelf = self;
+    [self.userService currentUser:^(User *user) {
+        Wallet *wallet = [user walletWithCurrencyType:weakSelf.sourceCurrency.currencyType];
+        
+        [weakSelf.exchangeMoneyService exchangeWithUser:user
+                                        moneyAmount:wallet.amount
+                                     sourceCurrency:weakSelf.sourceCurrency
+                                     targetCurrency:weakSelf.targetCurrency
+                                           onResult:^(ExchangeMoneyResult *result) {
+                                               
+                                               // TODO:
+                                               block(onExchange, result.targetWallet);
+                                               
+                                           }];
+    }];
 }
 
 - (void)startFetching {
