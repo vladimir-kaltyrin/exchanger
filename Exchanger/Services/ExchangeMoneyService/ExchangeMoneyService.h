@@ -1,5 +1,5 @@
 #import <Foundation/Foundation.h>
-#import "MoneyData.h"
+#import "Wallet.h"
 #import "Currency.h"
 #import "User.h"
 
@@ -7,11 +7,11 @@
 - (void)exchangeMoney:(NSNumber *)money
        sourceCurrency:(Currency *)sourceCurrency
        targetCurrency:(Currency *)targetCurrency
-             onResult:(void(^)(MoneyData *))onResult;
+             onResult:(void(^)(Wallet *))onResult;
 
 - (void)convertedCurrencyWithSourceCurrency:(Currency *)sourceCurrency
-                                   targetCurrency:(Currency *)targetCurrency
-                                        onConvert:(void(^)(Currency *))onConvert;
+                             targetCurrency:(Currency *)targetCurrency
+                                  onConvert:(void(^)(Currency *))onConvert;
 
 @end
 

@@ -71,7 +71,6 @@
 		8CD7862F1F14F24600AF7A8D /* ExchangeRatesServiceImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD7862D1F14F24600AF7A8D /* ExchangeRatesServiceImpl.m */; };
 		8CD786331F14F26700AF7A8D /* ExchangeRatesUpdaterImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD786321F14F26700AF7A8D /* ExchangeRatesUpdaterImpl.m */; };
 		8CD786391F14F27F00AF7A8D /* ExchangeMoneyService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD786361F14F27F00AF7A8D /* ExchangeMoneyService.m */; };
-		8CD7863A1F14F27F00AF7A8D /* MoneyData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD786381F14F27F00AF7A8D /* MoneyData.m */; };
 		8CD7863E1F14F29000AF7A8D /* XMLParserImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD7863D1F14F29000AF7A8D /* XMLParserImpl.m */; };
 		8CD786421F14F2A000AF7A8D /* CurrencyFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD786411F14F2A000AF7A8D /* CurrencyFormatter.m */; };
 		8CD786491F14F2B800AF7A8D /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD786441F14F2B800AF7A8D /* Currency.m */; };
@@ -233,8 +232,6 @@
 		8CD786321F14F26700AF7A8D /* ExchangeRatesUpdaterImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExchangeRatesUpdaterImpl.m; path = Services/ExchangeRatesUpdater/ExchangeRatesUpdaterImpl.m; sourceTree = "<group>"; };
 		8CD786351F14F27F00AF7A8D /* ExchangeMoneyService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeMoneyService.h; path = Services/ExchangeMoneyService/ExchangeMoneyService.h; sourceTree = "<group>"; };
 		8CD786361F14F27F00AF7A8D /* ExchangeMoneyService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExchangeMoneyService.m; path = Services/ExchangeMoneyService/ExchangeMoneyService.m; sourceTree = "<group>"; };
-		8CD786371F14F27F00AF7A8D /* MoneyData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoneyData.h; path = Services/ExchangeMoneyService/MoneyData.h; sourceTree = "<group>"; };
-		8CD786381F14F27F00AF7A8D /* MoneyData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoneyData.m; path = Services/ExchangeMoneyService/MoneyData.m; sourceTree = "<group>"; };
 		8CD7863C1F14F29000AF7A8D /* XMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMLParser.h; path = Services/XMLParser/XMLParser.h; sourceTree = "<group>"; };
 		8CD7863D1F14F29000AF7A8D /* XMLParserImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMLParserImpl.m; path = Services/XMLParser/XMLParserImpl.m; sourceTree = "<group>"; };
 		8CD786401F14F2A000AF7A8D /* CurrencyFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrencyFormatter.h; path = Formatters/CurrencyFormatter.h; sourceTree = "<group>"; };
@@ -708,8 +705,6 @@
 				8CD786361F14F27F00AF7A8D /* ExchangeMoneyService.m */,
 				8CD7864C1F14F32600AF7A8D /* User.h */,
 				8CD7864D1F14F32600AF7A8D /* User.m */,
-				8CD786371F14F27F00AF7A8D /* MoneyData.h */,
-				8CD786381F14F27F00AF7A8D /* MoneyData.m */,
 			);
 			name = ExchangeMoneyService;
 			sourceTree = "<group>";
@@ -1114,7 +1109,6 @@
 				8CF9643D1F17D84E009852B9 /* KeyboardObserverImpl.m in Sources */,
 				8CF964171F165C24009852B9 /* AssembledViewController.m in Sources */,
 				8C45F6661FD01F17005B3892 /* IntroRouterImpl.m in Sources */,
-				8CD7863A1F14F27F00AF7A8D /* MoneyData.m in Sources */,
 				8CD786421F14F2A000AF7A8D /* CurrencyFormatter.m in Sources */,
 				8CF964481F1CC4EE009852B9 /* ExchangeMoneyPageViewController.m in Sources */,
 				8CF9644B1F1CC81D009852B9 /* ExchangeMoneyCurrencyViewController.m in Sources */,
