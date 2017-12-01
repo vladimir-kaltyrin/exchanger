@@ -29,7 +29,7 @@
     return [[ExchangeMoneyInteractorImpl alloc] initWithUserService:[self.serviceFactory userService]
                                                exchangeRatesService:[self.serviceFactory exchangeRatesService]
                                                exchangeMoneyService:[self.serviceFactory exchangeMoneyService]
-                                        exchangeRatesUpdater:[self.serviceFactory exchangeRatesUpdater]
+                                               exchangeRatesUpdater:[self.serviceFactory exchangeRatesUpdater]
             ];
 }
 
