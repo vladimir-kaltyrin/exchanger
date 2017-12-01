@@ -1,4 +1,5 @@
 #import "ExchangeMoneyViewController.h"
+#import "CurrencyExchangeType.h"
 #import "ExchangeMoneyView.h"
 #import "ExchangeMoneyTitleView.h"
 #import "ExchangeMoneyViewData.h"
@@ -69,6 +70,14 @@
 
 - (void (^)())onExchangeTap {
     return self.exchangeBarButton.onBarButtonTap;
+}
+
+- (void)setOnPageChange:(void (^)(CurrencyExchangeType, NSInteger, NSInteger))onPageChange {
+    [self.exchangeMoneyView setOnPageChange:onPageChange];
+}
+
+- (void (^)(CurrencyExchangeType, NSInteger, NSInteger))onPageChange {
+    return [self.exchangeMoneyView onPageChange];
 }
 
 - (void)focusOnStart {

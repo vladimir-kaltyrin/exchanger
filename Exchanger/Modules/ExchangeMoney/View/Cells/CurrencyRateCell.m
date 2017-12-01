@@ -36,6 +36,10 @@
     [self.previewView setViewData:model];
 }
 
+- (void)setOnPageChange:(void(^)(NSInteger current, NSInteger total))onPageChange {
+    [self.previewView setOnPageChange:onPageChange];
+}
+
 // MARK: - Layout
     
 - (void)layoutSubviews {

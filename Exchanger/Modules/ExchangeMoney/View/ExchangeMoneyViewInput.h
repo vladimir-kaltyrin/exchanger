@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
 #import "ViewLifeCycleObservable.h"
+#import "CurrencyExchangeType.h"
 #import "ExchangeMoneyCurrencyViewData.h"
 
 @class KeyboardData;
@@ -8,6 +9,7 @@
 @protocol ExchangeMoneyViewInput <ViewLifeCycleObservable>
 @property (nonatomic, strong) void(^onExchangeTap)();
 @property (nonatomic, strong) void(^onBackTap)();
+@property (nonatomic, strong, nullable) void(^onPageChange)(CurrencyExchangeType exchangeType, NSInteger current, NSInteger total);
 
 - (void)setNavigationTitle:(NSString *)title;
 - (void)focusOnStart;

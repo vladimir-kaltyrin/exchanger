@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)updateWithModel:(GalleryPreviewData *)model;
 
+- (void)setOnPageChange:(void(^)(NSInteger current, NSInteger total))onPageChange;
+
 - (instancetype)initWithStyle:(CurrencyRateCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
     
 @end

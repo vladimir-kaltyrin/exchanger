@@ -128,6 +128,7 @@
 		8C076BA81FD1567B003F4D42 /* ExchangeMoneyServiceImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ExchangeMoneyServiceImpl.h; path = Services/ExchangeMoneyService/ExchangeMoneyServiceImpl.h; sourceTree = "<group>"; };
 		8C076BA91FD1579F003F4D42 /* ExchangeMoneyResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ExchangeMoneyResult.h; path = Services/ExchangeMoneyService/ExchangeMoneyResult.h; sourceTree = "<group>"; };
 		8C076BAA1FD1579F003F4D42 /* ExchangeMoneyResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ExchangeMoneyResult.m; path = Services/ExchangeMoneyService/ExchangeMoneyResult.m; sourceTree = "<group>"; };
+		8C076BAD1FD17061003F4D42 /* CurrencyExchangeType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CurrencyExchangeType.h; path = Modules/ExchangeMoney/View/CurrencyExchangeType.h; sourceTree = "<group>"; };
 		8C1FEFC31F13A2610024F046 /* lint.sh */ = {isa = PBXFileReference; explicitFileType = text.script.sh; fileEncoding = 4; path = lint.sh; sourceTree = "<group>"; };
 		8C1FEFC91F13A76A0024F046 /* ServiceFactoryImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceFactoryImpl.h; path = Services/ServiceFactoryImpl.h; sourceTree = "<group>"; };
 		8C1FEFCA1F13A76A0024F046 /* ServiceFactoryImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceFactoryImpl.m; path = Services/ServiceFactoryImpl.m; sourceTree = "<group>"; };
@@ -542,21 +543,6 @@
 			name = GalleryPreviewView;
 			sourceTree = "<group>";
 		};
-		8C6423651FA0A78A00A95479 /* Modules */ = {
-			isa = PBXGroup;
-			children = (
-				8C6423661FA0A7A100A95479 /* MoneyRate */,
-			);
-			name = Modules;
-			sourceTree = "<group>";
-		};
-		8C6423661FA0A7A100A95479 /* MoneyRate */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = MoneyRate;
-			sourceTree = "<group>";
-		};
 		8C6423721FA0BB3A00A95479 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -591,7 +577,6 @@
 				8CD7860C1F14EFB000AF7A8D /* Assembly */,
 				8CD785F21F14EEA900AF7A8D /* Interactor */,
 				8CD785F31F14EEAD00AF7A8D /* Presenter */,
-				8C6423651FA0A78A00A95479 /* Modules */,
 				8CD785F41F14EEB100AF7A8D /* View */,
 				8CD785F51F14EEB500AF7A8D /* Router */,
 			);
@@ -622,6 +607,7 @@
 			isa = PBXGroup;
 			children = (
 				8C6423721FA0BB3A00A95479 /* Cells */,
+				8C076BAD1FD17061003F4D42 /* CurrencyExchangeType.h */,
 				8CD7865E1F14FD5200AF7A8D /* ExchangeMoneyViewInput.h */,
 				8CD786211F14F23400AF7A8D /* ExchangeMoneyView.h */,
 				8CD786221F14F23400AF7A8D /* ExchangeMoneyView.m */,

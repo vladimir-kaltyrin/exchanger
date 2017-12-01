@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
 #import "Wallet.h"
+#import "CurrencyExchangeType.h"
 #import "ExchangeRatesData.h"
 #import "User.h"
 
