@@ -44,6 +44,12 @@
     self.navigationItem.titleView = self.exchangeMoneyTitleView;
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self.exchangeMoneyView endEditing:YES];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
