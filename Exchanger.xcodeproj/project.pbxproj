@@ -84,8 +84,6 @@
 		8CF9641D1F165C31009852B9 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8CF9641A1F165C31009852B9 /* Info.plist */; };
 		8CF9641E1F165C31009852B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF9641B1F165C31009852B9 /* main.m */; };
 		8CF9643D1F17D84E009852B9 /* KeyboardObserverImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF9643C1F17D84E009852B9 /* KeyboardObserverImpl.m */; };
-		8CF964481F1CC4EE009852B9 /* ExchangeMoneyPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF964471F1CC4EE009852B9 /* ExchangeMoneyPageViewController.m */; };
-		8CF9644B1F1CC81D009852B9 /* ExchangeMoneyCurrencyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF9644A1F1CC81D009852B9 /* ExchangeMoneyCurrencyViewController.m */; };
 		8CF964511F1CCC0D009852B9 /* ExchangeMoneyCurrencyViewData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF964501F1CCC0D009852B9 /* ExchangeMoneyCurrencyViewData.m */; };
 		8CF964541F1CCECA009852B9 /* ExchangeMoneyBalanceViewData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF964531F1CCECA009852B9 /* ExchangeMoneyBalanceViewData.m */; };
 		8CF9645A1F1CD11B009852B9 /* ExchangeMoneyCurrencyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF964591F1CD11B009852B9 /* ExchangeMoneyCurrencyView.m */; };
@@ -262,10 +260,6 @@
 		8CF9643B1F17D84E009852B9 /* KeyboardObserverImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyboardObserverImpl.h; path = Services/KeyboardObservingService/KeyboardObserverImpl.h; sourceTree = "<group>"; };
 		8CF9643C1F17D84E009852B9 /* KeyboardObserverImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeyboardObserverImpl.m; path = Services/KeyboardObservingService/KeyboardObserverImpl.m; sourceTree = "<group>"; };
 		8CF9643F1F17D8B7009852B9 /* KeyboardObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardObserver.h; sourceTree = "<group>"; };
-		8CF964461F1CC4EE009852B9 /* ExchangeMoneyPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeMoneyPageViewController.h; path = Modules/ExchangeMoney/View/ExchangeMoneyPageViewController.h; sourceTree = "<group>"; };
-		8CF964471F1CC4EE009852B9 /* ExchangeMoneyPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExchangeMoneyPageViewController.m; path = Modules/ExchangeMoney/View/ExchangeMoneyPageViewController.m; sourceTree = "<group>"; };
-		8CF964491F1CC81D009852B9 /* ExchangeMoneyCurrencyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeMoneyCurrencyViewController.h; path = Modules/ExchangeMoney/View/ExchangeMoneyCurrencyViewController.h; sourceTree = "<group>"; };
-		8CF9644A1F1CC81D009852B9 /* ExchangeMoneyCurrencyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExchangeMoneyCurrencyViewController.m; path = Modules/ExchangeMoney/View/ExchangeMoneyCurrencyViewController.m; sourceTree = "<group>"; };
 		8CF9644F1F1CCC0D009852B9 /* ExchangeMoneyCurrencyViewData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeMoneyCurrencyViewData.h; path = Modules/ExchangeMoney/View/ExchangeMoneyCurrencyViewData.h; sourceTree = "<group>"; };
 		8CF964501F1CCC0D009852B9 /* ExchangeMoneyCurrencyViewData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExchangeMoneyCurrencyViewData.m; path = Modules/ExchangeMoney/View/ExchangeMoneyCurrencyViewData.m; sourceTree = "<group>"; };
 		8CF964521F1CCECA009852B9 /* ExchangeMoneyBalanceViewData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeMoneyBalanceViewData.h; path = Modules/ExchangeMoney/View/ExchangeMoneyBalanceViewData.h; sourceTree = "<group>"; };
@@ -563,17 +557,6 @@
 			name = MoneyRate;
 			sourceTree = "<group>";
 		};
-		8C6423671FA0A81D00A95479 /* Legacy */ = {
-			isa = PBXGroup;
-			children = (
-				8CF964461F1CC4EE009852B9 /* ExchangeMoneyPageViewController.h */,
-				8CF964471F1CC4EE009852B9 /* ExchangeMoneyPageViewController.m */,
-				8CF964491F1CC81D009852B9 /* ExchangeMoneyCurrencyViewController.h */,
-				8CF9644A1F1CC81D009852B9 /* ExchangeMoneyCurrencyViewController.m */,
-			);
-			name = Legacy;
-			sourceTree = "<group>";
-		};
 		8C6423721FA0BB3A00A95479 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -639,7 +622,6 @@
 			isa = PBXGroup;
 			children = (
 				8C6423721FA0BB3A00A95479 /* Cells */,
-				8C6423671FA0A81D00A95479 /* Legacy */,
 				8CD7865E1F14FD5200AF7A8D /* ExchangeMoneyViewInput.h */,
 				8CD786211F14F23400AF7A8D /* ExchangeMoneyView.h */,
 				8CD786221F14F23400AF7A8D /* ExchangeMoneyView.m */,
@@ -1118,8 +1100,6 @@
 				8CF964171F165C24009852B9 /* AssembledViewController.m in Sources */,
 				8C45F6661FD01F17005B3892 /* IntroRouterImpl.m in Sources */,
 				8CD786421F14F2A000AF7A8D /* CurrencyFormatter.m in Sources */,
-				8CF964481F1CC4EE009852B9 /* ExchangeMoneyPageViewController.m in Sources */,
-				8CF9644B1F1CC81D009852B9 /* ExchangeMoneyCurrencyViewController.m in Sources */,
 				8C64235B1FA0761400A95479 /* GalleryPreviewPageData.m in Sources */,
 				8C076B9F1FD03DF4003F4D42 /* DisposeBag.m in Sources */,
 				8C73267C1F3B345000301720 /* KeyboardData.m in Sources */,
