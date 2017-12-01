@@ -44,7 +44,7 @@
     }];
 }
 
-- (void)exchange:(void (^)(Wallet *))onExchange {
+- (void)exchange:(void (^)())onExchange {
     
     __weak typeof(self) weakSelf = self;
     [self.userService currentUser:^(User *user) {
@@ -56,9 +56,9 @@
                                      targetCurrency:weakSelf.targetCurrency
                                            onResult:^(ExchangeMoneyResult *result) {
                                                
-                                               // TODO:
-                                               block(onExchange, result.targetWallet);
-                                               
+                                               [weakSelf update:user withExchangeMoneyResult:result];
+
+                                               block(onExchange);
                                            }];
     }];
 }
@@ -91,6 +91,11 @@
 }
 
 // MARK: - Private
+
+- (void)update:(User *)user withExchangeMoneyResult:(ExchangeMoneyResult *)result {
+    [user setWallet:result.sourceWallet withCurrencyType:result.sourceWallet.currencyType];
+    [user setWallet:result.targetWallet withCurrencyType:result.targetWallet.currencyType];
+}
 
 - (Currency *)findCurrencyWithType:(CurrencyType)currencyType inData:(ExchangeRatesData *)data {
     NSInteger indexOfCurrency = [data.currencies indexOfObjectPassingTest:^BOOL(Currency * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {

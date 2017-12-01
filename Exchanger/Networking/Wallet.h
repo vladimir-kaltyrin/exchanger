@@ -8,4 +8,6 @@
 - (instancetype)initWithCurrency:(Currency *)currency
                           amount:(NSNumber *)amount;
 
+- (CurrencyType)currencyType;
+
 @end

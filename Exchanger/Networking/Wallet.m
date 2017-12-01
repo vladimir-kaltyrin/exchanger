@@ -17,4 +17,8 @@
     return self;
 }
 
+- (CurrencyType)currencyType {
+    return self.currency.currencyType;
+}
+
 @end
