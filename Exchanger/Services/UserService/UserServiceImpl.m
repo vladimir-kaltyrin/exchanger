@@ -1,5 +1,6 @@
 #import "UserServiceImpl.h"
 #import "User.h"
+#import "Wallet.h"
 
 @interface UserServiceImpl()
 @property (nonatomic, strong) User *user;
@@ -19,19 +20,16 @@
 // MARK: - Private
 
 - (void)setUp {
-    MoneyData *usd = [[MoneyData alloc] init];
-    usd.amount = @100;
-    usd.currencyType = CurrencyTypeUSD;
+    Wallet *usdWallet = [[Wallet alloc] initWithCurrency:[Currency currencyWithType:CurrencyTypeUSD]
+                                                  amount:@100];
     
-    MoneyData *eur = [[MoneyData alloc] init];
-    eur.amount = @101;
-    eur.currencyType = CurrencyTypeEUR;
+    Wallet *eurWallet = [[Wallet alloc] initWithCurrency:[Currency currencyWithType:CurrencyTypeEUR]
+                                                  amount:@200];
     
-    MoneyData *gbp = [[MoneyData alloc] init];
-    gbp.amount = @102;
-    gbp.currencyType = CurrencyTypeGBP;
+    Wallet *gbpWallet = [[Wallet alloc] initWithCurrency:[Currency currencyWithType:CurrencyTypeGBP]
+                                                  amount:@300];
     
-    User *user = [[User alloc] initWithWallet:@[usd, eur, gbp]];
+    User *user = [[User alloc] initWithWallets:@[usdWallet, eurWallet, gbpWallet]];
     
     self.user = user;
 }

@@ -1,10 +1,10 @@
 #import <Foundation/Foundation.h>
-#import "MoneyData.h"
+#import "Wallet.h"
 
 @interface User : NSObject
 
-- (instancetype)initWithWallet:(NSArray<MoneyData *> *)wallet;
+- (instancetype)initWithWallets:(NSArray<Wallet *> *)wallets;
 
-- (MoneyData *)moneyDataWithCurrencyType:(CurrencyType)currencyType;
+- (Wallet *)walletWithCurrencyType:(CurrencyType)currencyType;
 
 @end

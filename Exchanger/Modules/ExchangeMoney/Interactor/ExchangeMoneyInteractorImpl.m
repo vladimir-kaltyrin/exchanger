@@ -47,9 +47,9 @@
 
 - (void)exchange:(void (^)(MoneyData *))onExchange {
     
-    MoneyData *moneyData = [self.user moneyDataWithCurrencyType:self.sourceCurrency.currencyType];
+    Wallet *wallet = [self.user walletWithCurrencyType:self.sourceCurrency.currencyType];
     
-    [self.exchangeMoneyService exchangeMoney:moneyData.amount
+    [self.exchangeMoneyService exchangeMoney:wallet.amount
                               sourceCurrency:self.sourceCurrency
                               targetCurrency:self.targetCurrency
                                     onResult:onExchange];

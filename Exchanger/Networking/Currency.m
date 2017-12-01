@@ -34,4 +34,11 @@
     return result;
 }
 
++ (Currency *)currencyWithType:(CurrencyType)currencyType {
+    Currency *currency = [[Currency alloc] init];
+    currency.currencyType = currencyType;
+    
+    return currency;
+}
+
 @end
