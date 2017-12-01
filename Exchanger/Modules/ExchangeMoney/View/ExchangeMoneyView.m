@@ -68,12 +68,14 @@ CGFloat const kFontSize = 34.0;
 // MARK: - ExchangeMoneyView
 
 - (void)focusOnStart {
-    
+    [self.currencyAmountTextField becomeFirstResponder];
 }
 
 - (void)updateKeyboardData:(KeyboardData *)keyboardData {
     self.keyboardHeight = keyboardData.size.height;
+
     [self setNeedsLayout];
+    [self.tableView reloadData];
 }
 
 - (void)setViewData:(ExchangeMoneyViewData *)viewData {
@@ -99,18 +101,25 @@ CGFloat const kFontSize = 34.0;
     
     self.backgroundImageView.frame = self.bounds;
     self.activityIndicator.center = self.center;
-    self.tableView.frame = self.bounds;
+    
+    self.tableView.frame = [self tableViewFrame];
     
     self.currencyAmountTextField.width = 190;
     self.currencyAmountTextField.height = 70;
     self.currencyAmountTextField.right = 360;
     self.currencyAmountTextField.top = 16;
 }
+
+- (CGRect)tableViewFrame {
+    CGRect frame = self.bounds;
+    frame.size.height = frame.size.height - self.keyboardHeight;
+    return frame;
+}
     
 // MARK: - UITableViewDelegate
     
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return self.bounds.size.height / 2 - self.keyboardHeight;
+    return [self tableViewFrame].size.height / 2;
 }
     
 // MARK: - UITableViewDataSource
