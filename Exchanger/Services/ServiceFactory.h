@@ -11,7 +11,7 @@
 - (id<KeyboardObserver>)keyboardObserver;
 - (id<ExchangeRatesService>)exchangeRatesService;
 - (id<ExchangeRatesUpdater>)exchangeRatesUpdater;
-- (id<IExchangeMoneyService>)exchangeMoneyService;
+- (id<ExchangeMoneyService>)exchangeMoneyService;
 - (id<UserService>)userService;
 - (id<XMLParser>)xmlParser;
 @end

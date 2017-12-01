@@ -2,6 +2,7 @@
 #import "KeyboardObserverImpl.h"
 #import "ExchangeRatesServiceImpl.h"
 #import "ExchangeRatesUpdaterImpl.h"
+#import "ExchangeMoneyServiceImpl.h"
 #import "XMLParserImpl.h"
 #import "UserServiceImpl.h"
 
@@ -19,8 +20,8 @@
     return [[ExchangeRatesUpdaterImpl alloc] initWithExchangeRatesService:[self exchangeRatesService]];
 }
 
-- (id<IExchangeMoneyService>)exchangeMoneyService {
-    return [[ExchangeMoneyService alloc] init];
+- (id<ExchangeMoneyService>)exchangeMoneyService {
+    return [[ExchangeMoneyServiceImpl alloc] init];
 }
 
 - (id<UserService>)userService {
