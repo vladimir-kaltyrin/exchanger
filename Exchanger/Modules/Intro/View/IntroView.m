@@ -1,8 +1,12 @@
 #import "IntroView.h"
 #import "UIView+Properties.h"
 #import "SafeBlocks.h"
+#import <AFNetworking/UIImageView+AFNetworking.h>
 
 @interface IntroView()
+@property (nonatomic, strong) UIImageView *backgroundImageView;
+@property (nonatomic, strong) UIView *overlayView;
+@property (nonatomic, strong) UIVisualEffectView *visualEffectView;
 @property (nonatomic, strong) UIButton *resetButton;
 @property (nonatomic, strong) UIButton *startButton;
 @property (nonatomic, strong) UIStackView *horizontalStackView;
@@ -17,7 +21,16 @@
 {
     self = [super init];
     if (self) {
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+        [self.backgroundImageView setImageWithURL:[NSURL URLWithString:@"https://picsum.photos/800/600"]];
+        [self addSubview:self.backgroundImageView];
+        
+        self.overlayView = [[UIView alloc] initWithFrame:CGRectZero];
+        self.overlayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:1 alpha:0.5];
+        [self addSubview:self.overlayView];
+        
+        self.visualEffectView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
+        [self addSubview:self.visualEffectView];
         
         self.resetButton = [[UIButton alloc] init];
         self.resetButton.backgroundColor = [UIColor blackColor];
@@ -43,6 +56,10 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    
+    self.backgroundImageView.frame = self.bounds;
+    self.overlayView.frame = self.bounds;
+    self.visualEffectView.frame = self.bounds;
     
     CGSize buttonSize = CGSizeMake(160, 60);
     

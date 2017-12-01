@@ -16,6 +16,7 @@ CGFloat const kFontSize = 34.0;
 @interface ExchangeMoneyView() <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, strong) UIImageView *backgroundImageView;
+@property (nonatomic, strong) UIView *overlayView;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UITextField *currencyAmountTextField;
 @property (nonatomic, assign) CGFloat keyboardHeight;
@@ -31,6 +32,10 @@ CGFloat const kFontSize = 34.0;
         self.backgroundColor = [UIColor greenColor];
         
         self.backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+        [self.backgroundImageView setImageWithURL:[NSURL URLWithString:@"https://picsum.photos/800/600"]];
+        
+        self.overlayView = [[UIView alloc] initWithFrame:CGRectZero];
+        self.overlayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:1 alpha:0.5];
         
         self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         self.tableView.delegate = self;
@@ -49,13 +54,10 @@ CGFloat const kFontSize = 34.0;
         self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
         
         [self addSubview:self.backgroundImageView];
+        [self addSubview:self.overlayView];
         [self addSubview:self.tableView];
         [self addSubview:self.currencyAmountTextField];
         [self addSubview:self.activityIndicator];
-        
-        self.backgroundImageView.backgroundColor = [UIColor blueColor];
-        
-        [self.backgroundImageView setImageWithURL:[NSURL URLWithString:@"https://picsum.photos/800/600"]];
     }
     
     return self;
@@ -96,6 +98,7 @@ CGFloat const kFontSize = 34.0;
     [super layoutSubviews];
     
     self.backgroundImageView.frame = self.bounds;
+    self.overlayView.frame = self.bounds;
     self.activityIndicator.center = self.center;
     
     self.tableView.frame = [self tableViewFrame];
