@@ -53,6 +53,10 @@
         [weakSelf.interactor startFetching];
     }];
     
+    [self.view setOnViewWillAppear:^{
+        [weakSelf.view focusOnStart];
+    }];
+    
     [self.view setOnExchangeTap:^{
         [weakSelf.interactor exchange:^{
             [weakSelf fetchRatesWithRepeat:NO

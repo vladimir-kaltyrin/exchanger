@@ -2,6 +2,9 @@
 #import "KeyboardObserverImpl.h"
 #import "KeyboardData.h"
 
+@interface KeyboardObserverImpl()
+@end
+
 @implementation KeyboardObserverImpl
 @synthesize onKeyboardData;
 
@@ -24,8 +27,9 @@
 // MARK: - Notifications
 
 - (void)keyboardWillShown:(NSNotification *)notification {
+    
     NSDictionary *info = notification.userInfo;
-    NSString *keyboardFrameBeginKey = UIKeyboardFrameBeginUserInfoKey;
+    NSString *keyboardFrameBeginKey = UIKeyboardFrameEndUserInfoKey;
     NSValue *keyboardFrameBegin = [info objectForKey:keyboardFrameBeginKey];
     
     KeyboardData *keyboardData = [[KeyboardData alloc] initWithSize:keyboardFrameBegin.CGRectValue.size];
