@@ -13,7 +13,7 @@
 
 - (void)startFetching;
 
-- (void)exchange:(void(^)(Wallet *))onExchange;
+- (void)exchange:(void(^)())onExchange;
 
 - (void)fetchUser:(void(^)(User *))onUser;
 
