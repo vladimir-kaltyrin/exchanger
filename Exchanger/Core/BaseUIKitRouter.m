@@ -47,13 +47,13 @@
     [self.viewController.navigationController pushViewController:viewController animated:animated];
 }
 
-- (void)pop: (UIViewController *)viewController animated:(BOOL)animated completion:(void(^)())completion {
+- (void)present: (UIViewController *)viewController animated:(BOOL)animated completion:(void(^)())completion {
     [self.viewController presentViewController:viewController animated:animated completion:completion];
 }
 
-- (void)popWithNavigationController:(UIViewController *)viewController animated:(BOOL)animated completion:(void(^)())completion {
+- (void)presentWithNavigationController:(UIViewController *)viewController animated:(BOOL)animated completion:(void(^)())completion {
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
-    [self pop:navigationController animated:animated completion:completion];
+    [self present:navigationController animated:animated completion:completion];
 }
 
 @end

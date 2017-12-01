@@ -11,7 +11,7 @@
     
     block(configure, assembledViewController.module);
     
-    [self popWithNavigationController:assembledViewController.viewController animated:YES completion:nil];
+    [self presentWithNavigationController:assembledViewController.viewController animated:YES completion:nil];
 }
 
 @end
