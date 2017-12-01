@@ -25,6 +25,7 @@
 		2D9A60EAD27A2EFF8A0EA557 /* libPods-Exchanger.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A46A0D61B3F31B4C0C77D2B7 /* libPods-Exchanger.a */; };
 		68C8AC0CEC9D9ED7064AFBD1 /* libPods-ExchangerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 065BDAA0B52E5D049A00B783 /* libPods-ExchangerTests.a */; };
 		8C076B9F1FD03DF4003F4D42 /* DisposeBag.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C076B9E1FD03DF4003F4D42 /* DisposeBag.m */; };
+		8C076BA71FD150FA003F4D42 /* Wallet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C076BA61FD150FA003F4D42 /* Wallet.m */; };
 		8C1FEFCB1F13A76A0024F046 /* ServiceFactoryImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1FEFCA1F13A76A0024F046 /* ServiceFactoryImpl.m */; };
 		8C2E1CF41F13818D00DB0FC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C2E1CF31F13818D00DB0FC2 /* Assets.xcassets */; };
 		8C2E1D021F13818D00DB0FC2 /* ExchangerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2E1D011F13818D00DB0FC2 /* ExchangerTests.m */; };
@@ -124,6 +125,8 @@
 		8C076B9E1FD03DF4003F4D42 /* DisposeBag.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DisposeBag.m; path = Core/DisposeBag.m; sourceTree = "<group>"; };
 		8C076BA01FD03EFA003F4D42 /* DisposeBagHolder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DisposeBagHolder.h; path = Protocols/DisposeBagHolder.h; sourceTree = "<group>"; };
 		8C076BA11FD042D7003F4D42 /* ServiceFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ServiceFactory.h; path = Services/ServiceFactory.h; sourceTree = "<group>"; };
+		8C076BA51FD150FA003F4D42 /* Wallet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Wallet.h; path = Networking/Wallet.h; sourceTree = "<group>"; };
+		8C076BA61FD150FA003F4D42 /* Wallet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Wallet.m; path = Networking/Wallet.m; sourceTree = "<group>"; };
 		8C1FEFC31F13A2610024F046 /* lint.sh */ = {isa = PBXFileReference; explicitFileType = text.script.sh; fileEncoding = 4; path = lint.sh; sourceTree = "<group>"; };
 		8C1FEFC91F13A76A0024F046 /* ServiceFactoryImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceFactoryImpl.h; path = Services/ServiceFactoryImpl.h; sourceTree = "<group>"; };
 		8C1FEFCA1F13A76A0024F046 /* ServiceFactoryImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceFactoryImpl.m; path = Services/ServiceFactoryImpl.m; sourceTree = "<group>"; };
@@ -336,6 +339,8 @@
 			isa = PBXGroup;
 			children = (
 				8C304CFA1F13AC8300ACE585 /* CurrencyType.h */,
+				8C076BA51FD150FA003F4D42 /* Wallet.h */,
+				8C076BA61FD150FA003F4D42 /* Wallet.m */,
 				8CD786431F14F2B800AF7A8D /* Currency.h */,
 				8CD786441F14F2B800AF7A8D /* Currency.m */,
 				8C36E9991F2653D8009BDDC0 /* ExchangeRatesResponse.h */,
@@ -1093,6 +1098,7 @@
 				8CD786491F14F2B800AF7A8D /* Currency.m in Sources */,
 				8CD786161F14F21F00AF7A8D /* ExchangeMoneyAssemblyImpl.m in Sources */,
 				8CD786291F14F23C00AF7A8D /* ExchangeMoneyRouter.m in Sources */,
+				8C076BA71FD150FA003F4D42 /* Wallet.m in Sources */,
 				8CD7861A1F14F22600AF7A8D /* ExchangeMoneyInteractorImpl.m in Sources */,
 				8C1FEFCB1F13A76A0024F046 /* ServiceFactoryImpl.m in Sources */,
 				8C6423551FA0758C00A95479 /* GalleryPreviewPage.m in Sources */,
