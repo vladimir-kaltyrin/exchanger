@@ -1,5 +1,5 @@
 #import <Foundation/Foundation.h>
-#import "MoneyData.h"
+#import "Wallet.h"
 #import "ExchangeRatesData.h"
 #import "User.h"
 
@@ -13,7 +13,7 @@
 
 - (void)startFetching;
 
-- (void)exchange:(void(^)(MoneyData *))onExchange;
+- (void)exchange:(void(^)(Wallet *))onExchange;
 
 - (void)fetchUser:(void(^)(User *))onUser;
 

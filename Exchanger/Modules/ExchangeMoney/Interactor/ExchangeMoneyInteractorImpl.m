@@ -45,7 +45,7 @@
     }];
 }
 
-- (void)exchange:(void (^)(MoneyData *))onExchange {
+- (void)exchange:(void (^)(Wallet *))onExchange {
     
     Wallet *wallet = [self.user walletWithCurrencyType:self.sourceCurrency.currencyType];
     

@@ -158,7 +158,7 @@ typedef NS_ENUM(NSInteger, CurrencyExchangeType) {
 }
 
 - (void)showTitle {
-    [self.interactor exchange:^(MoneyData *moneyData) {
+    [self.interactor exchange:^(Wallet *wallet) {
         
     }];
 }

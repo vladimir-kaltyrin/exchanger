@@ -1,4 +1,5 @@
 #import "ExchangeMoneyService.h"
+#import "Wallet.h"
 
 @implementation ExchangeMoneyService
 
@@ -7,13 +8,13 @@
 - (void)exchangeMoney:(NSNumber *)money
        sourceCurrency:(Currency *)sourceCurrency
        targetCurrency:(Currency *)targetCurrency
-             onResult:(void(^)(MoneyData *))onResult;
+             onResult:(void(^)(Wallet *))onResult;
 {
     __weak typeof(self) weakSelf = self;
     [self convertedCurrencyWithSourceCurrency:sourceCurrency targetCurrency:targetCurrency onConvert:^(Currency *convertedCurrency) {
-        MoneyData *resultMoneyData = [weakSelf exchangeMoney:money
-                                            withCurrency:convertedCurrency];
-        onResult(resultMoneyData);
+        Wallet *wallet = [weakSelf exchangeMoney:money
+                                    withCurrency:convertedCurrency];
+        onResult(wallet);
     }];
 }
 
@@ -30,14 +31,11 @@
 
 // MARK: - Private
 
-- (MoneyData *)exchangeMoney:(NSNumber *)money
-                    withCurrency:(Currency *)currency
+- (Wallet *)exchangeMoney:(NSNumber *)money
+             withCurrency:(Currency *)currency
 {
-    MoneyData *resultMoneyData = [[MoneyData alloc] init];
-    resultMoneyData.amount = @(money.floatValue * currency.rate.floatValue);
-    resultMoneyData.currencyType = currency.currencyType;
-    
-    return resultMoneyData;
+    return [[Wallet alloc] initWithCurrency:currency
+                                     amount:@(money.floatValue * currency.rate.floatValue)];
 }
 
 
