@@ -12,4 +12,6 @@
 
 - (void)pop: (UIViewController *)viewController animated:(BOOL)animated completion:(void(^)())completion;
 
+- (void)popWithNavigationController:(UIViewController *)viewController animated:(BOOL)animated completion:(void(^)())completion;
+
 @end

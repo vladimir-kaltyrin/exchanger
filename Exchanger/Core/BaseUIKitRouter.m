@@ -51,4 +51,9 @@
     [self.viewController presentViewController:viewController animated:animated completion:completion];
 }
 
+- (void)popWithNavigationController:(UIViewController *)viewController animated:(BOOL)animated completion:(void(^)())completion {
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    [self pop:navigationController animated:animated completion:completion];
+}
+
 @end
