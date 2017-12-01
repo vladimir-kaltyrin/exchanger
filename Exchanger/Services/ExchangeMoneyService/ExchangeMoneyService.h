@@ -3,7 +3,7 @@
 #import "Currency.h"
 #import "User.h"
 
-@protocol IExchangeMoneyService <NSObject>
+@protocol ExchangeMoneyService <NSObject>
 - (void)exchangeMoney:(NSNumber *)money
        sourceCurrency:(Currency *)sourceCurrency
        targetCurrency:(Currency *)targetCurrency
@@ -13,7 +13,4 @@
                              targetCurrency:(Currency *)targetCurrency
                                   onConvert:(void(^)(Currency *))onConvert;
 
-@end
-
-@interface ExchangeMoneyService : NSObject<IExchangeMoneyService>
 @end

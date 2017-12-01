@@ -8,7 +8,7 @@
 @property (nonatomic, strong) User *user;
 @property (nonatomic, strong) id<UserService> userService;
 @property (nonatomic, strong) id<ExchangeRatesService> exchangeRatesService;
-@property (nonatomic, strong) id<IExchangeMoneyService> exchangeMoneyService;
+@property (nonatomic, strong) id<ExchangeMoneyService> exchangeMoneyService;
 @property (nonatomic, strong) id<ExchangeRatesUpdater> exchangeRatesUpdater;
 @end
 
@@ -20,7 +20,7 @@
 
 - (instancetype)initWithUserService:(id<UserService>)userService
                exchangeRatesService:(id<ExchangeRatesService>)exchangeRatesService
-               exchangeMoneyService:(id<IExchangeMoneyService>)exchangeMoneyService
+               exchangeMoneyService:(id<ExchangeMoneyService>)exchangeMoneyService
                exchangeRatesUpdater:(id<ExchangeRatesUpdater>)exchangeRatesUpdater
 {
     self = [super init];

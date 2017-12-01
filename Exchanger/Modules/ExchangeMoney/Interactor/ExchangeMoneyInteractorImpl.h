@@ -10,7 +10,7 @@
 
 - (instancetype)initWithUserService:(id<UserService>)userService
                exchangeRatesService:(id<ExchangeRatesService>)exchangeRatesService
-               exchangeMoneyService:(id<IExchangeMoneyService>)exchangeMoneyService
+               exchangeMoneyService:(id<ExchangeMoneyService>)exchangeMoneyService
                exchangeRatesUpdater:(id<ExchangeRatesUpdater>)exchangeRatesUpdater;
 
 

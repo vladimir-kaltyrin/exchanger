@@ -1,9 +1,9 @@
-#import "ExchangeMoneyService.h"
+#import "ExchangeMoneyServiceImpl.h"
 #import "Wallet.h"
 
-@implementation ExchangeMoneyService
+@implementation ExchangeMoneyServiceImpl
 
-// MARK: - IExchangeMoneyService
+// MARK: - ExchangeMoneyService
 
 - (void)exchangeMoney:(NSNumber *)money
        sourceCurrency:(Currency *)sourceCurrency
