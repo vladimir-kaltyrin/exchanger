@@ -49,10 +49,16 @@
     
     Wallet *wallet = [self.user walletWithCurrencyType:self.sourceCurrency.currencyType];
     
-    [self.exchangeMoneyService exchangeMoney:wallet.amount
-                              sourceCurrency:self.sourceCurrency
-                              targetCurrency:self.targetCurrency
-                                    onResult:onExchange];
+    [self.exchangeMoneyService exchangeWithUser:self.user
+                                    moneyAmount:wallet.amount
+                                 sourceCurrency:self.sourceCurrency
+                                 targetCurrency:self.targetCurrency
+                                       onResult:^(ExchangeMoneyResult *result) {
+                                           
+                                           // TODO:
+                                           block(onExchange, result.targetWallet);
+                                           
+                                       }];
 }
 
 - (void)startFetching {
