@@ -11,10 +11,13 @@
 
 NSString * const kCurrencyRateCellId = @"kCurrencyRateCellId";
 
+CGFloat const kFontSize = 34.0;
+
 @interface ExchangeMoneyView() <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, strong) UIImageView *backgroundImageView;
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UITextField *currencyAmountTextField;
 @property (nonatomic, assign) CGFloat keyboardHeight;
 @property (nonatomic, strong) ExchangeMoneyViewData *viewData;
 @end
@@ -37,10 +40,21 @@ NSString * const kCurrencyRateCellId = @"kCurrencyRateCellId";
         self.tableView.scrollEnabled = NO;
         [self.tableView registerClass:[CurrencyRateCell class] forCellReuseIdentifier:kCurrencyRateCellId];
         
+        self.currencyAmountTextField = [[UITextField alloc] initWithFrame:CGRectZero];
+        self.currencyAmountTextField.font = [UIFont systemFontOfSize:kFontSize];
+        self.currencyAmountTextField.textColor = [UIColor whiteColor];
+        self.currencyAmountTextField.textAlignment = NSTextAlignmentRight;
+        self.currencyAmountTextField.keyboardType = UIKeyboardTypeDecimalPad;
+        self.currencyAmountTextField.layer.borderWidth = 2;
+        self.currencyAmountTextField.layer.borderColor = [UIColor whiteColor].CGColor;
+        self.currencyAmountTextField.layer.cornerRadius = 2.5f;
+        self.currencyAmountTextField.placeholder = @"Input amount";
+        
         self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
         
         [self addSubview:self.backgroundImageView];
         [self addSubview:self.tableView];
+        [self addSubview:self.currencyAmountTextField];
         [self addSubview:self.activityIndicator];
         
         self.backgroundImageView.backgroundColor = [UIColor blueColor];
@@ -86,6 +100,11 @@ NSString * const kCurrencyRateCellId = @"kCurrencyRateCellId";
     self.backgroundImageView.frame = self.bounds;
     self.activityIndicator.center = self.center;
     self.tableView.frame = self.bounds;
+    
+    self.currencyAmountTextField.width = 190;
+    self.currencyAmountTextField.height = 70;
+    self.currencyAmountTextField.right = 360;
+    self.currencyAmountTextField.top = 16;
 }
     
 // MARK: - UITableViewDelegate
