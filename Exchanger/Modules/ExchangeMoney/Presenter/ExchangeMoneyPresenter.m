@@ -57,7 +57,11 @@ typedef NS_ENUM(NSInteger, CurrencyExchangeType) {
     }];
     
     [self.view setOnExchangeTap:^{
-        
+        [weakSelf.interactor exchange:^{
+            [weakSelf fetchRatesWithRepeat:NO
+                                  onUpdate:nil
+                                   onError:nil];
+        }];
     }];
     
     // TODO: fix retain-reference cycle
@@ -70,16 +74,9 @@ typedef NS_ENUM(NSInteger, CurrencyExchangeType) {
         [weakSelf updateViewWithData:data];
     }];
     
-    [self.view startActivity];
-    [self.interactor fetchRates:^(ExchangeRatesData *data) {
-        [weakSelf.view stopActivity];
-        [weakSelf.interactor resetCurrenciesWithData:data onReset:^{
-            [weakSelf updateViewWithData:data];
-            [weakSelf.interactor startFetching];
-        }];
-    } onError:^(NSError *error) {
-        
-    }];
+    [self fetchRatesWithRepeat:YES
+                      onUpdate:nil
+                       onError:nil];
 }
 
 - (void)updateViewWithData:(ExchangeRatesData *)data {
@@ -166,6 +163,22 @@ typedef NS_ENUM(NSInteger, CurrencyExchangeType) {
 - (NSString *)balanceWithUser:(User *)user currencyType:(CurrencyType)currencyType {
     Wallet *wallet = [user walletWithCurrencyType:currencyType];
     return [NSString stringWithFormat:@"You have %@", [wallet.amount stringValue]];
+}
+
+- (void)fetchRatesWithRepeat:(BOOL)repeat onUpdate:(void(^)())onUpdate onError:(void (^)(NSError *))onError {
+    [self.view startActivity];
+    
+    __weak typeof(self) weakSelf = self;
+    [self.interactor fetchRates:^(ExchangeRatesData *data) {
+        [weakSelf.view stopActivity];
+        [weakSelf.interactor resetCurrenciesWithData:data onReset:^{
+            [weakSelf updateViewWithData:data];
+            if (repeat) {
+                [weakSelf.interactor startFetching];
+            }
+            block(onUpdate)
+        }];
+    } onError:onError];
 }
 
 - (void)dismissModule {
