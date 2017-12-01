@@ -2,17 +2,14 @@
 #import "ExchangeRatesData.h"
 #import "ExchangeMoneyViewData.h"
 #import "ExchangeMoneyCurrencyViewData.h"
+#import "CurrencyExchangeType.h"
 #import "GalleryPreviewPageData.h"
 #import "GalleryPreviewData.h"
 #import "KeyboardObserver.h"
 #import "SafeBlocks.h"
 
-typedef NS_ENUM(NSInteger, CurrencyExchangeType) {
-    CurrencyExchangeSourceType,
-    CurrencyExchangeTargetType
-};
-
 @interface ExchangeMoneyPresenter()
+@property (nonatomic, strong) ExchangeRatesData *exchangeRatesData;
 @property (nonatomic, strong) id<ExchangeMoneyInteractor> interactor;
 @property (nonatomic, strong) id<ExchangeMoneyRouter> router;
 @property (nonatomic, strong) id<KeyboardObserver> keyboardObserver;
@@ -77,6 +74,10 @@ typedef NS_ENUM(NSInteger, CurrencyExchangeType) {
     [self fetchRatesWithRepeat:YES
                       onUpdate:nil
                        onError:nil];
+    
+    [self.view setOnPageChange:^(CurrencyExchangeType exchangeType, NSInteger current, NSInteger total) {
+        [weakSelf update:exchangeType withIndex:current];
+    }];
 }
 
 - (void)updateViewWithData:(ExchangeRatesData *)data {
@@ -170,6 +171,7 @@ typedef NS_ENUM(NSInteger, CurrencyExchangeType) {
     
     __weak typeof(self) weakSelf = self;
     [self.interactor fetchRates:^(ExchangeRatesData *data) {
+        weakSelf.exchangeRatesData = data;
         [weakSelf.view stopActivity];
         [weakSelf.interactor resetCurrenciesWithData:data onReset:^{
             [weakSelf updateViewWithData:data];
@@ -179,6 +181,22 @@ typedef NS_ENUM(NSInteger, CurrencyExchangeType) {
             block(onUpdate)
         }];
     } onError:onError];
+}
+
+- (void)update:(CurrencyExchangeType)exchangeType withIndex:(NSInteger)index {
+    
+    if ((index) < 0 || (index >= self.exchangeRatesData.currencies.count)) {
+        return;
+    }
+    
+    switch (exchangeType) {
+        case CurrencyExchangeSourceType:
+            self.interactor.sourceCurrency = self.exchangeRatesData.currencies[index];
+            break;
+        case CurrencyExchangeTargetType:
+            self.interactor.targetCurrency = self.exchangeRatesData.currencies[index];
+            break;
+    }
 }
 
 - (void)dismissModule {

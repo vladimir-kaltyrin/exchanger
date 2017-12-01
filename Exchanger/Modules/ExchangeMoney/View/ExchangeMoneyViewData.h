@@ -11,9 +11,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) GalleryPreviewData *sourceData;
 @property (nonatomic, strong, readonly) GalleryPreviewData *targetData;
 
-- (instancetype)initWithSourceData:(GalleryPreviewData *)sourceData targetData:(GalleryPreviewData *)targetData;
+- (instancetype)initWithSourceData:(GalleryPreviewData *)sourceData
+                        targetData:(GalleryPreviewData *)targetData;
 
-- (instancetype)initWithUser:(User *)user sourceRates:(ExchangeRatesData *)sourceRates targetRates:(ExchangeRatesData *)targetRates;
+- (instancetype)initWithUser:(User *)user
+                 sourceRates:(ExchangeRatesData *)sourceRates
+                 targetRates:(ExchangeRatesData *)targetRates;
 
 @end
 

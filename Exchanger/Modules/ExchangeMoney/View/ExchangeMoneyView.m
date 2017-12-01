@@ -108,15 +108,34 @@ NSString * const kCurrencyRateCellId = @"kCurrencyRateCellId";
     
     CurrencyRateCell *cell;
     
+    
     if (indexPath.row == 0) {
         cell = [[CurrencyRateCell alloc] initWithStyle:CurrencyRateCellStyleLight reuseIdentifier:kCurrencyRateCellId];
-        [cell updateWithModel:self.viewData.sourceData];
+        [self configureCell:cell
+                      model:self.viewData.sourceData
+               exchangeType:CurrencyExchangeSourceType];
     } else {
         cell = [[CurrencyRateCell alloc] initWithStyle:CurrencyRateCellStyleDark reuseIdentifier:kCurrencyRateCellId];
-        [cell updateWithModel:self.viewData.targetData];
+        [self configureCell:cell
+                      model:self.viewData.targetData
+               exchangeType:CurrencyExchangeTargetType];
     }
     
     return cell;
+}
+
+// MARK: - Private
+
+- (void)configureCell:(CurrencyRateCell *)cell
+                model:(GalleryPreviewData *)model
+         exchangeType:(CurrencyExchangeType)currencyExchangeType
+{
+    [cell updateWithModel:model];
+    
+    __weak typeof(self) weakSelf = self;
+    [cell setOnPageChange:^(NSInteger current, NSInteger total) {
+        weakSelf.onPageChange(currencyExchangeType, current, total);
+    }];
 }
 
 @end
