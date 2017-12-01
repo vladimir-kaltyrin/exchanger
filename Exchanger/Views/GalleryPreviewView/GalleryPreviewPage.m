@@ -29,6 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
         self.currencyAmountTextField.font = [UIFont systemFontOfSize:kBigFontSize];
         self.currencyAmountTextField.textColor = [UIColor whiteColor];
         self.currencyAmountTextField.textAlignment = NSTextAlignmentRight;
+        self.currencyAmountTextField.keyboardType = UIKeyboardTypeDecimalPad;
         
         self.remainderLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         self.remainderLabel.font = [UIFont systemFontOfSize:kSmallFontSize];
@@ -40,7 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
         self.currencyRateLabel.textAlignment = NSTextAlignmentRight;
         
         [self addSubview:self.currencyTitleLabel];
-        [self addSubview:self.currencyAmountTextField];
+        //[self addSubview:self.currencyAmountTextField];
         [self addSubview:self.remainderLabel];
         [self addSubview:self.currencyRateLabel];
         
