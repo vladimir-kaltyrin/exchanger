@@ -10,8 +10,8 @@
 @property (nonatomic, strong, nullable) void(^onPageChange)(CurrencyExchangeType exchangeType, NSInteger current, NSInteger total);
 
 - (void)focusOnStart;
-- (void)updateKeyboardData:(KeyboardData *)keyboardData;
-- (void)setViewData:(ExchangeMoneyViewData *)viewData;
+- (void)updateKeyboardData:(nonnull KeyboardData *)keyboardData;
+- (void)setViewData:(nonnull ExchangeMoneyViewData *)viewData;
 - (void)startActivity;
 - (void)stopActivity;
 @end
