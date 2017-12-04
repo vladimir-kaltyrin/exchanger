@@ -1,56 +1,85 @@
 #import <Foundation/Foundation.h>
 #import "BalanceFormatter.h"
 
+typedef struct _FormattedString {
+    __unsafe_unretained NSString *primary;
+    __unsafe_unretained NSString *secondary;
+} FormattedString;
+
+
+NS_INLINE FormattedString MakeFormattedString(NSString *primary, NSString *secondary) {
+    FormattedString formattedString;
+    formattedString.primary = primary;
+    formattedString.secondary = secondary;
+    return formattedString;
+}
+
 @implementation BalanceFormatter
 
 - (NSString *)formatBalance:(NSNumber *)balance {
-    
-    return [NSString stringWithFormat:@"%.02f", balance.floatValue];
+    switch (self.style) {
+        case BalanceFormatterStyleHundredths:
+            return [NSString stringWithFormat:@"%.03f", balance.floatValue];
+            break;
+        case BalanceFormatterStyleTenThousandths:
+            return [NSString stringWithFormat:@"%.04f", balance.floatValue];
+            break;
+    }
 }
 
 - (NSAttributedString *)attributedFormatBalance:(NSString *)balance {
     
     NSMutableAttributedString *string = [[NSMutableAttributedString alloc] init];
     
-    NSLocale *locale = [NSLocale currentLocale];
-    NSString *separator = [locale objectForKey:NSLocaleDecimalSeparator];
+    FormattedString formattedString = [self formattedStringWithBalance:balance];
     
-    NSArray *components;
-    switch (self.style) {
-        case BalanceFormatterStyleHundredths:
-            components = [balance componentsSeparatedByString:separator];
-            break;
-        case BalanceFormatterStyleTenThousandths:
-        {
-            NSInteger location = [balance rangeOfString:@"."].location + 2;
-            NSString *primaryString = [balance substringToIndex:location];
-            NSString *secondaryString = [balance substringFromIndex:location];
-            components = @[primaryString, secondaryString];
-        }
-            break;
-    }
-    
-    if (components.count == 0) {
+    if (formattedString.primary == nil) {
         return nil;
     }
-    
-    if ((components.count <= 1) && (components.count > 0)) {
-        return [[NSAttributedString alloc] initWithString:components.firstObject
+
+    if (formattedString.secondary == nil) {
+        return [[NSAttributedString alloc] initWithString:formattedString.primary
                                                attributes:self.primaryPartStyle.attributes];
     }
     
-    NSString *primaryString = components.firstObject;
-    NSAttributedString *primaryAttributedString = [[NSAttributedString alloc] initWithString:primaryString
+    NSAttributedString *primaryAttributedString = [[NSAttributedString alloc] initWithString:formattedString.primary
                                                                                   attributes:self.primaryPartStyle.attributes];
     [string appendAttributedString:primaryAttributedString];
     
-    NSString *secondaryString = components[1];
-    NSAttributedString *secondaryAttributedString = [[NSAttributedString alloc] initWithString:secondaryString
+    NSAttributedString *secondaryAttributedString = [[NSAttributedString alloc] initWithString:formattedString.secondary
                                                                                     attributes:self.primaryPartStyle.attributes];
     
     [string appendAttributedString:secondaryAttributedString];
     
     return string;
+}
+
+// MARK: - Private
+
+- (FormattedString)formattedStringWithBalance:(NSString *)balance {
+    NSLocale *locale = [NSLocale currentLocale];
+    NSString *separator = [locale objectForKey:NSLocaleDecimalSeparator];
+    
+    FormattedString result;
+    
+    switch (self.style) {
+        case BalanceFormatterStyleHundredths:
+        {
+            NSArray *components = [balance componentsSeparatedByString:separator];
+            result = MakeFormattedString(components.firstObject, components.lastObject);
+        }
+            break;
+        case BalanceFormatterStyleTenThousandths:
+        {
+            NSInteger location = [balance rangeOfString:separator].location + 2;
+            NSString *primaryString = [balance substringToIndex:location];
+            NSString *secondaryString = [balance substringFromIndex:location];
+            result = MakeFormattedString(primaryString, secondaryString);
+        }
+            break;
+    }
+    
+    return result;
 }
 
 @end
