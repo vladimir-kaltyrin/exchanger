@@ -7,7 +7,7 @@
 #import "KeyboardData.h"
 #import "CurrencyRateCell.h"
 #import "ObservableTextField.h"
-#import "BalanceFormatter.h"
+#import "FormatterFactoryImpl.h"
 #import "UIView+Properties.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
 
@@ -53,8 +53,9 @@ CGFloat const kFontSize = 34.0;
         self.currencyAmountTextField.textField.textAlignment = NSTextAlignmentRight;
         self.currencyAmountTextField.textField.keyboardType = UIKeyboardTypeDecimalPad;
         self.currencyAmountTextField.onTextChange = ^(NSString *text) {
-            BalanceFormatter *formatter = [[BalanceFormatter alloc] init];
             
+            id<BalanceFormatter> formatter = [[FormatterFactoryImpl instance] exchangeCurrencyInputFormatter];
+        
             NSLog(@"%@", [formatter formatBalance:@(text.floatValue)]);
             
             return YES;

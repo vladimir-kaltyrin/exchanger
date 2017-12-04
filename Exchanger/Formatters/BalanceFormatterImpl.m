@@ -1,5 +1,5 @@
 #import <Foundation/Foundation.h>
-#import "BalanceFormatter.h"
+#import "BalanceFormatterImpl.h"
 
 typedef struct _FormattedString {
     __unsafe_unretained NSString *primary;
@@ -14,10 +14,33 @@ NS_INLINE FormattedString MakeFormattedString(NSString *primary, NSString *secon
     return formattedString;
 }
 
-@implementation BalanceFormatter
+@interface BalanceFormatterImpl()
+@property (nonatomic, strong) AttributedStringStyle *primaryPartStyle;
+@property (nonatomic, strong) AttributedStringStyle *secondaryPartStyle;
+@property (nonatomic, assign) BalanceFormatterStyle formatterStyle;
+@end
+
+@implementation BalanceFormatterImpl
+
+// MARK: - Init
+
+- (instancetype)initWithPrimaryPartStyle:(AttributedStringStyle *)primaryPartStyle
+                      secondaryPartStyle:(AttributedStringStyle *)secondaryPartStyle
+                          formatterStyle:(BalanceFormatterStyle)formatterStyle
+{
+    self = [super init];
+    if (self) {
+        self.primaryPartStyle = primaryPartStyle;
+        self.secondaryPartStyle = secondaryPartStyle;
+        self.formatterStyle = formatterStyle;
+    }
+    return self;
+}
+
+// MARK: - Public
 
 - (NSString *)formatBalance:(NSNumber *)balance {
-    switch (self.style) {
+    switch (self.formatterStyle) {
         case BalanceFormatterStyleHundredths:
             return [NSString stringWithFormat:@"%.03f", balance.floatValue];
             break;
@@ -47,7 +70,7 @@ NS_INLINE FormattedString MakeFormattedString(NSString *primary, NSString *secon
     [string appendAttributedString:primaryAttributedString];
     
     NSAttributedString *secondaryAttributedString = [[NSAttributedString alloc] initWithString:formattedString.secondary
-                                                                                    attributes:self.primaryPartStyle.attributes];
+                                                                                    attributes:self.secondaryPartStyle.attributes];
     
     [string appendAttributedString:secondaryAttributedString];
     
@@ -62,7 +85,7 @@ NS_INLINE FormattedString MakeFormattedString(NSString *primary, NSString *secon
     
     FormattedString result;
     
-    switch (self.style) {
+    switch (self.formatterStyle) {
         case BalanceFormatterStyleHundredths:
         {
             NSArray *components = [balance componentsSeparatedByString:separator];
