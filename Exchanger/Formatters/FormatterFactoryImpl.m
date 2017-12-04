@@ -1,7 +1,10 @@
 #import "FormatterFactoryImpl.h"
 #import "BalanceFormatterImpl.h"
+#import "CurrencyFormatterImpl.h"
 
 @implementation FormatterFactoryImpl
+
+// MARK: - Init
 
 + (instancetype)instance
 {
@@ -13,6 +16,8 @@
     return instance;
 }
 
+// MARK: - FormatterFactory
+
 - (id<BalanceFormatter>)exchangeCurrencyInputFormatter {
     return [[BalanceFormatterImpl alloc] initWithPrimaryPartStyle:nil
                                                secondaryPartStyle:nil
@@ -23,6 +28,10 @@
     return [[BalanceFormatterImpl alloc] initWithPrimaryPartStyle:nil
                                                secondaryPartStyle:nil
                                                    formatterStyle:BalanceFormatterStyleTenThousandths];
+}
+
+- (id<CurrencyFormatter>)currencyFormatter {
+    return [[CurrencyFormatterImpl alloc] init];
 }
 
 @end

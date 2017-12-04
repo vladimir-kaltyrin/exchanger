@@ -1,18 +1,19 @@
 #import <Foundation/Foundation.h>
 #import "AttributedStringStyle.h"
+#import "BalanceFormatter.h"
 
 typedef NS_ENUM(NSInteger, BalanceFormatterStyle) {
     BalanceFormatterStyleHundredths,
     BalanceFormatterStyleTenThousandths
 };
 
-@interface BalanceFormatter : NSObject
-@property (nonatomic, assign) BalanceFormatterStyle style;
+@interface BalanceFormatterImpl : NSObject<BalanceFormatter>
 
 - (instancetype)init __attribute__((unavailable("init not available")));
 
 - (instancetype)initWithPrimaryPartStyle:(AttributedStringStyle *)primaryPartStyle
-                      secondaryPartStyle:(AttributedStringStyle *)secondaryPartStyle;
+                      secondaryPartStyle:(AttributedStringStyle *)secondaryPartStyle
+                          formatterStyle:(BalanceFormatterStyle)formatterStyle;
 
 - (NSString *)formatBalance:(NSNumber *)balance;
 
