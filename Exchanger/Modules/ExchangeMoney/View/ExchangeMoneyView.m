@@ -6,6 +6,8 @@
 #import "GalleryPreviewPageData.h"
 #import "KeyboardData.h"
 #import "CurrencyRateCell.h"
+#import "ObservableTextField.h"
+#import "BalanceFormatter.h"
 #import "UIView+Properties.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
 
@@ -18,7 +20,7 @@ CGFloat const kFontSize = 34.0;
 @property (nonatomic, strong) UIImageView *backgroundImageView;
 @property (nonatomic, strong) UIView *overlayView;
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) UITextField *currencyAmountTextField;
+@property (nonatomic, strong) ObservableTextField *currencyAmountTextField;
 @property (nonatomic, assign) CGFloat keyboardHeight;
 @property (nonatomic, strong) ExchangeMoneyViewData *viewData;
 @end
@@ -45,11 +47,18 @@ CGFloat const kFontSize = 34.0;
         self.tableView.scrollEnabled = NO;
         [self.tableView registerClass:[CurrencyRateCell class] forCellReuseIdentifier:kCurrencyRateCellId];
         
-        self.currencyAmountTextField = [[UITextField alloc] initWithFrame:CGRectZero];
-        self.currencyAmountTextField.font = [UIFont systemFontOfSize:kFontSize];
-        self.currencyAmountTextField.textColor = [UIColor whiteColor];
-        self.currencyAmountTextField.textAlignment = NSTextAlignmentRight;
-        self.currencyAmountTextField.keyboardType = UIKeyboardTypeDecimalPad;
+        self.currencyAmountTextField = [[ObservableTextField alloc] init];
+        self.currencyAmountTextField.textField.font = [UIFont systemFontOfSize:kFontSize];
+        self.currencyAmountTextField.textField.textColor = [UIColor whiteColor];
+        self.currencyAmountTextField.textField.textAlignment = NSTextAlignmentRight;
+        self.currencyAmountTextField.textField.keyboardType = UIKeyboardTypeDecimalPad;
+        self.currencyAmountTextField.onTextChange = ^(NSString *text) {
+            BalanceFormatter *formatter = [[BalanceFormatter alloc] init];
+            
+            NSLog(@"%@", [formatter formatBalance:@(text.floatValue)]);
+            
+            return YES;
+        };
         
         self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
         

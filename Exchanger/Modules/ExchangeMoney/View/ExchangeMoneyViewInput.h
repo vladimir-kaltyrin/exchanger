@@ -7,14 +7,14 @@
 @class ExchangeMoneyViewData;
 
 @protocol ExchangeMoneyViewInput <ViewLifeCycleObservable>
-@property (nonatomic, strong) void(^onExchangeTap)();
-@property (nonatomic, strong) void(^onBackTap)();
+@property (nonatomic, strong, nullable) void(^onExchangeTap)();
+@property (nonatomic, strong, nullable) void(^onBackTap)();
 @property (nonatomic, strong, nullable) void(^onPageChange)(CurrencyExchangeType exchangeType, NSInteger current, NSInteger total);
 
-- (void)setNavigationTitle:(NSString *)title;
+- (void)setNavigationTitle:(nullable NSString *)title;
 - (void)focusOnStart;
-- (void)updateKeyboardData:(KeyboardData *)keyboardData;
-- (void)setViewData:(ExchangeMoneyViewData *)viewData;
+- (void)updateKeyboardData:(nullable KeyboardData *)keyboardData;
+- (void)setViewData:(nullable ExchangeMoneyViewData *)viewData;
 - (void)startActivity;
 - (void)stopActivity;
 
