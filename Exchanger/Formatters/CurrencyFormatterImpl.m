@@ -1,8 +1,8 @@
-#import "CurrencyFormatter.h"
+#import "CurrencyFormatterImpl.h"
 
-@implementation CurrencyFormatter
+@implementation CurrencyFormatterImpl
 
-+ (NSString *)toCodeString:(CurrencyType)currencyType {
+- (NSString *)toCodeString:(CurrencyType)currencyType {
     switch (currencyType) {
         case CurrencyTypeEUR:
             return @"EUR";
@@ -73,7 +73,7 @@
     }
 }
 
-+ (NSString *)toSignString:(CurrencyType)currencyType {
+- (NSString *)toSignString:(CurrencyType)currencyType {
     switch (currencyType) {
         case CurrencyTypeEUR:
             return @"€";
@@ -88,7 +88,7 @@
     }
 }
 
-+ (CurrencyType)currencyTypeFromString:(NSString *)string {
+- (CurrencyType)currencyTypeFromString:(NSString *)string {
     if ([string isEqualToString:@"EUR"]) {
         return CurrencyTypeEUR;
     } else if ([string isEqualToString:@"USD"]) {
