@@ -3,7 +3,6 @@
 #import "ExchangeMoneyBalanceViewData.h"
 #import "UIView+Properties.h"
 #import "SafeBlocks.h"
-#import "ObservableTextField.h"
 
 // MARK: - Private consts
 
@@ -14,7 +13,6 @@ CGFloat const kkSmallFontSize = 10.0;
 @interface ExchangeMoneyCurrencyView()
 @property (nonatomic, strong) UILabel *balanceLabel;
 @property (nonatomic, strong) UILabel *currencyLabel;
-@property (nonatomic, strong) ObservableTextField *exchangeTextField;
 @property (nonatomic, strong) UILabel *rateLabel;
 @property (nonatomic, strong) void(^onTextChange)();
 @end
@@ -48,12 +46,6 @@ CGFloat const kkSmallFontSize = 10.0;
     self.currencyLabel.textColor = [UIColor whiteColor];
     self.currencyLabel.font = [UIFont systemFontOfSize:kkBigFontSize];
     [self addSubview:self.currencyLabel];
-    
-    self.exchangeTextField = [[ObservableTextField alloc] init];
-    self.exchangeTextField.textField.textColor = [UIColor whiteColor];
-    self.exchangeTextField.textField.font = [UIFont systemFontOfSize:kkBigFontSize];
-    self.exchangeTextField.textField.keyboardType = UIKeyboardTypeDecimalPad;
-    [self addSubview:self.exchangeTextField];
     
     self.rateLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     self.rateLabel.textColor = [[UIColor whiteColor] colorWithAlphaComponent:0.8];
@@ -94,10 +86,6 @@ CGFloat const kkSmallFontSize = 10.0;
     self.rateLabel.text = rate;
 }
 
-- (void)setExchange:(NSString *)exchange {
-    self.exchangeTextField.textField.text = exchange;
-}
-
 // MARK: - Helpers
 
 - (UIEdgeInsets)contentInsets {
@@ -126,31 +114,11 @@ CGFloat const kkSmallFontSize = 10.0;
     self.balanceLabel.top = self.currencyLabel.bottom + [self verticalOffsetBetweenLabels];
     self.balanceLabel.left = self.currencyLabel.x;
     
-    CGSize exchangeTextFieldSize = [self.exchangeTextField sizeThatFits:contentFrame.size];
-    self.exchangeTextField.width = 190;
-    self.exchangeTextField.height = 90;
-    self.exchangeTextField.right = contentFrame.origin.x + contentFrame.size.width;
-    self.exchangeTextField.top = contentFrame.origin.y;
-    
     CGSize rateLabelSize = [self.rateLabel sizeThatFits:contentFrame.size];
     self.rateLabel.size = rateLabelSize;
-    self.rateLabel.right = self.exchangeTextField.right;
-    self.rateLabel.top = self.exchangeTextField.bottom + [self verticalOffsetBetweenLabels];
+    self.rateLabel.right = 0;
+    self.rateLabel.top = [self verticalOffsetBetweenLabels];
 }
-
-// MARK: - FirstResponder
-
-- (BOOL)becomeFirstResponder {
-    return [self.exchangeTextField becomeFirstResponder];
-}
-
-- (BOOL)resignFirstResponder {
-    return [self.exchangeTextField resignFirstResponder];
-}
-
-//- (BOOL)isFirstResponder {
-//    return [self.exchangeTextField isFirstResponder];
-//}
 
 // MARK: - ExchangeMoneyCurrencyView
 

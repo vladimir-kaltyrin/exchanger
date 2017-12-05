@@ -89,19 +89,22 @@ NS_INLINE FormattedString MakeFormattedString(NSString *primary, NSString *secon
                 break;
             }
             
-            NSString *primaryString = components.firstObject;
+            NSString *primaryString;
             NSString *secondaryString;
             if (components.count > 1) {
+                primaryString = [NSString stringWithFormat:@"%@%@", components.firstObject, separator];
                 secondaryString = components[1];
+            } else {
+                primaryString = components.firstObject;
             }
             result = MakeFormattedString(primaryString, secondaryString);
         }
             break;
         case BalanceFormatterStyleTenThousandths:
         {
-            NSInteger location = [balance rangeOfString:separator].location + 2;
+            NSInteger location = [balance rangeOfString:separator].location + 1;
             NSString *primaryString = [balance substringToIndex:location];
-            NSString *secondaryString = [balance substringFromIndex:location];
+            NSString *secondaryString = [balance substringFromIndex:location + 1];
             result = MakeFormattedString(primaryString, secondaryString);
         }
             break;
