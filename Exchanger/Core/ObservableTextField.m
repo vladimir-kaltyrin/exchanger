@@ -37,6 +37,10 @@
     self.textField.frame = self.bounds;
 }
 
+- (CGSize)sizeThatFits:(CGSize)size {
+    return [self.textField sizeThatFits:size];
+}
+
 // MARK: - UITextFieldDelegate
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string

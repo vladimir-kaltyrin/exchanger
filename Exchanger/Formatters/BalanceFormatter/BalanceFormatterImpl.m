@@ -56,23 +56,18 @@ NS_INLINE FormattedString MakeFormattedString(NSString *primary, NSString *secon
     
     FormattedString formattedString = [self formattedStringWithBalance:balance];
     
-    if (formattedString.primary == nil) {
-        return nil;
-    }
-
-    if (formattedString.secondary == nil) {
-        return [[NSAttributedString alloc] initWithString:formattedString.primary
-                                               attributes:self.primaryPartStyle.attributes];
+    if (formattedString.primary != nil) {
+        NSAttributedString *primaryAttributedString = [[NSAttributedString alloc] initWithString:formattedString.primary
+                                                                                      attributes:self.primaryPartStyle.attributes];
+        [string appendAttributedString:primaryAttributedString];
     }
     
-    NSAttributedString *primaryAttributedString = [[NSAttributedString alloc] initWithString:formattedString.primary
-                                                                                  attributes:self.primaryPartStyle.attributes];
-    [string appendAttributedString:primaryAttributedString];
-    
-    NSAttributedString *secondaryAttributedString = [[NSAttributedString alloc] initWithString:formattedString.secondary
-                                                                                    attributes:self.secondaryPartStyle.attributes];
-    
-    [string appendAttributedString:secondaryAttributedString];
+    if (formattedString.secondary != nil) {
+        NSAttributedString *secondaryAttributedString = [[NSAttributedString alloc] initWithString:formattedString.secondary
+                                                                                        attributes:self.secondaryPartStyle.attributes];
+        
+        [string appendAttributedString:secondaryAttributedString];
+    }
     
     return string;
 }
@@ -89,7 +84,17 @@ NS_INLINE FormattedString MakeFormattedString(NSString *primary, NSString *secon
         case BalanceFormatterStyleHundredths:
         {
             NSArray *components = [balance componentsSeparatedByString:separator];
-            result = MakeFormattedString(components.firstObject, components.lastObject);
+            if (components.count == 0) {
+                result = MakeFormattedString(nil, nil);
+                break;
+            }
+            
+            NSString *primaryString = components.firstObject;
+            NSString *secondaryString;
+            if (components.count > 1) {
+                secondaryString = components[1];
+            }
+            result = MakeFormattedString(primaryString, secondaryString);
         }
             break;
         case BalanceFormatterStyleTenThousandths:
