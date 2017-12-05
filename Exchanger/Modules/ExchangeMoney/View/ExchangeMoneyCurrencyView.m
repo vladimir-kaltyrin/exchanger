@@ -3,7 +3,7 @@
 #import "ExchangeMoneyBalanceViewData.h"
 #import "UIView+Properties.h"
 #import "SafeBlocks.h"
-#import "TextField.h"
+#import "ObservableTextField.h"
 
 // MARK: - Private consts
 
@@ -14,7 +14,7 @@ CGFloat const kkSmallFontSize = 10.0;
 @interface ExchangeMoneyCurrencyView()
 @property (nonatomic, strong) UILabel *balanceLabel;
 @property (nonatomic, strong) UILabel *currencyLabel;
-@property (nonatomic, strong) TextField *exchangeTextField;
+@property (nonatomic, strong) ObservableTextField *exchangeTextField;
 @property (nonatomic, strong) UILabel *rateLabel;
 @property (nonatomic, strong) void(^onTextChange)();
 @end
@@ -49,10 +49,10 @@ CGFloat const kkSmallFontSize = 10.0;
     self.currencyLabel.font = [UIFont systemFontOfSize:kkBigFontSize];
     [self addSubview:self.currencyLabel];
     
-    self.exchangeTextField = [[TextField alloc] initWithFrame:CGRectZero];
-    self.exchangeTextField.textColor = [UIColor whiteColor];
-    self.exchangeTextField.font = [UIFont systemFontOfSize:kkBigFontSize];
-    self.exchangeTextField.keyboardType = UIKeyboardTypeDecimalPad;
+    self.exchangeTextField = [[ObservableTextField alloc] init];
+    self.exchangeTextField.textField.textColor = [UIColor whiteColor];
+    self.exchangeTextField.textField.font = [UIFont systemFontOfSize:kkBigFontSize];
+    self.exchangeTextField.textField.keyboardType = UIKeyboardTypeDecimalPad;
     [self addSubview:self.exchangeTextField];
     
     self.rateLabel = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -95,7 +95,7 @@ CGFloat const kkSmallFontSize = 10.0;
 }
 
 - (void)setExchange:(NSString *)exchange {
-    self.exchangeTextField.text = exchange;
+    self.exchangeTextField.textField.text = exchange;
 }
 
 // MARK: - Helpers

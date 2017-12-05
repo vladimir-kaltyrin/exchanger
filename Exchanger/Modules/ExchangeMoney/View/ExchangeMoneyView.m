@@ -52,13 +52,18 @@ CGFloat const kFontSize = 34.0;
         self.currencyAmountTextField.textField.textColor = [UIColor whiteColor];
         self.currencyAmountTextField.textField.textAlignment = NSTextAlignmentRight;
         self.currencyAmountTextField.textField.keyboardType = UIKeyboardTypeDecimalPad;
+        
+        __weak typeof(self) weakSelf = self;
         self.currencyAmountTextField.onTextChange = ^(NSString *text) {
             
             id<BalanceFormatter> formatter = [[FormatterFactoryImpl instance] exchangeCurrencyInputFormatter];
-        
+            
+            NSAttributedString *attr = [formatter attributedFormatBalance:text];
+            weakSelf.currencyAmountTextField.textField.attributedText = attr;
+            
             NSLog(@"%@", [formatter formatBalance:@(text.floatValue)]);
             
-            return YES;
+            return NO;
         };
         
         self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
