@@ -1,6 +1,7 @@
 #import "ExchangeMoneyView.h"
 #import "ExchangeMoneyViewData.h"
 #import "KeyboardObserverImpl.h"
+#import "ExchangeMoneyInputTextField.h"
 #import "ExchangeMoneyCurrencyViewData.h"
 #import "GalleryPreviewData.h"
 #import "GalleryPreviewPageData.h"
@@ -20,7 +21,7 @@ CGFloat const kFontSize = 34.0;
 @property (nonatomic, strong) UIImageView *backgroundImageView;
 @property (nonatomic, strong) UIView *overlayView;
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) ObservableTextField *currencyAmountTextField;
+@property (nonatomic, strong) ExchangeMoneyInputTextField *inputTextField;
 @property (nonatomic, assign) CGFloat keyboardHeight;
 @property (nonatomic, strong) ExchangeMoneyViewData *viewData;
 @end
@@ -47,31 +48,14 @@ CGFloat const kFontSize = 34.0;
         self.tableView.scrollEnabled = NO;
         [self.tableView registerClass:[CurrencyRateCell class] forCellReuseIdentifier:kCurrencyRateCellId];
         
-        self.currencyAmountTextField = [[ObservableTextField alloc] init];
-        self.currencyAmountTextField.textField.font = [UIFont systemFontOfSize:kFontSize];
-        self.currencyAmountTextField.textField.textColor = [UIColor whiteColor];
-        self.currencyAmountTextField.textField.textAlignment = NSTextAlignmentRight;
-        self.currencyAmountTextField.textField.keyboardType = UIKeyboardTypeDecimalPad;
-        
-        __weak typeof(self) weakSelf = self;
-        self.currencyAmountTextField.onTextChange = ^(NSString *text) {
-            
-            id<BalanceFormatter> formatter = [[FormatterFactoryImpl instance] exchangeCurrencyInputFormatter];
-            
-            NSAttributedString *attr = [formatter attributedFormatBalance:text];
-            weakSelf.currencyAmountTextField.textField.attributedText = attr;
-            
-            NSLog(@"%@", [formatter formatBalance:@(text.floatValue)]);
-            
-            return NO;
-        };
+        self.inputTextField = [[ExchangeMoneyInputTextField alloc] init];
         
         self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
         
         [self addSubview:self.backgroundImageView];
         [self addSubview:self.overlayView];
         [self addSubview:self.tableView];
-        [self addSubview:self.currencyAmountTextField];
+        [self addSubview:self.inputTextField];
         [self addSubview:self.activityIndicator];
     }
     
@@ -81,7 +65,7 @@ CGFloat const kFontSize = 34.0;
 // MARK: - ExchangeMoneyView
 
 - (void)focusOnStart {
-    [self.currencyAmountTextField becomeFirstResponder];
+    [self.inputTextField becomeFirstResponder];
 }
 
 - (void)updateKeyboardData:(KeyboardData *)keyboardData {
@@ -118,10 +102,10 @@ CGFloat const kFontSize = 34.0;
     
     self.tableView.frame = [self tableViewFrame];
     
-    self.currencyAmountTextField.width = 190;
-    self.currencyAmountTextField.height = 70;
-    self.currencyAmountTextField.right = 360;
-    self.currencyAmountTextField.top = 16;
+    self.inputTextField.width = 190;
+    self.inputTextField.height = 70;
+    self.inputTextField.right = 360;
+    self.inputTextField.top = 16;
 }
 
 - (CGRect)tableViewFrame {

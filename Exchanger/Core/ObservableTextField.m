@@ -41,15 +41,37 @@
     return [self.textField sizeThatFits:size];
 }
 
+// MARK: - Public
+
+- (void)setConfiguration:(TextFieldConfiguration *)configuration {
+    self.textField.font = configuration.font;
+    self.textField.textColor = configuration.textColor;
+    self.textField.textAlignment = configuration.textAlignment;
+    self.textField.keyboardType = configuration.keyboardType;
+}
+
+- (void)setAttributedText:(NSAttributedString *)text {
+    self.textField.attributedText = text;
+}
+
 // MARK: - UITextFieldDelegate
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    if (self.onTextChange != nil) {
-        return self.onTextChange([NSString stringWithFormat:@"%@%@", textField.text, string]);
+    if (self.onTextChange == nil) {
+        return YES;
     }
     
-    return YES;
+    NSString *resultString = textField.text;
+    if ([string isEqualToString:@""]) {
+        if (resultString.length > 0) {
+            resultString = [resultString substringToIndex:resultString.length - 1];
+        }
+    }  else {
+        resultString = [NSString stringWithFormat:@"%@%@", textField.text, string];
+    }
+    
+    return self.onTextChange(resultString);
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

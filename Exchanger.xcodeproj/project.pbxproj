@@ -43,6 +43,7 @@
 		8C45F6661FD01F17005B3892 /* IntroRouterImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C45F6651FD01F17005B3892 /* IntroRouterImpl.m */; };
 		8C45F6691FD02EA7005B3892 /* BaseUIKitRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C45F6681FD02EA7005B3892 /* BaseUIKitRouter.m */; };
 		8C45F66C1FD03222005B3892 /* BaseRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C45F66B1FD03222005B3892 /* BaseRouter.m */; };
+		8C4BC9241FD6CFE6008EB4B5 /* TextFieldConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4BC9231FD6CFE6008EB4B5 /* TextFieldConfiguration.m */; };
 		8C6423491FA0747500A95479 /* GalleryPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6423481FA0747500A95479 /* GalleryPreviewView.m */; };
 		8C64234C1FA0753500A95479 /* GalleryPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C64234B1FA0753500A95479 /* GalleryPreviewController.m */; };
 		8C6423521FA0757600A95479 /* GalleryPreviewPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6423511FA0757600A95479 /* GalleryPreviewPageController.m */; };
@@ -179,6 +180,8 @@
 		8C45F6681FD02EA7005B3892 /* BaseUIKitRouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BaseUIKitRouter.m; path = Core/BaseUIKitRouter.m; sourceTree = "<group>"; };
 		8C45F66A1FD03222005B3892 /* BaseRouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BaseRouter.h; path = Core/BaseRouter.h; sourceTree = "<group>"; };
 		8C45F66B1FD03222005B3892 /* BaseRouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BaseRouter.m; path = Core/BaseRouter.m; sourceTree = "<group>"; };
+		8C4BC9221FD6CFE6008EB4B5 /* TextFieldConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TextFieldConfiguration.h; path = Core/TextFieldConfiguration.h; sourceTree = "<group>"; };
+		8C4BC9231FD6CFE6008EB4B5 /* TextFieldConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TextFieldConfiguration.m; path = Core/TextFieldConfiguration.m; sourceTree = "<group>"; };
 		8C6423471FA0747500A95479 /* GalleryPreviewView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GalleryPreviewView.h; path = Views/GalleryPreviewView/GalleryPreviewView.h; sourceTree = "<group>"; };
 		8C6423481FA0747500A95479 /* GalleryPreviewView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GalleryPreviewView.m; path = Views/GalleryPreviewView/GalleryPreviewView.m; sourceTree = "<group>"; };
 		8C64234A1FA0753500A95479 /* GalleryPreviewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GalleryPreviewController.h; path = Views/GalleryPreviewView/GalleryPreviewController.h; sourceTree = "<group>"; };
@@ -464,6 +467,8 @@
 				8C076B9E1FD03DF4003F4D42 /* DisposeBag.m */,
 				8CC843BE1FD57C6800EC0CD3 /* AttributedStringStyle.h */,
 				8CC843BF1FD57C6800EC0CD3 /* AttributedStringStyle.m */,
+				8C4BC9221FD6CFE6008EB4B5 /* TextFieldConfiguration.h */,
+				8C4BC9231FD6CFE6008EB4B5 /* TextFieldConfiguration.m */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -1116,6 +1121,7 @@
 				8C36E99B1F2653D8009BDDC0 /* ExchangeRatesResponse.m in Sources */,
 				8CD786261F14F23400AF7A8D /* ExchangeMoneyViewController.m in Sources */,
 				8CD786331F14F26700AF7A8D /* ExchangeRatesUpdaterImpl.m in Sources */,
+				8C4BC9241FD6CFE6008EB4B5 /* TextFieldConfiguration.m in Sources */,
 				8C6423611FA091D000A95479 /* GalleryPreviewData.m in Sources */,
 				8CC843C31FD58C8400EC0CD3 /* FormatterFactoryImpl.m in Sources */,
 				8CD786491F14F2B800AF7A8D /* Currency.m in Sources */,
