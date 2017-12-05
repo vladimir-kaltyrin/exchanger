@@ -64,8 +64,8 @@
 
 // MARK: - ExchangeMoneyViewInput
 
-- (void)setNavigationTitle:(NSString *)title {
-    [self.exchangeMoneyTitleView setTitle:title];
+- (void)setExchangeSourceCurrency:(NSString *)sourceCurrency targetCurrency:(NSString *)targetCurrency {
+    [self.exchangeMoneyTitleView setExchangeSourceCurrency:sourceCurrency targetCurrency:targetCurrency];
 }
 
 - (void)setOnBackTap:(void (^)())onBackTap {

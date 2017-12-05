@@ -93,13 +93,16 @@
     __weak typeof(self) weakSelf = self;
     [self.interactor convertedCurrency:^(Currency *convertedCurrency) {
         NSString *sourceCurrencySign = [weakSelf.interactor sourceCurrency].currencySign;
-        NSString *convertedCurrencySign = convertedCurrency.currencySign;
-        NSString *currentRate = [NSString stringWithFormat:@"1%@- %.5f%@",
-                                 sourceCurrencySign,
-                                 convertedCurrency.rate.floatValue,
-                                 convertedCurrencySign
-                                 ];
-        [weakSelf.view setNavigationTitle:currentRate];
+//        NSString *convertedCurrencySign = convertedCurrency.currencySign;
+//        NSString *currentRate = [NSString stringWithFormat:@"1%@- %.5f%@",
+//                                 sourceCurrencySign,
+//                                 convertedCurrency.rate.floatValue,
+//                                 convertedCurrencySign
+//                                 ];
+
+        NSString *sourceCurrency = [NSString stringWithFormat:@"1%@", sourceCurrencySign];
+        NSString *targetCurrency = convertedCurrency.rate.stringValue;
+        [weakSelf.view setExchangeSourceCurrency:sourceCurrency targetCurrency:targetCurrency];
         block(onUpdate);
     }];
 }
