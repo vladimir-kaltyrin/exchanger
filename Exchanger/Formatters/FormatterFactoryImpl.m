@@ -35,8 +35,17 @@
 }
 
 - (id<BalanceFormatter>)currentBalanceFormatter {
-    return [[BalanceFormatterImpl alloc] initWithPrimaryPartStyle:nil
-                                               secondaryPartStyle:nil
+    
+    AttributedStringStyle *primaryStringStyle = [[AttributedStringStyle alloc] init];
+    primaryStringStyle.font = [UIFont systemFontOfSize:18];
+    primaryStringStyle.foregroundColor = [UIColor whiteColor];
+    
+    AttributedStringStyle *secondaryStringStyle = [[AttributedStringStyle alloc] init];
+    secondaryStringStyle.font = [UIFont systemFontOfSize:15];
+    secondaryStringStyle.foregroundColor = [UIColor whiteColor];
+    
+    return [[BalanceFormatterImpl alloc] initWithPrimaryPartStyle:primaryStringStyle
+                                               secondaryPartStyle:secondaryStringStyle
                                                    formatterStyle:BalanceFormatterStyleTenThousandths];
 }
 

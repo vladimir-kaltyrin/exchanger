@@ -11,7 +11,7 @@
 @property (nonatomic, strong, nullable) void(^onBackTap)();
 @property (nonatomic, strong, nullable) void(^onPageChange)(CurrencyExchangeType exchangeType, NSInteger current, NSInteger total);
 
-- (void)setNavigationTitle:(nullable NSString *)title;
+- (void)setExchangeSourceCurrency:(NSString *)sourceCurrency targetCurrency:(NSString *)targetCurrency;
 - (void)focusOnStart;
 - (void)updateKeyboardData:(nullable KeyboardData *)keyboardData;
 - (void)setViewData:(nullable ExchangeMoneyViewData *)viewData;

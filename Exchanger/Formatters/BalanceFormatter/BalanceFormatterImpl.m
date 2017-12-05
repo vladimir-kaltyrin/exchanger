@@ -39,14 +39,30 @@ NS_INLINE FormattedString MakeFormattedString(NSString *primary, NSString *secon
 
 // MARK: - Public
 
-- (NSString *)formatBalance:(NSNumber *)balance {
+- (NSString *)formatBalance:(NSString *)balance {
+    
+    NSNumber *number = @(balance.floatValue);
+    
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+
     switch (self.formatterStyle) {
         case BalanceFormatterStyleHundredths:
-            return [NSString stringWithFormat:@"%.03f", balance.floatValue];
+            numberFormatter.maximumFractionDigits = 2;
             break;
         case BalanceFormatterStyleTenThousandths:
-            return [NSString stringWithFormat:@"%.04f", balance.floatValue];
+            numberFormatter.maximumFractionDigits = 4;
             break;
+    }
+    
+    NSString *formattedBalance = [numberFormatter stringFromNumber:number];;
+    
+    NSLocale *locale = [NSLocale currentLocale];
+    NSString *separator = [locale objectForKey:NSLocaleDecimalSeparator];
+    
+    if ([balance rangeOfString:separator].location != NSNotFound) {
+        return [NSString stringWithFormat:@"%@%@", formattedBalance, separator];
+    } else {
+        return formattedBalance;
     }
 }
 
@@ -102,7 +118,7 @@ NS_INLINE FormattedString MakeFormattedString(NSString *primary, NSString *secon
             break;
         case BalanceFormatterStyleTenThousandths:
         {
-            NSInteger location = [balance rangeOfString:separator].location + 1;
+            NSInteger location = [balance rangeOfString:separator].location + 3;
             NSString *primaryString = [balance substringToIndex:location];
             NSString *secondaryString = [balance substringFromIndex:location + 1];
             result = MakeFormattedString(primaryString, secondaryString);

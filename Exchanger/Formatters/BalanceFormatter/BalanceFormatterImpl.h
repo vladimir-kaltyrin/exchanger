@@ -15,8 +15,6 @@ typedef NS_ENUM(NSInteger, BalanceFormatterStyle) {
                       secondaryPartStyle:(AttributedStringStyle *)secondaryPartStyle
                           formatterStyle:(BalanceFormatterStyle)formatterStyle;
 
-- (NSString *)formatBalance:(NSNumber *)balance;
-
 - (NSAttributedString *)attributedFormatBalance:(NSString *)balance;
 
 @end

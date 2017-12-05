@@ -2,6 +2,6 @@
 
 @interface ExchangeMoneyTitleView : UIView
 
-- (void)setTitle:(NSString *)title;
+- (void)setExchangeSourceCurrency:(NSString *)sourceCurrency targetCurrency:(NSString *)targetCurrency;
 
 @end
