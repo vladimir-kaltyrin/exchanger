@@ -52,8 +52,7 @@ static NSString *const kXmlUrl = @"http://www.ecb.europa.eu/stats/eurofxref/euro
         }
     }]];
     
-    Currency *eur = [[Currency alloc] init];
-    eur.currencyType = CurrencyTypeEUR;
+    Currency *eur = [Currency currencyWithType:CurrencyTypeEUR];
     eur.rate = @1.0;
     
     currencies = [currencies arrayByAddingObject:eur];
