@@ -19,11 +19,6 @@
         self.galleryPreview = [[GalleryPreviewController alloc] init];
         self.pageIndicator = [[GalleryPreviewPageIndicator alloc] init];
         
-        __weak typeof(self) weakSelf = self;
-        self.galleryPreview.onPageChange = ^(NSInteger current, NSInteger total) {
-            [weakSelf.pageIndicator setCurrentPage:current ofTotal:total];
-        };
-        
         [self addSubview:self.galleryPreview.view];
         [self addSubview:self.pageIndicator];
         
@@ -42,12 +37,14 @@
     
 // MARK: - Public
     
-- (void)setOnPageChange:(void (^)(NSInteger, NSInteger))onPageChange {
-    self.galleryPreview.onPageChange = onPageChange;
-}
+- (void)setOnPageChange:(void (^)(NSInteger))onPageChange {
+    _onPageChange = onPageChange;
     
-- (void (^)(NSInteger, NSInteger))onPageChange {
-    return self.galleryPreview.onPageChange;
+    __weak typeof(self) weakSelf = self;
+    self.galleryPreview.onPageChange = ^(NSInteger current, NSInteger total) {
+        [weakSelf.pageIndicator setCurrentPage:current ofTotal:total];
+        weakSelf.onPageChange(current);
+    };
 }
     
 - (void)setViewData:(GalleryPreviewData *)data {

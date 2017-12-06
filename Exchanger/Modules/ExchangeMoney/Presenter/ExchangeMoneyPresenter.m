@@ -79,7 +79,7 @@
                       onUpdate:nil
                        onError:nil];
     
-    [self.view setOnPageChange:^(CurrencyExchangeType exchangeType, NSInteger current, NSInteger total) {
+    [self.view setOnPageChange:^(CurrencyExchangeType exchangeType, NSInteger current) {
         [weakSelf update:exchangeType withIndex:current];
     }];
 }

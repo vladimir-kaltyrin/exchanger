@@ -26,7 +26,7 @@
 
 - (void)setCurrentPage:(NSInteger)currentPage ofTotal:(NSInteger)total {
     self.pageControl.numberOfPages = total;
-    self.pageControl.currentPage = currentPage - 1;
+    self.pageControl.currentPage = currentPage;
 }
 
 - (void)layoutSubviews {

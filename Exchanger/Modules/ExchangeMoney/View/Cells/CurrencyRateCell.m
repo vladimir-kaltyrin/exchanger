@@ -36,8 +36,12 @@
     [self.previewView setViewData:model];
 }
 
-- (void)setOnPageChange:(void(^)(NSInteger current, NSInteger total))onPageChange {
+- (void)setOnPageChange:(void(^)(NSInteger current))onPageChange {
     [self.previewView setOnPageChange:onPageChange];
+}
+
+- (void)setCurrencyExchangeType:(CurrencyExchangeType)currencyExchangeType {
+    
 }
 
 // MARK: - Layout

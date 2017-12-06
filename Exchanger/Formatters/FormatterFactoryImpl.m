@@ -38,11 +38,11 @@
     
     AttributedStringStyle *primaryStringStyle = [[AttributedStringStyle alloc] init];
     primaryStringStyle.font = [UIFont systemFontOfSize:18];
-    primaryStringStyle.foregroundColor = [UIColor whiteColor];
+    primaryStringStyle.foregroundColor = [UIColor blackColor];
     
     AttributedStringStyle *secondaryStringStyle = [[AttributedStringStyle alloc] init];
     secondaryStringStyle.font = [UIFont systemFontOfSize:15];
-    secondaryStringStyle.foregroundColor = [UIColor whiteColor];
+    secondaryStringStyle.foregroundColor = [UIColor blackColor];
     
     return [[BalanceFormatterImpl alloc] initWithPrimaryPartStyle:primaryStringStyle
                                                secondaryPartStyle:secondaryStringStyle
