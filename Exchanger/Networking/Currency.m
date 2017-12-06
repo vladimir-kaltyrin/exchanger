@@ -7,9 +7,20 @@
 
 @implementation Currency
 
+// MARK: - Init
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        [self setup];
+    }
+    return self;
+}
+
 - (id)initWithDictionary:(NSDictionary *)dictionary {
-    if (self = [super init]) {
-        self.currencyFormatter = [[FormatterFactoryImpl instance] currencyFormatter];
+    self = [super init];
+    if (self) {
+        [self setup];
         @try {
             self.currencyType = [self.currencyFormatter currencyTypeFromString:[dictionary objectForKey:@"_currency"]];
             self.rate = @([[dictionary objectForKey:@"_rate"] floatValue]);
@@ -21,6 +32,14 @@
     }
     return self;
 }
+
+// MARK: - Private
+
+- (void)setup {
+    self.currencyFormatter = [[FormatterFactoryImpl instance] currencyFormatter];
+}
+
+// MARK: - Public
 
 - (NSString *)currencyCode {
     return [self.currencyFormatter toCodeString:self.currencyType];
