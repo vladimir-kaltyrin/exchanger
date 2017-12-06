@@ -76,7 +76,8 @@
 
 - (void)formatText:(NSString *)text {
     NSString *numberText = [self.numbersFormatter format:text];
-    NSAttributedString *formattedText = [self.exchangeCurrencyInputFormatter attributedFormatBalance:numberText];
+    NSString *negativeNumberText = [NSString stringWithFormat:@"-%@", numberText];
+    NSAttributedString *formattedText = [self.exchangeCurrencyInputFormatter attributedFormatBalance:negativeNumberText];
     
     [self.textField setAttributedText:formattedText];
 }

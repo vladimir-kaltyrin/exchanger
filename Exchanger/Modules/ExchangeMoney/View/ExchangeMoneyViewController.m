@@ -84,11 +84,11 @@
     return self.exchangeBarButton.onBarButtonTap;
 }
 
-- (void)setOnPageChange:(void (^)(CurrencyExchangeType, NSInteger, NSInteger))onPageChange {
+- (void)setOnPageChange:(void (^)(CurrencyExchangeType, NSInteger))onPageChange {
     [self.exchangeMoneyView setOnPageChange:onPageChange];
 }
 
-- (void (^)(CurrencyExchangeType, NSInteger, NSInteger))onPageChange {
+- (void (^)(CurrencyExchangeType, NSInteger))onPageChange {
     return [self.exchangeMoneyView onPageChange];
 }
 

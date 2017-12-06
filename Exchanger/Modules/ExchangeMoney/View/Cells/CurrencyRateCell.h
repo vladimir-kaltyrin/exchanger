@@ -1,4 +1,5 @@
 #import <UIKit/UIKit.h>
+#import "CurrencyExchangeType.h"
 
 @class GalleryPreviewData;
 
@@ -13,7 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)updateWithModel:(GalleryPreviewData *)model;
 
-- (void)setOnPageChange:(void(^)(NSInteger current, NSInteger total))onPageChange;
+- (void)setOnPageChange:(void(^)(NSInteger current))onPageChange;
+
+- (void)setCurrencyExchangeType:(CurrencyExchangeType)currencyExchangeType;
 
 - (instancetype)initWithStyle:(CurrencyRateCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
     

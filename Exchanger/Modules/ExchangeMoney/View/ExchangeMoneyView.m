@@ -159,8 +159,8 @@ CGFloat const kFontSize = 34.0;
     [cell updateWithModel:model];
     
     __weak typeof(self) weakSelf = self;
-    [cell setOnPageChange:^(NSInteger current, NSInteger total) {
-        weakSelf.onPageChange(currencyExchangeType, current, total);
+    [cell setOnPageChange:^(NSInteger current) {
+        weakSelf.onPageChange(currencyExchangeType, current);
     }];
 }
 
