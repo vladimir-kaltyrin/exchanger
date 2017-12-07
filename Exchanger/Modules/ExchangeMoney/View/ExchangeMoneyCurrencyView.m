@@ -1,31 +1,24 @@
 #import "ExchangeMoneyCurrencyView.h"
-#import "ExchangeMoneyCurrencyViewData.h"
-#import "ExchangeMoneyBalanceViewData.h"
+#import "GalleryPreviewView.h"
+#import "GalleryPreviewData.h"
 #import "UIView+Properties.h"
+#import "CurrencyRateCell.h"
 #import "SafeBlocks.h"
 
-// MARK: - Private consts
-
-CGFloat const kkBigFontSize = 34.0;
-CGFloat const kkMediumFontSize = 20.0;
-CGFloat const kkSmallFontSize = 10.0;
-
 @interface ExchangeMoneyCurrencyView()
-@property (nonatomic, strong) UILabel *balanceLabel;
-@property (nonatomic, strong) UILabel *currencyLabel;
-@property (nonatomic, strong) UILabel *rateLabel;
-@property (nonatomic, strong) void(^onTextChange)();
+@property (nonatomic, strong) GalleryPreviewView *previewView;
+@property (nonatomic, strong) UIVisualEffectView *visualEffectView;
 @end
 
 @implementation ExchangeMoneyCurrencyView
 
 // MARK: - Init
 
-- (instancetype)initWithFrame:(CGRect)frame
+- (instancetype)initWithStyle:(ExchangeMoneyCurrencViewStyle)style
 {
-    self = [super initWithFrame:frame];
+    self = [super initWithFrame:CGRectZero];
     if (self) {
-        [self setup];
+        [self setupWithStyle:style];
     }
     return self;
 }
@@ -36,100 +29,46 @@ CGFloat const kkSmallFontSize = 10.0;
 
 // MARK: - Private methods
 
-- (void)setup
+- (void)setupWithStyle:(ExchangeMoneyCurrencViewStyle)style
 {
-    self.balanceLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.balanceLabel.font = [UIFont systemFontOfSize:kkSmallFontSize];
-    [self addSubview:self.balanceLabel];
+    self.previewView = [[GalleryPreviewView alloc] initWithFrame:CGRectZero];
     
-    self.currencyLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.currencyLabel.textColor = [UIColor whiteColor];
-    self.currencyLabel.font = [UIFont systemFontOfSize:kkBigFontSize];
-    [self addSubview:self.currencyLabel];
-    
-    self.rateLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.rateLabel.textColor = [[UIColor whiteColor] colorWithAlphaComponent:0.8];
-    self.rateLabel.font = [UIFont systemFontOfSize:kkSmallFontSize];
-    [self addSubview:self.rateLabel];
-    
-    __weak typeof(self) weakSelf = self;
-    [[NSNotificationCenter defaultCenter] addObserverForName:UITextFieldTextDidChangeNotification
-                                                      object:nil
-                                                       queue:[NSOperationQueue mainQueue]
-                                                  usingBlock:^(NSNotification * _Nonnull note)
-    {
-        block(weakSelf.onTextChange);
-    }];
-}
-
-- (void)setBalance:(ExchangeMoneyBalanceViewData *)balance
-{
-    switch (balance.balanceType)
-    {
-        case Normal:
-            self.balanceLabel.textColor = [UIColor whiteColor];
+    UIBlurEffectStyle blurEffectStyle;
+    switch (style) {
+        case ExchangeMoneyCurrencViewStyleSource:
+            blurEffectStyle = UIBlurEffectStyleLight;
             break;
-        case Insufficient:
-            self.balanceLabel.textColor = [UIColor redColor];
+        case ExchangeMoneyCurrencViewStyleTarget:
+            blurEffectStyle = UIBlurEffectStyleDark;
             break;
     }
+    self.visualEffectView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:blurEffectStyle]];
     
-    self.balanceLabel.text = balance.balanceValue;
-}
-
-- (void)setCurrency:(NSString *)currency {
-    self.currencyLabel.text = currency;
-}
-
-- (void)setRate:(NSString *)rate {
+    [self addSubview:self.visualEffectView];
+    [self addSubview:self.previewView];
     
-    self.rateLabel.text = rate;
+    [self setBackgroundColor:[UIColor clearColor]];
 }
 
-// MARK: - Helpers
-
-- (UIEdgeInsets)contentInsets {
-    return UIEdgeInsetsMake(16, 16, 16, 16);
+- (void)updateWithModel:(GalleryPreviewData *)model {
+    [self.previewView setViewData:model];
 }
 
-- (CGFloat)verticalOffsetBetweenLabels {
-    return 12;
+- (void)setOnPageChange:(void(^)(NSInteger current))onPageChange {
+    [self.previewView setOnPageChange:onPageChange];
+}
+
+- (void)setCurrencyExchangeType:(CurrencyExchangeType)currencyExchangeType {
+    
 }
 
 // MARK: - Layout
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
     
-    CGRect contentFrame = UIEdgeInsetsInsetRect(self.bounds, [self contentInsets]);
-    
-    CGSize currencyLabelSize = [self.currencyLabel sizeThatFits:contentFrame.size];
-    self.currencyLabel.size = currencyLabelSize;
-    self.currencyLabel.left = contentFrame.origin.x;
-    self.currencyLabel.top = contentFrame.origin.y;
-    
-    CGSize balanceLabelSize = [self.balanceLabel sizeThatFits:contentFrame.size];
-    self.balanceLabel.size = balanceLabelSize;
-    self.balanceLabel.top = self.currencyLabel.bottom + [self verticalOffsetBetweenLabels];
-    self.balanceLabel.left = self.currencyLabel.x;
-    
-    CGSize rateLabelSize = [self.rateLabel sizeThatFits:contentFrame.size];
-    self.rateLabel.size = rateLabelSize;
-    self.rateLabel.right = 0;
-    self.rateLabel.top = [self verticalOffsetBetweenLabels];
-}
-
-// MARK: - ExchangeMoneyCurrencyView
-
-- (void)setViewData:(ExchangeMoneyCurrencyViewData *)viewData
-{
-    [self setBalance:viewData.balance];
-    [self setCurrency:viewData.currency];
-    [self setRate:viewData.rate];
-    [self setOnTextChange:viewData.onTextChange];
-    
-    [self setNeedsLayout];
+    self.visualEffectView.frame = self.bounds;
+    self.previewView.frame = self.bounds;
 }
 
 @end

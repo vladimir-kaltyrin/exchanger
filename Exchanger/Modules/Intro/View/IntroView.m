@@ -9,8 +9,6 @@
 @property (nonatomic, strong) UIVisualEffectView *visualEffectView;
 @property (nonatomic, strong) UIButton *resetButton;
 @property (nonatomic, strong) UIButton *startButton;
-@property (nonatomic, strong) UIStackView *horizontalStackView;
-@property (nonatomic, strong) UIStackView *stackView;
 @end
 
 @implementation IntroView
