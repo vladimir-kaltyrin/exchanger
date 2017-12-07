@@ -58,6 +58,12 @@
 // MARK: - Private
 
 - (void)configureTextField {
+    
+    TextFieldConfiguration *configuration = [[TextFieldConfiguration alloc] init];
+    configuration.keyboardType = UIKeyboardTypeDecimalPad;
+    
+    [self.textField setConfiguration:configuration];
+    
     __weak typeof(self) weakSelf = self;
     self.textField.onTextChange = ^BOOL(NSString *text) {
         [weakSelf setFormattedTextWith:text];
