@@ -45,6 +45,10 @@
 - (void)setExchangeSourceCurrency:(Currency *)sourceCurrency
                    targetCurrency:(Currency *)targetCurrency
 {
+    if ((sourceCurrency == nil) || (targetCurrency == nil)) {
+        return;
+    }
+    
     NSMutableAttributedString *string = [[NSMutableAttributedString alloc] init];
     
     AttributedStringStyle *stringStyle = [[AttributedStringStyle alloc] init];

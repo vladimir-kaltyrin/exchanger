@@ -31,13 +31,7 @@ NSTimeInterval const kUpdateFrequency = 30.0f;
 - (void)reset {
     [self stop];
     
-    __weak typeof(self) weakSelf = self;
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:kUpdateFrequency
-                                                 repeats:YES
-                                                   block:^(NSTimer * _Nonnull timer)
-    {
-        [weakSelf fetch];
-    }];
+    self.timer = [NSTimer timerWithTimeInterval:kUpdateFrequency target:self selector:@selector(fetch) userInfo:nil repeats:YES];
 }
 
 - (void)fetch {
