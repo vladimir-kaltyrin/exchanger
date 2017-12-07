@@ -97,6 +97,10 @@ CGFloat const kFontSize = 34.0;
     [self.targetCurrencyView setOnPageChange:onPageChange];
 }
 
+- (void)setOnInputChange:(void (^)(NSNumber *))onInputChange {
+    [self.inputTextField setOnInputChange:onInputChange];
+}
+
 // MARK: - Layout
 
 - (void)layoutSubviews {

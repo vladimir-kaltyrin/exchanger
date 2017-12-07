@@ -9,6 +9,7 @@
 
 @interface ExchangeMoneyPresenter()
 @property (nonatomic, strong) ExchangeRatesData *exchangeRatesData;
+@property (nonatomic, strong) NSNumber *currentInput;
 @property (nonatomic, strong) id<ExchangeMoneyInteractor> interactor;
 @property (nonatomic, strong) id<ExchangeMoneyRouter> router;
 @property (nonatomic, strong) id<KeyboardObserver> keyboardObserver;
@@ -47,6 +48,8 @@
         [weakSelf.view updateKeyboardData:keyboardData];
     }];
     
+    [self.view setExchangeButtonEnabled:YES];
+    
     [self.view setOnViewDidLoad:^{
         [weakSelf.view startActivity];
         [weakSelf.interactor startFetching];
@@ -80,10 +83,17 @@
     
     [self.view setOnPageChange:^(CurrencyExchangeType exchangeType, NSInteger current) {
         [weakSelf update:exchangeType withIndex:current];
+        [weakSelf updateExchangeButton];
+    }];
+    
+    [self.view setOnInputChange:^(NSNumber *inputChange) {
+        weakSelf.currentInput = inputChange;
+        [weakSelf reloadView];
     }];
 }
 
 - (void)updateViewWithData:(ExchangeRatesData *)data {
+    [self updateExchangeButton];
     [self updateExchangeRates:data onUpdate:nil];
     [self updateNavigationTitleRate:nil];
 }
@@ -92,12 +102,6 @@
     __weak typeof(self) weakSelf = self;
     [self.interactor convertedCurrency:^(Currency *convertedCurrency) {
         NSString *sourceCurrencySign = [weakSelf.interactor sourceCurrency].currencySign;
-//        NSString *convertedCurrencySign = convertedCurrency.currencySign;
-//        NSString *currentRate = [NSString stringWithFormat:@"1%@- %.5f%@",
-//                                 sourceCurrencySign,
-//                                 convertedCurrency.rate.floatValue,
-//                                 convertedCurrencySign
-//                                 ];
 
         NSString *sourceCurrency = [NSString stringWithFormat:@"1%@", sourceCurrencySign];
         NSString *targetCurrency = convertedCurrency.rate.stringValue;
@@ -140,9 +144,18 @@
         NSString *currencyTitle = currency.currencyCode;
         NSString *remainder = [self balanceWithUser:user currencyType:currency.currencyType];
         NSString *rate;
+        GalleryPreviewPageRemainderStyle remainderStyle = GalleryPreviewPageRemainderStyleNormal;
         switch (currencyExchangeType) {
             case CurrencyExchangeSourceType:
+            {
                 rate = @"";
+                
+                if ([self checkUserHasBalanceDeficiency:user currency:currency]) {
+                    remainderStyle = GalleryPreviewPageRemainderStyleDeficiency;
+                } else {
+                    remainderStyle = GalleryPreviewPageRemainderStyleNormal;
+                }
+            }
                 break;
             case CurrencyExchangeTargetType:
                 rate = currency.rate.stringValue;
@@ -152,7 +165,8 @@
         GalleryPreviewPageData *pageData = [[GalleryPreviewPageData alloc] initWithCurrencyTitle:currencyTitle
                                                                                   currencyAmount:@""
                                                                                        remainder:remainder
-                                                                                            rate:rate];
+                                                                                            rate:rate
+                                                                                  remainderStyle:remainderStyle];
         [pages addObject:pageData];
     }
     
@@ -180,7 +194,7 @@
         weakSelf.exchangeRatesData = data;
         [weakSelf.view stopActivity];
         [weakSelf.interactor resetCurrenciesWithData:data onReset:^{
-            [weakSelf updateViewWithData:data];
+            [weakSelf reloadView];
             if (repeat) {
                 [weakSelf.interactor startFetching];
             }
@@ -203,6 +217,24 @@
             self.interactor.targetCurrency = self.exchangeRatesData.currencies[index];
             break;
     }
+}
+
+- (void)reloadView {
+    [self updateViewWithData:self.exchangeRatesData];
+}
+
+- (void)updateExchangeButton {
+    __weak typeof(self) weakSelf = self;
+    [self.interactor fetchUser:^(User *user) {
+        Currency *sourceCurrency = weakSelf.interactor.sourceCurrency;
+        BOOL isDeficiency = [weakSelf checkUserHasBalanceDeficiency:user currency:sourceCurrency];
+        [weakSelf.view setExchangeButtonEnabled:!isDeficiency];
+    }];
+}
+
+- (BOOL)checkUserHasBalanceDeficiency:(User *)user currency:(Currency *)currency {
+    Wallet *wallet = [user walletWithCurrencyType:currency.currencyType];
+    return self.currentInput.floatValue > wallet.amount.floatValue;
 }
 
 - (void)dismissModule {

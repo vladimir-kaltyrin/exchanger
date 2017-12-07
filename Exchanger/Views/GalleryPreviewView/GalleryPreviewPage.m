@@ -33,7 +33,6 @@ NS_ASSUME_NONNULL_BEGIN
         
         self.remainderLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         self.remainderLabel.font = [UIFont systemFontOfSize:kSmallFontSize];
-        self.remainderLabel.textColor = [UIColor whiteColor];
         
         self.currencyRateLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         self.currencyRateLabel.font = [UIFont systemFontOfSize:kSmallFontSize];
@@ -71,6 +70,15 @@ NS_ASSUME_NONNULL_BEGIN
     self.currencyAmountTextField.text = data.currencyAmount;
     self.remainderLabel.text = data.remainder;
     self.currencyRateLabel.text = data.rate;
+    
+    switch (data.remainderStyle) {
+        case GalleryPreviewPageRemainderStyleNormal:
+            self.remainderLabel.textColor = [UIColor whiteColor];
+            break;
+        case GalleryPreviewPageRemainderStyleDeficiency:
+            self.remainderLabel.textColor = [UIColor redColor];
+            break;
+    }
 }
     
 - (void)prepareForReuse {
