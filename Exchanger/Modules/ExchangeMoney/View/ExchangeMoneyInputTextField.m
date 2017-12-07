@@ -61,7 +61,7 @@
 - (void)configureTextField {
     
     TextFieldConfiguration *configuration = [[TextFieldConfiguration alloc] init];
-    configuration.font = [UIFont systemFontOfSize:17];
+    configuration.font = [UIFont systemFontOfSize:34];
     configuration.textColor = [UIColor whiteColor];
     configuration.textAlignment = NSTextAlignmentRight;
     configuration.keyboardType = UIKeyboardTypeDecimalPad;
