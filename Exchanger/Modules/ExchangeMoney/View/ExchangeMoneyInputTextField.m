@@ -5,7 +5,6 @@
 
 @interface ExchangeMoneyInputTextField()
 @property (nonatomic, strong) id<NumbersFormatter> numbersFormatter;
-@property (nonatomic, strong) id<BalanceFormatter> exchangeCurrencyInputFormatter;
 @property (nonatomic, strong) ObservableTextField *textField;
 @property (nonatomic, strong) void(^onInputChange)(NSNumber *number);
 @end
@@ -18,8 +17,8 @@
     self = [super init];
     if (self) {
         self.numbersFormatter = [[FormatterFactoryImpl instance] numbersFormatter];
-        self.exchangeCurrencyInputFormatter = [[FormatterFactoryImpl instance] exchangeCurrencyInputFormatter];
         self.textField = [[ObservableTextField alloc] init];
+        [self.textField setHidden:YES];
         
         [self addSubview:self.textField];
         
@@ -59,15 +58,6 @@
 // MARK: - Private
 
 - (void)configureTextField {
-    
-    TextFieldConfiguration *configuration = [[TextFieldConfiguration alloc] init];
-    configuration.font = [UIFont systemFontOfSize:34];
-    configuration.textColor = [UIColor whiteColor];
-    configuration.textAlignment = NSTextAlignmentRight;
-    configuration.keyboardType = UIKeyboardTypeDecimalPad;
-    
-    [self.textField setConfiguration:configuration];
-    
     __weak typeof(self) weakSelf = self;
     self.textField.onTextChange = ^BOOL(NSString *text) {
         [weakSelf setFormattedTextWith:text];
@@ -78,10 +68,8 @@
 
 - (void)setFormattedTextWith:(NSString *)text {
     NSString *numberText = [self.numbersFormatter format:text];
-    NSString *negativeNumberText = [NSString stringWithFormat:@"-%@", numberText];
-    NSAttributedString *formattedText = [self.exchangeCurrencyInputFormatter attributedFormatBalance:negativeNumberText];
     
-    [self.textField setAttributedText:formattedText];
+    [self.textField setText:numberText];
     
     block(self.onInputChange, @(numberText.floatValue));
 }

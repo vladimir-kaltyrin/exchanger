@@ -5,14 +5,17 @@
 #import "GalleryPreviewPageData.h"
 #import "GalleryPreviewData.h"
 #import "KeyboardObserver.h"
+#import "FormatterFactoryImpl.h"
 #import "SafeBlocks.h"
 
 @interface ExchangeMoneyPresenter()
 @property (nonatomic, strong) ExchangeRatesData *exchangeRatesData;
 @property (nonatomic, strong) NSNumber *currentInput;
+@property (nonatomic, strong) NSAttributedString *formattedInput;
 @property (nonatomic, strong) id<ExchangeMoneyInteractor> interactor;
 @property (nonatomic, strong) id<ExchangeMoneyRouter> router;
 @property (nonatomic, strong) id<KeyboardObserver> keyboardObserver;
+@property (nonatomic, strong) id<BalanceFormatter> exchangeCurrencyInputFormatter;
 @end
 
 @implementation ExchangeMoneyPresenter
@@ -27,6 +30,8 @@
         self.interactor = interactor;
         self.router = router;
         self.keyboardObserver = keyboardObserver;
+        
+        self.exchangeCurrencyInputFormatter = [[FormatterFactoryImpl instance] exchangeCurrencyInputFormatter];
     }
     
     return self;
@@ -88,6 +93,10 @@
     
     [self.view setOnInputChange:^(NSNumber *inputChange) {
         weakSelf.currentInput = inputChange;
+        
+        NSString *negativeNumberText = [NSString stringWithFormat:@"-%@", inputChange.stringValue];
+        weakSelf.formattedInput = [weakSelf.exchangeCurrencyInputFormatter attributedFormatBalance:negativeNumberText];
+        
         [weakSelf reloadView];
     }];
 }
@@ -143,11 +152,14 @@
         NSString *currencyTitle = currency.currencyCode;
         NSString *remainder = [self balanceWithUser:user currencyType:currency.currencyType];
         NSString *rate;
+        NSAttributedString *currencyAmount;
         GalleryPreviewPageRemainderStyle remainderStyle = GalleryPreviewPageRemainderStyleNormal;
         switch (currencyExchangeType) {
             case CurrencyExchangeSourceType:
             {
                 rate = @"";
+                
+                currencyAmount = self.formattedInput;
                 
                 if ([self checkUserHasBalanceDeficiency:user currency:currency]) {
                     remainderStyle = GalleryPreviewPageRemainderStyleDeficiency;
@@ -157,6 +169,9 @@
             }
                 break;
             case CurrencyExchangeTargetType:
+                
+                currencyAmount = nil;
+                
                 rate = [NSString stringWithFormat:@"%@%@",
                         currency.currencySign,
                         currency.rate.stringValue];
@@ -164,7 +179,7 @@
         }
         
         GalleryPreviewPageData *pageData = [[GalleryPreviewPageData alloc] initWithCurrencyTitle:currencyTitle
-                                                                                  currencyAmount:@""
+                                                                                  currencyAmount:currencyAmount
                                                                                        remainder:remainder
                                                                                             rate:rate
                                                                                   remainderStyle:remainderStyle];

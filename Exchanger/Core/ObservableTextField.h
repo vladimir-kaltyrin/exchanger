@@ -10,4 +10,6 @@
 
 - (void)setAttributedText:(NSAttributedString *)text;
 
+- (void)setText:(NSString *)text;
+
 @end
