@@ -101,10 +101,9 @@
 - (void)updateNavigationTitleRate:(void(^)())onUpdate {
     __weak typeof(self) weakSelf = self;
     [self.interactor convertedCurrency:^(Currency *convertedCurrency) {
-        NSString *sourceCurrencySign = [weakSelf.interactor sourceCurrency].currencySign;
+        Currency *sourceCurrency = [weakSelf.interactor sourceCurrency];
+        Currency *targetCurrency = [weakSelf.interactor targetCurrency];
 
-        NSString *sourceCurrency = [NSString stringWithFormat:@"1%@", sourceCurrencySign];
-        NSString *targetCurrency = convertedCurrency.rate.stringValue;
         [weakSelf.view setExchangeSourceCurrency:sourceCurrency targetCurrency:targetCurrency];
         block(onUpdate);
     }];
@@ -183,7 +182,10 @@
 
 - (NSString *)balanceWithUser:(User *)user currencyType:(CurrencyType)currencyType {
     Wallet *wallet = [user walletWithCurrencyType:currencyType];
-    return [NSString stringWithFormat:@"You have %@", [wallet.amount stringValue]];
+    Currency *currency = wallet.currency;
+    return [NSString stringWithFormat:@"You have %@%@",
+            currency.currencySign,
+            [wallet.amount stringValue]];
 }
 
 - (void)fetchRatesWithRepeat:(BOOL)repeat onUpdate:(void(^)())onUpdate onError:(void (^)(NSError *))onError {
