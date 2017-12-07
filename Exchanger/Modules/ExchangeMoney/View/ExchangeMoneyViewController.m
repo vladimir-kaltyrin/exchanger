@@ -42,6 +42,7 @@
     self.navigationItem.rightBarButtonItem = self.exchangeBarButton.barButtonItem;
     self.navigationItem.leftBarButtonItem = self.cancelBarButton.barButtonItem;
     self.navigationItem.titleView = self.exchangeMoneyTitleView;
+    self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
