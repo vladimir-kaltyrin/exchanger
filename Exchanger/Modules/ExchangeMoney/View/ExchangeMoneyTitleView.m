@@ -22,9 +22,8 @@
         [self addSubview:self.titleLabel];
         self.titleLabel.backgroundColor = [UIColor clearColor];
         
-        self.titleLabel.layer.cornerRadius = 3.5;
-        self.titleLabel.layer.borderWidth = 2.0;
-        self.titleLabel.layer.borderColor = [UIColor blueColor].CGColor;
+        self.titleLabel.layer.cornerRadius = 5.5;
+        self.titleLabel.layer.backgroundColor = [UIColor whiteColor].CGColor;
     }
     return self;
 }
