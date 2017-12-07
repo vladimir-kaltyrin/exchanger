@@ -85,7 +85,7 @@ NS_ASSUME_NONNULL_BEGIN
     [super layoutSubviews];
     
     CGRect contentFrame = UIEdgeInsetsInsetRect(self.bounds, [self contentInsets]);
-    CGFloat verticalOffsetBetweenLabels = 12.f;
+    CGFloat verticalOffsetBetweenLabels = 8.f;
     
     CGSize currencyTitleLabelSize = [self.currencyTitleLabel sizeThatFits:contentFrame.size];
     self.currencyTitleLabel.size = currencyTitleLabelSize;

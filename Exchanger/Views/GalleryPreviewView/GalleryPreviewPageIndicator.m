@@ -33,7 +33,7 @@
     [super layoutSubviews];
     
     self.pageControl.width = self.bounds.size.width;
-    self.pageControl.height = 50;
+    self.pageControl.height = 24;
     self.pageControl.bottom = self.bottom;
 }
 
