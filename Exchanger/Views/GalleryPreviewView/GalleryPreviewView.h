@@ -8,7 +8,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) void(^onSelect)(BOOL);
 @property (nonatomic, strong, nullable) void(^onPageChange)(NSInteger current);
     
-- (void)setViewData:(GalleryPreviewData *)data;
+- (void)setViewData:(GalleryPreviewData *)data currentPage:(NSInteger)currentPage;
     
 @end
 

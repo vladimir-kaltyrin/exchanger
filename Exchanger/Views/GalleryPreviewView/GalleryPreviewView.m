@@ -47,9 +47,9 @@
     };
 }
     
-- (void)setViewData:(GalleryPreviewData *)data {
-    [self.pageIndicator setCurrentPage:0 ofTotal:data.pages.count];
-    [self.galleryPreview setData:data.pages];
+- (void)setViewData:(GalleryPreviewData *)data currentPage:(NSInteger)currentPage {
+    [self.pageIndicator setCurrentPage:currentPage ofTotal:data.pages.count];
+    [self.galleryPreview setData:data.pages currentPage:currentPage];
     self.onTap = data.onTap;
 }
 

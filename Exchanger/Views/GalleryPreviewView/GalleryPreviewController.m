@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_END
 
 // MARK: - Public
     
-- (void)setData:(NSArray<GalleryPreviewPageData *> *)data {
+- (void)setData:(NSArray<GalleryPreviewPageData *> *)data currentPage:(NSInteger)currentPage {
     _data = data;
     
     if ([self.data count] > 1) {
@@ -38,7 +38,7 @@ NS_ASSUME_NONNULL_END
         self.dataSource = nil;
     }
     
-    UIViewController *firstController = [self viewControllerAt:0];
+    UIViewController *firstController = [self viewControllerAt:currentPage];
     if (firstController != nil) {
         [self setViewControllers:@[firstController]
                        direction:UIPageViewControllerNavigationDirectionForward

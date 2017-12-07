@@ -88,10 +88,6 @@
     [self.exchangeMoneyView setOnPageChange:onPageChange];
 }
 
-- (void (^)(CurrencyExchangeType, NSInteger))onPageChange {
-    return [self.exchangeMoneyView onPageChange];
-}
-
 - (void)focusOnStart {
     [self.exchangeMoneyView focusOnStart];
 }
