@@ -65,11 +65,13 @@
     }];
     
     [self.view setOnExchangeTap:^{
-        [weakSelf.interactor exchange:^{
-            [weakSelf fetchRatesWithRepeat:NO
-                                  onUpdate:nil
-                                   onError:nil];
-        }];
+        [weakSelf.interactor exchangeCurrency:weakSelf.currentInput
+                                   onExchange:^{
+                                       [weakSelf fetchRatesWithRepeat:NO
+                                                             onUpdate:nil
+                                                              onError:nil];
+                                       
+                                   } onError:nil];
     }];
     
     // TODO: fix retain-reference cycle
@@ -188,12 +190,6 @@
     
     return [[GalleryPreviewData alloc] initWithPages:pages onTap:^{
         NSLog(@"onTap");
-    }];
-}
-
-- (void)showTitle {
-    [self.interactor exchange:^(Wallet *wallet) {
-        
     }];
 }
 

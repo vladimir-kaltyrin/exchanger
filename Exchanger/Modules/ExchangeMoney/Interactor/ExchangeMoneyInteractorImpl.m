@@ -44,14 +44,22 @@
     }];
 }
 
-- (void)exchange:(void (^)())onExchange {
+- (void)exchangeCurrency:(NSNumber *)currencyAmount
+              onExchange:(void (^)())onExchange
+                 onError:(void (^)())onError
+{
     
     __weak typeof(self) weakSelf = self;
     [self.userService currentUser:^(User *user) {
         Wallet *wallet = [user walletWithCurrencyType:weakSelf.sourceCurrency.currencyType];
         
+        if (currencyAmount.floatValue > wallet.amount.floatValue) {
+            block(onError);
+            return;
+        }
+        
         [weakSelf.exchangeMoneyService exchangeWithUser:user
-                                        moneyAmount:wallet.amount
+                                        moneyAmount:currencyAmount
                                      sourceCurrency:weakSelf.sourceCurrency
                                      targetCurrency:weakSelf.targetCurrency
                                            onResult:^(ExchangeMoneyResult *result) {

@@ -14,7 +14,9 @@
 
 - (void)startFetching;
 
-- (void)exchange:(void(^)())onExchange;
+- (void)exchangeCurrency:(NSNumber *)currencyAmount
+              onExchange:(void(^)())onExchange
+                 onError:(void(^)())onError;
 
 - (void)fetchUser:(void(^)(User *))onUser;
 
