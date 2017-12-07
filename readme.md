@@ -1,17 +1,41 @@
-Steps to build the project:
+# Exchanger
 
-1. Run in terminal
-$ pod install
+The Exchanger is a simple iOS application demonstrating one of approaches to implement VIPER 💎 architecture in Objective-C.
 
-2. Open Exchanger.xcworkspace
+# Table of contents
 
-Steps to lint the project:
+* [Setup ✘](#setup)
+* [Specification ✘](#spec)
+* [Architecture ✘](#architecture)
+* [Architecture ✘](##architecture1)
+* [Backend ✘](#architecture)
+* [Testing ✘](#architecture)
 
-1. If OCLint is not installed, then run is terminal:
-$ brew tap oclint/formulae
-$ brew install oclint
+<a name="setup"/>
 
-2. If xcpretty is not installed, then run in terminal:
-$ gem install xcpretty
+## Setup
 
-3. Run target 'OCLint'
+### Cocoapods
+
+To install all project dependencies just use Cocoapods
+
+```bash
+pod install
+```
+
+### OCLint
+
+If OCLint is not installed on your machine then run following commands in Terminal:
+
+```bash
+brew tap oclint/formulae
+brew install oclint
+```
+
+### XCPretty
+
+If XCPretty is not installed on your machine then run following commands in Terminal:
+
+```bash
+gem install xcpretty
+```
