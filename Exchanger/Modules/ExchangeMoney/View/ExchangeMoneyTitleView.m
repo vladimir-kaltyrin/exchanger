@@ -43,8 +43,8 @@
 
 // MARK: - Public
 
-- (void)setExchangeSourceCurrency:(NSString *)sourceCurrency
-                   targetCurrency:(NSString *)targetCurrency
+- (void)setExchangeSourceCurrency:(Currency *)sourceCurrency
+                   targetCurrency:(Currency *)targetCurrency
 {
     NSMutableAttributedString *string = [[NSMutableAttributedString alloc] init];
     
@@ -52,13 +52,19 @@
     stringStyle.font = [UIFont systemFontOfSize:18];
     stringStyle.foregroundColor = [UIColor blackColor];
     
-    NSString *formattedString = [NSString stringWithFormat:@"%@ - ", sourceCurrency];
+    NSString *sourceCurrencySign = sourceCurrency.currencySign;
+    NSString *sourceText = [NSString stringWithFormat:@"%@1 - ", sourceCurrencySign];
     
-    NSAttributedString *sourceCurrencyText = [[NSAttributedString alloc] initWithString:formattedString attributes:stringStyle.attributes];
+    NSAttributedString *sourceCurrencyText = [[NSAttributedString alloc] initWithString:sourceText attributes:stringStyle.attributes];
     [string appendAttributedString:sourceCurrencyText];
     
-    NSString *numberText = [self.numbersFormatter format:targetCurrency];
-    NSAttributedString *targetCurrencyText = [self.currentBalanceFormatter attributedFormatBalance:numberText];
+    NSAttributedString *targetCurrencySignText = [[NSAttributedString alloc] initWithString:targetCurrency.currencySign attributes:stringStyle.attributes];
+    [string appendAttributedString:targetCurrencySignText];
+    
+    NSString *targetText = [NSString stringWithFormat:@"%@",
+                            sourceCurrency.rate.stringValue];
+    
+    NSAttributedString *targetCurrencyText = [self.currentBalanceFormatter attributedFormatBalance:targetText];
     [string appendAttributedString:targetCurrencyText];
     
     self.titleLabel.attributedText = string;
