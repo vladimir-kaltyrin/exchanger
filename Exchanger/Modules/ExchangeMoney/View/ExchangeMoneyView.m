@@ -6,7 +6,6 @@
 #import "GalleryPreviewData.h"
 #import "GalleryPreviewPageData.h"
 #import "KeyboardData.h"
-#import "CurrencyRateCell.h"
 #import "ObservableTextField.h"
 #import "FormatterFactoryImpl.h"
 #import "UIView+Properties.h"
@@ -41,8 +40,8 @@ CGFloat const kFontSize = 34.0;
         self.overlayView = [[UIView alloc] initWithFrame:CGRectZero];
         self.overlayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:1 alpha:0.5];
         
-        self.sourceCurrencyView = [[ExchangeMoneyCurrencyView alloc] initWithStyle:ExchangeMoneyCurrencViewStyleSource];
-        self.targetCurrencyView = [[ExchangeMoneyCurrencyView alloc] initWithStyle:ExchangeMoneyCurrencViewStyleTarget];
+        self.sourceCurrencyView = [[ExchangeMoneyCurrencyView alloc] initWithCurrencyExchangeType:CurrencyExchangeSourceType];
+        self.targetCurrencyView = [[ExchangeMoneyCurrencyView alloc] initWithCurrencyExchangeType:CurrencyExchangeTargetType];
         
         self.stackView = [[UIStackView alloc] initWithArrangedSubviews:@[self.sourceCurrencyView, self.targetCurrencyView]];
         self.stackView.alignment = UIStackViewAlignmentLeading;
@@ -77,13 +76,8 @@ CGFloat const kFontSize = 34.0;
 }
 
 - (void)setViewData:(ExchangeMoneyViewData *)viewData {
-    [self configureCurrencyView:self.sourceCurrencyView
-                          model:viewData.sourceData
-                   exchangeType:CurrencyExchangeSourceType];
-    
-    [self configureCurrencyView:self.targetCurrencyView
-                          model:viewData.sourceData
-                   exchangeType:CurrencyExchangeTargetType];
+    [self.sourceCurrencyView updateWithModel:viewData.sourceData];
+    [self.targetCurrencyView updateWithModel:viewData.targetData];
     
     [self setNeedsLayout];
 }
@@ -96,6 +90,11 @@ CGFloat const kFontSize = 34.0;
 - (void)stopActivity {
     [self.activityIndicator stopAnimating];
     self.activityIndicator.hidden = YES;
+}
+
+- (void)setOnPageChange:(void (^)(CurrencyExchangeType, NSInteger))onPageChange {
+    [self.sourceCurrencyView setOnPageChange:onPageChange];
+    [self.targetCurrencyView setOnPageChange:onPageChange];
 }
 
 // MARK: - Layout
@@ -129,17 +128,4 @@ CGFloat const kFontSize = 34.0;
     return frame;
 }
 
-// MARK: - Private
-
-- (void)configureCurrencyView:(ExchangeMoneyCurrencyView *)view
-                        model:(GalleryPreviewData *)model
-                 exchangeType:(CurrencyExchangeType)currencyExchangeType
-{
-    [view updateWithModel:model];
-    
-    __weak typeof(self) weakSelf = self;
-    [view setOnPageChange:^(NSInteger current) {
-        weakSelf.onPageChange(currencyExchangeType, current);
-    }];
-}
 @end

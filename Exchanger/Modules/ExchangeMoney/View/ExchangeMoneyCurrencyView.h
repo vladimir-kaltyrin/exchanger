@@ -4,11 +4,6 @@
 
 @class ExchangeMoneyCurrencyViewData;
 
-typedef NS_ENUM(NSInteger, ExchangeMoneyCurrencViewStyle) {
-    ExchangeMoneyCurrencViewStyleSource,
-    ExchangeMoneyCurrencViewStyleTarget
-};
-
 @interface ExchangeMoneyCurrencyView : UIView
 
 - (instancetype)init __attribute__((unavailable("init not available")));
@@ -17,12 +12,10 @@ typedef NS_ENUM(NSInteger, ExchangeMoneyCurrencViewStyle) {
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder __attribute__((unavailable("initWithCoder not available")));
 
-- (instancetype)initWithStyle:(ExchangeMoneyCurrencViewStyle)style;
+- (instancetype)initWithCurrencyExchangeType:(CurrencyExchangeType)exchangeType;
 
 - (void)updateWithModel:(GalleryPreviewData *)model;
 
-- (void)setOnPageChange:(void(^)(NSInteger current))onPageChange;
-
-- (void)setCurrencyExchangeType:(CurrencyExchangeType)currencyExchangeType;
+- (void)setOnPageChange:(void(^)(CurrencyExchangeType exchangeType, NSInteger current))onPageChange;
 
 @end

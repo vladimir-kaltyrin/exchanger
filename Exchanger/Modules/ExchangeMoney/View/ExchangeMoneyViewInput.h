@@ -8,8 +8,8 @@
 @protocol ExchangeMoneyViewInput <ViewLifeCycleObservable>
 @property (nonatomic, strong, nullable) void(^onExchangeTap)();
 @property (nonatomic, strong, nullable) void(^onBackTap)();
-@property (nonatomic, strong, nullable) void(^onPageChange)(CurrencyExchangeType exchangeType, NSInteger current);
 
+- (void)setOnPageChange:(void (^)(CurrencyExchangeType, NSInteger))onPageChange;
 - (void)setExchangeSourceCurrency:(NSString *)sourceCurrency targetCurrency:(NSString *)targetCurrency;
 - (void)focusOnStart;
 - (void)updateKeyboardData:(nullable KeyboardData *)keyboardData;

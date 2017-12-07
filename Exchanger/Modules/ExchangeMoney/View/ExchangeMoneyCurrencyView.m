@@ -2,23 +2,24 @@
 #import "GalleryPreviewView.h"
 #import "GalleryPreviewData.h"
 #import "UIView+Properties.h"
-#import "CurrencyRateCell.h"
 #import "SafeBlocks.h"
 
 @interface ExchangeMoneyCurrencyView()
 @property (nonatomic, strong) GalleryPreviewView *previewView;
 @property (nonatomic, strong) UIVisualEffectView *visualEffectView;
+@property (nonatomic, assign) NSInteger currentPage;
+@property (nonatomic, assign) CurrencyExchangeType exchangeType;
 @end
 
 @implementation ExchangeMoneyCurrencyView
 
 // MARK: - Init
 
-- (instancetype)initWithStyle:(ExchangeMoneyCurrencViewStyle)style
+- (instancetype)initWithCurrencyExchangeType:(CurrencyExchangeType)exchangeType
 {
     self = [super initWithFrame:CGRectZero];
     if (self) {
-        [self setupWithStyle:style];
+        [self setupWithCurrencyExchangeType:exchangeType];
     }
     return self;
 }
@@ -29,16 +30,17 @@
 
 // MARK: - Private methods
 
-- (void)setupWithStyle:(ExchangeMoneyCurrencViewStyle)style
+- (void)setupWithCurrencyExchangeType:(CurrencyExchangeType)exchangeType
 {
+    self.exchangeType = exchangeType;
     self.previewView = [[GalleryPreviewView alloc] initWithFrame:CGRectZero];
     
     UIBlurEffectStyle blurEffectStyle;
-    switch (style) {
-        case ExchangeMoneyCurrencViewStyleSource:
+    switch (exchangeType) {
+        case CurrencyExchangeSourceType:
             blurEffectStyle = UIBlurEffectStyleLight;
             break;
-        case ExchangeMoneyCurrencViewStyleTarget:
+        case CurrencyExchangeTargetType:
             blurEffectStyle = UIBlurEffectStyleDark;
             break;
     }
@@ -51,15 +53,15 @@
 }
 
 - (void)updateWithModel:(GalleryPreviewData *)model {
-    [self.previewView setViewData:model];
+    [self.previewView setViewData:model currentPage:self.currentPage];
 }
 
-- (void)setOnPageChange:(void(^)(NSInteger current))onPageChange {
-    [self.previewView setOnPageChange:onPageChange];
-}
-
-- (void)setCurrencyExchangeType:(CurrencyExchangeType)currencyExchangeType {
-    
+- (void)setOnPageChange:(void(^)(CurrencyExchangeType exchangeType, NSInteger current))onPageChange {
+    __weak typeof(self) weakSelf = self;
+    [self.previewView setOnPageChange:^(NSInteger current) {
+        weakSelf.currentPage = current;
+        block(onPageChange, weakSelf.exchangeType, current);
+    }];
 }
 
 // MARK: - Layout
