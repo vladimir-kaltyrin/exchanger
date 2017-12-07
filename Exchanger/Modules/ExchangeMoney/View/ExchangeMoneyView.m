@@ -120,10 +120,7 @@ CGFloat const kFontSize = 34.0;
     self.targetCurrencyView.width = contentsFrame.size.width;
     self.targetCurrencyView.height = contentsFrame.size.height / 2;
     
-    self.inputTextField.width = 190;
-    self.inputTextField.height = 70;
-    self.inputTextField.right = contentsFrame.size.width - 16;
-    self.inputTextField.top = 0;
+    self.inputTextField.frame = CGRectZero;
 }
 
 - (CGRect)contentsFrame {

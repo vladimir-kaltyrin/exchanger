@@ -3,7 +3,7 @@
 @implementation GalleryPreviewPageData
     
 - (instancetype)initWithCurrencyTitle:(NSString *)currencyTitle
-                       currencyAmount:(NSString *)currencyAmount
+                       currencyAmount:(NSAttributedString *)currencyAmount
                             remainder:(NSString *)remainder
                                  rate:(NSString *)rate
                        remainderStyle:(GalleryPreviewPageRemainderStyle)remainderStyle

@@ -54,6 +54,10 @@
     self.textField.attributedText = text;
 }
 
+- (void)setText:(NSString *)text {
+    self.textField.text = text;
+}
+
 // MARK: - UITextFieldDelegate
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
