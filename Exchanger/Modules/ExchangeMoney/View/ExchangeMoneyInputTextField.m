@@ -1,11 +1,13 @@
 #import "ExchangeMoneyInputTextField.h"
 #import "FormatterFactoryImpl.h"
 #import "ObservableTextField.h"
+#import "SafeBlocks.h"
 
 @interface ExchangeMoneyInputTextField()
 @property (nonatomic, strong) id<NumbersFormatter> numbersFormatter;
 @property (nonatomic, strong) id<BalanceFormatter> exchangeCurrencyInputFormatter;
 @property (nonatomic, strong) ObservableTextField *textField;
+@property (nonatomic, strong) void(^onInputChange)(NSNumber *number);
 @end
 
 @implementation ExchangeMoneyInputTextField
@@ -51,7 +53,7 @@
 // MARK: - Public
 
 - (void)setText:(NSString *)text {
-    [self formatText:text];
+    [self setFormattedTextWith:text];
 }
 
 // MARK: - Private
@@ -68,18 +70,20 @@
     
     __weak typeof(self) weakSelf = self;
     self.textField.onTextChange = ^BOOL(NSString *text) {
-        [weakSelf formatText:text];
+        [weakSelf setFormattedTextWith:text];
         
         return NO;
     };
 }
 
-- (void)formatText:(NSString *)text {
+- (void)setFormattedTextWith:(NSString *)text {
     NSString *numberText = [self.numbersFormatter format:text];
     NSString *negativeNumberText = [NSString stringWithFormat:@"-%@", numberText];
     NSAttributedString *formattedText = [self.exchangeCurrencyInputFormatter attributedFormatBalance:negativeNumberText];
     
     [self.textField setAttributedText:formattedText];
+    
+    block(self.onInputChange, @(numberText.floatValue));
 }
 
 @end

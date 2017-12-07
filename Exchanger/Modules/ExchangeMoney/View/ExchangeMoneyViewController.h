@@ -2,6 +2,6 @@
 #import "ExchangeMoneyViewInput.h"
 #import "BaseViewController.h"
 
-@interface ExchangeMoneyViewController : BaseViewController<ExchangeMoneyViewInput>
+@interface ExchangeMoneyViewController : BaseViewController
 
 @end

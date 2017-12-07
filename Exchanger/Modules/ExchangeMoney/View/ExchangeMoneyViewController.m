@@ -8,7 +8,7 @@
 
 @class KeyboardData;
 
-@interface ExchangeMoneyViewController ()
+@interface ExchangeMoneyViewController() <ExchangeMoneyViewInput>
 @property (nonatomic, strong) ExchangeMoneyView* exchangeMoneyView;
 @property (nonatomic, strong) ExchangeMoneyTitleView *exchangeMoneyTitleView;
 @property (nonatomic, strong) BarButton *exchangeBarButton;
@@ -106,6 +106,14 @@
 
 - (void)stopActivity {
     [self.exchangeMoneyView stopActivity];
+}
+
+- (void)setOnInputChange:(void (^)(NSNumber *))onInputChange {
+    [self.exchangeMoneyView setOnInputChange:onInputChange];
+}
+
+- (void)setExchangeButtonEnabled:(BOOL)enabled {
+    self.exchangeBarButton.barButtonItem.enabled = enabled;
 }
 
 @end

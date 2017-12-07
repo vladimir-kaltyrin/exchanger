@@ -1,6 +1,7 @@
 #import <UIKit/UIKit.h>
 #import "GalleryPreviewData.h"
 #import "CurrencyExchangeType.h"
+#import "GalleryPreviewPageData.h"
 
 @class ExchangeMoneyCurrencyViewData;
 
@@ -17,5 +18,7 @@
 - (void)updateWithModel:(GalleryPreviewData *)model;
 
 - (void)setOnPageChange:(void(^)(CurrencyExchangeType exchangeType, NSInteger current))onPageChange;
+
+- (void)setRemainderStyle:(GalleryPreviewPageRemainderStyle)remainderStyle;
 
 @end

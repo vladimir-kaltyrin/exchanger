@@ -1,6 +1,5 @@
 #import <UIKit/UIKit.h>
-
-@class GalleryPreviewData;
+#import "GalleryPreviewData.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

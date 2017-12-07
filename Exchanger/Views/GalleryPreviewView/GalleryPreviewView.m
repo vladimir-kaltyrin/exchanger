@@ -53,6 +53,10 @@
     self.onTap = data.onTap;
 }
 
+- (void)setRemainderStyle:(GalleryPreviewPageRemainderStyle)remainderStyle page:(NSInteger)page {
+    
+}
+
 // MARK: - Layout
 
 - (void)layoutSubviews {

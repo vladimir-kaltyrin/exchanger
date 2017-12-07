@@ -52,6 +52,8 @@
     [self setBackgroundColor:[UIColor clearColor]];
 }
 
+// MARK: - Public
+
 - (void)updateWithModel:(GalleryPreviewData *)model {
     [self.previewView setViewData:model currentPage:self.currentPage];
 }

@@ -2,6 +2,8 @@
 
 @interface ExchangeMoneyInputTextField : UIView
 
+- (void)setOnInputChange:(void (^)(NSNumber *))onInputChange;
+
 - (void)setText:(NSString *)text;
 
 @end
