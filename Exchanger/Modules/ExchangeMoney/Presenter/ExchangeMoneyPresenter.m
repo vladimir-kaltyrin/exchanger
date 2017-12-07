@@ -157,7 +157,9 @@
             }
                 break;
             case CurrencyExchangeTargetType:
-                rate = currency.rate.stringValue;
+                rate = [NSString stringWithFormat:@"%@%@",
+                        currency.currencySign,
+                        currency.rate.stringValue];
                 break;
         }
         
