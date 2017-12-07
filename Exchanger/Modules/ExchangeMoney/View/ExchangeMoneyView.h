@@ -1,6 +1,5 @@
 #import <UIKit/UIKit.h>
 #import "CurrencyExchangeType.h"
-#import "ExchangeMoneyCurrencyViewData.h"
 
 @class KeyboardData;
 @class ExchangeMoneyViewData;

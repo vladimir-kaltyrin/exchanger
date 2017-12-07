@@ -89,8 +89,6 @@
 		8CF9641D1F165C31009852B9 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8CF9641A1F165C31009852B9 /* Info.plist */; };
 		8CF9641E1F165C31009852B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF9641B1F165C31009852B9 /* main.m */; };
 		8CF9643D1F17D84E009852B9 /* KeyboardObserverImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF9643C1F17D84E009852B9 /* KeyboardObserverImpl.m */; };
-		8CF964511F1CCC0D009852B9 /* ExchangeMoneyCurrencyViewData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF964501F1CCC0D009852B9 /* ExchangeMoneyCurrencyViewData.m */; };
-		8CF964541F1CCECA009852B9 /* ExchangeMoneyBalanceViewData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF964531F1CCECA009852B9 /* ExchangeMoneyBalanceViewData.m */; };
 		8CF9645A1F1CD11B009852B9 /* ExchangeMoneyCurrencyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF964591F1CD11B009852B9 /* ExchangeMoneyCurrencyView.m */; };
 		F4B97656FC1AA746D81776B8 /* libPods-ExchangerUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 228D4FAA2C2C7FB35FC8A6FF /* libPods-ExchangerUITests.a */; };
 /* End PBXBuildFile section */
@@ -280,10 +278,6 @@
 		8CF9643B1F17D84E009852B9 /* KeyboardObserverImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyboardObserverImpl.h; path = Services/KeyboardObservingService/KeyboardObserverImpl.h; sourceTree = "<group>"; };
 		8CF9643C1F17D84E009852B9 /* KeyboardObserverImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeyboardObserverImpl.m; path = Services/KeyboardObservingService/KeyboardObserverImpl.m; sourceTree = "<group>"; };
 		8CF9643F1F17D8B7009852B9 /* KeyboardObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardObserver.h; sourceTree = "<group>"; };
-		8CF9644F1F1CCC0D009852B9 /* ExchangeMoneyCurrencyViewData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeMoneyCurrencyViewData.h; path = Modules/ExchangeMoney/View/ExchangeMoneyCurrencyViewData.h; sourceTree = "<group>"; };
-		8CF964501F1CCC0D009852B9 /* ExchangeMoneyCurrencyViewData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExchangeMoneyCurrencyViewData.m; path = Modules/ExchangeMoney/View/ExchangeMoneyCurrencyViewData.m; sourceTree = "<group>"; };
-		8CF964521F1CCECA009852B9 /* ExchangeMoneyBalanceViewData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeMoneyBalanceViewData.h; path = Modules/ExchangeMoney/View/ExchangeMoneyBalanceViewData.h; sourceTree = "<group>"; };
-		8CF964531F1CCECA009852B9 /* ExchangeMoneyBalanceViewData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExchangeMoneyBalanceViewData.m; path = Modules/ExchangeMoney/View/ExchangeMoneyBalanceViewData.m; sourceTree = "<group>"; };
 		8CF964581F1CD11B009852B9 /* ExchangeMoneyCurrencyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeMoneyCurrencyView.h; path = Modules/ExchangeMoney/View/ExchangeMoneyCurrencyView.h; sourceTree = "<group>"; };
 		8CF964591F1CD11B009852B9 /* ExchangeMoneyCurrencyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExchangeMoneyCurrencyView.m; path = Modules/ExchangeMoney/View/ExchangeMoneyCurrencyView.m; sourceTree = "<group>"; };
 		9389B4E6B11F4B0BB56B0F37 /* Pods-ExchangerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExchangerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExchangerUITests/Pods-ExchangerUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -670,10 +664,6 @@
 				8CD786241F14F23400AF7A8D /* ExchangeMoneyViewController.m */,
 				8CF964581F1CD11B009852B9 /* ExchangeMoneyCurrencyView.h */,
 				8CF964591F1CD11B009852B9 /* ExchangeMoneyCurrencyView.m */,
-				8CF9644F1F1CCC0D009852B9 /* ExchangeMoneyCurrencyViewData.h */,
-				8CF964501F1CCC0D009852B9 /* ExchangeMoneyCurrencyViewData.m */,
-				8CF964521F1CCECA009852B9 /* ExchangeMoneyBalanceViewData.h */,
-				8CF964531F1CCECA009852B9 /* ExchangeMoneyBalanceViewData.m */,
 				8C94B4E41F3E162B00B2B9FC /* ExchangeMoneyTitleView.h */,
 				8C94B4E51F3E162B00B2B9FC /* ExchangeMoneyTitleView.m */,
 				8CC843D11FD591DF00EC0CD3 /* ExchangeMoneyInputTextField.h */,
@@ -1155,8 +1145,6 @@
 				8C6423581FA075AC00A95479 /* GalleryPreviewPageIndicator.m in Sources */,
 				8C6423711FA0B23C00A95479 /* ObservableTextField.m in Sources */,
 				8C45F6601FD01DE4005B3892 /* IntroPresenter.m in Sources */,
-				8CF964511F1CCC0D009852B9 /* ExchangeMoneyCurrencyViewData.m in Sources */,
-				8CF964541F1CCECA009852B9 /* ExchangeMoneyBalanceViewData.m in Sources */,
 				8CC843DF1FD6A0A700EC0CD3 /* NumbersFormatterImpl.m in Sources */,
 				8C6423761FA0BB7400A95479 /* CurrencyRateCell.m in Sources */,
 				8C45F6631FD01E2D005B3892 /* IntroInteractorImpl.m in Sources */,

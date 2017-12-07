@@ -1,7 +1,6 @@
 #import "ExchangeMoneyPresenter.h"
 #import "ExchangeRatesData.h"
 #import "ExchangeMoneyViewData.h"
-#import "ExchangeMoneyCurrencyViewData.h"
 #import "CurrencyExchangeType.h"
 #import "GalleryPreviewPageData.h"
 #import "GalleryPreviewData.h"

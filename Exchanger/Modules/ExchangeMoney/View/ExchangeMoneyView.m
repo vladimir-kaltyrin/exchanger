@@ -2,7 +2,7 @@
 #import "ExchangeMoneyViewData.h"
 #import "KeyboardObserverImpl.h"
 #import "ExchangeMoneyInputTextField.h"
-#import "ExchangeMoneyCurrencyViewData.h"
+#import "ExchangeMoneyCurrencyView.h"
 #import "GalleryPreviewData.h"
 #import "GalleryPreviewPageData.h"
 #import "KeyboardData.h"
@@ -16,14 +16,15 @@ NSString * const kCurrencyRateCellId = @"kCurrencyRateCellId";
 
 CGFloat const kFontSize = 34.0;
 
-@interface ExchangeMoneyView() <UITableViewDelegate, UITableViewDataSource>
+@interface ExchangeMoneyView()
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, strong) UIImageView *backgroundImageView;
 @property (nonatomic, strong) UIView *overlayView;
-@property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) ExchangeMoneyInputTextField *inputTextField;
+@property (nonatomic, strong) ExchangeMoneyCurrencyView *sourceCurrencyView;
+@property (nonatomic, strong) ExchangeMoneyCurrencyView *targetCurrencyView;
+@property (nonatomic, strong) UIStackView *stackView;
 @property (nonatomic, assign) CGFloat keyboardHeight;
-@property (nonatomic, strong) ExchangeMoneyViewData *viewData;
 @end
 
 @implementation ExchangeMoneyView
@@ -40,13 +41,14 @@ CGFloat const kFontSize = 34.0;
         self.overlayView = [[UIView alloc] initWithFrame:CGRectZero];
         self.overlayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:1 alpha:0.5];
         
-        self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-        self.tableView.delegate = self;
-        self.tableView.dataSource = self;
-        self.tableView.backgroundColor = [UIColor clearColor];
-        self.tableView.separatorColor = [UIColor clearColor];
-        self.tableView.scrollEnabled = NO;
-        [self.tableView registerClass:[CurrencyRateCell class] forCellReuseIdentifier:kCurrencyRateCellId];
+        self.sourceCurrencyView = [[ExchangeMoneyCurrencyView alloc] initWithStyle:ExchangeMoneyCurrencViewStyleSource];
+        self.targetCurrencyView = [[ExchangeMoneyCurrencyView alloc] initWithStyle:ExchangeMoneyCurrencViewStyleTarget];
+        
+        self.stackView = [[UIStackView alloc] initWithArrangedSubviews:@[self.sourceCurrencyView, self.targetCurrencyView]];
+        self.stackView.alignment = UIStackViewAlignmentLeading;
+        self.stackView.axis = UILayoutConstraintAxisVertical;
+        self.stackView.translatesAutoresizingMaskIntoConstraints = YES;
+        self.stackView.distribution = UIStackViewDistributionFillEqually;
         
         self.inputTextField = [[ExchangeMoneyInputTextField alloc] init];
         
@@ -54,7 +56,7 @@ CGFloat const kFontSize = 34.0;
         
         [self addSubview:self.backgroundImageView];
         [self addSubview:self.overlayView];
-        [self addSubview:self.tableView];
+        [self addSubview:self.stackView];
         [self addSubview:self.inputTextField];
         [self addSubview:self.activityIndicator];
     }
@@ -72,13 +74,18 @@ CGFloat const kFontSize = 34.0;
     self.keyboardHeight = keyboardData.size.height;
 
     [self setNeedsLayout];
-    [self.tableView reloadData];
 }
 
 - (void)setViewData:(ExchangeMoneyViewData *)viewData {
-    _viewData = viewData;
+    [self configureCurrencyView:self.sourceCurrencyView
+                          model:viewData.sourceData
+                   exchangeType:CurrencyExchangeSourceType];
     
-    [self.tableView reloadData];
+    [self configureCurrencyView:self.targetCurrencyView
+                          model:viewData.sourceData
+                   exchangeType:CurrencyExchangeTargetType];
+    
+    [self setNeedsLayout];
 }
 
 - (void)startActivity {
@@ -100,7 +107,15 @@ CGFloat const kFontSize = 34.0;
     self.overlayView.frame = self.bounds;
     self.activityIndicator.center = self.center;
     
-    self.tableView.frame = [self tableViewFrame];
+    CGRect contentsFrame = [self contentsFrame];
+    
+    self.stackView.frame = contentsFrame;
+    
+    self.sourceCurrencyView.width = contentsFrame.size.width;
+    self.sourceCurrencyView.height = contentsFrame.size.height / 2;
+    
+    self.targetCurrencyView.width = contentsFrame.size.width;
+    self.targetCurrencyView.height = contentsFrame.size.height / 2;
     
     self.inputTextField.width = 190;
     self.inputTextField.height = 70;
@@ -108,60 +123,23 @@ CGFloat const kFontSize = 34.0;
     self.inputTextField.top = 16;
 }
 
-- (CGRect)tableViewFrame {
+- (CGRect)contentsFrame {
     CGRect frame = self.bounds;
     frame.size.height = frame.size.height - self.keyboardHeight;
     return frame;
 }
-    
-// MARK: - UITableViewDelegate
-    
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [self tableViewFrame].size.height / 2;
-}
-    
-// MARK: - UITableViewDataSource
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-    
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
-}
-    
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    CurrencyRateCell *cell;
-    
-    
-    if (indexPath.row == 0) {
-        cell = [[CurrencyRateCell alloc] initWithStyle:CurrencyRateCellStyleLight reuseIdentifier:kCurrencyRateCellId];
-        [self configureCell:cell
-                      model:self.viewData.sourceData
-               exchangeType:CurrencyExchangeSourceType];
-    } else {
-        cell = [[CurrencyRateCell alloc] initWithStyle:CurrencyRateCellStyleDark reuseIdentifier:kCurrencyRateCellId];
-        [self configureCell:cell
-                      model:self.viewData.targetData
-               exchangeType:CurrencyExchangeTargetType];
-    }
-    
-    return cell;
-}
 
 // MARK: - Private
 
-- (void)configureCell:(CurrencyRateCell *)cell
-                model:(GalleryPreviewData *)model
-         exchangeType:(CurrencyExchangeType)currencyExchangeType
+- (void)configureCurrencyView:(ExchangeMoneyCurrencyView *)view
+                        model:(GalleryPreviewData *)model
+                 exchangeType:(CurrencyExchangeType)currencyExchangeType
 {
-    [cell updateWithModel:model];
+    [view updateWithModel:model];
     
     __weak typeof(self) weakSelf = self;
-    [cell setOnPageChange:^(NSInteger current) {
+    [view setOnPageChange:^(NSInteger current) {
         weakSelf.onPageChange(currencyExchangeType, current);
     }];
 }
-
 @end
