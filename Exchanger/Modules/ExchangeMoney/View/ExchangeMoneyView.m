@@ -122,8 +122,8 @@ CGFloat const kFontSize = 34.0;
     
     self.inputTextField.width = 190;
     self.inputTextField.height = 70;
-    self.inputTextField.right = 360;
-    self.inputTextField.top = 16;
+    self.inputTextField.right = contentsFrame.size.width - 16;
+    self.inputTextField.top = 0;
 }
 
 - (CGRect)contentsFrame {
