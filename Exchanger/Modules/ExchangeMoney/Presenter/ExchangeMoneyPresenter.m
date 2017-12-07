@@ -68,7 +68,7 @@
     }];
     
     // TODO: fix retain-reference cycle
-    [self.view setOnBackTap:^{
+    [self.view setOnCancelTap:^{
         block(self.onFinish);
     }];
     

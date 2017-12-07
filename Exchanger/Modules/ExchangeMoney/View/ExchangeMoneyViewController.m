@@ -12,7 +12,7 @@
 @property (nonatomic, strong) ExchangeMoneyView* exchangeMoneyView;
 @property (nonatomic, strong) ExchangeMoneyTitleView *exchangeMoneyTitleView;
 @property (nonatomic, strong) BarButton *exchangeBarButton;
-@property (nonatomic, strong) BarButton *backBarButton;
+@property (nonatomic, strong) BarButton *cancelBarButton;
 @end
 
 @implementation ExchangeMoneyViewController
@@ -23,7 +23,7 @@
     if (self) {
         self.exchangeMoneyView = [[ExchangeMoneyView alloc] init];
         self.exchangeBarButton = [[BarButton alloc] initWithTitle:@"Exchange"];
-        self.backBarButton = [[BarButton alloc] initWithTitle:@"Back"];
+        self.cancelBarButton = [[BarButton alloc] initWithTitle:@"Cancel"];
         
         self.exchangeMoneyTitleView = [[ExchangeMoneyTitleView alloc] init];
         self.exchangeMoneyTitleView.frame = CGRectMake(0, 0, 150, 36);
@@ -40,7 +40,7 @@
     [super viewDidLoad];
     
     self.navigationItem.rightBarButtonItem = self.exchangeBarButton.barButtonItem;
-    self.navigationItem.leftBarButtonItem = self.backBarButton.barButtonItem;
+    self.navigationItem.leftBarButtonItem = self.cancelBarButton.barButtonItem;
     self.navigationItem.titleView = self.exchangeMoneyTitleView;
 }
 
@@ -64,16 +64,16 @@
 
 // MARK: - ExchangeMoneyViewInput
 
-- (void)setExchangeSourceCurrency:(NSString *)sourceCurrency targetCurrency:(NSString *)targetCurrency {
+- (void)setExchangeSourceCurrency:(Currency *)sourceCurrency targetCurrency:(Currency *)targetCurrency {
     [self.exchangeMoneyTitleView setExchangeSourceCurrency:sourceCurrency targetCurrency:targetCurrency];
 }
 
-- (void)setOnBackTap:(void (^)())onBackTap {
-    self.backBarButton.onBarButtonTap = onBackTap;
+- (void)setOnCancelTap:(void (^)())onBackTap {
+    self.cancelBarButton.onBarButtonTap = onBackTap;
 }
 
-- (void (^)())onBackTap {
-    return self.backBarButton.onBarButtonTap;
+- (void (^)())onCancelTap {
+    return self.cancelBarButton.onBarButtonTap;
 }
 
 - (void)setOnExchangeTap:(void (^)())onExchangeTap {
