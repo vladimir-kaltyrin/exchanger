@@ -1,6 +1,7 @@
 #import <Foundation/Foundation.h>
 #import "ViewLifeCycleObservable.h"
 #import "CurrencyExchangeType.h"
+#import "Currency.h"
 #import "GalleryPreviewPageData.h"
 
 @class KeyboardData;
@@ -8,10 +9,10 @@
 
 @protocol ExchangeMoneyViewInput <ViewLifeCycleObservable>
 @property (nonatomic, strong, nullable) void(^onExchangeTap)();
-@property (nonatomic, strong, nullable) void(^onBackTap)();
+@property (nonatomic, strong, nullable) void(^onCancelTap)();
 
 - (void)setOnPageChange:(void (^)(CurrencyExchangeType, NSInteger))onPageChange;
-- (void)setExchangeSourceCurrency:(NSString *)sourceCurrency targetCurrency:(NSString *)targetCurrency;
+- (void)setExchangeSourceCurrency:(Currency *)sourceCurrency targetCurrency:(Currency *)targetCurrency;
 - (void)setOnInputChange:(void (^)(NSNumber *))onInputChange;
 - (void)focusOnStart;
 - (void)updateKeyboardData:(nullable KeyboardData *)keyboardData;
