@@ -1,3 +1,5 @@
+[![Build Status](https://www.bitrise.io/app/db9b8a614ca81158/status.svg?token=pnK66giJ4HQm8cRamwvSvQ&branch=develop)](https://www.bitrise.io/app/db9b8a614ca81158)
+
 # Exchanger
 
 The Exchanger is a simple iOS application demonstrating one of approaches to implement VIPER 💎 architecture in Objective-C.
