@@ -10,6 +10,7 @@
     
     if (self.numberFormatter == nil) {
         self.numberFormatter = [[NSNumberFormatter alloc] init];
+        self.numberFormatter.minimumIntegerDigits = 1;
         self.numberFormatter.maximumFractionDigits = 2;
     }
     

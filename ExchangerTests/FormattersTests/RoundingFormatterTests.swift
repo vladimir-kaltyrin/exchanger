@@ -41,5 +41,13 @@ class RoundingFormatterTests: XCTestCase {
         XCTAssert(output == "12")
     }
     
+    func testInputIsLessThanOne() {
+        // Given
+        let input = NSNumber(floatLiteral: 0.5)
+        // When
+        let output = formatter.format(input)
+        // Then
+        XCTAssert(output == "0.5")
+    }
+    
 }
-
