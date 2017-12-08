@@ -14,7 +14,7 @@ class NumbersFormatterTests: XCTestCase {
         super.tearDown()
     }
     
-    func testEmptyInput() {
+    func testImputIsEmptyString() {
         // Given
         let input = ""
         // When
@@ -23,13 +23,31 @@ class NumbersFormatterTests: XCTestCase {
         XCTAssert(output == "")
     }
     
-    func testInvalidInput() {
+    func testImputIsAlphanumericString() {
         // Given
-        let input = "qwertyuiopad12.54asdfghjkl.5..s.4zxcvbnm."
+        let input = "qwertyuiopad12.54asdfghjkl.7..s.9zxcvbnm."
         // When
         let output = formatter.format(input)
         // Then
-        XCTAssert(output == "12.5454")
+        XCTAssert(output == "12.5479")
+    }
+    
+    func testInputIsNumberWithSeparator() {
+        // Given
+        let input = "1."
+        // When
+        let output = formatter.format(input)
+        // Then
+        XCTAssert(output == input)
+    }
+    
+    func testInputIsOnlySeparator() {
+        // Given
+        let input = "..."
+        // When
+        let output = formatter.format(input)
+        // Then
+        XCTAssert(output == "")
     }
     
 }

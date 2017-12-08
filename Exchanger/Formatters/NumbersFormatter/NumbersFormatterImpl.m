@@ -1,5 +1,4 @@
 #import "NumbersFormatterImpl.h"
-#import <Foundation/Foundation.h>
 
 @implementation NumbersFormatterImpl
 
@@ -23,6 +22,10 @@
                                                                  withString:@""
                                                                     options:0
                                                                       range:range];
+    }
+    
+    if ([trimmedString isEqualToString:separator]) {
+        return @"";
     }
     
     return trimmedString;
