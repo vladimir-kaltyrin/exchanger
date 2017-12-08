@@ -268,8 +268,15 @@
     __weak typeof(self) weakSelf = self;
     [self.interactor fetchUser:^(User *user) {
         Currency *sourceCurrency = weakSelf.interactor.sourceCurrency;
+        Currency *targetCurrency = weakSelf.interactor.targetCurrency;
+        
+        BOOL isEqualCurrencies = sourceCurrency.currencyType == targetCurrency.currencyType;
+
         BOOL isDeficiency = [weakSelf checkUserHasBalanceDeficiency:user currency:sourceCurrency];
-        [weakSelf.view setExchangeButtonEnabled:!isDeficiency];
+        
+        BOOL isEnabled = !isDeficiency && !isEqualCurrencies;
+        
+        [weakSelf.view setExchangeButtonEnabled:isEnabled];
     }];
 }
 
