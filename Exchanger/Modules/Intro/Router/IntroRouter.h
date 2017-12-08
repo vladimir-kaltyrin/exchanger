@@ -3,6 +3,8 @@
 
 @protocol IntroRouter <NSObject>
 
+- (void)showAbout;
+
 - (void)showDemoWith:(void (^)(id<ExchangeMoneyModule>))configure;
 
 @end

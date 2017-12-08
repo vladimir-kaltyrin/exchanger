@@ -49,6 +49,10 @@
     return self.introView.onStartTap;
 }
 
+- (void)setTitle:(NSString *)title {
+    [self.introView setTitle:title];
+}
+
 - (void)setResetButtonTitle:(NSString *)resetButtonTitle {
     [self.introView setResetButtonTitle:resetButtonTitle];
 }

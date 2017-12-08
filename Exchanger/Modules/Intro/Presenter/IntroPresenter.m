@@ -32,8 +32,11 @@
 // MARK: - Private
 
 - (void)setUpView {
+    
+    [self.view setTitle:@"Exchange your currencies easily!"];
+    
     [self.view setStartButtonTitle:@"Start Demo"];
-    [self.view setResetButtonTitle:@"Reset State"];
+    [self.view setResetButtonTitle:@"About"];
     
     __weak typeof(self) weakSelf = self;
     
@@ -44,6 +47,10 @@
                 [weakModule dismissModule];
             };
         }];
+    }];
+    
+    [self.view setOnBackTap:^{
+        [weakSelf.router showAbout];
     }];
 }
 

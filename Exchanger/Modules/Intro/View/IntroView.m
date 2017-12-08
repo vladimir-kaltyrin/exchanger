@@ -9,6 +9,7 @@
 @property (nonatomic, strong) UIVisualEffectView *visualEffectView;
 @property (nonatomic, strong) UIButton *resetButton;
 @property (nonatomic, strong) UIButton *startButton;
+@property (nonatomic, strong) UILabel *titleLabel;
 @end
 
 @implementation IntroView
@@ -29,6 +30,13 @@
         
         self.visualEffectView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
         [self addSubview:self.visualEffectView];
+        
+        self.titleLabel = [[UILabel alloc] init];
+        self.titleLabel.textColor = [UIColor whiteColor];
+        self.titleLabel.font = [UIFont systemFontOfSize:34];
+        self.titleLabel.numberOfLines = 2;
+        self.titleLabel.textAlignment = NSTextAlignmentCenter;
+        [self addSubview:self.titleLabel];
         
         self.resetButton = [[UIButton alloc] init];
         self.resetButton.backgroundColor = [UIColor blackColor];
@@ -61,16 +69,23 @@
     
     CGSize buttonSize = CGSizeMake(160, 60);
     
+    self.titleLabel.size = [self.titleLabel sizeThatFits:self.bounds.size];
+    self.titleLabel.center = self.center;
+    
+    self.startButton.size = buttonSize;
+    self.startButton.centerX = self.centerX;
+    self.startButton.bottom = self.bottom - 20.f;
+    
     self.resetButton.size = buttonSize;
     self.resetButton.centerX = self.centerX;
-    self.resetButton.centerY = self.centerY - buttonSize.height;
-    
-    self.startButton.size = self.resetButton.size;
-    self.startButton.centerX = self.centerX;
-    self.startButton.top = self.resetButton.bottom + 20.f;
+    self.resetButton.bottom = self.startButton.top - 20.f;
 }
 
 // MARK: - Public
+
+- (void)setTitle:(NSString *)title {
+    self.titleLabel.text = title;
+}
 
 - (void)setResetButtonTitle:(NSString *)resetButtonTitle {
     [self.resetButton setTitle:resetButtonTitle forState:UIControlStateNormal];
