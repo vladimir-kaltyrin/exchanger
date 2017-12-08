@@ -20,7 +20,7 @@ class NumbersFormatterTests: XCTestCase {
         // When
         let output = formatter.format(input)
         // Then
-        XCTAssert(output == "")
+        XCTAssert(output == "0")
     }
     
     func testInputIsAlphanumericString() {
@@ -47,10 +47,19 @@ class NumbersFormatterTests: XCTestCase {
         // When
         let output = formatter.format(input)
         // Then
-        XCTAssert(output == "")
+        XCTAssert(output == "0")
     }
     
-    func testInputContainsZeroAtBeginning() {
+    func testInputContainsoOnlyLeadingZerosAtBeginning() {
+        // Given
+        let input = "000"
+        // When
+        let output = formatter.format(input)
+        // Then
+        XCTAssert(output == "0")
+    }
+    
+    func testInputContainsLeadingZerosAtBeginning() {
         // Given
         let input = "0057.7"
         // When
