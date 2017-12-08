@@ -6,12 +6,19 @@ The Exchanger is a simple iOS application demonstrating one of approaches to imp
 
 # Table of contents
 
+* [About](#about)
 * [Setup ✘](#setup)
-* [Specification ✘](#spec)
 * [Architecture ✘](#architecture)
-* [Architecture ✘](##architecture1)
 * [Backend ✘](#architecture)
 * [Testing ✘](#architecture)
+
+<a name="about"/>
+
+## About
+
+The application is a fairly straightforward currency converter. It takes a reference rate from a European Central Bank by parsing its [public XML](http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml) and user can exchange any EUR, USD and GBP in any combination.
+
+When app starts there is a balance with 100 units of each currency.
 
 <a name="setup"/>
 
