@@ -16,6 +16,7 @@
 @property (nonatomic, strong) id<ExchangeMoneyRouter> router;
 @property (nonatomic, strong) id<KeyboardObserver> keyboardObserver;
 @property (nonatomic, strong) id<BalanceFormatter> exchangeCurrencyInputFormatter;
+@property (nonatomic, strong) id<RoundingFormatter> roundingFormatter;
 @end
 
 @implementation ExchangeMoneyPresenter
@@ -32,6 +33,7 @@
         self.keyboardObserver = keyboardObserver;
         
         self.exchangeCurrencyInputFormatter = [[FormatterFactoryImpl instance] exchangeCurrencyInputFormatter];
+        self.roundingFormatter = [[FormatterFactoryImpl instance] roundingFormatter];
     }
     
     return self;
@@ -176,7 +178,7 @@
                 
                 rate = [NSString stringWithFormat:@"%@%@",
                         currency.currencySign,
-                        currency.rate.stringValue];
+                        [self.roundingFormatter format:currency.rate]];
                 break;
         }
         
@@ -198,7 +200,7 @@
     Currency *currency = wallet.currency;
     return [NSString stringWithFormat:@"You have %@%@",
             currency.currencySign,
-            [wallet.amount stringValue]];
+            [self.roundingFormatter format:wallet.amount]];
 }
 
 - (void)fetchRatesWithRepeat:(BOOL)repeat onUpdate:(void(^)())onUpdate onError:(void (^)(NSError *))onError {
