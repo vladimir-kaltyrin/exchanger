@@ -9,7 +9,7 @@
 @property (nonatomic, assign) UIEdgeInsets contentInsets;
 
 - (void)setOnPageChange:(void (^)(CurrencyExchangeType, NSInteger))onPageChange;
-- (void)setOnInputChange:(void (^)(NSNumber *))onInputChange;
+- (void)setOnInputChange:(void (^)(NSString *))onInputChange;
 
 - (void)focusOnStart;
 - (void)updateKeyboardData:(nonnull KeyboardData *)keyboardData;

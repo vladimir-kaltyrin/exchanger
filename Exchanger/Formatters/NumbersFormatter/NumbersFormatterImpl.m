@@ -1,4 +1,5 @@
 #import "NumbersFormatterImpl.h"
+#import <Foundation/Foundation.h>
 
 @implementation NumbersFormatterImpl
 
@@ -10,8 +11,21 @@
     NSString *separator = [locale objectForKey:NSLocaleDecimalSeparator];
     
     [set addCharactersInString:separator];
+    [set invert];
     
-    return [string stringByTrimmingCharactersInSet:[set invertedSet]];
+    NSString *trimmedString = [[string componentsSeparatedByCharactersInSet:set] componentsJoinedByString:@""];
+    
+    NSArray *components = [trimmedString componentsSeparatedByString:separator];
+    if (components.count > 2) {
+        NSInteger index = [trimmedString rangeOfString:separator].location;
+        NSRange range = NSMakeRange(index + 1, trimmedString.length - index - 1);
+        trimmedString = [trimmedString stringByReplacingOccurrencesOfString:separator
+                                                                 withString:@""
+                                                                    options:0
+                                                                      range:range];
+    }
+    
+    return trimmedString;
 }
 
 @end

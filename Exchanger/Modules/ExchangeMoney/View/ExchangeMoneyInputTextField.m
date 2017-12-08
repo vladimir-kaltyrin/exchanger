@@ -77,7 +77,7 @@
     
     [self.textField setText:numberText];
     
-    block(self.onInputChange, @(numberText.floatValue));
+    block(self.onInputChange, numberText);
 }
 
 @end

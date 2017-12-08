@@ -109,7 +109,7 @@
     [self.exchangeMoneyView stopActivity];
 }
 
-- (void)setOnInputChange:(void (^)(NSNumber *))onInputChange {
+- (void)setOnInputChange:(void (^)(NSString *))onInputChange {
     [self.exchangeMoneyView setOnInputChange:onInputChange];
 }
 
