@@ -157,7 +157,6 @@
         NSString *remainder = [self balanceWithUser:user currencyType:currency.currencyType];
         NSString *rate;
         NSAttributedString *currencyAmount;
-        NSInteger currentPage;
         GalleryPreviewPageRemainderStyle remainderStyle = GalleryPreviewPageRemainderStyleNormal;
         switch (currencyExchangeType) {
             case CurrencyExchangeSourceType:
