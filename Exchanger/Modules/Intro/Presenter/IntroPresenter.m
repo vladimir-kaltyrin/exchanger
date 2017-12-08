@@ -49,7 +49,7 @@
         }];
     }];
     
-    [self.view setOnBackTap:^{
+    [self.view setOnResetTap:^{
         [weakSelf.router showAbout];
     }];
 }

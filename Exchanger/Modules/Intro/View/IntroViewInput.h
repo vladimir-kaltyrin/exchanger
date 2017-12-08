@@ -3,7 +3,7 @@
 
 @protocol IntroViewInput <ViewLifeCycleObservable>
 @property (nonatomic, strong) void(^onStartTap)();
-@property (nonatomic, strong) void(^onBackTap)();
+@property (nonatomic, strong) void(^onResetTap)();
 
 - (void)setTitle:(NSString *)title;
 
