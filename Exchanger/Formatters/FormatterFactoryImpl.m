@@ -2,6 +2,7 @@
 #import "BalanceFormatterImpl.h"
 #import "CurrencyFormatterImpl.h"
 #import "NumbersFormatterImpl.h"
+#import "RoundingFormatterImpl.h"
 
 @implementation FormatterFactoryImpl
 
@@ -55,6 +56,10 @@
 
 - (id<NumbersFormatter>)numbersFormatter {
     return [[NumbersFormatterImpl alloc] init];
+}
+
+- (id<RoundingFormatter>)roundingFormatter {
+    return [[RoundingFormatterImpl alloc] init];
 }
 
 @end

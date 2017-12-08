@@ -18,6 +18,7 @@ NS_INLINE FormattedString MakeFormattedString(NSString *primary, NSString *secon
 @property (nonatomic, strong) AttributedStringStyle *primaryPartStyle;
 @property (nonatomic, strong) AttributedStringStyle *secondaryPartStyle;
 @property (nonatomic, assign) BalanceFormatterStyle formatterStyle;
+@property (nonatomic, strong) NSNumberFormatter *numberFormatter;
 @end
 
 @implementation BalanceFormatterImpl
@@ -33,6 +34,8 @@ NS_INLINE FormattedString MakeFormattedString(NSString *primary, NSString *secon
         self.primaryPartStyle = primaryPartStyle;
         self.secondaryPartStyle = secondaryPartStyle;
         self.formatterStyle = formatterStyle;
+        
+        self.numberFormatter = [[NSNumberFormatter alloc] init];
     }
     return self;
 }
@@ -42,19 +45,17 @@ NS_INLINE FormattedString MakeFormattedString(NSString *primary, NSString *secon
 - (NSString *)formatBalance:(NSString *)balance {
     
     NSNumber *number = @(balance.floatValue);
-    
-    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
 
     switch (self.formatterStyle) {
         case BalanceFormatterStyleHundredths:
-            numberFormatter.maximumFractionDigits = 2;
+            self.numberFormatter.maximumFractionDigits = 2;
             break;
         case BalanceFormatterStyleTenThousandths:
-            numberFormatter.maximumFractionDigits = 4;
+            self.numberFormatter.maximumFractionDigits = 4;
             break;
     }
     
-    NSString *formattedBalance = [numberFormatter stringFromNumber:number];;
+    NSString *formattedBalance = [self.numberFormatter stringFromNumber:number];;
     
     NSLocale *locale = [NSLocale currentLocale];
     NSString *separator = [locale objectForKey:NSLocaleDecimalSeparator];
