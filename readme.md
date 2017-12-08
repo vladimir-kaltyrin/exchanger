@@ -7,7 +7,7 @@ The Exchanger is a simple iOS application demonstrating one of approaches to imp
 # Table of contents
 
 * [About](#about)
-* [Setup ✘](#setup)
+* [Setup](#setup)
 * [Architecture ✘](#architecture)
 * [Backend ✘](#architecture)
 * [Testing ✘](#architecture)
@@ -16,7 +16,7 @@ The Exchanger is a simple iOS application demonstrating one of approaches to imp
 
 ## About
 
-The application is a fairly straightforward currency converter. It takes a reference rate from a European Central Bank by parsing its [public XML](http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml) and provides a feature to exchange any EUR, USD and GBP in any combination.
+The application is a fairly straightforward currency converter. It takes a reference rate from a European Central Bank by parsing its [public XML](http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml) and provides a feature to exchange any currency including EUR, USD and GBP in any combination.
 
 When app starts there is a limited balance with 100 units of each currency.
 
@@ -48,3 +48,7 @@ If XCPretty is not installed on your machine then run following commands in Term
 ```bash
 gem install xcpretty
 ```
+
+<a name="architecture"/>
+
+## Architecture
