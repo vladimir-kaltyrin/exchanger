@@ -93,8 +93,23 @@
 }
 
 - (void)resetCurrenciesWithData:(ExchangeRatesData *)data onReset:(void (^)())onReset {
-    self.sourceCurrency = [self findCurrencyWithType:CurrencyTypeUSD inData:data];
-    self.targetCurrency = [self findCurrencyWithType:CurrencyTypeGBP inData:data];
+    
+    CurrencyType sourceCurrencyType;
+    if (self.sourceCurrency == nil) {
+        sourceCurrencyType = CurrencyTypeUSD;
+    } else {
+        sourceCurrencyType = self.sourceCurrency.currencyType;
+    }
+    self.sourceCurrency = [self findCurrencyWithType:sourceCurrencyType inData:data];
+    
+    CurrencyType targetCurrencyType;
+    if (self.targetCurrency == nil) {
+        targetCurrencyType = CurrencyTypeGBP;
+    } else {
+        targetCurrencyType = self.targetCurrency.currencyType;
+    }
+    self.targetCurrency = [self findCurrencyWithType:targetCurrencyType inData:data];
+
     block(onReset);
 }
 
