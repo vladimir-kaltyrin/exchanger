@@ -4,6 +4,13 @@
 
 @implementation IntroRouterImpl
 
+- (void)showAbout {
+    
+    NSURL *url = [NSURL URLWithString:@"https://github.com/vkaltyrin/exchanger"];
+    
+    [[UIApplication sharedApplication] openURL:url];
+}
+
 - (void)showDemoWith:(void (^)(id<ExchangeMoneyModule>))configure {
     
     id<ExchangeMoneyAssembly> assembly = [self.assemblyFactory exchangeMoneyAssembly];
