@@ -14,7 +14,7 @@ class NumbersFormatterTests: XCTestCase {
         super.tearDown()
     }
     
-    func testImputIsEmptyString() {
+    func testInputIsEmptyString() {
         // Given
         let input = ""
         // When
@@ -23,9 +23,9 @@ class NumbersFormatterTests: XCTestCase {
         XCTAssert(output == "")
     }
     
-    func testImputIsAlphanumericString() {
+    func testInputIsAlphanumericString() {
         // Given
-        let input = "qwertyuiopad12.54asdfghjkl.7..s.9zxcvbnm."
+        let input = "qwertyuiopad12.54asdfghjkl.7.s.9zxcvbnm."
         // When
         let output = formatter.format(input)
         // Then
@@ -41,9 +41,9 @@ class NumbersFormatterTests: XCTestCase {
         XCTAssert(output == input)
     }
     
-    func testInputIsOnlySeparator() {
+    func testInputDoesNotContainDigits() {
         // Given
-        let input = "..."
+        let input = "...qwertyuiopasdfghjklzxcvbnm..."
         // When
         let output = formatter.format(input)
         // Then
