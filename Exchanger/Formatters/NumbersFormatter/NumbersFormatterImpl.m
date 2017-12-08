@@ -54,8 +54,15 @@
 }
 
 - (NSString *)filterLeadingZeros:(NSString *)targetString {
+    
+    if ([targetString isEqualToString:@"0"]) {
+        return targetString;
+    }
+    
     NSRange range = [targetString rangeOfString:@"^0*" options:NSRegularExpressionSearch];
-    return [targetString stringByReplacingCharactersInRange:range withString:@""];
+    NSString *result = [targetString stringByReplacingCharactersInRange:range withString:@""];
+    
+    return [result isEqualToString:@""] ? @"0" : result;
 }
 
 @end
