@@ -97,23 +97,21 @@ NS_INLINE FormattedString MakeFormattedString(NSString *primary, NSString *secon
     
     FormattedString result;
     
+    NSArray *components = [balance componentsSeparatedByString:separator];
+    if (components.count == 0) {
+        return MakeFormattedString(nil, nil);
+    }
+    
+    if (components.count == 1) {
+        return MakeFormattedString(components.firstObject, nil);
+    }
+    
     switch (self.formatterStyle) {
         case BalanceFormatterStyleHundredths:
         {
-            NSArray *components = [balance componentsSeparatedByString:separator];
-            if (components.count == 0) {
-                result = MakeFormattedString(nil, nil);
-                break;
-            }
+            NSString *primaryString = [NSString stringWithFormat:@"%@%@", components.firstObject, separator];
+            NSString *secondaryString = secondaryString = components[1];
             
-            NSString *primaryString;
-            NSString *secondaryString;
-            if (components.count > 1) {
-                primaryString = [NSString stringWithFormat:@"%@%@", components.firstObject, separator];
-                secondaryString = components[1];
-            } else {
-                primaryString = components.firstObject;
-            }
             result = MakeFormattedString(primaryString, secondaryString);
         }
             break;

@@ -83,7 +83,7 @@
     
     [self.interactor setOnUpdate:^(ExchangeRatesData *data) {
         [weakSelf.view stopActivity];
-        [weakSelf updateViewWithData:data];
+        [weakSelf updateViewWithData:data updateRates:YES];
     }];
     
     [self fetchRatesWithRepeat:YES
@@ -92,7 +92,7 @@
     
     [self.view setOnPageChange:^(CurrencyExchangeType exchangeType, NSInteger current) {
         [weakSelf update:exchangeType withIndex:current];
-        [weakSelf updateExchangeButton];
+        [weakSelf reloadViewWithUpdateRates:NO];
     }];
     
     [self.view setOnInputChange:^(NSString *inputChange) {
@@ -105,10 +105,12 @@
     }];
 }
 
-- (void)updateViewWithData:(ExchangeRatesData *)data {
+- (void)updateViewWithData:(ExchangeRatesData *)data updateRates:(BOOL)updateRates {
     [self updateExchangeButton];
-    [self updateExchangeRates:data onUpdate:nil];
     [self updateNavigationTitleRate:nil];
+    if (updateRates) {
+        [self updateExchangeRates:data onUpdate:nil];
+    }
 }
 
 - (void)updateNavigationTitleRate:(void(^)())onUpdate {
@@ -176,8 +178,9 @@
                 
                 currencyAmount = nil;
                 
-                rate = [NSString stringWithFormat:@"%@%@",
+                rate = [NSString stringWithFormat:@"%@1 = %@%@",
                         currency.currencySign,
+                        self.interactor.sourceCurrency.currencySign,
                         [self.roundingFormatter format:currency.rate]];
                 break;
         }
@@ -254,7 +257,11 @@
 }
 
 - (void)reloadView {
-    [self updateViewWithData:self.exchangeRatesData];
+    [self reloadViewWithUpdateRates:YES];
+}
+
+- (void)reloadViewWithUpdateRates:(BOOL)updateRates {
+    [self updateViewWithData:self.exchangeRatesData updateRates:updateRates];
 }
 
 - (void)updateExchangeButton {
