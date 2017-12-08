@@ -65,7 +65,7 @@
     [string appendAttributedString:targetCurrencySignText];
     
     NSString *targetText = [NSString stringWithFormat:@"%@",
-                            sourceCurrency.rate.stringValue];
+                            targetCurrency.rate.stringValue];
     
     NSAttributedString *targetCurrencyText = [self.currentBalanceFormatter attributedFormatBalance:targetText];
     [string appendAttributedString:targetCurrencyText];

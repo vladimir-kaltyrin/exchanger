@@ -113,6 +113,15 @@
     block(onReset);
 }
 
+- (void)exchangeWallet:(Wallet *)wallet
+        targetCurrency:(Currency *)currency
+              onResult:(void(^)(Wallet *wallet, NSNumber *invertedRate))onResult
+{
+    [self.exchangeMoneyService exchangeWallet:wallet
+                               targetCurrency:currency
+                                     onResult:onResult];
+}
+
 // MARK: - Private
 
 - (void)update:(User *)user withExchangeMoneyResult:(ExchangeMoneyResult *)result {
