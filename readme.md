@@ -20,6 +20,8 @@ The application is a fairly straightforward currency converter. It takes a refer
 
 When app starts there is a limited balance with 100 units of each currency.
 
+The app core is carefully designed with love ❤️ to SOLID in pure Objective-C using VIPER architecture combined with SOA. Meanwhile, unit tests are written in Swift. 
+
 <a name="setup"/>
 
 ## Setup
