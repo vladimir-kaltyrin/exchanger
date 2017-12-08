@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8C2E1CE31F13818D00DB0FC2"
-               BuildableName = "Avito.app"
+               BuildableName = "Exchanger.app"
                BlueprintName = "Exchanger"
                ReferencedContainer = "container:Exchanger.xcodeproj">
             </BuildableReference>
@@ -26,6 +26,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
@@ -53,7 +54,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8C2E1CE31F13818D00DB0FC2"
-            BuildableName = "Avito.app"
+            BuildableName = "Exchanger.app"
             BlueprintName = "Exchanger"
             ReferencedContainer = "container:Exchanger.xcodeproj">
          </BuildableReference>
@@ -65,6 +66,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -76,7 +78,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8C2E1CE31F13818D00DB0FC2"
-            BuildableName = "Avito.app"
+            BuildableName = "Exchanger.app"
             BlueprintName = "Exchanger"
             ReferencedContainer = "container:Exchanger.xcodeproj">
          </BuildableReference>
@@ -95,7 +97,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8C2E1CE31F13818D00DB0FC2"
-            BuildableName = "Avito.app"
+            BuildableName = "Exchanger.app"
             BlueprintName = "Exchanger"
             ReferencedContainer = "container:Exchanger.xcodeproj">
          </BuildableReference>
