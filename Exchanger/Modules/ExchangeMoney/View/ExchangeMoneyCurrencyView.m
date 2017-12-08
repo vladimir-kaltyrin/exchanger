@@ -55,7 +55,7 @@
 // MARK: - Public
 
 - (void)updateWithModel:(GalleryPreviewData *)model {
-    [self.previewView setViewData:model currentPage:self.currentPage];
+    [self.previewView setViewData:model];
 }
 
 - (void)setOnPageChange:(void(^)(CurrencyExchangeType exchangeType, NSInteger current))onPageChange {

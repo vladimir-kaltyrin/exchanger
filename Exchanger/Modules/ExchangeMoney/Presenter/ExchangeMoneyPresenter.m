@@ -157,6 +157,7 @@
         NSString *remainder = [self balanceWithUser:user currencyType:currency.currencyType];
         NSString *rate;
         NSAttributedString *currencyAmount;
+        NSInteger currentPage;
         GalleryPreviewPageRemainderStyle remainderStyle = GalleryPreviewPageRemainderStyleNormal;
         switch (currencyExchangeType) {
             case CurrencyExchangeSourceType:
@@ -190,9 +191,26 @@
         [pages addObject:pageData];
     }
     
-    return [[GalleryPreviewData alloc] initWithPages:pages onTap:^{
-        NSLog(@"onTap");
+    NSInteger currentPage = [currencies indexOfObjectPassingTest:^BOOL(Currency * _Nonnull currency, NSUInteger idx, BOOL * _Nonnull stop) {
+        switch (currencyExchangeType) {
+            case CurrencyExchangeSourceType:
+                return currency.currencyType == self.interactor.sourceCurrency.currencyType;
+                break;
+            case CurrencyExchangeTargetType:
+                return currency.currencyType == self.interactor.targetCurrency.currencyType;
+                break;
+        }
     }];
+    
+    if (currentPage == NSNotFound) {
+        currentPage = 0;
+    }
+    
+    GalleryPreviewData *viewData = [[GalleryPreviewData alloc] initWithPages:pages
+                                                                 currentPage:currentPage
+                                                                       onTap:nil];
+
+    return viewData;
 }
 
 - (NSString *)balanceWithUser:(User *)user currencyType:(CurrencyType)currencyType {

@@ -94,7 +94,7 @@
 
 - (void)resetCurrenciesWithData:(ExchangeRatesData *)data onReset:(void (^)())onReset {
     self.sourceCurrency = [self findCurrencyWithType:CurrencyTypeUSD inData:data];
-    self.targetCurrency = [self findCurrencyWithType:CurrencyTypeEUR inData:data];
+    self.targetCurrency = [self findCurrencyWithType:CurrencyTypeGBP inData:data];
     block(onReset);
 }
 
