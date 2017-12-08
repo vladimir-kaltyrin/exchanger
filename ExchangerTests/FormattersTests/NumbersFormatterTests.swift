@@ -50,4 +50,13 @@ class NumbersFormatterTests: XCTestCase {
         XCTAssert(output == "")
     }
     
+    func testInputContainsZeroAtBeginning() {
+        // Given
+        let input = "0057.7"
+        // When
+        let output = formatter.format(input)
+        // Then
+        XCTAssert(output == "57.7")
+    }
+    
 }

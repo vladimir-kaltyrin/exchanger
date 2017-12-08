@@ -2,33 +2,60 @@
 
 @implementation NumbersFormatterImpl
 
+// MARK: - NumbersFormatter
+
 - (NSString *)format:(NSString *)string {
+    NSString *result = [self filterNonNumericAndSeparatorCharacters:string];
+    result = [self filterExtraSeparators:result];
+    result = [self filterStringEqualToSeparator:result];
+    result = [self filterLeadingZeros:result];
     
+    return result;
+}
+
+// MARK: - Private
+
+- (NSString *)separator {
+    NSLocale *locale = [NSLocale currentLocale];
+    return [locale objectForKey:NSLocaleDecimalSeparator];
+}
+
+- (NSString *)filterNonNumericAndSeparatorCharacters:(NSString *)targetString {
     NSMutableCharacterSet *set = [NSMutableCharacterSet decimalDigitCharacterSet];
     
-    NSLocale *locale = [NSLocale currentLocale];
-    NSString *separator = [locale objectForKey:NSLocaleDecimalSeparator];
+    NSString *separator = [self separator];
     
     [set addCharactersInString:separator];
     [set invert];
     
-    NSString *trimmedString = [[string componentsSeparatedByCharactersInSet:set] componentsJoinedByString:@""];
-    
-    NSArray *components = [trimmedString componentsSeparatedByString:separator];
+    return [[targetString componentsSeparatedByCharactersInSet:set] componentsJoinedByString:@""];
+}
+
+- (NSString *)filterExtraSeparators:(NSString *)targetString {
+    NSString *separator = [self separator];
+    NSArray *components = [targetString componentsSeparatedByString:separator];
     if (components.count > 2) {
-        NSInteger index = [trimmedString rangeOfString:separator].location;
-        NSRange range = NSMakeRange(index + 1, trimmedString.length - index - 1);
-        trimmedString = [trimmedString stringByReplacingOccurrencesOfString:separator
+        NSInteger index = [targetString rangeOfString:separator].location;
+        NSRange range = NSMakeRange(index + 1, targetString.length - index - 1);
+        return [targetString stringByReplacingOccurrencesOfString:separator
                                                                  withString:@""
                                                                     options:0
                                                                       range:range];
     }
-    
-    if ([trimmedString isEqualToString:separator]) {
+    return targetString;
+}
+
+- (NSString *)filterStringEqualToSeparator:(NSString *)targetString {
+    NSString *separator = [self separator];
+    if ([targetString isEqualToString:separator]) {
         return @"";
     }
-    
-    return trimmedString;
+    return targetString;
+}
+
+- (NSString *)filterLeadingZeros:(NSString *)targetString {
+    NSRange range = [targetString rangeOfString:@"^0*" options:NSRegularExpressionSearch];
+    return [targetString stringByReplacingCharactersInRange:range withString:@""];
 }
 
 @end
