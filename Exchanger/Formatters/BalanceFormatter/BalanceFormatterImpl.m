@@ -36,6 +36,7 @@ NS_INLINE FormattedString MakeFormattedString(NSString *primary, NSString *secon
         self.formatterStyle = formatterStyle;
         
         self.numberFormatter = [[NSNumberFormatter alloc] init];
+        self.numberFormatter.minimumIntegerDigits = 1;
     }
     return self;
 }
@@ -51,27 +52,24 @@ NS_INLINE FormattedString MakeFormattedString(NSString *primary, NSString *secon
             self.numberFormatter.maximumFractionDigits = 2;
             break;
         case BalanceFormatterStyleTenThousandths:
-            self.numberFormatter.maximumFractionDigits = 4;
+            self.numberFormatter.maximumFractionDigits = 6;
             break;
     }
     
-    NSString *formattedBalance = [self.numberFormatter stringFromNumber:number];;
+    NSString *formattedBalance = [self.numberFormatter stringFromNumber:number];
     
     NSLocale *locale = [NSLocale currentLocale];
     NSString *separator = [locale objectForKey:NSLocaleDecimalSeparator];
     
-    if ([balance rangeOfString:separator].location != NSNotFound) {
-        return [NSString stringWithFormat:@"%@%@", formattedBalance, separator];
-    } else {
-        return formattedBalance;
-    }
+    return formattedBalance;
 }
 
 - (NSAttributedString *)attributedFormatBalance:(NSString *)balance {
     
+    NSString *formattedBalance = [self formatBalance:balance];
     NSMutableAttributedString *string = [[NSMutableAttributedString alloc] init];
     
-    FormattedString formattedString = [self formattedStringWithBalance:balance];
+    FormattedString formattedString = [self formattedStringWithBalance:formattedBalance];
     
     if (formattedString.primary != nil) {
         NSAttributedString *primaryAttributedString = [[NSAttributedString alloc] initWithString:formattedString.primary

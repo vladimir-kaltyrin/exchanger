@@ -13,7 +13,10 @@
                 onResult:(void (^)(ExchangeMoneyResult *))onResult
 {
     __weak typeof(self) weakSelf = self;
-    [self convertedCurrencyWithSourceCurrency:sourceCurrency targetCurrency:targetCurrency onConvert:^(Currency *convertedCurrency) {
+    [self convertedCurrencyWithSourceCurrency:sourceCurrency
+                               targetCurrency:targetCurrency
+                                    onConvert:^(Currency *convertedCurrency)
+    {
         
         Wallet *sourceWallet = [weakSelf sourceWalletWith:user
                                                  currency:sourceCurrency
@@ -38,12 +41,39 @@
 {
     Currency *result = [[Currency alloc] init];
     result.currencyType = targetCurrency.currencyType;
-    result.rate = @(targetCurrency.rate.floatValue / sourceCurrency.rate.floatValue);
+    result.rate = [self calculateExchangeRateWithSourceCurrency:sourceCurrency targetCurrency:targetCurrency];
     
     block(onConvert, result);
 }
 
+- (void)exchangeWallet:(Wallet *)wallet
+        targetCurrency:(Currency *)currency
+              onResult:(void (^)(Wallet *wallet, NSNumber *invertedRate))onResult
+{
+    __weak typeof(self) weakSelf = self;
+    [self convertedCurrencyWithSourceCurrency:wallet.currency
+                               targetCurrency:currency
+                                    onConvert:^(Currency *convertedCurrency)
+    {
+        Wallet *resultWallet = [weakSelf exchangeMoneyAmount:wallet.amount
+                                                withCurrency:convertedCurrency];
+        
+        [weakSelf convertedCurrencyWithSourceCurrency:currency
+                                       targetCurrency:wallet.currency
+                                            onConvert:^(Currency *invertedConvertedCurrency)
+        {
+            block(onResult, resultWallet, invertedConvertedCurrency.rate);
+        }];
+    }];
+}
+
 // MARK: - Private
+
+- (NSNumber *)calculateExchangeRateWithSourceCurrency:(Currency *)sourceCurrency
+                                       targetCurrency:(Currency *)targetCurrency
+{
+    return @(targetCurrency.rate.floatValue / sourceCurrency.rate.floatValue);
+}
 
 - (Wallet *)sourceWalletWith:(User *)user
                     currency:(Currency *)currency

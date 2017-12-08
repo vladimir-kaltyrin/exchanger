@@ -12,6 +12,10 @@
           targetCurrency:(Currency *)targetCurrency
                 onResult:(void(^)(ExchangeMoneyResult *))onResult;
 
+- (void)exchangeWallet:(Wallet *)wallet
+        targetCurrency:(Currency *)currency
+              onResult:(void(^)(Wallet *wallet, NSNumber *invertedRate))onResult;
+
 - (void)convertedCurrencyWithSourceCurrency:(Currency *)sourceCurrency
                              targetCurrency:(Currency *)targetCurrency
                                   onConvert:(void(^)(Currency *))onConvert;

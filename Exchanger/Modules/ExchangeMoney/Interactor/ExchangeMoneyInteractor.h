@@ -25,4 +25,8 @@
 
 - (void)resetCurrenciesWithData:(ExchangeRatesData *)data onReset:(void(^)())onReset;
 
+- (void)exchangeWallet:(Wallet *)wallet
+        targetCurrency:(Currency *)currency
+              onResult:(void(^)(Wallet *wallet, NSNumber *invertedRate))onResult;
+
 @end
