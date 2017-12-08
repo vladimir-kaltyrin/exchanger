@@ -21,7 +21,7 @@ When app starts there is a limited balance with 100 units of each currency.
 
 The app core is carefully designed with love ❤️ to SOLID in pure Objective-C using VIPER architecture combined with SOA. Meanwhile, unit tests are written in Swift.
 
-If you have any questions just [email me](vkasci@gmail.com). Feel free to open issues 😀
+If you have any questions just [email me](mailto:vkasci@gmail.com). Feel free to open issues 😀
 
 <a name="setup"/>
 
