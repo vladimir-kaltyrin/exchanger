@@ -93,10 +93,10 @@
         [weakSelf updateExchangeButton];
     }];
     
-    [self.view setOnInputChange:^(NSNumber *inputChange) {
-        weakSelf.currentInput = inputChange;
+    [self.view setOnInputChange:^(NSString *inputChange) {
+        weakSelf.currentInput = @(inputChange.floatValue);
         
-        NSString *negativeNumberText = [NSString stringWithFormat:@"-%@", inputChange.stringValue];
+        NSString *negativeNumberText = [NSString stringWithFormat:@"-%@", inputChange];
         weakSelf.formattedInput = [weakSelf.exchangeCurrencyInputFormatter attributedFormatBalance:negativeNumberText];
         
         [weakSelf reloadView];

@@ -88,6 +88,7 @@
 		8CF9641E1F165C31009852B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF9641B1F165C31009852B9 /* main.m */; };
 		8CF9643D1F17D84E009852B9 /* KeyboardObserverImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF9643C1F17D84E009852B9 /* KeyboardObserverImpl.m */; };
 		8CF9645A1F1CD11B009852B9 /* ExchangeMoneyCurrencyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF964591F1CD11B009852B9 /* ExchangeMoneyCurrencyView.m */; };
+		8CFCEA3B1FDAA45200202024 /* NumbersFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFCEA3A1FDAA45200202024 /* NumbersFormatterTests.swift */; };
 		F4B97656FC1AA746D81776B8 /* libPods-ExchangerUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 228D4FAA2C2C7FB35FC8A6FF /* libPods-ExchangerUITests.a */; };
 /* End PBXBuildFile section */
 
@@ -275,6 +276,7 @@
 		8CF9643F1F17D8B7009852B9 /* KeyboardObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardObserver.h; sourceTree = "<group>"; };
 		8CF964581F1CD11B009852B9 /* ExchangeMoneyCurrencyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeMoneyCurrencyView.h; path = Modules/ExchangeMoney/View/ExchangeMoneyCurrencyView.h; sourceTree = "<group>"; };
 		8CF964591F1CD11B009852B9 /* ExchangeMoneyCurrencyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExchangeMoneyCurrencyView.m; path = Modules/ExchangeMoney/View/ExchangeMoneyCurrencyView.m; sourceTree = "<group>"; };
+		8CFCEA3A1FDAA45200202024 /* NumbersFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersFormatterTests.swift; sourceTree = "<group>"; };
 		9389B4E6B11F4B0BB56B0F37 /* Pods-ExchangerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExchangerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExchangerUITests/Pods-ExchangerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A46A0D61B3F31B4C0C77D2B7 /* libPods-Exchanger.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Exchanger.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAEDD35F473571BE7C61E79D /* Pods-Exchanger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Exchanger.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Exchanger/Pods-Exchanger.debug.xcconfig"; sourceTree = "<group>"; };
@@ -397,6 +399,7 @@
 		8C2E1D001F13818D00DB0FC2 /* ExchangerTests */ = {
 			isa = PBXGroup;
 			children = (
+				8CFCEA391FDAA43300202024 /* FormattersTests */,
 				8C2E1D031F13818D00DB0FC2 /* Info.plist */,
 				8C0B9F621FD9C35A007CA53A /* ExchangerTests-Bridging-Header.h */,
 				8C0B9F651FD9C36E007CA53A /* ExchangeMoneyServiceTests.swift */,
@@ -772,6 +775,14 @@
 				8CF9643C1F17D84E009852B9 /* KeyboardObserverImpl.m */,
 			);
 			name = KeyboardObservingService;
+			sourceTree = "<group>";
+		};
+		8CFCEA391FDAA43300202024 /* FormattersTests */ = {
+			isa = PBXGroup;
+			children = (
+				8CFCEA3A1FDAA45200202024 /* NumbersFormatterTests.swift */,
+			);
+			path = FormattersTests;
 			sourceTree = "<group>";
 		};
 		C4D7318F40CE453F21240F76 /* Frameworks */ = {
@@ -1152,6 +1163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C0B9F661FD9C36E007CA53A /* ExchangeMoneyServiceTests.swift in Sources */,
+				8CFCEA3B1FDAA45200202024 /* NumbersFormatterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

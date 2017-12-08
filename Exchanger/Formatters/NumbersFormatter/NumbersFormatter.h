@@ -1,5 +1,5 @@
 #import <Foundation/Foundation.h>
 
 @protocol NumbersFormatter
-- (NSString *)format:(NSString *)string;
+- (nonnull NSString *)format:(nonnull NSString *)string;
 @end
