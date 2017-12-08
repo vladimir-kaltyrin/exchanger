@@ -7,9 +7,12 @@ NS_ASSUME_NONNULL_BEGIN
 @interface GalleryPreviewData : NSObject
     
 @property (nonatomic, strong, readonly) NSArray<GalleryPreviewPageData *> *pages;
-@property (nonatomic, strong, readonly) void(^onTap)();
+@property (nonatomic, strong, readonly, nullable) void(^onTap)();
+@property (nonatomic, assign, readonly) NSInteger currentPage;
     
-- (instancetype)initWithPages:(NSArray<GalleryPreviewPageData *> *)pages onTap:(void(^)())onTap;
+- (instancetype)initWithPages:(NSArray<GalleryPreviewPageData *> *)pages
+                  currentPage:(NSInteger)currentPage
+                        onTap:(void(^)())onTap;
     
 @end
 
