@@ -98,8 +98,14 @@
     [self.view setOnInputChange:^(NSString *inputChange) {
         weakSelf.currentInput = @(inputChange.floatValue);
         
-        NSString *negativeNumberText = [NSString stringWithFormat:@"-%@", inputChange];
-        weakSelf.formattedInput = [weakSelf.exchangeCurrencyInputFormatter attributedFormatBalance:negativeNumberText];
+        NSString *input;
+        if (weakSelf.currentInput.floatValue > 0) {
+            input = [NSString stringWithFormat:@"-%@", inputChange];
+        } else {
+            input = inputChange;
+        }
+        
+        weakSelf.formattedInput = [weakSelf.exchangeCurrencyInputFormatter attributedFormatBalance:input];
         
         [weakSelf reloadView];
     }];
