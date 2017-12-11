@@ -22,7 +22,6 @@ CGFloat const kFontSize = 34.0;
 @property (nonatomic, strong) ExchangeMoneyInputTextField *inputTextField;
 @property (nonatomic, strong) ExchangeMoneyCurrencyView *sourceCurrencyView;
 @property (nonatomic, strong) ExchangeMoneyCurrencyView *targetCurrencyView;
-@property (nonatomic, strong) UIStackView *stackView;
 @property (nonatomic, assign) CGFloat keyboardHeight;
 @end
 
@@ -43,20 +42,16 @@ CGFloat const kFontSize = 34.0;
         self.sourceCurrencyView = [[ExchangeMoneyCurrencyView alloc] initWithCurrencyExchangeType:CurrencyExchangeSourceType];
         self.targetCurrencyView = [[ExchangeMoneyCurrencyView alloc] initWithCurrencyExchangeType:CurrencyExchangeTargetType];
         
-        self.stackView = [[UIStackView alloc] initWithArrangedSubviews:@[self.sourceCurrencyView, self.targetCurrencyView]];
-        self.stackView.alignment = UIStackViewAlignmentLeading;
-        self.stackView.axis = UILayoutConstraintAxisVertical;
-        self.stackView.translatesAutoresizingMaskIntoConstraints = YES;
-        self.stackView.distribution = UIStackViewDistributionFillEqually;
-        
         self.inputTextField = [[ExchangeMoneyInputTextField alloc] init];
         
         self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
         
         [self addSubview:self.backgroundImageView];
         [self addSubview:self.overlayView];
-        [self addSubview:self.stackView];
-        [self addSubview:self.inputTextField];
+        //[self addSubview:self.inputTextField];
+        
+        [self addSubview:self.sourceCurrencyView];
+        [self addSubview:self.targetCurrencyView];
         [self addSubview:self.activityIndicator];
     }
     
@@ -66,7 +61,7 @@ CGFloat const kFontSize = 34.0;
 // MARK: - ExchangeMoneyView
 
 - (void)focusOnStart {
-    [self.inputTextField becomeFirstResponder];
+    //[self.inputTextField becomeFirstResponder];
 }
 
 - (void)updateKeyboardData:(KeyboardData *)keyboardData {
@@ -112,13 +107,12 @@ CGFloat const kFontSize = 34.0;
     
     CGRect contentsFrame = [self contentsFrame];
     
-    self.stackView.frame = contentsFrame;
-    
     self.sourceCurrencyView.width = contentsFrame.size.width;
     self.sourceCurrencyView.height = contentsFrame.size.height / 2;
     
     self.targetCurrencyView.width = contentsFrame.size.width;
     self.targetCurrencyView.height = contentsFrame.size.height / 2;
+    self.targetCurrencyView.top = self.sourceCurrencyView.bottom;
     
     self.inputTextField.frame = CGRectZero;
 }

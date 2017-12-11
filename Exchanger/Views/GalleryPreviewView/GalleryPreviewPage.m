@@ -1,6 +1,7 @@
 #import "GalleryPreviewPage.h"
 #import "GalleryPreviewPageData.h"
 #import "UIView+Properties.h"
+#import "UITextField+Configuration.h"
 
 CGFloat const kBigFontSize = 34.0;
 CGFloat const kSmallFontSize = 12.0;
@@ -9,9 +10,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface GalleryPreviewPage()
 @property (nonatomic, strong) UILabel *currencyTitleLabel;
-@property (nonatomic, strong) UILabel *currencyAmountLabel;
 @property (nonatomic, strong) UILabel *remainderLabel;
 @property (nonatomic, strong) UILabel *currencyRateLabel;
+@property (nonatomic, strong) UITextField *textField;
 @end
 
 @implementation GalleryPreviewPage
@@ -25,11 +26,6 @@ NS_ASSUME_NONNULL_BEGIN
         self.currencyTitleLabel.font = [UIFont systemFontOfSize:kBigFontSize];
         self.currencyTitleLabel.textColor = [UIColor whiteColor];
         
-        self.currencyAmountLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        self.currencyAmountLabel.font = [UIFont systemFontOfSize:kBigFontSize];
-        self.currencyAmountLabel.textColor = [UIColor whiteColor];
-        self.currencyAmountLabel.textAlignment = NSTextAlignmentRight;
-        
         self.remainderLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         self.remainderLabel.font = [UIFont systemFontOfSize:kSmallFontSize];
         
@@ -38,10 +34,13 @@ NS_ASSUME_NONNULL_BEGIN
         self.currencyRateLabel.textColor = [UIColor whiteColor];
         self.currencyRateLabel.textAlignment = NSTextAlignmentRight;
         
+        self.textField = [[UITextField alloc] init];
+        [self.textField setConfiguration:[TextFieldConfiguration inputConfiguration]];
+        
         [self addSubview:self.currencyTitleLabel];
-        [self addSubview:self.currencyAmountLabel];
         [self addSubview:self.remainderLabel];
         [self addSubview:self.currencyRateLabel];
+        [self addSubview:self.textField];
         
         self.backgroundColor = [UIColor clearColor];
     }
@@ -60,7 +59,8 @@ NS_ASSUME_NONNULL_BEGIN
     self.currencyTitleLabel.text = data.currencyTitle;
     self.remainderLabel.text = data.remainder;
     self.currencyRateLabel.text = data.rate;
-    self.currencyAmountLabel.attributedText = data.currencyAmount;
+    //self.currencyAmountLabel.attributedText = data.currencyAmount;
+    self.textField.attributedText = data.currencyAmount;
     
     switch (data.remainderStyle) {
         case GalleryPreviewPageRemainderStyleNormal:
@@ -74,9 +74,17 @@ NS_ASSUME_NONNULL_BEGIN
     
 - (void)prepareForReuse {
     self.currencyTitleLabel.text = nil;
-    self.currencyAmountLabel.text = nil;
+    self.textField.text = nil;
     self.remainderLabel.text = nil;
     self.currencyRateLabel.text = nil;
+}
+
+// MARK: - FirstResponder
+
+- (void)focus {
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [self.textField becomeFirstResponder];
+    }];
 }
     
 // MARK: - Private
@@ -97,14 +105,14 @@ NS_ASSUME_NONNULL_BEGIN
     self.remainderLabel.top = self.currencyTitleLabel.bottom + verticalOffsetBetweenLabels;
     self.remainderLabel.left = self.currencyTitleLabel.x;
     
-    self.currencyAmountLabel.width = 190;
-    self.currencyAmountLabel.height = self.currencyTitleLabel.height;
-    self.currencyAmountLabel.right = contentFrame.origin.x + contentFrame.size.width;
-    self.currencyAmountLabel.top = self.currencyTitleLabel.top;
+    self.textField.width = 190;
+    self.textField.height = self.currencyTitleLabel.height;
+    self.textField.right = contentFrame.origin.x + contentFrame.size.width;
+    self.textField.top = self.currencyTitleLabel.top;
     
     CGSize currencyRateLabelSize = [self.currencyRateLabel sizeThatFits:contentFrame.size];
     self.currencyRateLabel.size = currencyRateLabelSize;
-    self.currencyRateLabel.right = self.currencyAmountLabel.right;
+    self.currencyRateLabel.right = self.textField.right;
     self.currencyRateLabel.top = self.remainderLabel.top;
 }
 

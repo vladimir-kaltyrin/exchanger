@@ -1,6 +1,7 @@
 #import "GalleryPreviewPageController.h"
 #import "GalleryPreviewPage.h"
 #import "GalleryPreviewController.h"
+#import "UIView+Debug.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -21,6 +22,17 @@ NS_ASSUME_NONNULL_END
         
     }
     return self;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self.pageView focus];
 }
     
 - (instancetype)initWithNibName:(nullable NSString *)nibNameOrNil bundle:(nullable NSBundle *)nibBundleOrNil {

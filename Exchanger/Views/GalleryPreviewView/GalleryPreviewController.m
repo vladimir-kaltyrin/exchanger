@@ -1,6 +1,7 @@
 #import "GalleryPreviewController.h"
 #import "GalleryPreviewPageData.h"
 #import "GalleryPreviewPageController.h"
+#import "GalleryPreviewPage.h"
 #import "SafeBlocks.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -78,7 +79,7 @@ NS_ASSUME_NONNULL_END
     UIViewController *firstController = self.viewControllers.firstObject;
     if ([firstController isKindOfClass:[GalleryPreviewPageController class]]) {
         NSInteger index = [((GalleryPreviewPageController *)firstController) index];
-        return index + 1;
+        return index;
     }
     return 0;
 }
@@ -121,6 +122,10 @@ NS_ASSUME_NONNULL_END
     
 // MARK: - UIPageViewControllerDelegate
 
+- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers {
+    block(self.onPageWillChange);
+}
+
 - (void)pageViewController:(UIPageViewController *)pageViewController
         didFinishAnimating:(BOOL)finished
    previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers
@@ -130,7 +135,7 @@ NS_ASSUME_NONNULL_END
     if ([firstController isKindOfClass:[GalleryPreviewPageController class]]) {
         NSInteger currentIndex = [((GalleryPreviewPageController *)firstController) index];
         
-        block(self.onPageChange, currentIndex, self.data.count)
+        block(self.onPageChange, currentIndex, self.data.count);
     }
 }
 

@@ -7,6 +7,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface GalleryPreviewPage : UIView
     
 - (void)setViewData:(GalleryPreviewPageData *)data;
+
+- (void)focus;
     
 - (void)prepareForReuse;
     
