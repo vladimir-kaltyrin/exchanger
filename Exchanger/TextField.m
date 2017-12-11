@@ -19,8 +19,6 @@
 */
 
 - (BOOL)becomeFirstResponder {
-    NSLog(@"%@", self.window);
-    
     BOOL result = [super becomeFirstResponder];
     
     return result;

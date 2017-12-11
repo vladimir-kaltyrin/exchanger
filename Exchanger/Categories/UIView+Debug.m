@@ -23,8 +23,6 @@
     
     UIView *firstResponder = [window findViewThatIsFirstResponder];
     
-    NSLog(@"firstResponder: %@", firstResponder);
-    
     return firstResponder;
 }
 
