@@ -2,6 +2,8 @@
 #import "GalleryPreviewPageData.h"
 #import "UIView+Properties.h"
 #import "UITextField+Configuration.h"
+#import "TextField.h"
+#import "SafeBlocks.h"
 
 CGFloat const kBigFontSize = 34.0;
 CGFloat const kSmallFontSize = 12.0;
@@ -12,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UILabel *currencyTitleLabel;
 @property (nonatomic, strong) UILabel *remainderLabel;
 @property (nonatomic, strong) UILabel *currencyRateLabel;
-@property (nonatomic, strong) UITextField *textField;
+@property (nonatomic, strong) TextField *textField;
 @end
 
 @implementation GalleryPreviewPage
@@ -34,7 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
         self.currencyRateLabel.textColor = [UIColor whiteColor];
         self.currencyRateLabel.textAlignment = NSTextAlignmentRight;
         
-        self.textField = [[UITextField alloc] init];
+        self.textField = [[TextField alloc] init];
         [self.textField setConfiguration:[TextFieldConfiguration inputConfiguration]];
         
         [self addSubview:self.currencyTitleLabel];
@@ -82,7 +84,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)focus {
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        [self.textField becomeFirstResponder];
+        if ([self.textField becomeFirstResponder]) {
+            block(self.onFocus);
+        }
     }];
 }
     

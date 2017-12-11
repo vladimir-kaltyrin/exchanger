@@ -12,6 +12,9 @@
 @property (nonatomic, strong) GalleryPreviewController *galleryPreview;
 @property (nonatomic, strong) GalleryPreviewPageIndicator *pageIndicator;
 @property (nonatomic, strong) UITextField *firstResponderTextField;
+@property (nonatomic, assign) NSInteger currentPage;
+@property (nonatomic, assign) BOOL focusOnStart;
+@property (nonatomic, assign) BOOL focusEnabled;
 @end
 
 @implementation GalleryPreviewView
@@ -37,6 +40,10 @@
             [weakSelf.firstResponderTextField becomeFirstResponder];
         }];
         
+        [self.galleryPreview setCheckCanFocus:^BOOL(NSInteger page) {
+            return weakSelf.focusEnabled;
+        }];
+        
         [self setupRecognizer];
     }
     
@@ -59,8 +66,21 @@
         weakSelf.onPageChange(current);
     };
 }
+
+- (void)setOnPageWillChange:(void (^)())onPageWillChange {
+    
+}
+
+- (void)setOnFocus:(void (^)())onFocus {
+    [self.galleryPreview setOnFocus:onFocus];
+}
+
+- (void)setOnPageDidAppear:(void (^)())onPageDidAppear {
+    [self.galleryPreview setOnPageDidAppear:onPageDidAppear];
+}
     
 - (void)setViewData:(GalleryPreviewData *)data {
+    self.currentPage = data.currentPage;
     [self.pageIndicator setCurrentPage:data.currentPage ofTotal:data.pages.count];
     [self.galleryPreview setData:data.pages currentPage:data.currentPage];
     
@@ -68,7 +88,11 @@
 }
 
 - (void)focus {
-    [self.galleryPreview focus];
+    self.focusOnStart = YES;
+}
+
+- (void)setFocusEnabled:(BOOL)focusEnabled {
+    _focusEnabled = focusEnabled;
 }
 
 // MARK: - Layout

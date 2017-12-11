@@ -8,6 +8,9 @@ NS_ASSUME_NONNULL_BEGIN
     
 @property (nonatomic, strong, nullable) void(^onPageChange)(NSInteger current, NSInteger total);
 @property (nonatomic, strong, nullable) void(^onPageWillChange)();
+@property (nonatomic, strong, nullable) BOOL(^checkCanFocus)();
+@property (nonatomic, strong, nullable) void(^onPageDidAppear)();
+@property (nonatomic, strong) void(^onFocus)();
     
 - (void)setData:(NSArray<GalleryPreviewPageData *> *)data currentPage:(NSInteger)currentPage;
 

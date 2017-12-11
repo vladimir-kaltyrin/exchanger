@@ -73,6 +73,9 @@ NS_ASSUME_NONNULL_END
         GalleryPreviewPageData *pageData = [self.data objectAtIndex:index];
         GalleryPreviewPageController *controller = [[GalleryPreviewPageController alloc] initWithIndex:index data:pageData];
         controller.onPageWillChange = self.onPageWillChange;
+        controller.checkCanFocus = self.checkCanFocus;
+        controller.onViewDidAppear = self.onPageDidAppear;
+        controller.onFocus = self.onFocus;
         
         return controller;
     }

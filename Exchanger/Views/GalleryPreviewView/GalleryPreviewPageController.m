@@ -34,11 +34,21 @@ NS_ASSUME_NONNULL_END
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [self.pageView focus];
+    if (self.checkCanFocus != nil) {
+        if (self.checkCanFocus()) {
+            [self.pageView focus];
+        }
+    }
+    
+    block(self.onViewDidAppear);
 }
 
 - (void)focus {
     [self.pageView focus];
+}
+
+- (void)setOnFocus:(void (^)())onFocus {
+    [self.pageView setOnFocus:onFocus];
 }
     
 - (instancetype)initWithNibName:(nullable NSString *)nibNameOrNil bundle:(nullable NSBundle *)nibBundleOrNil {
@@ -48,6 +58,11 @@ NS_ASSUME_NONNULL_END
 
 - (instancetype)initWithCoder:(nonnull NSCoder *)aDecoder {
     NSAssert(NO, @"initWithCoder has not been implemented");
+    return nil;
+}
+
+- (instancetype)init {
+    NSAssert(NO, @"init has not been implemented");
     return nil;
 }
     

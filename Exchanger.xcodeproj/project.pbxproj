@@ -71,6 +71,7 @@
 		8CCE8A401FDAE92C003609F5 /* BalanceFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCE8A3F1FDAE92C003609F5 /* BalanceFormatterTests.swift */; };
 		8CCE8A4C1FDEC3F7003609F5 /* UITextField+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCE8A4B1FDEC3F6003609F5 /* UITextField+Configuration.m */; };
 		8CCE8A521FDEC7D0003609F5 /* UIView+Debug.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCE8A511FDEC7D0003609F5 /* UIView+Debug.m */; };
+		8CD39CB61FDEE7020042B15E /* TextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD39CB51FDEE7020042B15E /* TextField.m */; };
 		8CD786161F14F21F00AF7A8D /* ExchangeMoneyAssemblyImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD786151F14F21F00AF7A8D /* ExchangeMoneyAssemblyImpl.m */; };
 		8CD7861A1F14F22600AF7A8D /* ExchangeMoneyInteractorImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD786191F14F22600AF7A8D /* ExchangeMoneyInteractorImpl.m */; };
 		8CD786201F14F22D00AF7A8D /* ExchangeMoneyPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD7861E1F14F22D00AF7A8D /* ExchangeMoneyPresenter.m */; };
@@ -244,6 +245,8 @@
 		8CCE8A4B1FDEC3F6003609F5 /* UITextField+Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITextField+Configuration.m"; path = "Core/UITextField+Configuration.m"; sourceTree = "<group>"; };
 		8CCE8A501FDEC7D0003609F5 /* UIView+Debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Debug.h"; path = "Categories/UIView+Debug.h"; sourceTree = "<group>"; };
 		8CCE8A511FDEC7D0003609F5 /* UIView+Debug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Debug.m"; path = "Categories/UIView+Debug.m"; sourceTree = "<group>"; };
+		8CD39CB41FDEE7020042B15E /* TextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextField.h; sourceTree = "<group>"; };
+		8CD39CB51FDEE7020042B15E /* TextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TextField.m; sourceTree = "<group>"; };
 		8CD786141F14F21F00AF7A8D /* ExchangeMoneyAssemblyImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeMoneyAssemblyImpl.h; path = Modules/ExchangeMoney/Assembly/ExchangeMoneyAssemblyImpl.h; sourceTree = "<group>"; };
 		8CD786151F14F21F00AF7A8D /* ExchangeMoneyAssemblyImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExchangeMoneyAssemblyImpl.m; path = Modules/ExchangeMoney/Assembly/ExchangeMoneyAssemblyImpl.m; sourceTree = "<group>"; };
 		8CD786171F14F22600AF7A8D /* ExchangeMoneyInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeMoneyInteractor.h; path = Modules/ExchangeMoney/Interactor/ExchangeMoneyInteractor.h; sourceTree = "<group>"; };
@@ -680,6 +683,8 @@
 				8C94B4E51F3E162B00B2B9FC /* ExchangeMoneyTitleView.m */,
 				8CC843D11FD591DF00EC0CD3 /* ExchangeMoneyInputTextField.h */,
 				8CC843D21FD591DF00EC0CD3 /* ExchangeMoneyInputTextField.m */,
+				8CD39CB41FDEE7020042B15E /* TextField.h */,
+				8CD39CB51FDEE7020042B15E /* TextField.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1182,6 +1187,7 @@
 				8C6423581FA075AC00A95479 /* GalleryPreviewPageIndicator.m in Sources */,
 				8C6423711FA0B23C00A95479 /* ObservableTextField.m in Sources */,
 				8C45F6601FD01DE4005B3892 /* IntroPresenter.m in Sources */,
+				8CD39CB61FDEE7020042B15E /* TextField.m in Sources */,
 				8CC843DF1FD6A0A700EC0CD3 /* NumbersFormatterImpl.m in Sources */,
 				8C45F6631FD01E2D005B3892 /* IntroInteractorImpl.m in Sources */,
 				8C6423521FA0757600A95479 /* GalleryPreviewPageController.m in Sources */,

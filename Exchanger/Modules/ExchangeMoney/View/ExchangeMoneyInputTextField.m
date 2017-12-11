@@ -20,7 +20,7 @@
         self.textField = [[ObservableTextField alloc] init];
         [self.textField setHidden:YES];
         
-        [self addSubview:self.textField];
+       // [self addSubview:self.textField];
         
         [self configureTextField];
     }
@@ -29,13 +29,6 @@
 
 // MARK: - FirstResponder
 
-- (BOOL)becomeFirstResponder {
-    return [self.textField becomeFirstResponder];
-}
-
-- (BOOL)isFirstResponder {
-    return [self.textField isFirstResponder];
-}
 
 // MARK: - Layout
 
