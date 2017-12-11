@@ -29,6 +29,7 @@ NS_ASSUME_NONNULL_END
 // MARK: - Public
     
 - (void)setData:(NSArray<GalleryPreviewPageData *> *)data currentPage:(NSInteger)currentPage {
+
     _data = data;
     
     if ([self.data count] > 1) {
@@ -41,10 +42,12 @@ NS_ASSUME_NONNULL_END
     
     UIViewController *firstController = [self viewControllerAt:currentPage];
     if (firstController != nil) {
-        [self setViewControllers:@[firstController]
-                       direction:UIPageViewControllerNavigationDirectionForward
-                        animated:NO
-                       completion:nil];
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [self setViewControllers:@[firstController]
+                           direction:UIPageViewControllerNavigationDirectionForward
+                            animated:NO
+                          completion:nil];
+        }];
     }
     
 }
@@ -59,7 +62,7 @@ NS_ASSUME_NONNULL_END
 // MARK: - Private
     
 - (nullable UIViewController *)viewControllerAt: (NSInteger)index {
-    if (self.data.count > index) {
+    if (index < self.data.count) {
         GalleryPreviewPageData *pageData = [self.data objectAtIndex:index];
         return [[GalleryPreviewPageController alloc] initWithIndex:index data:pageData];
     }
@@ -68,11 +71,11 @@ NS_ASSUME_NONNULL_END
 }
 
 - (NSInteger)nextIndexAfter:(NSInteger)index {
-    return (index + 1 >= self.data.count) ? 0 : index + 1;
+    return (index >= self.data.count - 1) ? 0 : index + 1;
 }
     
 - (NSInteger)nextIndexBefore:(NSInteger)index {
-    return (index - 1 < 0) ? self.data.count - 1 : index - 1;
+    return (index < 1) ? self.data.count - 1 : index - 1;
 }
     
 - (NSInteger)currentPage {

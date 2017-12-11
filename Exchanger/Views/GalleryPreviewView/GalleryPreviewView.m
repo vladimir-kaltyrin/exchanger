@@ -62,6 +62,7 @@
 - (void)setViewData:(GalleryPreviewData *)data {
     [self.pageIndicator setCurrentPage:data.currentPage ofTotal:data.pages.count];
     [self.galleryPreview setData:data.pages currentPage:data.currentPage];
+    
     self.onTap = data.onTap;
 }
 

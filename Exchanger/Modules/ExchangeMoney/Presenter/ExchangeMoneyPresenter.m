@@ -89,7 +89,7 @@
     
     [self.view setOnPageChange:^(CurrencyExchangeType exchangeType, NSInteger current) {
         [weakSelf update:exchangeType withIndex:current];
-        [weakSelf reloadViewWithUpdateRates:NO];
+        [weakSelf reloadViewWithUpdateRates:YES];
     }];
     
     [self.view setOnInputChange:^(NSString *inputChange) {
@@ -131,7 +131,8 @@
         {
             ExchangeMoneyViewDataBuilder *builder = [[ExchangeMoneyViewDataBuilder alloc] initWithUser:user
                                                                                             currencies:ratesData.currencies
-                                                                                           incomeInput:@0 expenseInput:self.currentInput
+                                                                                           incomeInput:@0
+                                                                                          expenseInput:self.currentInput
                                                                                         sourceCurrency:self.interactor.sourceCurrency
                                                                                         targetCurrency:self.interactor.targetCurrency
                                                                                           targetWallet:targetWallet
