@@ -3,14 +3,12 @@
 #import "GalleryPreviewData.h"
 #import "UIView+Properties.h"
 #import "SafeBlocks.h"
-#import "UIView+Debug.h"
 
 @interface ExchangeMoneyCurrencyView()
 @property (nonatomic, strong) GalleryPreviewView *previewView;
 @property (nonatomic, strong) UIVisualEffectView *visualEffectView;
 @property (nonatomic, assign) NSInteger currentPage;
 @property (nonatomic, assign) CurrencyExchangeType exchangeType;
-@property (nonatomic, strong) UITextField *firstResponderTextField;
 @end
 
 @implementation ExchangeMoneyCurrencyView
@@ -50,12 +48,9 @@
     self.visualEffectView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:blurEffectStyle]];
     
     [self addSubview:self.visualEffectView];
-    [self addSubview:self.firstResponderTextField];
     [self addSubview:self.previewView];
     
     [self setBackgroundColor:[UIColor clearColor]];
-    
-    __weak typeof(self) weakSelf = self;
 }
 
 // MARK: - Public
