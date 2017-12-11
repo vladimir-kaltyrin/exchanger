@@ -59,7 +59,6 @@ NS_ASSUME_NONNULL_BEGIN
     self.currencyTitleLabel.text = data.currencyTitle;
     self.remainderLabel.text = data.remainder;
     self.currencyRateLabel.text = data.rate;
-    //self.currencyAmountLabel.attributedText = data.currencyAmount;
     self.textField.attributedText = data.currencyAmount;
     
     switch (data.remainderStyle) {
@@ -79,7 +78,7 @@ NS_ASSUME_NONNULL_BEGIN
     self.currencyRateLabel.text = nil;
 }
 
-// MARK: - FirstResponder
+// MARK: - Public
 
 - (void)focus {
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{

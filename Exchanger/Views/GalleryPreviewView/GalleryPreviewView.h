@@ -8,6 +8,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nullable) void(^onPageChange)(NSInteger current);
     
 - (void)setViewData:(GalleryPreviewData *)data;
+
+- (void)focus;
     
 @end
 

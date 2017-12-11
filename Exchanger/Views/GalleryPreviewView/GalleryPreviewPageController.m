@@ -2,6 +2,7 @@
 #import "GalleryPreviewPage.h"
 #import "GalleryPreviewController.h"
 #import "UIView+Debug.h"
+#import "SafeBlocks.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -27,11 +28,18 @@ NS_ASSUME_NONNULL_END
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
+    block(self.onPageWillChange);
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
+    [self.pageView focus];
+    
+    self.focusEnabled = YES;
+}
+
+- (void)focus {
     [self.pageView focus];
 }
     

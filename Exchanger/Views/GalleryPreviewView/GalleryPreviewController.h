@@ -10,6 +10,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nullable) void(^onPageWillChange)();
     
 - (void)setData:(NSArray<GalleryPreviewPageData *> *)data currentPage:(NSInteger)currentPage;
+
+- (void)focus;
     
 - (void)prepareForReuse;
 
