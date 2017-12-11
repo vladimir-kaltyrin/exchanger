@@ -35,8 +35,6 @@ NS_ASSUME_NONNULL_END
     [super viewDidAppear:animated];
     
     [self.pageView focus];
-    
-    self.focusEnabled = YES;
 }
 
 - (void)focus {
