@@ -29,6 +29,7 @@
         // The fake UITextField is added to the view and it's become first responder when page view controller resign its responders.
         self.firstResponderTextField = [[UITextField alloc] init];
         self.firstResponderTextField.keyboardType = [TextFieldConfiguration inputConfiguration].keyboardType;
+        self.firstResponderTextField.hidden = YES;
         [self addSubview:self.firstResponderTextField];
         
         __weak typeof(self) weakSelf = self;
@@ -64,6 +65,10 @@
     [self.galleryPreview setData:data.pages currentPage:data.currentPage];
     
     self.onTap = data.onTap;
+}
+
+- (void)focus {
+    [self.galleryPreview focus];
 }
 
 // MARK: - Layout

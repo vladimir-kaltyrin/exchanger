@@ -17,6 +17,8 @@
 
 - (void)updateWithModel:(GalleryPreviewData *)model;
 
+- (void)focus;
+
 - (void)setOnPageChange:(void(^)(CurrencyExchangeType exchangeType, NSInteger current))onPageChange;
 
 - (void)setRemainderStyle:(GalleryPreviewPageRemainderStyle)remainderStyle;

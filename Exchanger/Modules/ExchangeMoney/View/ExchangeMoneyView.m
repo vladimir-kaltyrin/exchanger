@@ -61,7 +61,7 @@ CGFloat const kFontSize = 34.0;
 // MARK: - ExchangeMoneyView
 
 - (void)focusOnStart {
-    //[self.inputTextField becomeFirstResponder];
+    [self.sourceCurrencyView focus];
 }
 
 - (void)updateKeyboardData:(KeyboardData *)keyboardData {

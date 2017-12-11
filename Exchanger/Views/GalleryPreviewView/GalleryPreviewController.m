@@ -42,6 +42,8 @@ NS_ASSUME_NONNULL_END
     
     UIViewController *firstController = [self viewControllerAt:currentPage];
     if (firstController != nil) {
+        
+        // UIKit has side effects if setViewControllers is called after transition completion.
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [self setViewControllers:@[firstController]
                            direction:UIPageViewControllerNavigationDirectionForward
@@ -58,13 +60,21 @@ NS_ASSUME_NONNULL_END
     self.delegate = nil;
     self.dataSource = nil;
 }
+
+- (void)focus {
+    GalleryPreviewPageController *controller = (GalleryPreviewPageController *)[self viewControllerAt:[self currentPage]];
+    [controller focus];
+}
     
 // MARK: - Private
     
 - (nullable UIViewController *)viewControllerAt: (NSInteger)index {
     if (index < self.data.count) {
         GalleryPreviewPageData *pageData = [self.data objectAtIndex:index];
-        return [[GalleryPreviewPageController alloc] initWithIndex:index data:pageData];
+        GalleryPreviewPageController *controller = [[GalleryPreviewPageController alloc] initWithIndex:index data:pageData];
+        controller.onPageWillChange = self.onPageWillChange;
+        
+        return controller;
     }
     
     return nil;
@@ -125,10 +135,6 @@ NS_ASSUME_NONNULL_END
     
 // MARK: - UIPageViewControllerDelegate
 
-- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers {
-    block(self.onPageWillChange);
-}
-
 - (void)pageViewController:(UIPageViewController *)pageViewController
         didFinishAnimating:(BOOL)finished
    previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers
@@ -136,7 +142,10 @@ NS_ASSUME_NONNULL_END
 {
     UIViewController *firstController = self.viewControllers.firstObject;
     if ([firstController isKindOfClass:[GalleryPreviewPageController class]]) {
-        NSInteger currentIndex = [((GalleryPreviewPageController *)firstController) index];
+        GalleryPreviewPageController* currentController = (GalleryPreviewPageController *)firstController;
+        NSInteger currentIndex = [currentController index];
+        
+        [currentController focus];
         
         block(self.onPageChange, currentIndex, self.data.count);
     }

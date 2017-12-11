@@ -67,6 +67,10 @@
     }];
 }
 
+- (void)focus {
+    [self.previewView focus];
+}
+
 // MARK: - Layout
 
 - (void)layoutSubviews {
