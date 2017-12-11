@@ -8,10 +8,12 @@
 
 - (instancetype)initWithUser:(User *)user
                   currencies:(NSArray<Currency *> *)currencies
-                currentInput:(NSNumber *)currentInput
-              formattedInput:(NSAttributedString *)formattedInput
-          sourceCurrencyType:(CurrencyType)sourceCurrencyType
-          targetCurrencyType:(CurrencyType)targetCurrencyType;
+                 incomeInput:(NSNumber *)incomeInput
+                expenseInput:(NSNumber *)expenseInput
+              sourceCurrency:(Currency *)sourceCurrency
+              targetCurrency:(Currency *)targetCurrency
+                targetWallet:(Wallet *)targetWallet
+                invertedRate:(NSNumber *)invertedRate;
 
 - (ExchangeMoneyViewData *)build;
 

@@ -6,6 +6,7 @@
 #import "GalleryPreviewData.h"
 #import "KeyboardObserver.h"
 #import "FormatterFactoryImpl.h"
+#import "ExchangeMoneyViewDataBuilder.h"
 #import "SafeBlocks.h"
 #import "Wallet.h"
 
@@ -142,112 +143,21 @@
                              targetCurrency:weakSelf.interactor.targetCurrency
                                    onResult:^(Wallet *targetWallet, NSNumber *invertedRate)
         {
-            GalleryPreviewData *sourceData = [weakSelf previewDataWithCurrencyExchangeType:CurrencyExchangeSourceType
-                                                                                      user:user
-                                                                                currencies:ratesData.currencies
-                                                                              targetWallet:targetWallet
-                                                                              invertedRate:invertedRate];
+            ExchangeMoneyViewDataBuilder *builder = [[ExchangeMoneyViewDataBuilder alloc] initWithUser:user
+                                                                                            currencies:ratesData.currencies
+                                                                                           incomeInput:@0 expenseInput:self.currentInput
+                                                                                        sourceCurrency:self.interactor.sourceCurrency
+                                                                                        targetCurrency:self.interactor.targetCurrency
+                                                                                          targetWallet:targetWallet
+                                                                                          invertedRate:invertedRate];
             
-            GalleryPreviewData *targetData = [weakSelf previewDataWithCurrencyExchangeType:CurrencyExchangeTargetType
-                                                                                      user:user
-                                                                                currencies:ratesData.currencies
-                                                                              targetWallet:targetWallet
-                                                                              invertedRate:invertedRate];
-            
-            ExchangeMoneyViewData *viewData = [[ExchangeMoneyViewData alloc] initWithSourceData:sourceData
-                                                                                     targetData:targetData];
+            ExchangeMoneyViewData *viewData = [builder build];
             
             [weakSelf.view setViewData:viewData];
             
             block(onUpdate);
         }];
     }];
-}
-
-- (GalleryPreviewData *)previewDataWithCurrencyExchangeType:(CurrencyExchangeType)currencyExchangeType
-                                                       user:(User *)user
-                                                 currencies:(NSArray<Currency *> *)currencies
-                                               targetWallet:(Wallet *)targetWallet
-                                               invertedRate:(NSNumber *)invertedRate
-{
-    NSMutableArray<GalleryPreviewPageData *> *pages = [NSMutableArray array];
-    
-    for (Currency *currency in currencies) {
-        
-        NSString *currencyTitle = currency.currencyCode;
-        NSString *remainder = [self balanceWithUser:user currencyType:currency.currencyType];
-        NSString *rate;
-        NSAttributedString *currencyAmount;
-        GalleryPreviewPageRemainderStyle remainderStyle = GalleryPreviewPageRemainderStyleNormal;
-        switch (currencyExchangeType) {
-            case CurrencyExchangeSourceType:
-            {
-                rate = @"";
-                
-                currencyAmount = self.formattedInput;
-                
-                if ([self checkUserHasBalanceDeficiency:user currency:currency]) {
-                    remainderStyle = GalleryPreviewPageRemainderStyleDeficiency;
-                } else {
-                    remainderStyle = GalleryPreviewPageRemainderStyleNormal;
-                }
-            }
-                break;
-            case CurrencyExchangeTargetType:
-            {
-                NSNumber *targetAmount = targetWallet.amount;
-                NSString *targetInput;
-                if (targetAmount.floatValue > 0) {
-                    targetInput = [NSString stringWithFormat:@"+%@", targetAmount];
-                } else {
-                    targetInput = targetAmount.stringValue;
-                }
-                
-                currencyAmount = [self.exchangeCurrencyInputFormatter attributedFormatBalance:targetInput];
-                
-                rate = [NSString stringWithFormat:@"%@1 = %@%@",
-                        currency.currencySign,
-                        self.interactor.sourceCurrency.currencySign,
-                        [self.roundingFormatter format:invertedRate]];
-            }                break;
-        }
-        
-        GalleryPreviewPageData *pageData = [[GalleryPreviewPageData alloc] initWithCurrencyTitle:currencyTitle
-                                                                                  currencyAmount:currencyAmount
-                                                                                       remainder:remainder
-                                                                                            rate:rate
-                                                                                  remainderStyle:remainderStyle];
-        [pages addObject:pageData];
-    }
-    
-    NSInteger currentPage = [currencies indexOfObjectPassingTest:^BOOL(Currency * _Nonnull currency, NSUInteger idx, BOOL * _Nonnull stop) {
-        switch (currencyExchangeType) {
-            case CurrencyExchangeSourceType:
-                return currency.currencyType == self.interactor.sourceCurrency.currencyType;
-                break;
-            case CurrencyExchangeTargetType:
-                return currency.currencyType == self.interactor.targetCurrency.currencyType;
-                break;
-        }
-    }];
-    
-    if (currentPage == NSNotFound) {
-        currentPage = 0;
-    }
-    
-    GalleryPreviewData *viewData = [[GalleryPreviewData alloc] initWithPages:pages
-                                                                 currentPage:currentPage
-                                                                       onTap:nil];
-
-    return viewData;
-}
-
-- (NSString *)balanceWithUser:(User *)user currencyType:(CurrencyType)currencyType {
-    Wallet *wallet = [user walletWithCurrencyType:currencyType];
-    Currency *currency = wallet.currency;
-    return [NSString stringWithFormat:@"You have %@%@",
-            currency.currencySign,
-            [self.roundingFormatter format:wallet.amount]];
 }
 
 - (void)fetchRatesWithRepeat:(BOOL)repeat onUpdate:(void(^)())onUpdate onError:(void (^)(NSError *))onError {
