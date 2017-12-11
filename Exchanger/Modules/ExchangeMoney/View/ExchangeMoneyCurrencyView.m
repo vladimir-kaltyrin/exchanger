@@ -67,8 +67,24 @@
     }];
 }
 
+- (void)setOnPageDidAppear:(void (^)())onPageDidAppear {
+    [self.previewView setOnPageDidAppear:onPageDidAppear];
+}
+
+- (void)setOnPageWillChange:(void (^)())onPageWillChange {
+    [self.previewView setOnPageWillChange:onPageWillChange];
+}
+
 - (void)focus {
     [self.previewView focus];
+}
+
+- (void)setOnFocus:(void (^)())onFocus {
+    [self.previewView setOnFocus:onFocus];
+}
+
+- (void)setFocusEnabled:(BOOL)focusEnabled {
+    [self.previewView setFocusEnabled:focusEnabled];
 }
 
 // MARK: - Layout

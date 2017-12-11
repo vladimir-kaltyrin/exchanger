@@ -8,6 +8,7 @@
 #import "KeyboardData.h"
 #import "ObservableTextField.h"
 #import "FormatterFactoryImpl.h"
+#import "SafeBlocks.h"
 #import "UIView+Properties.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
 
@@ -61,7 +62,16 @@ CGFloat const kFontSize = 34.0;
 // MARK: - ExchangeMoneyView
 
 - (void)focusOnStart {
-    [self.sourceCurrencyView focus];
+    [self focusOnSourceView];
+    
+    __weak typeof(self) weakSelf = self;
+    [self.sourceCurrencyView setOnFocus:^{
+        [weakSelf focusOnSourceView];
+    }];
+    
+    [self.targetCurrencyView setOnFocus:^{
+        [weakSelf focusOnTargetView];
+    }];
 }
 
 - (void)updateKeyboardData:(KeyboardData *)keyboardData {
@@ -94,6 +104,18 @@ CGFloat const kFontSize = 34.0;
 
 - (void)setOnInputChange:(void (^)(NSString *))onInputChange {
     [self.inputTextField setOnInputChange:onInputChange];
+}
+
+// MARK: - Private
+
+- (void)focusOnSourceView {
+    [self.sourceCurrencyView setFocusEnabled:YES];
+    [self.targetCurrencyView setFocusEnabled:NO];
+}
+
+- (void)focusOnTargetView {
+    [self.sourceCurrencyView setFocusEnabled:NO];
+    [self.targetCurrencyView setFocusEnabled:YES];
 }
 
 // MARK: - Layout
