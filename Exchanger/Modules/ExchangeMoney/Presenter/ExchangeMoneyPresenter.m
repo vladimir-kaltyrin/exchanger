@@ -13,12 +13,9 @@
 @interface ExchangeMoneyPresenter()
 @property (nonatomic, strong) ExchangeRatesData *exchangeRatesData;
 @property (nonatomic, strong) NSNumber *currentInput;
-@property (nonatomic, strong) NSAttributedString *formattedInput;
 @property (nonatomic, strong) id<ExchangeMoneyInteractor> interactor;
 @property (nonatomic, strong) id<ExchangeMoneyRouter> router;
 @property (nonatomic, strong) id<KeyboardObserver> keyboardObserver;
-@property (nonatomic, strong) id<BalanceFormatter> exchangeCurrencyInputFormatter;
-@property (nonatomic, strong) id<RoundingFormatter> roundingFormatter;
 @end
 
 @implementation ExchangeMoneyPresenter
@@ -33,9 +30,6 @@
         self.interactor = interactor;
         self.router = router;
         self.keyboardObserver = keyboardObserver;
-        
-        self.exchangeCurrencyInputFormatter = [[FormatterFactoryImpl instance] exchangeCurrencyInputFormatter];
-        self.roundingFormatter = [[FormatterFactoryImpl instance] roundingFormatter];
     }
     
     return self;
@@ -55,6 +49,7 @@
     
     [self.keyboardObserver setOnKeyboardData:^(KeyboardData *keyboardData) {
         [weakSelf.view updateKeyboardData:keyboardData];
+        [weakSelf reloadViewWithUpdateRates:NO];
     }];
     
     [self.view setExchangeButtonEnabled:YES];
@@ -99,15 +94,6 @@
     
     [self.view setOnInputChange:^(NSString *inputChange) {
         weakSelf.currentInput = @(inputChange.floatValue);
-        
-        NSString *input;
-        if (weakSelf.currentInput.floatValue > 0) {
-            input = [NSString stringWithFormat:@"-%@", inputChange];
-        } else {
-            input = inputChange;
-        }
-        
-        weakSelf.formattedInput = [weakSelf.exchangeCurrencyInputFormatter attributedFormatBalance:input];
         
         [weakSelf reloadView];
     }];

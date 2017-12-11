@@ -6,4 +6,7 @@
 @property (nonatomic, strong) UIColor *textColor;
 @property (nonatomic, assign) NSTextAlignment textAlignment;
 @property (nonatomic, assign) UIKeyboardType keyboardType;
+
++ (TextFieldConfiguration *)inputConfiguration;
+
 @end
