@@ -1,18 +1,7 @@
 #import <Foundation/Foundation.h>
 #import "BalanceFormatterImpl.h"
 #import "BalanceParseData.h"
-
-typedef struct _FormattedString {
-    __unsafe_unretained NSString *primary;
-    __unsafe_unretained NSString *secondary;
-} FormattedString;
-
-NS_INLINE FormattedString MakeFormattedString(NSString *primary, NSString *secondary) {
-    FormattedString formattedString;
-    formattedString.primary = primary;
-    formattedString.secondary = secondary;
-    return formattedString;
-}
+#import "FormattedStringData.h"
 
 @interface BalanceFormatterImpl()
 @property (nonatomic, strong) AttributedStringStyle *primaryPartStyle;
@@ -67,16 +56,16 @@ NS_INLINE FormattedString MakeFormattedString(NSString *primary, NSString *secon
     
     NSMutableAttributedString *string = [[NSMutableAttributedString alloc] init];
     
-    FormattedString formattedString = [self formattedStringWithBalance:balance];
+    FormattedStringData *formattedString = [self formattedStringWithBalance:balance];
     
-    if (formattedString.primary != nil) {
-        NSAttributedString *primaryAttributedString = [[NSAttributedString alloc] initWithString:formattedString.primary
+    if (formattedString.primaryString != nil) {
+        NSAttributedString *primaryAttributedString = [[NSAttributedString alloc] initWithString:formattedString.primaryString
                                                                                       attributes:self.primaryPartStyle.attributes];
         [string appendAttributedString:primaryAttributedString];
     }
     
-    if (formattedString.secondary != nil) {
-        NSAttributedString *secondaryAttributedString = [[NSAttributedString alloc] initWithString:formattedString.secondary
+    if (formattedString.secondaryString != nil) {
+        NSAttributedString *secondaryAttributedString = [[NSAttributedString alloc] initWithString:formattedString.secondaryString
                                                                                         attributes:self.secondaryPartStyle.attributes];
         
         [string appendAttributedString:secondaryAttributedString];
@@ -126,45 +115,57 @@ NS_INLINE FormattedString MakeFormattedString(NSString *primary, NSString *secon
     return data;
 }
 
-- (FormattedString)formattedStringWithBalance:(NSString *)balance {
+- (FormattedStringData *)formattedStringWithBalance:(NSString *)balance {
     BalanceParseData *data = [self parseBalance:balance];
+    
+    FormattedStringData *formattedString = [[FormattedStringData alloc] init];
     
     switch (data.parsingResult) {
         case ParsingResultZero:
-            return MakeFormattedString(nil, nil);
+        {
+            formattedString.primaryString = nil;
+            formattedString.secondaryString = nil;
+        }
+            break;
         case ParsingResultInteger:
-            return MakeFormattedString(balance, nil);
+        {
+            formattedString.primaryString = balance;
+            formattedString.secondaryString = nil;
+        }
+            break;
         case ParsingResultFloat:
         {
             NSArray *components = data.components;
-            FormattedString result;
             
             NSLocale *locale = [NSLocale currentLocale];
             NSString *separator = [locale objectForKey:NSLocaleDecimalSeparator];
             
+            NSString *primaryString;
+            NSString *secondaryString;
+            
             switch (self.formatterStyle) {
                 case BalanceFormatterStyleHundredths:
                 {
-                    NSString *primaryString = [NSString stringWithFormat:@"%@%@", components.firstObject, separator];
-                    NSString *secondaryString = secondaryString = components[1];
-                    
-                    result = MakeFormattedString(primaryString, secondaryString);
+                    primaryString = [NSString stringWithFormat:@"%@%@", components.firstObject, separator];
+                    secondaryString = secondaryString = components[1];
                 }
                     break;
                 case BalanceFormatterStyleTenThousandths:
                 {
                     NSInteger location = [balance rangeOfString:separator].location + 3;
-                    NSString *primaryString = [balance substringToIndex:location];
-                    NSString *secondaryString = [balance substringFromIndex:location + 1];
-                    result = MakeFormattedString(primaryString, secondaryString);
+                    primaryString = [balance substringToIndex:location];
+                    secondaryString = [balance substringFromIndex:location + 1];
                 }
                     break;
             }
             
-            return result;
+            formattedString.primaryString = primaryString;
+            formattedString.secondaryString = secondaryString;
         }
             break;
     }
+    
+    return formattedString;
 }
 
 @end
