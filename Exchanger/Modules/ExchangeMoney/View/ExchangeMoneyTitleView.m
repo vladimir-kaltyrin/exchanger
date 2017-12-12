@@ -67,7 +67,7 @@
     NSString *targetText = [NSString stringWithFormat:@"%@",
                             targetCurrency.rate.stringValue];
     
-    NSAttributedString *targetCurrencyText = [self.currentBalanceFormatter format:targetText].formattedString;
+    NSAttributedString *targetCurrencyText = [self.currentBalanceFormatter format:targetText sign:BalanceFormatterSignNone].formattedString;
     [string appendAttributedString:targetCurrencyText];
     
     self.titleLabel.attributedText = string;
