@@ -40,6 +40,11 @@ NS_ASSUME_NONNULL_BEGIN
         self.textField = [[ObservableTextField alloc] init];
         [self.textField setConfiguration:[TextFieldConfiguration inputConfiguration]];
         
+        __weak typeof(self) weakSelf = self;
+        self.textField.onBeginEditing = ^{
+            block(weakSelf.onFocus);
+        };
+        
         [self addSubview:self.currencyTitleLabel];
         [self addSubview:self.remainderLabel];
         [self addSubview:self.currencyRateLabel];
@@ -86,10 +91,9 @@ NS_ASSUME_NONNULL_BEGIN
 // MARK: - Public
 
 - (void)focus {
+    block(self.onFocus);
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        if ([self.textField becomeFirstResponder]) {
-            block(self.onFocus);
-        }
+        [self.textField becomeFirstResponder];
     }];
 }
     

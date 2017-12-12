@@ -3,6 +3,7 @@
 #import "GalleryPreviewData.h"
 #import "FormatterFactoryImpl.h"
 #import "CurrencyExchangeType.h"
+#import "SafeBlocks.h"
 
 @interface ExchangeMoneyViewDataBuilder()
 @property (nonatomic, strong) User *user;
@@ -13,7 +14,7 @@
 @property (nonatomic, strong) Currency *targetCurrency;
 @property (nonatomic, strong) Wallet *targetWallet;
 @property (nonatomic, strong) NSNumber *invertedRate;
-@property (nonatomic, strong) OnTextChange onTextChange;
+@property (nonatomic, strong) OnInputChange onInputChange;
 @property (nonatomic, strong) id<NumbersFormatter> numbersFormatter;
 @property (nonatomic, strong) id<BalanceFormatter> exchangeCurrencyInputFormatter;
 @property (nonatomic, strong) id<RoundingFormatter> roundingFormatter;
@@ -31,7 +32,7 @@
               targetCurrency:(Currency *)targetCurrency
                 targetWallet:(Wallet *)targetWallet
                 invertedRate:(NSNumber *)invertedRate
-                onTextChange:(OnTextChange)onTextChange
+                onInputChange:(OnInputChange)onInputChange
 {
     self = [super init];
     if (self) {
@@ -43,7 +44,7 @@
         self.targetCurrency = targetCurrency;
         self.targetWallet = targetWallet;
         self.invertedRate = invertedRate;
-        self.onTextChange = onTextChange;
+        self.onInputChange = onInputChange;
         
         self.numbersFormatter = [[FormatterFactoryImpl instance] numbersFormatter];
         self.exchangeCurrencyInputFormatter = [[FormatterFactoryImpl instance] exchangeCurrencyInputFormatter];
@@ -134,7 +135,9 @@
             }                break;
         }
         
-        
+        OnTextChange onTextChange = ^(NSString *text) {
+            block(self.onInputChange, text, currencyExchangeType);
+        };
         
         GalleryPreviewPageData *pageData = [[GalleryPreviewPageData alloc] initWithCurrencyTitle:currencyTitle
                                                                                            input:input
@@ -142,7 +145,7 @@
                                                                                             rate:rate
                                                                                   remainderStyle:remainderStyle
                                                                                   inputFormatter:inputFormatter
-                                                                                    onTextChange:self.onTextChange];
+                                                                                    onTextChange:onTextChange];
         [pages addObject:pageData];
     }
     

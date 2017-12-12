@@ -2,6 +2,9 @@
 #import "ExchangeMoneyViewData.h"
 #import "ObservableTextField.h"
 #import "User.h"
+#import "CurrencyExchangeType.h"
+
+typedef void(^OnInputChange)(NSString *text, CurrencyExchangeType exchangeType);
 
 @interface ExchangeMoneyViewDataBuilder : NSObject
 
@@ -15,7 +18,7 @@
               targetCurrency:(Currency *)targetCurrency
                 targetWallet:(Wallet *)targetWallet
                 invertedRate:(NSNumber *)invertedRate
-                onTextChange:(OnTextChange)onTextChange;
+               onInputChange:(OnInputChange)onInputChange;
 
 - (ExchangeMoneyViewData *)build;
 

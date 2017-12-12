@@ -12,7 +12,9 @@
 
 @interface ExchangeMoneyPresenter()
 @property (nonatomic, strong) ExchangeRatesData *exchangeRatesData;
-@property (nonatomic, strong) NSString *currentInput;
+@property (nonatomic, assign) CurrencyExchangeType activeExchangeType;
+@property (nonatomic, strong) NSString *expenseInput;
+@property (nonatomic, strong) NSString *incomeInput;
 @property (nonatomic, strong) id<ExchangeMoneyInteractor> interactor;
 @property (nonatomic, strong) id<ExchangeMoneyRouter> router;
 @property (nonatomic, strong) id<KeyboardObserver> keyboardObserver;
@@ -47,6 +49,8 @@
     
     __weak typeof(self) weakSelf = self;
     
+    self.activeExchangeType = CurrencyExchangeSourceType;
+    
     [self.keyboardObserver setOnKeyboardData:^(KeyboardData *keyboardData) {
         [weakSelf.view updateKeyboardData:keyboardData];
         [weakSelf reloadViewWithUpdateRates:NO];
@@ -61,10 +65,15 @@
     
     [self.view setOnViewWillAppear:^{
         [weakSelf.view focusOnStart];
+        [weakSelf.view setActiveCurrencyExchangeType:weakSelf.activeExchangeType];
+    }];
+    
+    [self.view setOnExchangeTypeChange:^(CurrencyExchangeType newExchangeType) {
+        weakSelf.activeExchangeType = newExchangeType;
     }];
     
     [self.view setOnExchangeTap:^{
-        [weakSelf.interactor exchangeCurrency:weakSelf.currentInput
+        [weakSelf.interactor exchangeCurrency:@(weakSelf.expenseInput.floatValue)
                                    onExchange:^{
                                        [weakSelf fetchRatesWithRepeat:NO
                                                              onUpdate:nil
@@ -118,24 +127,31 @@
     [self.interactor fetchUser:^(User *user) {
         
         Wallet *inputWallet = [[Wallet alloc] initWithCurrency:weakSelf.interactor.sourceCurrency
-                                                        amount:@(self.currentInput.floatValue)];
+                                                        amount:@(self.expenseInput.floatValue)];
         [weakSelf.interactor exchangeWallet:inputWallet
                              targetCurrency:weakSelf.interactor.targetCurrency
                                    onResult:^(Wallet *targetWallet, NSNumber *invertedRate)
         {
             ExchangeMoneyViewDataBuilder *builder = [[ExchangeMoneyViewDataBuilder alloc] initWithUser:user
                                                                                             currencies:ratesData.currencies
-                                                                                           incomeInput:@""
-                                                                                          expenseInput:self.currentInput
+                                                                                           incomeInput:self.incomeInput
+                                                                                          expenseInput:self.expenseInput
                                                                                         sourceCurrency:self.interactor.sourceCurrency
                                                                                         targetCurrency:self.interactor.targetCurrency
                                                                                           targetWallet:targetWallet
                                                                                           invertedRate:invertedRate
-                                                                                          onTextChange:^(NSString *inputChange) {
-                                                                                              weakSelf.currentInput = inputChange;
-                                                                                              
-                                                                                              [weakSelf reloadView];
-                                                                                          }];
+                                                                                         onInputChange:^(NSString *text, CurrencyExchangeType exchangeType) {
+                                                                                             switch (exchangeType) {
+                                                                                                 case CurrencyExchangeSourceType:
+                                                                                                     weakSelf.expenseInput = text;
+                                                                                                     break;
+                                                                                                 case CurrencyExchangeTargetType:
+                                                                                                     weakSelf.incomeInput = text;
+                                                                                                     break;
+                                                                                             }
+                                                                                             
+                                                                                             [weakSelf reloadView];
+                                                                                         }];
             
             ExchangeMoneyViewData *viewData = [builder build];
             
@@ -205,7 +221,7 @@
 
 - (BOOL)checkUserHasBalanceDeficiency:(User *)user currency:(Currency *)currency {
     Wallet *wallet = [user walletWithCurrencyType:currency.currencyType];
-    return self.currentInput.floatValue > wallet.amount.floatValue;
+    return self.expenseInput.floatValue > wallet.amount.floatValue;
 }
 
 - (void)dismissModule {
