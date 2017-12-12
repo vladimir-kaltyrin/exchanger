@@ -14,10 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithSourceData:(CarouselData *)sourceData
                         targetData:(CarouselData *)targetData;
 
-- (instancetype)initWithUser:(User *)user
-                 sourceRates:(ExchangeRatesData *)sourceRates
-                 targetRates:(ExchangeRatesData *)targetRates;
-
 @end
 
 NS_ASSUME_NONNULL_END
