@@ -91,10 +91,10 @@ NS_ASSUME_NONNULL_BEGIN
 // MARK: - Public
 
 - (void)focus {
-    block(self.onFocus);
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         [self.textField becomeFirstResponder];
     }];
+    block(self.onFocus);
 }
     
 // MARK: - Private
