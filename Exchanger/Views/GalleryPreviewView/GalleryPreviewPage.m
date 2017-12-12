@@ -3,6 +3,7 @@
 #import "UIView+Properties.h"
 #import "UITextField+Configuration.h"
 #import "TextField.h"
+#import "ObservableTextField.h"
 #import "SafeBlocks.h"
 
 CGFloat const kBigFontSize = 34.0;
@@ -14,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UILabel *currencyTitleLabel;
 @property (nonatomic, strong) UILabel *remainderLabel;
 @property (nonatomic, strong) UILabel *currencyRateLabel;
-@property (nonatomic, strong) TextField *textField;
+@property (nonatomic, strong) ObservableTextField *textField;
 @end
 
 @implementation GalleryPreviewPage
@@ -36,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
         self.currencyRateLabel.textColor = [UIColor whiteColor];
         self.currencyRateLabel.textAlignment = NSTextAlignmentRight;
         
-        self.textField = [[TextField alloc] init];
+        self.textField = [[ObservableTextField alloc] init];
         [self.textField setConfiguration:[TextFieldConfiguration inputConfiguration]];
         
         [self addSubview:self.currencyTitleLabel];
@@ -61,7 +62,7 @@ NS_ASSUME_NONNULL_BEGIN
     self.currencyTitleLabel.text = data.currencyTitle;
     self.remainderLabel.text = data.remainder;
     self.currencyRateLabel.text = data.rate;
-    self.textField.attributedText = data.currencyAmount;
+    [self.textField setText:data.input];
     
     switch (data.remainderStyle) {
         case GalleryPreviewPageRemainderStyleNormal:
@@ -75,7 +76,7 @@ NS_ASSUME_NONNULL_BEGIN
     
 - (void)prepareForReuse {
     self.currencyTitleLabel.text = nil;
-    self.textField.text = nil;
+    [self.textField setText:nil];
     self.remainderLabel.text = nil;
     self.currencyRateLabel.text = nil;
 }

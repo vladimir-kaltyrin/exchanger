@@ -3,14 +3,14 @@
 @implementation GalleryPreviewPageData
     
 - (instancetype)initWithCurrencyTitle:(NSString *)currencyTitle
-                       currencyAmount:(NSAttributedString *)currencyAmount
+                                input:(NSString *)input
                             remainder:(NSString *)remainder
                                  rate:(NSString *)rate
                        remainderStyle:(GalleryPreviewPageRemainderStyle)remainderStyle
 {
     if (self = [super init]) {
         _currencyTitle = currencyTitle;
-        _currencyAmount = currencyAmount;
+        _input = input;
         _remainder = remainder;
         _rate = rate;
         _remainderStyle = remainderStyle;

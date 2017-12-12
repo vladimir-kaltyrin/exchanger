@@ -2,6 +2,7 @@
 
 @interface ObservableTextField() <UITextFieldDelegate>
 @property (nonatomic, strong) UITextField *textField;
+@property (nonatomic, strong) NSString *text;
 @end
 
 @implementation ObservableTextField
@@ -13,6 +14,7 @@
     if (self) {
         self.textField = [[UITextField alloc] initWithFrame:CGRectZero];
         self.textField.delegate = self;
+        self.text = @"";
         
         [self addSubview:self.textField];
     }
@@ -55,7 +57,11 @@
 }
 
 - (void)setText:(NSString *)text {
-    self.textField.text = text;
+    if (self.formatter) {
+        [self setAttributedText:self.formatter(text)];
+    } else {
+        self.textField.text = text;
+    }
 }
 
 // MARK: - UITextFieldDelegate
@@ -66,14 +72,16 @@
         return YES;
     }
     
-    NSString *resultString = textField.text;
+    NSString *resultString = self.text;
     if ([string isEqualToString:@""]) {
         if (resultString.length > 0) {
             resultString = [resultString substringToIndex:resultString.length - 1];
         }
     }  else {
-        resultString = [NSString stringWithFormat:@"%@%@", textField.text, string];
+        resultString = [NSString stringWithFormat:@"%@%@", self.text, string];
     }
+    
+    [self setText:resultString];
     
     return self.onTextChange(resultString);
 }

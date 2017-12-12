@@ -85,6 +85,7 @@
         NSString *remainder = [self balanceWithUser:user currencyType:currency.currencyType];
         NSString *rate;
         NSAttributedString *currencyAmount;
+        NSString *input;
         GalleryPreviewPageRemainderStyle remainderStyle = GalleryPreviewPageRemainderStyleNormal;
         switch (currencyExchangeType) {
             case CurrencyExchangeSourceType:
@@ -92,6 +93,7 @@
                 rate = @"";
                 
                 currencyAmount = [self formattedExpenseInput];
+                input = self.expenseInput.stringValue;
                 
                 if ([self checkUserHasBalanceDeficiency:user currency:currency]) {
                     remainderStyle = GalleryPreviewPageRemainderStyleDeficiency;
@@ -111,6 +113,7 @@
                 }
                 
                 currencyAmount = [self.exchangeCurrencyInputFormatter attributedFormatBalance:targetInput];
+                input = self.incomeInput.stringValue;
                 
                 rate = [NSString stringWithFormat:@"%@1 = %@%@",
                         currency.currencySign,
@@ -120,7 +123,7 @@
         }
         
         GalleryPreviewPageData *pageData = [[GalleryPreviewPageData alloc] initWithCurrencyTitle:currencyTitle
-                                                                                  currencyAmount:currencyAmount
+                                                                                           input:input
                                                                                        remainder:remainder
                                                                                             rate:rate
                                                                                   remainderStyle:remainderStyle];
