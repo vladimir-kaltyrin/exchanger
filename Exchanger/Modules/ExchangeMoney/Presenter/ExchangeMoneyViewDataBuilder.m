@@ -14,6 +14,7 @@
 @property (nonatomic, strong) Currency *targetCurrency;
 @property (nonatomic, strong) Wallet *targetWallet;
 @property (nonatomic, strong) NSNumber *invertedRate;
+@property (nonatomic, assign) BOOL isDeficiency;
 @property (nonatomic, strong) OnInputChange onInputChange;
 @property (nonatomic, strong) id<NumbersFormatter> numbersFormatter;
 @property (nonatomic, strong) id<BalanceFormatter> exchangeCurrencyInputFormatter;
@@ -32,6 +33,7 @@
               targetCurrency:(Currency *)targetCurrency
                 targetWallet:(Wallet *)targetWallet
                 invertedRate:(NSNumber *)invertedRate
+                isDeficiency:(BOOL)isDeficiency
                 onInputChange:(OnInputChange)onInputChange
 {
     self = [super init];
@@ -44,6 +46,7 @@
         self.targetCurrency = targetCurrency;
         self.targetWallet = targetWallet;
         self.invertedRate = invertedRate;
+        self.isDeficiency = isDeficiency;
         self.onInputChange = onInputChange;
         
         self.numbersFormatter = [[FormatterFactoryImpl instance] numbersFormatter];
@@ -108,7 +111,7 @@
                 //currencyAmount = [self formattedExpenseInput:self.expenseInput];
                 input = self.expenseInput;
                 
-                if ([self checkUserHasBalanceDeficiency:user currency:currency]) {
+                if (self.isDeficiency) {
                     remainderStyle = GalleryPreviewPageRemainderStyleDeficiency;
                 } else {
                     remainderStyle = GalleryPreviewPageRemainderStyleNormal;
@@ -170,25 +173,11 @@
 }
 
 - (FormatterResultData *)formattedExpenseInput:(NSString *)expenseInput {
-    NSString *input;
-    if (expenseInput.floatValue > 0) {
-        input = [NSString stringWithFormat:@"-%@", expenseInput];
-    } else {
-        input = expenseInput;
-    }
-    
-    return [self.exchangeCurrencyInputFormatter format:input];
+    return [self.exchangeCurrencyInputFormatter format:expenseInput sign:BalanceFormatterSignMinus];
 }
 
 - (FormatterResultData *)formattedIncomeInput:(NSString *)incomeInput {
-    NSString *input;
-    if (incomeInput.floatValue > 0) {
-        input = [NSString stringWithFormat:@"-%@", incomeInput];
-    } else {
-        input = incomeInput;
-    }
-    
-    return [self.exchangeCurrencyInputFormatter format:input];
+    return [self.exchangeCurrencyInputFormatter format:incomeInput sign:BalanceFormatterSignPlus];
 }
 
 - (NSString *)balanceWithUser:(User *)user currencyType:(CurrencyType)currencyType {
@@ -197,11 +186,6 @@
     return [NSString stringWithFormat:@"You have %@%@",
             currency.currencySign,
             [self.roundingFormatter format:wallet.amount]];
-}
-
-- (BOOL)checkUserHasBalanceDeficiency:(User *)user currency:(Currency *)currency {
-    Wallet *wallet = [user walletWithCurrencyType:currency.currencyType];
-    return self.expenseInput.floatValue > wallet.amount.floatValue;
 }
 
 @end

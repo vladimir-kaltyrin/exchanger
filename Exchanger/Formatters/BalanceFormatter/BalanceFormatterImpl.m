@@ -32,18 +32,18 @@
 
 // MARK: - Public
 
-- (FormatterResultData *)format:(NSString *)balance {
-    NSAttributedString *formattedString = [self attributedFormatBalance:balance];
+- (FormatterResultData *)format:(NSString *)balance sign:(BalanceFormatterSign)sign {
+    NSAttributedString *formattedString = [self attributedFormatBalance:balance sign:sign];
     
     NSString *newBalance;
-    BalanceParseData *parseData = [self parseBalance:balance];
+    BalanceParseData *parseData = [self parseBalance:balance sign:sign];
     switch (parseData.parsingResult) {
         case ParsingResultZero:
         case ParsingResultInteger:
-            newBalance = balance;
+            newBalance = [self applySign:sign text:balance];
             break;
         case ParsingResultFloat:
-            newBalance = [self formatBalance:balance];
+            newBalance = [self formatBalance:balance sign:sign];
             break;
     }
     
@@ -52,11 +52,11 @@
 
 // MARK: - Private
 
-- (NSAttributedString *)attributedFormatBalance:(NSString *)balance {
+- (NSAttributedString *)attributedFormatBalance:(NSString *)balance sign:(BalanceFormatterSign)sign {
     
     NSMutableAttributedString *string = [[NSMutableAttributedString alloc] init];
     
-    FormattedStringData *formattedString = [self formattedStringWithBalance:balance];
+    FormattedStringData *formattedString = [self formattedStringWithBalance:balance sign:sign];
     
     if (formattedString.primaryString != nil) {
         NSAttributedString *primaryAttributedString = [[NSAttributedString alloc] initWithString:formattedString.primaryString
@@ -74,9 +74,9 @@
     return string;
 }
 
-- (NSString *)formatBalance:(NSString *)balance {
+- (NSString *)formatBalance:(NSString *)balance sign:(BalanceFormatterSign)sign {
     
-    NSNumber *number = @(balance.floatValue);
+    NSNumber *number = @(fabs(balance.floatValue));
     
     switch (self.formatterStyle) {
         case BalanceFormatterStyleHundredths:
@@ -89,14 +89,32 @@
     
     NSString *formattedBalance = [self.numberFormatter stringFromNumber:number];
     
+    formattedBalance = [self applySign:sign text:formattedBalance];
+    
     return formattedBalance;
 }
 
-- (BalanceParseData *)parseBalance:(NSString *)balance {
+- (NSString *)applySign:(BalanceFormatterSign)sign text:(NSString *)text {
+    if (text.floatValue != 0) {
+        switch (sign) {
+            case BalanceFormatterSignPlus:
+                return [NSString stringWithFormat:@"+%@", text];
+                break;
+            case BalanceFormatterSignMinus:
+                return [NSString stringWithFormat:@"-%@", text];
+                break;
+            case BalanceFormatterSignNone:
+                break;
+        }
+    }
+    return text;
+}
+
+- (BalanceParseData *)parseBalance:(NSString *)balance sign:(BalanceFormatterSign)sign {
     NSLocale *locale = [NSLocale currentLocale];
     NSString *separator = [locale objectForKey:NSLocaleDecimalSeparator];
     
-    NSString *formattedBalance = [self formatBalance:balance];
+    NSString *formattedBalance = [self formatBalance:balance sign:sign];
     
     ParsingResult result;
     NSArray *components = [formattedBalance componentsSeparatedByString:separator];
@@ -115,8 +133,8 @@
     return data;
 }
 
-- (FormattedStringData *)formattedStringWithBalance:(NSString *)balance {
-    BalanceParseData *data = [self parseBalance:balance];
+- (FormattedStringData *)formattedStringWithBalance:(NSString *)balance sign:(BalanceFormatterSign)sign {
+    BalanceParseData *data = [self parseBalance:balance sign:sign];
     
     FormattedStringData *formattedString = [[FormattedStringData alloc] init];
     
@@ -129,7 +147,7 @@
             break;
         case ParsingResultInteger:
         {
-            formattedString.primaryString = balance;
+            formattedString.primaryString = [self applySign:sign text:balance];
             formattedString.secondaryString = nil;
         }
             break;
@@ -147,7 +165,7 @@
                 case BalanceFormatterStyleHundredths:
                 {
                     primaryString = [NSString stringWithFormat:@"%@%@", components.firstObject, separator];
-                    secondaryString = secondaryString = components[1];
+                    secondaryString = components[1];
                 }
                     break;
                 case BalanceFormatterStyleTenThousandths:

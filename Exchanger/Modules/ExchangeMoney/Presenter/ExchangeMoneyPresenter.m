@@ -53,7 +53,7 @@
     
     [self.keyboardObserver setOnKeyboardData:^(KeyboardData *keyboardData) {
         [weakSelf.view updateKeyboardData:keyboardData];
-        [weakSelf reloadViewWithUpdateRates:NO];
+        [weakSelf reloadView];
     }];
     
     [self.view setExchangeButtonEnabled:YES];
@@ -73,7 +73,7 @@
     }];
     
     [self.view setOnExchangeTap:^{
-        [weakSelf.interactor exchangeCurrency:@(weakSelf.expenseInput.floatValue)
+        [weakSelf.interactor exchangeCurrency:@(fabs(weakSelf.expenseInput.floatValue))
                                    onExchange:^{
                                        [weakSelf fetchRatesWithRepeat:NO
                                                              onUpdate:nil
@@ -89,7 +89,7 @@
     
     [self.interactor setOnUpdate:^(ExchangeRatesData *data) {
         [weakSelf.view stopActivity];
-        [weakSelf updateViewWithData:data updateRates:YES];
+        [weakSelf updateViewWithData:data];
     }];
     
     [self fetchRatesWithRepeat:YES
@@ -98,16 +98,14 @@
     
     [self.view setOnPageChange:^(CurrencyExchangeType exchangeType, NSInteger current) {
         [weakSelf update:exchangeType withIndex:current];
-        [weakSelf reloadViewWithUpdateRates:YES];
+        [weakSelf reloadView];
     }];
 }
 
-- (void)updateViewWithData:(ExchangeRatesData *)data updateRates:(BOOL)updateRates {
+- (void)updateViewWithData:(ExchangeRatesData *)data {
     [self updateExchangeButton];
     [self updateNavigationTitleRate:nil];
-    if (updateRates) {
-        [self updateExchangeRates:data onUpdate:nil];
-    }
+    [self updateExchangeRates:data onUpdate:nil];
 }
 
 - (void)updateNavigationTitleRate:(void(^)())onUpdate {
@@ -132,6 +130,8 @@
                              targetCurrency:weakSelf.interactor.targetCurrency
                                    onResult:^(Wallet *targetWallet, NSNumber *invertedRate)
         {
+            BOOL isDeficiency = [weakSelf checkUserHasBalanceDeficiency:user currency:weakSelf.interactor.sourceCurrency];
+            
             ExchangeMoneyViewDataBuilder *builder = [[ExchangeMoneyViewDataBuilder alloc] initWithUser:user
                                                                                             currencies:ratesData.currencies
                                                                                            incomeInput:self.incomeInput
@@ -140,6 +140,7 @@
                                                                                         targetCurrency:self.interactor.targetCurrency
                                                                                           targetWallet:targetWallet
                                                                                           invertedRate:invertedRate
+                                                                                          isDeficiency:isDeficiency
                                                                                          onInputChange:^(NSString *text, CurrencyExchangeType exchangeType) {
                                                                                              switch (exchangeType) {
                                                                                                  case CurrencyExchangeSourceType:
@@ -196,11 +197,7 @@
 }
 
 - (void)reloadView {
-    [self reloadViewWithUpdateRates:YES];
-}
-
-- (void)reloadViewWithUpdateRates:(BOOL)updateRates {
-    [self updateViewWithData:self.exchangeRatesData updateRates:updateRates];
+    [self updateViewWithData:self.exchangeRatesData];
 }
 
 - (void)updateExchangeButton {
@@ -221,7 +218,7 @@
 
 - (BOOL)checkUserHasBalanceDeficiency:(User *)user currency:(Currency *)currency {
     Wallet *wallet = [user walletWithCurrencyType:currency.currencyType];
-    return self.expenseInput.floatValue > wallet.amount.floatValue;
+    return fabs(self.expenseInput.floatValue) > fabs(wallet.amount.floatValue);
 }
 
 - (void)dismissModule {
