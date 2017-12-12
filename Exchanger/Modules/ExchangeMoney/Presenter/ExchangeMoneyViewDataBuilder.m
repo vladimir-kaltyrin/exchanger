@@ -1,3 +1,4 @@
+#import <ObjectiveSugar/ObjectiveSugar.h>
 #import "ExchangeMoneyViewDataBuilder.h"
 #import "User.h"
 #import "GalleryPreviewData.h"
@@ -83,92 +84,116 @@
 
 // MARK: - Private
 
+- (GalleryPreviewPageData *)sourceCurrencyPageDataWithCurrency:(Currency *)currency {
+    NSString *currencyTitle = currency.currencyCode;
+    NSString *remainder = [self balanceWithUser:self.user currencyType:currency.currencyType];
+    NSString *rate = @"";
+    
+    TextFieldAttributedStringFormatter inputFormatter = ^(NSString *text) {
+        NSString *numberText;
+        if (self.activeExchangeRate == CurrencyExchangeSourceType) {
+            numberText = [self.numbersFormatter format:text];
+        } else {
+            numberText = self.targetWallet.amount.stringValue;
+        }
+        
+        FormatterResultData *data = [self formattedExpenseInput:numberText];
+        return data;
+    };
+    
+    NSString *input;
+    if (self.activeExchangeRate == CurrencyExchangeSourceType) {
+        input = self.expenseInput;
+    } else {
+        input = inputFormatter(self.incomeInput).string;
+    };
+    
+    GalleryPreviewPageRemainderStyle remainderStyle;
+    if (self.isDeficiency) {
+        remainderStyle = GalleryPreviewPageRemainderStyleDeficiency;
+    } else {
+        remainderStyle = GalleryPreviewPageRemainderStyleNormal;
+    }
+    
+    OnTextChange onTextChange = ^(NSString *text) {
+        block(self.onInputChange, text, CurrencyExchangeSourceType);
+    };
+    
+    return [[GalleryPreviewPageData alloc] initWithCurrencyTitle:currencyTitle
+                                                           input:input
+                                                       remainder:remainder
+                                                            rate:rate
+                                                  remainderStyle:remainderStyle
+                                                  inputFormatter:inputFormatter
+                                                    onTextChange:onTextChange];
+    
+}
+
+- (GalleryPreviewPageData *)targetCurrencyPageDataWithCurrency:(Currency *)currency {
+    NSString *currencyTitle = currency.currencyCode;
+    NSString *remainder = [self balanceWithUser:self.user currencyType:currency.currencyType];
+    NSString *rate = [NSString stringWithFormat:@"%@1 = %@%@",
+                      currency.currencySign,
+                      self.sourceCurrency.currencySign,
+                      [self.roundingFormatter format:self.invertedRate]];
+    
+    TextFieldAttributedStringFormatter inputFormatter = ^(NSString *text) {
+        NSString *numberText;
+        if (self.activeExchangeRate == CurrencyExchangeTargetType) {
+            numberText = [self.numbersFormatter format:text];
+        } else {
+            numberText = self.targetWallet.amount.stringValue;
+        }
+        
+        FormatterResultData *data = [self formattedIncomeInput:numberText];
+        return data;
+    };
+    
+    NSString *input;
+    if (self.activeExchangeRate == CurrencyExchangeTargetType) {
+        input = self.incomeInput;
+    } else {
+        input = inputFormatter(self.expenseInput).string;
+    };
+    
+    GalleryPreviewPageRemainderStyle remainderStyle = GalleryPreviewPageRemainderStyleNormal;
+    
+    OnTextChange onTextChange = ^(NSString *text) {
+        block(self.onInputChange, text, CurrencyExchangeSourceType);
+    };
+    
+    return [[GalleryPreviewPageData alloc] initWithCurrencyTitle:currencyTitle
+                                                           input:input
+                                                       remainder:remainder
+                                                            rate:rate
+                                                  remainderStyle:remainderStyle
+                                                  inputFormatter:inputFormatter
+                                                    onTextChange:onTextChange];
+    
+}
+
 - (GalleryPreviewData *)previewDataWithCurrencyExchangeType:(CurrencyExchangeType)currencyExchangeType
                                                        user:(User *)user
                                                  currencies:(NSArray<Currency *> *)currencies
                                                targetWallet:(Wallet *)targetWallet
                                                invertedRate:(NSNumber *)invertedRate
 {
-    NSMutableArray<GalleryPreviewPageData *> *pages = [NSMutableArray array];
-    
-    for (Currency *currency in currencies) {
-        
-        NSString *currencyTitle = currency.currencyCode;
-        NSString *remainder = [self balanceWithUser:user currencyType:currency.currencyType];
-        NSString *rate;
-        NSString *input;
-        GalleryPreviewPageRemainderStyle remainderStyle = GalleryPreviewPageRemainderStyleNormal;
-        TextFieldAttributedStringFormatter inputFormatter;
-        switch (currencyExchangeType) {
-            case CurrencyExchangeSourceType:
-            {
-                rate = @"";
-                
-                inputFormatter = ^(NSString *text) {
-                    NSString *numberText;
-                    if (self.activeExchangeRate == CurrencyExchangeSourceType) {
-                        numberText = [self.numbersFormatter format:text];
-                    } else {
-                        numberText = targetWallet.amount.stringValue;
-                    }
-                    
-                    FormatterResultData *data = [self formattedExpenseInput:numberText];
-                    return data;
-                };
-                
-                if (self.activeExchangeRate == CurrencyExchangeSourceType) {
-                    input = self.expenseInput;
-                } else {
-                    input = inputFormatter(self.incomeInput).string;
-                };
-                
-                if (self.isDeficiency) {
-                    remainderStyle = GalleryPreviewPageRemainderStyleDeficiency;
-                } else {
-                    remainderStyle = GalleryPreviewPageRemainderStyleNormal;
-                }
-            }
-                break;
-            case CurrencyExchangeTargetType:
-            {
-                
-                inputFormatter = ^(NSString *text) {
-                    NSString *numberText;
-                    if (self.activeExchangeRate == CurrencyExchangeTargetType) {
-                        numberText = [self.numbersFormatter format:text];
-                    } else {
-                        numberText = targetWallet.amount.stringValue;
-                    }
-                    
-                    FormatterResultData *data = [self formattedIncomeInput:numberText];
-                    return data;
-                };
-                
-                if (self.activeExchangeRate == CurrencyExchangeTargetType) {
-                    input = self.incomeInput;
-                } else {
-                    input = inputFormatter(self.expenseInput).string;
-                };
-                
-                rate = [NSString stringWithFormat:@"%@1 = %@%@",
-                        currency.currencySign,
-                        self.sourceCurrency.currencySign,
-                        [self.roundingFormatter format:invertedRate]];
-            }                break;
+    NSArray<GalleryPreviewPageData *> *pages;
+    switch (currencyExchangeType) {
+        case CurrencyExchangeSourceType:
+        {
+            pages = [currencies map:^id(id currency) {
+                return [self sourceCurrencyPageDataWithCurrency:currency];
+            }];
         }
-        
-        OnTextChange onTextChange = ^(NSString *text) {
-            block(self.onInputChange, text, currencyExchangeType);
-        };
-        
-        GalleryPreviewPageData *pageData = [[GalleryPreviewPageData alloc] initWithCurrencyTitle:currencyTitle
-                                                                                           input:input
-                                                                                       remainder:remainder
-                                                                                            rate:rate
-                                                                                  remainderStyle:remainderStyle
-                                                                                  inputFormatter:inputFormatter
-                                                                                    onTextChange:onTextChange];
-        [pages addObject:pageData];
+            break;
+        case CurrencyExchangeTargetType:
+        {
+            pages = [currencies map:^id(id currency) {
+                return [self targetCurrencyPageDataWithCurrency:currency];
+            }];
+        }
+            break;
     }
     
     NSInteger currentPage = [currencies indexOfObjectPassingTest:^BOOL(Currency * _Nonnull currency, NSUInteger idx, BOOL * _Nonnull stop) {

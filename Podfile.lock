@@ -8,16 +8,19 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - ObjectiveSugar (1.1.0)
   - XMLDictionary (1.4.1)
 
 DEPENDENCIES:
   - AFNetworking/UIKit (~> 3.1.0)
+  - ObjectiveSugar
   - XMLDictionary (~> 1.4.1)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  ObjectiveSugar: a6a25f23d657c19df0a0b972466d5b5ca9f5295c
   XMLDictionary: fa07b6ff422b3a91d47a5de9bc82e3fc04fbd167
 
-PODFILE CHECKSUM: 362909cde4ce255916e992ea84f815d2266ceee3
+PODFILE CHECKSUM: 5c48b98f144952f37cc53ba2d3a7888d246e9ac4
 
 COCOAPODS: 1.2.1
