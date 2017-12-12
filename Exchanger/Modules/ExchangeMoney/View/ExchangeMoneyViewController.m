@@ -8,7 +8,7 @@
 
 @class KeyboardData;
 
-@interface ExchangeMoneyViewController() <ExchangeMoneyViewInput>
+@interface ExchangeMoneyViewController()
 @property (nonatomic, strong) ExchangeMoneyView* exchangeMoneyView;
 @property (nonatomic, strong) ExchangeMoneyTitleView *exchangeMoneyTitleView;
 @property (nonatomic, strong) BarButton *exchangeBarButton;

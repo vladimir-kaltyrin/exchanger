@@ -9,9 +9,9 @@
 @interface ExchangeMoneyView : UIView
 @property (nonatomic, assign) UIEdgeInsets contentInsets;
 
-- (void)setOnExchangeTypeChange:(OnExchangeTypeChange)onExchangeTypeChange;
+- (void)setOnExchangeTypeChange:(OnExchangeTypeChange _Nullable )onExchangeTypeChange;
 
-- (void)setOnPageChange:(void (^)(CurrencyExchangeType, NSInteger))onPageChange;
+- (void)setOnPageChange:(void (^_Nullable)(CurrencyExchangeType, NSInteger))onPageChange;
 - (void)setActiveCurrencyExchangeType:(CurrencyExchangeType)exchangeType;
 - (void)focusOnStart;
 - (void)updateKeyboardData:(nonnull KeyboardData *)keyboardData;

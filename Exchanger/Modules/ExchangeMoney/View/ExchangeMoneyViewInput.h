@@ -15,9 +15,9 @@ typedef void(^OnExchangeTypeChange)(CurrencyExchangeType);
 
 - (void)setOnExchangeTypeChange:(OnExchangeTypeChange _Nullable)onExchangeTypeChange;
 
-- (void)setOnPageChange:(void (^)(CurrencyExchangeType, NSInteger))onPageChange;
+- (void)setOnPageChange:(void (^_Nullable)(CurrencyExchangeType, NSInteger))onPageChange;
 
-- (void)setExchangeSourceCurrency:(Currency *)sourceCurrency targetCurrency:(Currency *)targetCurrency;
+- (void)setExchangeSourceCurrency:(Currency *_Nonnull)sourceCurrency targetCurrency:(Currency *_Nonnull)targetCurrency;
 
 - (void)focusOnStart;
 

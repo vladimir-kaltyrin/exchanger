@@ -9,23 +9,21 @@
 
 @property (nonatomic, strong, nullable) void(^onPageDidAppear)();
 @property (nonatomic, strong, nullable) void(^onPageWillChange)();
-@property (nonatomic, strong) void(^onFocus)();
+@property (nonatomic, strong) void(^ _Nullable onFocus)();
 
-- (instancetype)init __attribute__((unavailable("init not available")));
+- (instancetype _Nonnull )init __attribute__((unavailable("init not available")));
 
-- (instancetype)initWithFrame:(CGRect)frame __attribute__((unavailable("initWithFrame not available")));
+- (instancetype _Nonnull )initWithFrame:(CGRect)frame __attribute__((unavailable("initWithFrame not available")));
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder __attribute__((unavailable("initWithCoder not available")));
+- (instancetype _Nonnull )initWithCoder:(NSCoder *_Nullable)aDecoder __attribute__((unavailable("initWithCoder not available")));
 
-- (instancetype)initWithCurrencyExchangeType:(CurrencyExchangeType)exchangeType;
+- (instancetype _Nonnull )initWithCurrencyExchangeType:(CurrencyExchangeType)exchangeType;
 
-- (void)updateWithModel:(CarouselData *)model;
+- (void)updateWithModel:(CarouselData *_Nonnull)model;
 
 - (void)focus;
 
-- (void)setOnPageChange:(void(^)(CurrencyExchangeType exchangeType, NSInteger current))onPageChange;
-
-- (void)setRemainderStyle:(CarouselPageRemainderStyle)remainderStyle;
+- (void)setOnPageChange:(void(^_Nullable)(CurrencyExchangeType exchangeType, NSInteger current))onPageChange;
 
 - (void)setFocusEnabled:(BOOL)focusEnabled;
 
