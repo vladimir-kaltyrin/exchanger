@@ -33,7 +33,7 @@
 
 - (void)setUpView {
     
-    [self.view setTitle:@"ECB Exchange"];
+    [self.view setTitle:@"Exchange"];
     
     [self.view setStartButtonTitle:@"Start Demo"];
     [self.view setResetButtonTitle:@"About"];

@@ -9,4 +9,5 @@ typedef NS_ENUM(NSInteger, ParsingResult) {
 @interface BalanceParseData : NSObject
 @property (nonatomic, assign) ParsingResult parsingResult;
 @property (nonatomic, strong) NSArray *components;
+@property (nonatomic, strong) NSString *formattedString;
 @end
