@@ -33,7 +33,7 @@
 
 - (void)setUpView {
     
-    [self.view setTitle:@"Exchange your currencies easily!"];
+    [self.view setTitle:@"ECB Exchange"];
     
     [self.view setStartButtonTitle:@"Start Demo"];
     [self.view setResetButtonTitle:@"About"];

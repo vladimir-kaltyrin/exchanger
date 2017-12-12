@@ -9,7 +9,7 @@
 
 @interface CarouselView () <UIGestureRecognizerDelegate>
 @property (nonatomic, strong) void(^onTap)();
-@property (nonatomic, strong) CarouselController *Carousel;
+@property (nonatomic, strong) CarouselController *carousel;
 @property (nonatomic, strong) CarouselPageIndicator *pageIndicator;
 @property (nonatomic, strong) UITextField *firstResponderTextField;
 @property (nonatomic, assign) NSInteger currentPage;
@@ -21,8 +21,8 @@
     
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        self.Carousel = [[CarouselController alloc] init];
-        [self addSubview:self.Carousel.view];
+        self.carousel = [[CarouselController alloc] init];
+        [self addSubview:self.carousel.view];
         
         self.pageIndicator = [[CarouselPageIndicator alloc] init];
         [self.pageIndicator setUserInteractionEnabled:NO];
@@ -36,11 +36,11 @@
         [self addSubview:self.firstResponderTextField];
         
         __weak typeof(self) weakSelf = self;
-        [self.Carousel setOnPageWillChange:^{
+        [self.carousel setOnPageWillChange:^{
             [weakSelf.firstResponderTextField becomeFirstResponder];
         }];
         
-        [self.Carousel setCheckCanFocus:^BOOL(NSInteger page) {
+        [self.carousel setCheckCanFocus:^BOOL(NSInteger page) {
             return weakSelf.focusEnabled;
         }];
         
@@ -51,7 +51,7 @@
 }
 
 - (void)prepareForReuse {
-    [self.Carousel prepareForReuse];
+    [self.carousel prepareForReuse];
     [self.pageIndicator setCurrentPage:0 ofTotal:0];
 }
     
@@ -61,7 +61,7 @@
     _onPageChange = onPageChange;
     
     __weak typeof(self) weakSelf = self;
-    self.Carousel.onPageChange = ^(NSInteger current, NSInteger total) {
+    self.carousel.onPageChange = ^(NSInteger current, NSInteger total) {
         [weakSelf.pageIndicator setCurrentPage:current ofTotal:total];
         weakSelf.onPageChange(current);
     };
@@ -72,17 +72,17 @@
 }
 
 - (void)setOnFocus:(void (^)())onFocus {
-    [self.Carousel setOnFocus:onFocus];
+    [self.carousel setOnFocus:onFocus];
 }
 
 - (void)setOnPageDidAppear:(void (^)())onPageDidAppear {
-    [self.Carousel setOnPageDidAppear:onPageDidAppear];
+    [self.carousel setOnPageDidAppear:onPageDidAppear];
 }
     
 - (void)setViewData:(CarouselData *)data {
     self.currentPage = data.currentPage;
     [self.pageIndicator setCurrentPage:data.currentPage ofTotal:data.pages.count];
-    [self.Carousel setData:data.pages currentPage:data.currentPage];
+    [self.carousel setData:data.pages currentPage:data.currentPage];
     
     self.onTap = data.onTap;
 }
@@ -101,7 +101,7 @@
     [super layoutSubviews];
     
     self.pageIndicator.frame = self.bounds;
-    self.Carousel.view.frame = self.bounds;
+    self.carousel.view.frame = self.bounds;
 
     self.firstResponderTextField.frame = CGRectZero;
 }
