@@ -1,5 +1,9 @@
 #import <Foundation/Foundation.h>
 
+#import "FormatterResultData.h"
+
 @protocol BalanceFormatter
-- (NSAttributedString *)attributedFormatBalance:(NSString *)balance;
+
+- (FormatterResultData *)format:(NSString *)balance;
+
 @end

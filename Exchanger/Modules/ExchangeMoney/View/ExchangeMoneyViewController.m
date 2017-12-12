@@ -109,10 +109,6 @@
     [self.exchangeMoneyView stopActivity];
 }
 
-- (void)setOnInputChange:(void (^)(NSString *))onInputChange {
-    [self.exchangeMoneyView setOnInputChange:onInputChange];
-}
-
 - (void)setExchangeButtonEnabled:(BOOL)enabled {
     self.exchangeBarButton.barButtonItem.enabled = enabled;
 }

@@ -13,6 +13,8 @@
 @property (nonatomic, strong) Currency *targetCurrency;
 @property (nonatomic, strong) Wallet *targetWallet;
 @property (nonatomic, strong) NSNumber *invertedRate;
+@property (nonatomic, strong) OnTextChange onTextChange;
+@property (nonatomic, strong) id<NumbersFormatter> numbersFormatter;
 @property (nonatomic, strong) id<BalanceFormatter> exchangeCurrencyInputFormatter;
 @property (nonatomic, strong) id<RoundingFormatter> roundingFormatter;
 @end
@@ -29,6 +31,7 @@
               targetCurrency:(Currency *)targetCurrency
                 targetWallet:(Wallet *)targetWallet
                 invertedRate:(NSNumber *)invertedRate
+                onTextChange:(OnTextChange)onTextChange
 {
     self = [super init];
     if (self) {
@@ -40,7 +43,9 @@
         self.targetCurrency = targetCurrency;
         self.targetWallet = targetWallet;
         self.invertedRate = invertedRate;
+        self.onTextChange = onTextChange;
         
+        self.numbersFormatter = [[FormatterFactoryImpl instance] numbersFormatter];
         self.exchangeCurrencyInputFormatter = [[FormatterFactoryImpl instance] exchangeCurrencyInputFormatter];
         self.roundingFormatter = [[FormatterFactoryImpl instance] roundingFormatter];
     }
@@ -87,12 +92,19 @@
         NSAttributedString *currencyAmount;
         NSString *input;
         GalleryPreviewPageRemainderStyle remainderStyle = GalleryPreviewPageRemainderStyleNormal;
+        TextFieldAttributedStringFormatter inputFormatter;
         switch (currencyExchangeType) {
             case CurrencyExchangeSourceType:
             {
                 rate = @"";
                 
-                currencyAmount = [self formattedExpenseInput];
+                inputFormatter = ^(NSString *text) {
+                    NSString *numberText = [self.numbersFormatter format:text];
+                    FormatterResultData *data = [self formattedExpenseInput:numberText];
+                    return data;
+                };
+                
+                //currencyAmount = [self formattedExpenseInput:self.expenseInput];
                 input = self.expenseInput.stringValue;
                 
                 if ([self checkUserHasBalanceDeficiency:user currency:currency]) {
@@ -112,7 +124,7 @@
                     targetInput = targetAmount.stringValue;
                 }
                 
-                currencyAmount = [self.exchangeCurrencyInputFormatter attributedFormatBalance:targetInput];
+                currencyAmount = [self.exchangeCurrencyInputFormatter format:targetInput].formattedString;
                 input = self.incomeInput.stringValue;
                 
                 rate = [NSString stringWithFormat:@"%@1 = %@%@",
@@ -122,11 +134,15 @@
             }                break;
         }
         
+        
+        
         GalleryPreviewPageData *pageData = [[GalleryPreviewPageData alloc] initWithCurrencyTitle:currencyTitle
                                                                                            input:input
                                                                                        remainder:remainder
                                                                                             rate:rate
-                                                                                  remainderStyle:remainderStyle];
+                                                                                  remainderStyle:remainderStyle
+                                                                                  inputFormatter:inputFormatter
+                                                                                    onTextChange:self.onTextChange];
         [pages addObject:pageData];
     }
     
@@ -152,15 +168,15 @@
     return viewData;
 }
 
-- (NSAttributedString *)formattedExpenseInput {
+- (FormatterResultData *)formattedExpenseInput:(NSString *)expenseInput {
     NSString *input;
-    if (self.expenseInput.floatValue > 0) {
-        input = [NSString stringWithFormat:@"-%@", self.expenseInput];
+    if (expenseInput.floatValue > 0) {
+        input = [NSString stringWithFormat:@"-%@", expenseInput];
     } else {
-        input = self.expenseInput.stringValue;
+        input = expenseInput;
     }
     
-    return [self.exchangeCurrencyInputFormatter attributedFormatBalance:input];
+    return [self.exchangeCurrencyInputFormatter format:input];
 }
 
 - (NSString *)balanceWithUser:(User *)user currencyType:(CurrencyType)currencyType {

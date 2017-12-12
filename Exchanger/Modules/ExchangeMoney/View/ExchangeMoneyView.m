@@ -1,7 +1,6 @@
 #import "ExchangeMoneyView.h"
 #import "ExchangeMoneyViewData.h"
 #import "KeyboardObserverImpl.h"
-#import "ExchangeMoneyInputTextField.h"
 #import "ExchangeMoneyCurrencyView.h"
 #import "GalleryPreviewData.h"
 #import "GalleryPreviewPageData.h"
@@ -20,7 +19,6 @@ CGFloat const kFontSize = 34.0;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, strong) UIImageView *backgroundImageView;
 @property (nonatomic, strong) UIView *overlayView;
-@property (nonatomic, strong) ExchangeMoneyInputTextField *inputTextField;
 @property (nonatomic, strong) ExchangeMoneyCurrencyView *sourceCurrencyView;
 @property (nonatomic, strong) ExchangeMoneyCurrencyView *targetCurrencyView;
 @property (nonatomic, assign) CGFloat keyboardHeight;
@@ -43,13 +41,10 @@ CGFloat const kFontSize = 34.0;
         self.sourceCurrencyView = [[ExchangeMoneyCurrencyView alloc] initWithCurrencyExchangeType:CurrencyExchangeSourceType];
         self.targetCurrencyView = [[ExchangeMoneyCurrencyView alloc] initWithCurrencyExchangeType:CurrencyExchangeTargetType];
         
-        self.inputTextField = [[ExchangeMoneyInputTextField alloc] init];
-        
         self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
         
         [self addSubview:self.backgroundImageView];
         [self addSubview:self.overlayView];
-        //[self addSubview:self.inputTextField];
         
         [self addSubview:self.sourceCurrencyView];
         [self addSubview:self.targetCurrencyView];
@@ -102,10 +97,6 @@ CGFloat const kFontSize = 34.0;
     [self.targetCurrencyView setOnPageChange:onPageChange];
 }
 
-- (void)setOnInputChange:(void (^)(NSString *))onInputChange {
-    [self.inputTextField setOnInputChange:onInputChange];
-}
-
 // MARK: - Private
 
 - (void)focusOnSourceView {
@@ -135,8 +126,6 @@ CGFloat const kFontSize = 34.0;
     self.targetCurrencyView.width = contentsFrame.size.width;
     self.targetCurrencyView.height = contentsFrame.size.height / 2;
     self.targetCurrencyView.top = self.sourceCurrencyView.bottom;
-    
-    self.inputTextField.frame = CGRectZero;
 }
 
 - (CGRect)contentsFrame {

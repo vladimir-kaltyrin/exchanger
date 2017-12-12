@@ -91,12 +91,6 @@
         [weakSelf update:exchangeType withIndex:current];
         [weakSelf reloadViewWithUpdateRates:YES];
     }];
-    
-    [self.view setOnInputChange:^(NSString *inputChange) {
-        weakSelf.currentInput = @(inputChange.floatValue);
-        
-        [weakSelf reloadView];
-    }];
 }
 
 - (void)updateViewWithData:(ExchangeRatesData *)data updateRates:(BOOL)updateRates {
@@ -136,7 +130,12 @@
                                                                                         sourceCurrency:self.interactor.sourceCurrency
                                                                                         targetCurrency:self.interactor.targetCurrency
                                                                                           targetWallet:targetWallet
-                                                                                          invertedRate:invertedRate];
+                                                                                          invertedRate:invertedRate
+                                                                                          onTextChange:^(NSString *inputChange) {
+                                                                                              weakSelf.currentInput = @(inputChange.floatValue);
+                                                                                              
+                                                                                              //[weakSelf reloadView];
+                                                                                          }];
             
             ExchangeMoneyViewData *viewData = [builder build];
             

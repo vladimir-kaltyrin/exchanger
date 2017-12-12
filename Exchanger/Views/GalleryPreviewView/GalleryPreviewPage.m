@@ -62,6 +62,8 @@ NS_ASSUME_NONNULL_BEGIN
     self.currencyTitleLabel.text = data.currencyTitle;
     self.remainderLabel.text = data.remainder;
     self.currencyRateLabel.text = data.rate;
+    self.textField.formatter = data.inputFormatter;
+    self.textField.onTextChange = data.onTextChange;
     [self.textField setText:data.input];
     
     switch (data.remainderStyle) {

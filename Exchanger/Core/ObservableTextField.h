@@ -1,11 +1,13 @@
 #import <UIKit/UIKit.h>
 #import "TextFieldConfiguration.h"
+#import "FormatterResultData.h"
 
-typedef NSAttributedString *(^TextFieldAttributedStringFormatter)(NSString *text);
+typedef FormatterResultData *(^TextFieldAttributedStringFormatter)(NSString *text);
+typedef void(^OnTextChange)(NSString *);
 
 @interface ObservableTextField : UIView
-@property (nonatomic, strong) BOOL(^onTextChange)(NSString *text);
 @property (nonatomic, strong) TextFieldAttributedStringFormatter formatter;
+@property (nonatomic, strong) OnTextChange onTextChange;
 
 - (instancetype)initWithFrame:(CGRect)frame __attribute__((unavailable("initWithFrame not available")));
 
