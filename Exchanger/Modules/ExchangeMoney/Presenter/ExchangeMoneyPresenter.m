@@ -12,7 +12,7 @@
 
 @interface ExchangeMoneyPresenter()
 @property (nonatomic, strong) ExchangeRatesData *exchangeRatesData;
-@property (nonatomic, strong) NSNumber *currentInput;
+@property (nonatomic, strong) NSString *currentInput;
 @property (nonatomic, strong) id<ExchangeMoneyInteractor> interactor;
 @property (nonatomic, strong) id<ExchangeMoneyRouter> router;
 @property (nonatomic, strong) id<KeyboardObserver> keyboardObserver;
@@ -118,23 +118,23 @@
     [self.interactor fetchUser:^(User *user) {
         
         Wallet *inputWallet = [[Wallet alloc] initWithCurrency:weakSelf.interactor.sourceCurrency
-                                                        amount:self.currentInput];
+                                                        amount:@(self.currentInput.floatValue)];
         [weakSelf.interactor exchangeWallet:inputWallet
                              targetCurrency:weakSelf.interactor.targetCurrency
                                    onResult:^(Wallet *targetWallet, NSNumber *invertedRate)
         {
             ExchangeMoneyViewDataBuilder *builder = [[ExchangeMoneyViewDataBuilder alloc] initWithUser:user
                                                                                             currencies:ratesData.currencies
-                                                                                           incomeInput:@0
+                                                                                           incomeInput:@""
                                                                                           expenseInput:self.currentInput
                                                                                         sourceCurrency:self.interactor.sourceCurrency
                                                                                         targetCurrency:self.interactor.targetCurrency
                                                                                           targetWallet:targetWallet
                                                                                           invertedRate:invertedRate
                                                                                           onTextChange:^(NSString *inputChange) {
-                                                                                              weakSelf.currentInput = @(inputChange.floatValue);
+                                                                                              weakSelf.currentInput = inputChange;
                                                                                               
-                                                                                              //[weakSelf reloadView];
+                                                                                              [weakSelf reloadView];
                                                                                           }];
             
             ExchangeMoneyViewData *viewData = [builder build];

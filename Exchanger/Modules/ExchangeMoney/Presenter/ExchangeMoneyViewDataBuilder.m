@@ -7,8 +7,8 @@
 @interface ExchangeMoneyViewDataBuilder()
 @property (nonatomic, strong) User *user;
 @property (nonatomic, strong) NSArray<Currency *> *currencies;
-@property (nonatomic, strong) NSNumber *incomeInput;
-@property (nonatomic, strong) NSNumber *expenseInput;
+@property (nonatomic, strong) NSString *incomeInput;
+@property (nonatomic, strong) NSString *expenseInput;
 @property (nonatomic, strong) Currency *sourceCurrency;
 @property (nonatomic, strong) Currency *targetCurrency;
 @property (nonatomic, strong) Wallet *targetWallet;
@@ -25,8 +25,8 @@
 
 - (instancetype)initWithUser:(User *)user
                   currencies:(NSArray<Currency *> *)currencies
-                 incomeInput:(NSNumber *)incomeInput
-                expenseInput:(NSNumber *)expenseInput
+                 incomeInput:(NSString *)incomeInput
+                expenseInput:(NSString *)expenseInput
               sourceCurrency:(Currency *)sourceCurrency
               targetCurrency:(Currency *)targetCurrency
                 targetWallet:(Wallet *)targetWallet
@@ -105,7 +105,7 @@
                 };
                 
                 //currencyAmount = [self formattedExpenseInput:self.expenseInput];
-                input = self.expenseInput.stringValue;
+                input = self.expenseInput;
                 
                 if ([self checkUserHasBalanceDeficiency:user currency:currency]) {
                     remainderStyle = GalleryPreviewPageRemainderStyleDeficiency;
@@ -125,7 +125,7 @@
                 }
                 
                 currencyAmount = [self.exchangeCurrencyInputFormatter format:targetInput].formattedString;
-                input = self.incomeInput.stringValue;
+                input = self.incomeInput;
                 
                 rate = [NSString stringWithFormat:@"%@1 = %@%@",
                         currency.currencySign,
