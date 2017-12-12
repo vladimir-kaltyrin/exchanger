@@ -19,6 +19,7 @@ typedef void(^OnInputChange)(NSString *text, CurrencyExchangeType exchangeType);
                 targetWallet:(Wallet *)targetWallet
                 invertedRate:(NSNumber *)invertedRate
                 isDeficiency:(BOOL)isDeficiency
+          activeExchangeRate:(CurrencyExchangeType)activeExchangeRate
                onInputChange:(OnInputChange)onInputChange;
 
 - (ExchangeMoneyViewData *)build;

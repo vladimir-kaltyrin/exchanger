@@ -82,8 +82,9 @@
                                    } onError:nil];
     }];
     
+    // TODO: fix retain-reference cycle
     [self.view setOnCancelTap:^{
-        block(weakSelf.onFinish);
+        block(self.onFinish);
     }];
     
     [self.interactor setOnUpdate:^(ExchangeRatesData *data) {
@@ -123,42 +124,63 @@
     
     [self.interactor fetchUser:^(User *user) {
         
-        Wallet *inputWallet = [[Wallet alloc] initWithCurrency:weakSelf.interactor.sourceCurrency
-                                                        amount:@(self.expenseInput.floatValue)];
+        BOOL isDeficiency = [weakSelf checkUserHasBalanceDeficiency:user];
+        
+        Wallet *inputWallet;
+        Currency *targetCurrency;
+        
+        switch (weakSelf.activeExchangeType) {
+            case CurrencyExchangeSourceType:
+            {
+                inputWallet = [[Wallet alloc] initWithCurrency:weakSelf.interactor.sourceCurrency
+                                                                amount:@(self.expenseInput.floatValue)];
+                targetCurrency = self.interactor.targetCurrency;
+                
+            }
+                break;
+            case CurrencyExchangeTargetType:
+            {
+                inputWallet = [[Wallet alloc] initWithCurrency:weakSelf.interactor.targetCurrency
+                                                                amount:@(self.incomeInput.floatValue)];
+                targetCurrency = self.interactor.sourceCurrency;
+            }
+                break;
+        };
+        
         [weakSelf.interactor exchangeWallet:inputWallet
-                             targetCurrency:weakSelf.interactor.targetCurrency
+                             targetCurrency:targetCurrency
                                    onResult:^(Wallet *targetWallet, NSNumber *invertedRate)
-        {
-            BOOL isDeficiency = [weakSelf checkUserHasBalanceDeficiency:user];
-            
-            ExchangeMoneyViewDataBuilder *builder = [[ExchangeMoneyViewDataBuilder alloc] initWithUser:user
-                                                                                            currencies:ratesData.currencies
-                                                                                           incomeInput:self.incomeInput
-                                                                                          expenseInput:self.expenseInput
-                                                                                        sourceCurrency:self.interactor.sourceCurrency
-                                                                                        targetCurrency:self.interactor.targetCurrency
-                                                                                          targetWallet:targetWallet
-                                                                                          invertedRate:invertedRate
-                                                                                          isDeficiency:isDeficiency
-                                                                                         onInputChange:^(NSString *text, CurrencyExchangeType exchangeType) {
-                                                                                             switch (exchangeType) {
-                                                                                                 case CurrencyExchangeSourceType:
-                                                                                                     weakSelf.expenseInput = text;
-                                                                                                     break;
-                                                                                                 case CurrencyExchangeTargetType:
-                                                                                                     weakSelf.incomeInput = text;
-                                                                                                     break;
-                                                                                             }
-                                                                                             
-                                                                                             [weakSelf reloadView];
-                                                                                         }];
-            
-            ExchangeMoneyViewData *viewData = [builder build];
-            
-            [weakSelf.view setViewData:viewData];
-            
-            block(onUpdate);
-        }];
+         {
+             
+             ExchangeMoneyViewDataBuilder *builder = [[ExchangeMoneyViewDataBuilder alloc] initWithUser:user
+                                                                                             currencies:ratesData.currencies
+                                                                                            incomeInput:weakSelf.incomeInput
+                                                                                           expenseInput:weakSelf.expenseInput
+                                                                                         sourceCurrency:weakSelf.interactor.sourceCurrency
+                                                                                         targetCurrency:weakSelf.interactor.targetCurrency
+                                                                                           targetWallet:targetWallet
+                                                                                           invertedRate:invertedRate
+                                                                                           isDeficiency:isDeficiency
+                                                                                     activeExchangeRate:weakSelf.activeExchangeType
+                                                                                          onInputChange:^(NSString *text, CurrencyExchangeType exchangeType) {
+                                                                                              switch (exchangeType) {
+                                                                                                  case CurrencyExchangeSourceType:
+                                                                                                      weakSelf.expenseInput = text;
+                                                                                                      break;
+                                                                                                  case CurrencyExchangeTargetType:
+                                                                                                      weakSelf.incomeInput = text;
+                                                                                                      break;
+                                                                                              }
+                                                                                              
+                                                                                              [weakSelf reloadView];
+                                                                                          }];
+             
+             ExchangeMoneyViewData *viewData = [builder build];
+             
+             [weakSelf.view setViewData:viewData];
+             
+             block(onUpdate);
+         }];
     }];
 }
 

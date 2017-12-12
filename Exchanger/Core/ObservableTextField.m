@@ -48,6 +48,7 @@
 - (void)setConfiguration:(TextFieldConfiguration *)configuration {
     self.textField.font = configuration.font;
     self.textField.textColor = configuration.textColor;
+    self.textField.tintColor = configuration.tintColor;
     self.textField.textAlignment = configuration.textAlignment;
     self.textField.keyboardType = configuration.keyboardType;
 }
