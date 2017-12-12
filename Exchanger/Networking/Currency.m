@@ -1,3 +1,4 @@
+#import <ObjectiveSugar/ObjectiveSugar.h>
 #import "Currency.h"
 #import "FormatterFactoryImpl.h"
 
@@ -50,12 +51,9 @@
 }
 
 + (NSArray<Currency *> *)arrayOfObjects:(NSArray<NSDictionary *> *)arrayOfDictionaries {
-    NSMutableArray *result = [NSMutableArray array];
-    for (NSDictionary *dictionary in arrayOfDictionaries) {
-        Currency *currency = [[Currency alloc] initWithDictionary:dictionary];
-        [result addObject:currency];
-    }
-    return result;
+    return [arrayOfDictionaries map:^id(id dictionary) {
+        return [[Currency alloc] initWithDictionary:dictionary];
+    }];
 }
 
 + (Currency *)currencyWithType:(CurrencyType)currencyType {
