@@ -34,17 +34,17 @@ NS_ASSUME_NONNULL_END
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    if (self.checkCanFocus != nil) {
-        if (self.checkCanFocus()) {
-            [self.pageView focus];
-        }
-    }
+    [self focus];
     
     block(self.onViewDidAppear);
 }
 
 - (void)focus {
-    [self.pageView focus];
+    if (self.checkCanFocus != nil) {
+        if (self.checkCanFocus()) {
+            [self.pageView focus];
+        }
+    }
 }
 
 - (void)setOnFocus:(void (^)())onFocus {

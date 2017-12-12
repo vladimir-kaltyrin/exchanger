@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
-#import "CarouselData.h"
 #import "CurrencyExchangeType.h"
+#import "CarouselData.h"
 #import "CarouselPageData.h"
 
 @class ExchangeMoneyCurrencyViewData;
