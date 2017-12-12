@@ -8,7 +8,6 @@
 #import "MoveFailableLongPressGestureRecognizer.h"
 
 @interface CarouselView () <UIGestureRecognizerDelegate>
-@property (nonatomic, strong) void(^onTap)();
 @property (nonatomic, strong) CarouselController *carousel;
 @property (nonatomic, strong) CarouselPageIndicator *pageIndicator;
 @property (nonatomic, strong) UITextField *firstResponderTextField;
@@ -83,8 +82,6 @@
     self.currentPage = data.currentPage;
     [self.pageIndicator setCurrentPage:data.currentPage ofTotal:data.pages.count];
     [self.carousel setData:data.pages currentPage:data.currentPage];
-    
-    self.onTap = data.onTap;
 }
 
 - (void)focus {

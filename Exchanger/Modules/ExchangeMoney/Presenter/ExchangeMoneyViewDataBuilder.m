@@ -64,17 +64,9 @@
 
 - (ExchangeMoneyViewData *)build {
     
-    CarouselData *sourceData = [self previewDataWithCurrencyExchangeType:CurrencyExchangeSourceType
-                                                                          user:self.user
-                                                                    currencies:self.currencies
-                                                                  targetWallet:self.targetWallet
-                                                                  invertedRate:self.invertedRate];
+    CarouselData *sourceData = [self previewDataWithCurrencyExchangeType:CurrencyExchangeSourceType];
     
-    CarouselData *targetData = [self previewDataWithCurrencyExchangeType:CurrencyExchangeTargetType
-                                                                          user:self.user
-                                                                    currencies:self.currencies
-                                                                  targetWallet:self.targetWallet
-                                                                  invertedRate:self.invertedRate];
+    CarouselData *targetData = [self previewDataWithCurrencyExchangeType:CurrencyExchangeTargetType];
     
     ExchangeMoneyViewData *viewData = [[ExchangeMoneyViewData alloc] initWithSourceData:sourceData
                                                                              targetData:targetData];
@@ -173,30 +165,26 @@
 }
 
 - (CarouselData *)previewDataWithCurrencyExchangeType:(CurrencyExchangeType)currencyExchangeType
-                                                       user:(User *)user
-                                                 currencies:(NSArray<Currency *> *)currencies
-                                               targetWallet:(Wallet *)targetWallet
-                                               invertedRate:(NSNumber *)invertedRate
 {
     NSArray<CarouselPageData *> *pages;
     switch (currencyExchangeType) {
         case CurrencyExchangeSourceType:
         {
-            pages = [currencies map:^id(id currency) {
+            pages = [self.currencies map:^id(id currency) {
                 return [self sourceCurrencyPageDataWithCurrency:currency];
             }];
         }
             break;
         case CurrencyExchangeTargetType:
         {
-            pages = [currencies map:^id(id currency) {
+            pages = [self.currencies map:^id(id currency) {
                 return [self targetCurrencyPageDataWithCurrency:currency];
             }];
         }
             break;
     }
     
-    NSInteger currentPage = [currencies indexOfObjectPassingTest:^BOOL(Currency * _Nonnull currency, NSUInteger idx, BOOL * _Nonnull stop) {
+    NSInteger currentPage = [self.currencies indexOfObjectPassingTest:^BOOL(Currency * _Nonnull currency, NSUInteger idx, BOOL * _Nonnull stop) {
         switch (currencyExchangeType) {
             case CurrencyExchangeSourceType:
                 return currency.currencyType == self.sourceCurrency.currencyType;
@@ -212,8 +200,7 @@
     }
     
     CarouselData *viewData = [[CarouselData alloc] initWithPages:pages
-                                                                 currentPage:currentPage
-                                                                       onTap:nil];
+                                                     currentPage:currentPage];
     
     return viewData;
 }
