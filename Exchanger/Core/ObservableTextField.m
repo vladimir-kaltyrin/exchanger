@@ -58,6 +58,8 @@
 
 - (void)setText:(NSString *)text {
     
+    NSString *oldValue = self.text;
+    
     if (self.formatter) {
         FormatterResultData *data = self.formatter(text);
         
@@ -71,7 +73,9 @@
         self.textField.text = self.text;
     }
     
-    block(self.onTextChange, self.text);
+    if (![oldValue isEqualToString:text] && (oldValue != nil)) {
+        block(self.onTextChange, self.text);
+    }
 }
 
 // MARK: - UITextFieldDelegate
