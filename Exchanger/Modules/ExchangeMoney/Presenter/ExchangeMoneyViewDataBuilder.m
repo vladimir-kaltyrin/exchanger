@@ -117,15 +117,13 @@
                 break;
             case CurrencyExchangeTargetType:
             {
-                NSNumber *targetAmount = targetWallet.amount;
-                NSString *targetInput;
-                if (targetAmount.floatValue > 0) {
-                    targetInput = [NSString stringWithFormat:@"+%@", targetAmount];
-                } else {
-                    targetInput = targetAmount.stringValue;
-                }
                 
-                currencyAmount = [self.exchangeCurrencyInputFormatter format:targetInput].formattedString;
+                inputFormatter = ^(NSString *text) {
+                    NSString *targetAmount = targetWallet.amount.stringValue;
+                    FormatterResultData *data = [self formattedIncomeInput:targetAmount];
+                    return data;
+                };
+                
                 input = self.incomeInput;
                 
                 rate = [NSString stringWithFormat:@"%@1 = %@%@",
@@ -177,6 +175,17 @@
         input = [NSString stringWithFormat:@"-%@", expenseInput];
     } else {
         input = expenseInput;
+    }
+    
+    return [self.exchangeCurrencyInputFormatter format:input];
+}
+
+- (FormatterResultData *)formattedIncomeInput:(NSString *)incomeInput {
+    NSString *input;
+    if (incomeInput.floatValue > 0) {
+        input = [NSString stringWithFormat:@"-%@", incomeInput];
+    } else {
+        input = incomeInput;
     }
     
     return [self.exchangeCurrencyInputFormatter format:input];
