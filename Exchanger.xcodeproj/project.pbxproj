@@ -59,6 +59,7 @@
 		8C7326831F3C8D5800301720 /* UserServiceImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7326821F3C8D5800301720 /* UserServiceImpl.m */; };
 		8C84A1801FDFE2A00099A666 /* FormatterResultData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C84A17F1FDFE2A00099A666 /* FormatterResultData.m */; };
 		8C84A1831FDFE8B80099A666 /* BalanceParseData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C84A1821FDFE8B80099A666 /* BalanceParseData.m */; };
+		8C84A1861FDFEC0C0099A666 /* FormattedStringData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C84A1851FDFEC0C0099A666 /* FormattedStringData.m */; };
 		8C94B4DA1F3DEB8700B2B9FC /* UIViewController+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C94B4D91F3DEB8700B2B9FC /* UIViewController+Extensions.m */; };
 		8C94B4E01F3E10C600B2B9FC /* BarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C94B4DF1F3E10C600B2B9FC /* BarButton.m */; };
 		8C94B4E61F3E162B00B2B9FC /* ExchangeMoneyTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C94B4E51F3E162B00B2B9FC /* ExchangeMoneyTitleView.m */; };
@@ -218,6 +219,8 @@
 		8C84A17F1FDFE2A00099A666 /* FormatterResultData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FormatterResultData.m; path = Formatters/BalanceFormatter/FormatterResultData.m; sourceTree = "<group>"; };
 		8C84A1811FDFE8B80099A666 /* BalanceParseData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BalanceParseData.h; path = Formatters/BalanceFormatter/BalanceParseData.h; sourceTree = "<group>"; };
 		8C84A1821FDFE8B80099A666 /* BalanceParseData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BalanceParseData.m; path = Formatters/BalanceFormatter/BalanceParseData.m; sourceTree = "<group>"; };
+		8C84A1841FDFEC0C0099A666 /* FormattedStringData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FormattedStringData.h; path = Formatters/BalanceFormatter/FormattedStringData.h; sourceTree = "<group>"; };
+		8C84A1851FDFEC0C0099A666 /* FormattedStringData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FormattedStringData.m; path = Formatters/BalanceFormatter/FormattedStringData.m; sourceTree = "<group>"; };
 		8C94B4D81F3DEB8700B2B9FC /* UIViewController+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Extensions.h"; path = "Categories/UIViewController+Extensions.h"; sourceTree = "<group>"; };
 		8C94B4D91F3DEB8700B2B9FC /* UIViewController+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Extensions.m"; path = "Categories/UIViewController+Extensions.m"; sourceTree = "<group>"; };
 		8C94B4DE1F3E10C600B2B9FC /* BarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BarButton.h; path = Core/BarButton.h; sourceTree = "<group>"; };
@@ -616,6 +619,8 @@
 				8C84A17F1FDFE2A00099A666 /* FormatterResultData.m */,
 				8C84A1811FDFE8B80099A666 /* BalanceParseData.h */,
 				8C84A1821FDFE8B80099A666 /* BalanceParseData.m */,
+				8C84A1841FDFEC0C0099A666 /* FormattedStringData.h */,
+				8C84A1851FDFEC0C0099A666 /* FormattedStringData.m */,
 			);
 			name = BalanceFormatter;
 			sourceTree = "<group>";
@@ -1194,6 +1199,7 @@
 				8C6423711FA0B23C00A95479 /* ObservableTextField.m in Sources */,
 				8C45F6601FD01DE4005B3892 /* IntroPresenter.m in Sources */,
 				8CD39CB61FDEE7020042B15E /* TextField.m in Sources */,
+				8C84A1861FDFEC0C0099A666 /* FormattedStringData.m in Sources */,
 				8CC843DF1FD6A0A700EC0CD3 /* NumbersFormatterImpl.m in Sources */,
 				8C45F6631FD01E2D005B3892 /* IntroInteractorImpl.m in Sources */,
 				8C6423521FA0757600A95479 /* GalleryPreviewPageController.m in Sources */,
