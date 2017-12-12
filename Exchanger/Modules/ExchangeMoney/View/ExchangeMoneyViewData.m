@@ -16,15 +16,4 @@
     return self;
 }
 
-- (instancetype)initWithUser:(User *)user
-                 sourceRates:(ExchangeRatesData *)sourceRates
-                 targetRates:(ExchangeRatesData *)targetRates
-{
-    self = [super init];
-    if (self) {
-        
-    }
-    return self;
-}
-
 @end
