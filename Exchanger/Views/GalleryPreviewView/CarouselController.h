@@ -1,10 +1,10 @@
 #import <UIKit/UIKit.h>
 
-@class GalleryPreviewPageData;
+@class CarouselPageData;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GalleryPreviewController : UIPageViewController
+@interface CarouselController : UIPageViewController
     
 @property (nonatomic, strong, nullable) void(^onPageChange)(NSInteger current, NSInteger total);
 @property (nonatomic, strong, nullable) void(^onPageWillChange)();
@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nullable) void(^onPageDidAppear)();
 @property (nonatomic, strong) void(^onFocus)();
     
-- (void)setData:(NSArray<GalleryPreviewPageData *> *)data currentPage:(NSInteger)currentPage;
+- (void)setData:(NSArray<CarouselPageData *> *)data currentPage:(NSInteger)currentPage;
 
 - (void)focus;
     

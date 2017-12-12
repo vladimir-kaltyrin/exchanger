@@ -2,7 +2,7 @@
 #import "ViewLifeCycleObservable.h"
 #import "CurrencyExchangeType.h"
 #import "Currency.h"
-#import "GalleryPreviewPageData.h"
+#import "CarouselPageData.h"
 
 typedef void(^OnExchangeTypeChange)(CurrencyExchangeType);
 

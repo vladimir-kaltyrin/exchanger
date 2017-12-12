@@ -1,30 +1,30 @@
-#import "GalleryPreviewView.h"
-#import "GalleryPreviewPageController.h"
-#import "GalleryPreviewData.h"
-#import "GalleryPreviewController.h"
-#import "GalleryPreviewPageIndicator.h"
+#import "CarouselView.h"
+#import "CarouselPageController.h"
+#import "CarouselData.h"
+#import "CarouselController.h"
+#import "CarouselPageIndicator.h"
 #import "UITextField+Configuration.h"
 #import "SafeBlocks.h"
 #import "MoveFailableLongPressGestureRecognizer.h"
 
-@interface GalleryPreviewView () <UIGestureRecognizerDelegate>
+@interface CarouselView () <UIGestureRecognizerDelegate>
 @property (nonatomic, strong) void(^onTap)();
-@property (nonatomic, strong) GalleryPreviewController *galleryPreview;
-@property (nonatomic, strong) GalleryPreviewPageIndicator *pageIndicator;
+@property (nonatomic, strong) CarouselController *Carousel;
+@property (nonatomic, strong) CarouselPageIndicator *pageIndicator;
 @property (nonatomic, strong) UITextField *firstResponderTextField;
 @property (nonatomic, assign) NSInteger currentPage;
 @property (nonatomic, assign) BOOL focusOnStart;
 @property (nonatomic, assign) BOOL focusEnabled;
 @end
 
-@implementation GalleryPreviewView
+@implementation CarouselView
     
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        self.galleryPreview = [[GalleryPreviewController alloc] init];
-        [self addSubview:self.galleryPreview.view];
+        self.Carousel = [[CarouselController alloc] init];
+        [self addSubview:self.Carousel.view];
         
-        self.pageIndicator = [[GalleryPreviewPageIndicator alloc] init];
+        self.pageIndicator = [[CarouselPageIndicator alloc] init];
         [self.pageIndicator setUserInteractionEnabled:NO];
         [self addSubview:self.pageIndicator];
         
@@ -36,11 +36,11 @@
         [self addSubview:self.firstResponderTextField];
         
         __weak typeof(self) weakSelf = self;
-        [self.galleryPreview setOnPageWillChange:^{
+        [self.Carousel setOnPageWillChange:^{
             [weakSelf.firstResponderTextField becomeFirstResponder];
         }];
         
-        [self.galleryPreview setCheckCanFocus:^BOOL(NSInteger page) {
+        [self.Carousel setCheckCanFocus:^BOOL(NSInteger page) {
             return weakSelf.focusEnabled;
         }];
         
@@ -51,7 +51,7 @@
 }
 
 - (void)prepareForReuse {
-    [self.galleryPreview prepareForReuse];
+    [self.Carousel prepareForReuse];
     [self.pageIndicator setCurrentPage:0 ofTotal:0];
 }
     
@@ -61,7 +61,7 @@
     _onPageChange = onPageChange;
     
     __weak typeof(self) weakSelf = self;
-    self.galleryPreview.onPageChange = ^(NSInteger current, NSInteger total) {
+    self.Carousel.onPageChange = ^(NSInteger current, NSInteger total) {
         [weakSelf.pageIndicator setCurrentPage:current ofTotal:total];
         weakSelf.onPageChange(current);
     };
@@ -72,17 +72,17 @@
 }
 
 - (void)setOnFocus:(void (^)())onFocus {
-    [self.galleryPreview setOnFocus:onFocus];
+    [self.Carousel setOnFocus:onFocus];
 }
 
 - (void)setOnPageDidAppear:(void (^)())onPageDidAppear {
-    [self.galleryPreview setOnPageDidAppear:onPageDidAppear];
+    [self.Carousel setOnPageDidAppear:onPageDidAppear];
 }
     
-- (void)setViewData:(GalleryPreviewData *)data {
+- (void)setViewData:(CarouselData *)data {
     self.currentPage = data.currentPage;
     [self.pageIndicator setCurrentPage:data.currentPage ofTotal:data.pages.count];
-    [self.galleryPreview setData:data.pages currentPage:data.currentPage];
+    [self.Carousel setData:data.pages currentPage:data.currentPage];
     
     self.onTap = data.onTap;
 }
@@ -101,7 +101,7 @@
     [super layoutSubviews];
     
     self.pageIndicator.frame = self.bounds;
-    self.galleryPreview.view.frame = self.bounds;
+    self.Carousel.view.frame = self.bounds;
 
     self.firstResponderTextField.frame = CGRectZero;
 }

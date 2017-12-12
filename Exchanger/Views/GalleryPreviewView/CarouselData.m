@@ -1,8 +1,8 @@
-#import "GalleryPreviewData.h"
+#import "CarouselData.h"
 
-@implementation GalleryPreviewData
+@implementation CarouselData
     
-- (instancetype)initWithPages:(NSArray<GalleryPreviewPageData *> *)pages
+- (instancetype)initWithPages:(NSArray<CarouselPageData *> *)pages
                   currentPage:(NSInteger)currentPage
                         onTap:(void(^)())onTap
 {

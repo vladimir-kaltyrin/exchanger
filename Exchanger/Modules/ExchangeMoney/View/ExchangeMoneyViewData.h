@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 
-@class GalleryPreviewData;
+@class CarouselData;
 @class User;
 @class ExchangeRatesData;
 
@@ -8,11 +8,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ExchangeMoneyViewData : NSObject
 
-@property (nonatomic, strong, readonly) GalleryPreviewData *sourceData;
-@property (nonatomic, strong, readonly) GalleryPreviewData *targetData;
+@property (nonatomic, strong, readonly) CarouselData *sourceData;
+@property (nonatomic, strong, readonly) CarouselData *targetData;
 
-- (instancetype)initWithSourceData:(GalleryPreviewData *)sourceData
-                        targetData:(GalleryPreviewData *)targetData;
+- (instancetype)initWithSourceData:(CarouselData *)sourceData
+                        targetData:(CarouselData *)targetData;
 
 - (instancetype)initWithUser:(User *)user
                  sourceRates:(ExchangeRatesData *)sourceRates

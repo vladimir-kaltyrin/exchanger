@@ -1,10 +1,10 @@
 #import <UIKit/UIKit.h>
 
-@class GalleryPreviewPageData;
+@class CarouselPageData;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GalleryPreviewPageController : UIViewController
+@interface CarouselPageController : UIViewController
 @property (nonatomic, assign, readonly) NSInteger index;
 @property (nonatomic, strong, nullable) void(^onPageWillChange)();
 @property (nonatomic, strong, nullable) BOOL(^checkCanFocus)();
@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)init __attribute__((unavailable("init not available")));
     
-- (instancetype)initWithIndex:(NSInteger)index data:(GalleryPreviewPageData *)data;
+- (instancetype)initWithIndex:(NSInteger)index data:(CarouselPageData *)data;
 
 - (void)focus;
     

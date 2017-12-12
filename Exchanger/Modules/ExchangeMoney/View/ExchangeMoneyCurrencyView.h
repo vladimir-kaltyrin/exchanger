@@ -1,7 +1,7 @@
 #import <UIKit/UIKit.h>
-#import "GalleryPreviewData.h"
+#import "CarouselData.h"
 #import "CurrencyExchangeType.h"
-#import "GalleryPreviewPageData.h"
+#import "CarouselPageData.h"
 
 @class ExchangeMoneyCurrencyViewData;
 
@@ -19,13 +19,13 @@
 
 - (instancetype)initWithCurrencyExchangeType:(CurrencyExchangeType)exchangeType;
 
-- (void)updateWithModel:(GalleryPreviewData *)model;
+- (void)updateWithModel:(CarouselData *)model;
 
 - (void)focus;
 
 - (void)setOnPageChange:(void(^)(CurrencyExchangeType exchangeType, NSInteger current))onPageChange;
 
-- (void)setRemainderStyle:(GalleryPreviewPageRemainderStyle)remainderStyle;
+- (void)setRemainderStyle:(CarouselPageRemainderStyle)remainderStyle;
 
 - (void)setFocusEnabled:(BOOL)focusEnabled;
 

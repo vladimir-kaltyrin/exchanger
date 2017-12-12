@@ -1,5 +1,5 @@
-#import "GalleryPreviewPage.h"
-#import "GalleryPreviewPageData.h"
+#import "CarouselPage.h"
+#import "CarouselPageData.h"
 #import "UIView+Properties.h"
 #import "UITextField+Configuration.h"
 #import "ObservableTextField.h"
@@ -10,14 +10,14 @@ CGFloat const kSmallFontSize = 12.0;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GalleryPreviewPage()
+@interface CarouselPage()
 @property (nonatomic, strong) UILabel *currencyTitleLabel;
 @property (nonatomic, strong) UILabel *remainderLabel;
 @property (nonatomic, strong) UILabel *currencyRateLabel;
 @property (nonatomic, strong) ObservableTextField *textField;
 @end
 
-@implementation GalleryPreviewPage
+@implementation CarouselPage
     
 // MARK: - Init
     
@@ -62,7 +62,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 // MARK: - Public
     
-- (void)setViewData:(GalleryPreviewPageData *)data {
+- (void)setViewData:(CarouselPageData *)data {
     self.currencyTitleLabel.text = data.currencyTitle;
     self.remainderLabel.text = data.remainder;
     self.currencyRateLabel.text = data.rate;
@@ -71,10 +71,10 @@ NS_ASSUME_NONNULL_BEGIN
     [self.textField setText:data.input];
     
     switch (data.remainderStyle) {
-        case GalleryPreviewPageRemainderStyleNormal:
+        case CarouselPageRemainderStyleNormal:
             self.remainderLabel.textColor = [UIColor whiteColor];
             break;
-        case GalleryPreviewPageRemainderStyleDeficiency:
+        case CarouselPageRemainderStyleDeficiency:
             self.remainderLabel.textColor = [UIColor redColor];
             break;
     }

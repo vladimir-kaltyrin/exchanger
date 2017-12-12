@@ -5,8 +5,8 @@
 
 @implementation ExchangeMoneyViewData
 
-- (instancetype)initWithSourceData:(GalleryPreviewData *)sourceData
-                        targetData:(GalleryPreviewData *)targetData
+- (instancetype)initWithSourceData:(CarouselData *)sourceData
+                        targetData:(CarouselData *)targetData
 {
     self = [super init];
     if (self) {

@@ -1,11 +1,11 @@
 #import "ExchangeMoneyCurrencyView.h"
-#import "GalleryPreviewView.h"
-#import "GalleryPreviewData.h"
+#import "CarouselView.h"
+#import "CarouselData.h"
 #import "UIView+Properties.h"
 #import "SafeBlocks.h"
 
 @interface ExchangeMoneyCurrencyView()
-@property (nonatomic, strong) GalleryPreviewView *previewView;
+@property (nonatomic, strong) CarouselView *previewView;
 @property (nonatomic, strong) UIVisualEffectView *visualEffectView;
 @property (nonatomic, assign) NSInteger currentPage;
 @property (nonatomic, assign) CurrencyExchangeType exchangeType;
@@ -34,7 +34,7 @@
 {
     self.exchangeType = exchangeType;
     
-    self.previewView = [[GalleryPreviewView alloc] initWithFrame:CGRectZero];
+    self.previewView = [[CarouselView alloc] initWithFrame:CGRectZero];
     
     UIBlurEffectStyle blurEffectStyle;
     switch (exchangeType) {
@@ -55,7 +55,7 @@
 
 // MARK: - Public
 
-- (void)updateWithModel:(GalleryPreviewData *)model {
+- (void)updateWithModel:(CarouselData *)model {
     [self.previewView setViewData:model];
 }
 

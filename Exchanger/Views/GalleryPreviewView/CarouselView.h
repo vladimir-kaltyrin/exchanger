@@ -1,16 +1,16 @@
 #import <UIKit/UIKit.h>
-#import "GalleryPreviewData.h"
+#import "CarouselData.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GalleryPreviewView : UIView
+@interface CarouselView : UIView
 @property (nonatomic, strong) void(^onSelect)(BOOL);
 @property (nonatomic, strong, nullable) void(^onPageChange)(NSInteger current);
 @property (nonatomic, strong, nullable) void(^onPageDidAppear)();
 @property (nonatomic, strong, nullable) void(^onPageWillChange)();
 @property (nonatomic, strong) void(^onFocus)();
     
-- (void)setViewData:(GalleryPreviewData *)data;
+- (void)setViewData:(CarouselData *)data;
 
 - (void)focus;
 
