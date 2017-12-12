@@ -13,7 +13,6 @@
 
 - (void)setOnPageChange:(void (^)(CurrencyExchangeType, NSInteger))onPageChange;
 - (void)setExchangeSourceCurrency:(Currency *)sourceCurrency targetCurrency:(Currency *)targetCurrency;
-- (void)setOnInputChange:(void (^)(NSString *))onInputChange;
 - (void)focusOnStart;
 - (void)updateKeyboardData:(nullable KeyboardData *)keyboardData;
 - (void)setViewData:(nullable ExchangeMoneyViewData *)viewData;

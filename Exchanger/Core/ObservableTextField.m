@@ -1,4 +1,5 @@
 #import "ObservableTextField.h"
+#import "SafeBlocks.h"
 
 @interface ObservableTextField() <UITextFieldDelegate>
 @property (nonatomic, strong) UITextField *textField;
@@ -14,7 +15,6 @@
     if (self) {
         self.textField = [[UITextField alloc] initWithFrame:CGRectZero];
         self.textField.delegate = self;
-        self.text = @"";
         
         [self addSubview:self.textField];
     }
@@ -57,22 +57,29 @@
 }
 
 - (void)setText:(NSString *)text {
+    
     if (self.formatter) {
-        [self setAttributedText:self.formatter(text)];
+        FormatterResultData *data = self.formatter(text);
+        
+        _text = data.string;
+        
+        [self setAttributedText:data.formattedString];
     } else {
-        self.textField.text = text;
+        
+        _text = text;
+        
+        self.textField.text = self.text;
     }
+    
+    block(self.onTextChange, self.text);
 }
 
 // MARK: - UITextFieldDelegate
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    if (self.onTextChange == nil) {
-        return YES;
-    }
     
-    NSString *resultString = self.text;
+    NSString *resultString = self.text == nil ? @"" : self.text;
     if ([string isEqualToString:@""]) {
         if (resultString.length > 0) {
             resultString = [resultString substringToIndex:resultString.length - 1];
@@ -83,7 +90,7 @@
     
     [self setText:resultString];
     
-    return self.onTextChange(resultString);
+    return NO;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
