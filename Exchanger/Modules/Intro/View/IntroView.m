@@ -6,7 +6,6 @@
 @interface IntroView()
 @property (nonatomic, strong) UIImageView *backgroundImageView;
 @property (nonatomic, strong) UIView *overlayView;
-@property (nonatomic, strong) UIVisualEffectView *visualEffectView;
 @property (nonatomic, strong) UIButton *resetButton;
 @property (nonatomic, strong) UIButton *startButton;
 @property (nonatomic, strong) UILabel *titleLabel;
@@ -21,19 +20,16 @@
     self = [super init];
     if (self) {
         self.backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-        [self.backgroundImageView setImageWithURL:[NSURL URLWithString:@"https://picsum.photos/800/600"]];
+        [self.backgroundImageView setImageWithURL:[NSURL URLWithString:@"https://i.pinimg.com/736x/dc/cb/9a/dccb9a92048b7ff97c636d9fd4cfbf23--wall-street-new-york-usa-wallpaper.jpg"]];
         [self addSubview:self.backgroundImageView];
         
         self.overlayView = [[UIView alloc] initWithFrame:CGRectZero];
-        self.overlayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:1 alpha:0.5];
+        self.overlayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:1 alpha:0.3];
         [self addSubview:self.overlayView];
-        
-        self.visualEffectView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
-        [self addSubview:self.visualEffectView];
         
         self.titleLabel = [[UILabel alloc] init];
         self.titleLabel.textColor = [UIColor whiteColor];
-        self.titleLabel.font = [UIFont systemFontOfSize:34];
+        self.titleLabel.font = [UIFont boldSystemFontOfSize:34];
         self.titleLabel.numberOfLines = 2;
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:self.titleLabel];
@@ -65,7 +61,6 @@
     
     self.backgroundImageView.frame = self.bounds;
     self.overlayView.frame = self.bounds;
-    self.visualEffectView.frame = self.bounds;
     
     CGSize buttonSize = CGSizeMake(160, 60);
     

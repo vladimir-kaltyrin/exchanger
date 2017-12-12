@@ -33,6 +33,7 @@
 // MARK: - Public
 
 - (FormatterResultData *)format:(NSString *)balance sign:(BalanceFormatterSign)sign {
+    
     NSAttributedString *formattedString = [self attributedFormatBalance:balance sign:sign];
     
     NSString *newBalance;
@@ -95,6 +96,7 @@
 }
 
 - (NSString *)applySign:(BalanceFormatterSign)sign text:(NSString *)text {
+    
     if (text.floatValue != 0) {
         switch (sign) {
             case BalanceFormatterSignPlus:

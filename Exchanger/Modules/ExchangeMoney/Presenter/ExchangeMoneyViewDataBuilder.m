@@ -134,7 +134,7 @@
         if (self.activeExchangeRate == CurrencyExchangeTargetType) {
             numberText = [self.numbersFormatter format:text];
         } else {
-            numberText = self.targetWallet.amount.stringValue;
+            numberText = @(fabs(self.targetWallet.amount.floatValue)).stringValue;
         }
         
         FormatterResultData *data = [self formattedIncomeInput:numberText];
