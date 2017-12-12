@@ -6,6 +6,7 @@ target 'Exchanger' do
   # use_frameworks!
   pod 'XMLDictionary', '~> 1.4.1'
   pod 'AFNetworking/UIKit', '~> 3.1.0'
+  pod 'ObjectiveSugar'
 
   # Pods for Exchanger
 
