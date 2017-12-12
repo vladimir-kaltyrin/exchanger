@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 
-@interface GalleryPreviewPageIndicator : UIView
+@interface CarouselPageIndicator : UIView
 
 - (void)setCurrentPage:(NSInteger)currentPage ofTotal:(NSInteger)total;
 

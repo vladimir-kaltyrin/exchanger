@@ -1,11 +1,11 @@
-#import "GalleryPreviewPageIndicator.h"
+#import "CarouselPageIndicator.h"
 #import "UIView+Properties.h"
 
-@interface GalleryPreviewPageIndicator ()
+@interface CarouselPageIndicator ()
 @property (nonatomic, strong) UIPageControl *pageControl;
 @end
 
-@implementation GalleryPreviewPageIndicator
+@implementation CarouselPageIndicator
 
 - (instancetype)init {
     return [self initWithFrame:CGRectZero];

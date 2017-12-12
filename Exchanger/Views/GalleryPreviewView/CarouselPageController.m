@@ -1,24 +1,24 @@
-#import "GalleryPreviewPageController.h"
-#import "GalleryPreviewPage.h"
-#import "GalleryPreviewController.h"
+#import "CarouselPageController.h"
+#import "CarouselPage.h"
+#import "CarouselController.h"
 #import "UIView+Debug.h"
 #import "SafeBlocks.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GalleryPreviewPageController ()
-@property (nonatomic, strong) GalleryPreviewPage *pageView;
+@interface CarouselPageController ()
+@property (nonatomic, strong) CarouselPage *pageView;
 @end
 
 NS_ASSUME_NONNULL_END
 
-@implementation GalleryPreviewPageController
+@implementation CarouselPageController
 
-- (instancetype)initWithIndex:(NSInteger)index data:(GalleryPreviewPageData *)data {
+- (instancetype)initWithIndex:(NSInteger)index data:(CarouselPageData *)data {
     if (self = [super initWithNibName:nil bundle:nil]) {
         _index = index;
         
-        self.pageView = [[GalleryPreviewPage alloc] initWithFrame:CGRectZero];
+        self.pageView = [[CarouselPage alloc] initWithFrame:CGRectZero];
         [self.pageView setViewData:data];
         
     }

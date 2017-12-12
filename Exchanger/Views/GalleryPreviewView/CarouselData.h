@@ -1,16 +1,16 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "GalleryPreviewPageData.h"
+#import "CarouselPageData.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GalleryPreviewData : NSObject
+@interface CarouselData : NSObject
     
-@property (nonatomic, strong, readonly) NSArray<GalleryPreviewPageData *> *pages;
+@property (nonatomic, strong, readonly) NSArray<CarouselPageData *> *pages;
 @property (nonatomic, strong, readonly, nullable) void(^onTap)();
 @property (nonatomic, assign, readonly) NSInteger currentPage;
     
-- (instancetype)initWithPages:(NSArray<GalleryPreviewPageData *> *)pages
+- (instancetype)initWithPages:(NSArray<CarouselPageData *> *)pages
                   currentPage:(NSInteger)currentPage
                         onTap:(void(^)())onTap;
     

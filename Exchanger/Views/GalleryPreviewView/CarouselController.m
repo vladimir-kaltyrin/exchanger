@@ -1,18 +1,18 @@
-#import "GalleryPreviewController.h"
-#import "GalleryPreviewPageData.h"
-#import "GalleryPreviewPageController.h"
-#import "GalleryPreviewPage.h"
+#import "CarouselController.h"
+#import "CarouselPageData.h"
+#import "CarouselPageController.h"
+#import "CarouselPage.h"
 #import "SafeBlocks.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GalleryPreviewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
-@property (nonatomic, strong) NSArray<GalleryPreviewPageData *> *data;
+@interface CarouselController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
+@property (nonatomic, strong) NSArray<CarouselPageData *> *data;
 @end
 
 NS_ASSUME_NONNULL_END
 
-@implementation GalleryPreviewController
+@implementation CarouselController
     
 // MARK: - Init
     
@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_END
 
 // MARK: - Public
     
-- (void)setData:(NSArray<GalleryPreviewPageData *> *)data currentPage:(NSInteger)currentPage {
+- (void)setData:(NSArray<CarouselPageData *> *)data currentPage:(NSInteger)currentPage {
 
     _data = data;
     
@@ -62,7 +62,7 @@ NS_ASSUME_NONNULL_END
 }
 
 - (void)focus {
-    GalleryPreviewPageController *controller = (GalleryPreviewPageController *)[self viewControllerAt:[self currentPage]];
+    CarouselPageController *controller = (CarouselPageController *)[self viewControllerAt:[self currentPage]];
     [controller focus];
 }
     
@@ -70,8 +70,8 @@ NS_ASSUME_NONNULL_END
     
 - (nullable UIViewController *)viewControllerAt: (NSInteger)index {
     if (index < self.data.count) {
-        GalleryPreviewPageData *pageData = [self.data objectAtIndex:index];
-        GalleryPreviewPageController *controller = [[GalleryPreviewPageController alloc] initWithIndex:index data:pageData];
+        CarouselPageData *pageData = [self.data objectAtIndex:index];
+        CarouselPageController *controller = [[CarouselPageController alloc] initWithIndex:index data:pageData];
         controller.onPageWillChange = self.onPageWillChange;
         controller.checkCanFocus = self.checkCanFocus;
         controller.onViewDidAppear = self.onPageDidAppear;
@@ -93,8 +93,8 @@ NS_ASSUME_NONNULL_END
     
 - (NSInteger)currentPage {
     UIViewController *firstController = self.viewControllers.firstObject;
-    if ([firstController isKindOfClass:[GalleryPreviewPageController class]]) {
-        NSInteger index = [((GalleryPreviewPageController *)firstController) index];
+    if ([firstController isKindOfClass:[CarouselPageController class]]) {
+        NSInteger index = [((CarouselPageController *)firstController) index];
         return index;
     }
     return 0;
@@ -107,8 +107,8 @@ NS_ASSUME_NONNULL_END
 {
     if (self.data.count > 1) {
         
-        if ([viewController isKindOfClass:[GalleryPreviewPageController class]]) {
-            NSInteger currentIndex = [((GalleryPreviewPageController *)viewController) index];
+        if ([viewController isKindOfClass:[CarouselPageController class]]) {
+            NSInteger currentIndex = [((CarouselPageController *)viewController) index];
             
             NSInteger index = [self nextIndexBefore:currentIndex];
             
@@ -124,8 +124,8 @@ NS_ASSUME_NONNULL_END
 {
     if (self.data.count > 1) {
         
-        if ([viewController isKindOfClass:[GalleryPreviewPageController class]]) {
-            NSInteger currentIndex = [((GalleryPreviewPageController *)viewController) index];
+        if ([viewController isKindOfClass:[CarouselPageController class]]) {
+            NSInteger currentIndex = [((CarouselPageController *)viewController) index];
             
             NSInteger index = [self nextIndexAfter:currentIndex];
             
@@ -144,8 +144,8 @@ NS_ASSUME_NONNULL_END
        transitionCompleted:(BOOL)completed
 {
     UIViewController *firstController = self.viewControllers.firstObject;
-    if ([firstController isKindOfClass:[GalleryPreviewPageController class]]) {
-        GalleryPreviewPageController* currentController = (GalleryPreviewPageController *)firstController;
+    if ([firstController isKindOfClass:[CarouselPageController class]]) {
+        CarouselPageController* currentController = (CarouselPageController *)firstController;
         NSInteger currentIndex = [currentController index];
         
         [currentController focus];

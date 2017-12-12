@@ -1,15 +1,15 @@
 #import <UIKit/UIKit.h>
 
-@class GalleryPreviewPageData;
+@class CarouselPageData;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GalleryPreviewPage : UIView
+@interface CarouselPage : UIView
 @property (nonatomic, strong) void(^onFocus)();
 
 - (instancetype)init __attribute__((unavailable("init not available")));
     
-- (void)setViewData:(GalleryPreviewPageData *)data;
+- (void)setViewData:(CarouselPageData *)data;
 
 - (void)focus;
     

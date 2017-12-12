@@ -1,12 +1,12 @@
-#import "GalleryPreviewPageData.h"
+#import "CarouselPageData.h"
 
-@implementation GalleryPreviewPageData
+@implementation CarouselPageData
     
 - (instancetype)initWithCurrencyTitle:(NSString *)currencyTitle
                                 input:(NSString *)input
                             remainder:(NSString *)remainder
                                  rate:(NSString *)rate
-                       remainderStyle:(GalleryPreviewPageRemainderStyle)remainderStyle
+                       remainderStyle:(CarouselPageRemainderStyle)remainderStyle
                        inputFormatter:(nonnull TextFieldAttributedStringFormatter)inputFormatter
                          onTextChange:(nonnull OnTextChange)onTextChange
 {

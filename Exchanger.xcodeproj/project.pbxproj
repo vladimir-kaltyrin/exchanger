@@ -44,14 +44,14 @@
 		8C45F6691FD02EA7005B3892 /* BaseUIKitRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C45F6681FD02EA7005B3892 /* BaseUIKitRouter.m */; };
 		8C45F66C1FD03222005B3892 /* BaseRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C45F66B1FD03222005B3892 /* BaseRouter.m */; };
 		8C4BC9241FD6CFE6008EB4B5 /* TextFieldConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4BC9231FD6CFE6008EB4B5 /* TextFieldConfiguration.m */; };
-		8C6423491FA0747500A95479 /* GalleryPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6423481FA0747500A95479 /* GalleryPreviewView.m */; };
-		8C64234C1FA0753500A95479 /* GalleryPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C64234B1FA0753500A95479 /* GalleryPreviewController.m */; };
-		8C6423521FA0757600A95479 /* GalleryPreviewPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6423511FA0757600A95479 /* GalleryPreviewPageController.m */; };
-		8C6423551FA0758C00A95479 /* GalleryPreviewPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6423541FA0758B00A95479 /* GalleryPreviewPage.m */; };
-		8C6423581FA075AC00A95479 /* GalleryPreviewPageIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6423571FA075AC00A95479 /* GalleryPreviewPageIndicator.m */; };
-		8C64235B1FA0761400A95479 /* GalleryPreviewPageData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C64235A1FA0761300A95479 /* GalleryPreviewPageData.m */; };
+		8C6423491FA0747500A95479 /* CarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6423481FA0747500A95479 /* CarouselView.m */; };
+		8C64234C1FA0753500A95479 /* CarouselController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C64234B1FA0753500A95479 /* CarouselController.m */; };
+		8C6423521FA0757600A95479 /* CarouselPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6423511FA0757600A95479 /* CarouselPageController.m */; };
+		8C6423551FA0758C00A95479 /* CarouselPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6423541FA0758B00A95479 /* CarouselPage.m */; };
+		8C6423581FA075AC00A95479 /* CarouselPageIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6423571FA075AC00A95479 /* CarouselPageIndicator.m */; };
+		8C64235B1FA0761400A95479 /* CarouselPageData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C64235A1FA0761300A95479 /* CarouselPageData.m */; };
 		8C64235E1FA0793F00A95479 /* ObservableImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C64235D1FA0793F00A95479 /* ObservableImageView.m */; };
-		8C6423611FA091D000A95479 /* GalleryPreviewData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6423601FA091D000A95479 /* GalleryPreviewData.m */; };
+		8C6423611FA091D000A95479 /* CarouselData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6423601FA091D000A95479 /* CarouselData.m */; };
 		8C6423641FA0966500A95479 /* MoveFailableLongPressGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6423631FA0966500A95479 /* MoveFailableLongPressGestureRecognizer.m */; };
 		8C6423711FA0B23C00A95479 /* ObservableTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6423701FA0B23C00A95479 /* ObservableTextField.m */; };
 		8C73267C1F3B345000301720 /* KeyboardData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C73267B1F3B345000301720 /* KeyboardData.m */; };
@@ -188,22 +188,22 @@
 		8C45F66B1FD03222005B3892 /* BaseRouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BaseRouter.m; path = Core/BaseRouter.m; sourceTree = "<group>"; };
 		8C4BC9221FD6CFE6008EB4B5 /* TextFieldConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TextFieldConfiguration.h; path = Core/TextFieldConfiguration.h; sourceTree = "<group>"; };
 		8C4BC9231FD6CFE6008EB4B5 /* TextFieldConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TextFieldConfiguration.m; path = Core/TextFieldConfiguration.m; sourceTree = "<group>"; };
-		8C6423471FA0747500A95479 /* GalleryPreviewView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GalleryPreviewView.h; path = Views/GalleryPreviewView/GalleryPreviewView.h; sourceTree = "<group>"; };
-		8C6423481FA0747500A95479 /* GalleryPreviewView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GalleryPreviewView.m; path = Views/GalleryPreviewView/GalleryPreviewView.m; sourceTree = "<group>"; };
-		8C64234A1FA0753500A95479 /* GalleryPreviewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GalleryPreviewController.h; path = Views/GalleryPreviewView/GalleryPreviewController.h; sourceTree = "<group>"; };
-		8C64234B1FA0753500A95479 /* GalleryPreviewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GalleryPreviewController.m; path = Views/GalleryPreviewView/GalleryPreviewController.m; sourceTree = "<group>"; };
-		8C6423501FA0757600A95479 /* GalleryPreviewPageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GalleryPreviewPageController.h; path = Views/GalleryPreviewView/GalleryPreviewPageController.h; sourceTree = "<group>"; };
-		8C6423511FA0757600A95479 /* GalleryPreviewPageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GalleryPreviewPageController.m; path = Views/GalleryPreviewView/GalleryPreviewPageController.m; sourceTree = "<group>"; };
-		8C6423531FA0758B00A95479 /* GalleryPreviewPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GalleryPreviewPage.h; path = Views/GalleryPreviewView/GalleryPreviewPage.h; sourceTree = "<group>"; };
-		8C6423541FA0758B00A95479 /* GalleryPreviewPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GalleryPreviewPage.m; path = Views/GalleryPreviewView/GalleryPreviewPage.m; sourceTree = "<group>"; };
-		8C6423561FA075AC00A95479 /* GalleryPreviewPageIndicator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GalleryPreviewPageIndicator.h; path = Views/GalleryPreviewView/GalleryPreviewPageIndicator.h; sourceTree = "<group>"; };
-		8C6423571FA075AC00A95479 /* GalleryPreviewPageIndicator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GalleryPreviewPageIndicator.m; path = Views/GalleryPreviewView/GalleryPreviewPageIndicator.m; sourceTree = "<group>"; };
-		8C6423591FA0761300A95479 /* GalleryPreviewPageData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GalleryPreviewPageData.h; path = Views/GalleryPreviewView/GalleryPreviewPageData.h; sourceTree = "<group>"; };
-		8C64235A1FA0761300A95479 /* GalleryPreviewPageData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GalleryPreviewPageData.m; path = Views/GalleryPreviewView/GalleryPreviewPageData.m; sourceTree = "<group>"; };
+		8C6423471FA0747500A95479 /* CarouselView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CarouselView.h; path = Views/GalleryPreviewView/CarouselView.h; sourceTree = "<group>"; };
+		8C6423481FA0747500A95479 /* CarouselView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CarouselView.m; path = Views/GalleryPreviewView/CarouselView.m; sourceTree = "<group>"; };
+		8C64234A1FA0753500A95479 /* CarouselController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CarouselController.h; path = Views/GalleryPreviewView/CarouselController.h; sourceTree = "<group>"; };
+		8C64234B1FA0753500A95479 /* CarouselController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CarouselController.m; path = Views/GalleryPreviewView/CarouselController.m; sourceTree = "<group>"; };
+		8C6423501FA0757600A95479 /* CarouselPageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CarouselPageController.h; path = Views/GalleryPreviewView/CarouselPageController.h; sourceTree = "<group>"; };
+		8C6423511FA0757600A95479 /* CarouselPageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CarouselPageController.m; path = Views/GalleryPreviewView/CarouselPageController.m; sourceTree = "<group>"; };
+		8C6423531FA0758B00A95479 /* CarouselPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CarouselPage.h; path = Views/GalleryPreviewView/CarouselPage.h; sourceTree = "<group>"; };
+		8C6423541FA0758B00A95479 /* CarouselPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CarouselPage.m; path = Views/GalleryPreviewView/CarouselPage.m; sourceTree = "<group>"; };
+		8C6423561FA075AC00A95479 /* CarouselPageIndicator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CarouselPageIndicator.h; path = Views/GalleryPreviewView/CarouselPageIndicator.h; sourceTree = "<group>"; };
+		8C6423571FA075AC00A95479 /* CarouselPageIndicator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CarouselPageIndicator.m; path = Views/GalleryPreviewView/CarouselPageIndicator.m; sourceTree = "<group>"; };
+		8C6423591FA0761300A95479 /* CarouselPageData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CarouselPageData.h; path = Views/GalleryPreviewView/CarouselPageData.h; sourceTree = "<group>"; };
+		8C64235A1FA0761300A95479 /* CarouselPageData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CarouselPageData.m; path = Views/GalleryPreviewView/CarouselPageData.m; sourceTree = "<group>"; };
 		8C64235C1FA0793F00A95479 /* ObservableImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ObservableImageView.h; path = Core/ObservableImageView.h; sourceTree = "<group>"; };
 		8C64235D1FA0793F00A95479 /* ObservableImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ObservableImageView.m; path = Core/ObservableImageView.m; sourceTree = "<group>"; };
-		8C64235F1FA091D000A95479 /* GalleryPreviewData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GalleryPreviewData.h; path = Views/GalleryPreviewView/GalleryPreviewData.h; sourceTree = "<group>"; };
-		8C6423601FA091D000A95479 /* GalleryPreviewData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GalleryPreviewData.m; path = Views/GalleryPreviewView/GalleryPreviewData.m; sourceTree = "<group>"; };
+		8C64235F1FA091D000A95479 /* CarouselData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CarouselData.h; path = Views/GalleryPreviewView/CarouselData.h; sourceTree = "<group>"; };
+		8C6423601FA091D000A95479 /* CarouselData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CarouselData.m; path = Views/GalleryPreviewView/CarouselData.m; sourceTree = "<group>"; };
 		8C6423621FA0966500A95479 /* MoveFailableLongPressGestureRecognizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MoveFailableLongPressGestureRecognizer.h; path = Core/MoveFailableLongPressGestureRecognizer.h; sourceTree = "<group>"; };
 		8C6423631FA0966500A95479 /* MoveFailableLongPressGestureRecognizer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MoveFailableLongPressGestureRecognizer.m; path = Core/MoveFailableLongPressGestureRecognizer.m; sourceTree = "<group>"; };
 		8C64236F1FA0B23C00A95479 /* ObservableTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ObservableTextField.h; path = Core/ObservableTextField.h; sourceTree = "<group>"; };
@@ -560,30 +560,30 @@
 		8C6423451FA0744D00A95479 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8C6423461FA0745200A95479 /* GalleryPreviewView */,
+				8C6423461FA0745200A95479 /* CarouselView */,
 			);
 			name = Views;
 			sourceTree = "<group>";
 		};
-		8C6423461FA0745200A95479 /* GalleryPreviewView */ = {
+		8C6423461FA0745200A95479 /* CarouselView */ = {
 			isa = PBXGroup;
 			children = (
-				8C6423531FA0758B00A95479 /* GalleryPreviewPage.h */,
-				8C6423541FA0758B00A95479 /* GalleryPreviewPage.m */,
-				8C6423471FA0747500A95479 /* GalleryPreviewView.h */,
-				8C6423481FA0747500A95479 /* GalleryPreviewView.m */,
-				8C64234A1FA0753500A95479 /* GalleryPreviewController.h */,
-				8C64234B1FA0753500A95479 /* GalleryPreviewController.m */,
-				8C6423501FA0757600A95479 /* GalleryPreviewPageController.h */,
-				8C6423511FA0757600A95479 /* GalleryPreviewPageController.m */,
-				8C6423561FA075AC00A95479 /* GalleryPreviewPageIndicator.h */,
-				8C6423571FA075AC00A95479 /* GalleryPreviewPageIndicator.m */,
-				8C6423591FA0761300A95479 /* GalleryPreviewPageData.h */,
-				8C64235A1FA0761300A95479 /* GalleryPreviewPageData.m */,
-				8C64235F1FA091D000A95479 /* GalleryPreviewData.h */,
-				8C6423601FA091D000A95479 /* GalleryPreviewData.m */,
+				8C6423531FA0758B00A95479 /* CarouselPage.h */,
+				8C6423541FA0758B00A95479 /* CarouselPage.m */,
+				8C6423471FA0747500A95479 /* CarouselView.h */,
+				8C6423481FA0747500A95479 /* CarouselView.m */,
+				8C64234A1FA0753500A95479 /* CarouselController.h */,
+				8C64234B1FA0753500A95479 /* CarouselController.m */,
+				8C6423501FA0757600A95479 /* CarouselPageController.h */,
+				8C6423511FA0757600A95479 /* CarouselPageController.m */,
+				8C6423561FA075AC00A95479 /* CarouselPageIndicator.h */,
+				8C6423571FA075AC00A95479 /* CarouselPageIndicator.m */,
+				8C6423591FA0761300A95479 /* CarouselPageData.h */,
+				8C64235A1FA0761300A95479 /* CarouselPageData.m */,
+				8C64235F1FA091D000A95479 /* CarouselData.h */,
+				8C6423601FA091D000A95479 /* CarouselData.m */,
 			);
-			name = GalleryPreviewView;
+			name = CarouselView;
 			sourceTree = "<group>";
 		};
 		8C73267F1F3C8D2400301720 /* UserService */ = {
@@ -1149,14 +1149,14 @@
 				8C45F65A1FD01D1C005B3892 /* IntroView.m in Sources */,
 				8CD786251F14F23400AF7A8D /* ExchangeMoneyView.m in Sources */,
 				8CC705FA1F27CF51008770E2 /* ExchangeRatesData.m in Sources */,
-				8C64234C1FA0753500A95479 /* GalleryPreviewController.m in Sources */,
+				8C64234C1FA0753500A95479 /* CarouselController.m in Sources */,
 				8CCE8A3E1FDADB99003609F5 /* ExchangeMoneyViewDataBuilder.m in Sources */,
 				8CF9645A1F1CD11B009852B9 /* ExchangeMoneyCurrencyView.m in Sources */,
 				8C36E99B1F2653D8009BDDC0 /* ExchangeRatesResponse.m in Sources */,
 				8CD786261F14F23400AF7A8D /* ExchangeMoneyViewController.m in Sources */,
 				8CD786331F14F26700AF7A8D /* ExchangeRatesUpdaterImpl.m in Sources */,
 				8C4BC9241FD6CFE6008EB4B5 /* TextFieldConfiguration.m in Sources */,
-				8C6423611FA091D000A95479 /* GalleryPreviewData.m in Sources */,
+				8C6423611FA091D000A95479 /* CarouselData.m in Sources */,
 				8C84A1801FDFE2A00099A666 /* FormatterResultData.m in Sources */,
 				8CC843C31FD58C8400EC0CD3 /* FormatterFactoryImpl.m in Sources */,
 				8CD786491F14F2B800AF7A8D /* Currency.m in Sources */,
@@ -1165,7 +1165,7 @@
 				8C076BA71FD150FA003F4D42 /* Wallet.m in Sources */,
 				8CD7861A1F14F22600AF7A8D /* ExchangeMoneyInteractorImpl.m in Sources */,
 				8C1FEFCB1F13A76A0024F046 /* ServiceFactoryImpl.m in Sources */,
-				8C6423551FA0758C00A95479 /* GalleryPreviewPage.m in Sources */,
+				8C6423551FA0758C00A95479 /* CarouselPage.m in Sources */,
 				8CC843C01FD57C6800EC0CD3 /* AttributedStringStyle.m in Sources */,
 				8C7326831F3C8D5800301720 /* UserServiceImpl.m in Sources */,
 				8CD786591F14F86100AF7A8D /* AssemblyFactoryImpl.m in Sources */,
@@ -1182,7 +1182,7 @@
 				8CFCEA411FDAB81900202024 /* RoundingFormatterImpl.m in Sources */,
 				8CF964171F165C24009852B9 /* AssembledViewController.m in Sources */,
 				8C45F6661FD01F17005B3892 /* IntroRouterImpl.m in Sources */,
-				8C64235B1FA0761400A95479 /* GalleryPreviewPageData.m in Sources */,
+				8C64235B1FA0761400A95479 /* CarouselPageData.m in Sources */,
 				8C076B9F1FD03DF4003F4D42 /* DisposeBag.m in Sources */,
 				8CC843CB1FD5913800EC0CD3 /* CurrencyFormatterImpl.m in Sources */,
 				8C84A1831FDFE8B80099A666 /* BalanceParseData.m in Sources */,
@@ -1190,20 +1190,20 @@
 				8CF9641E1F165C31009852B9 /* main.m in Sources */,
 				8CD786561F14F82000AF7A8D /* AssemblySeed.m in Sources */,
 				8CD7862F1F14F24600AF7A8D /* ExchangeRatesServiceImpl.m in Sources */,
-				8C6423581FA075AC00A95479 /* GalleryPreviewPageIndicator.m in Sources */,
+				8C6423581FA075AC00A95479 /* CarouselPageIndicator.m in Sources */,
 				8C6423711FA0B23C00A95479 /* ObservableTextField.m in Sources */,
 				8C45F6601FD01DE4005B3892 /* IntroPresenter.m in Sources */,
 				8C84A1861FDFEC0C0099A666 /* FormattedStringData.m in Sources */,
 				8CC843DF1FD6A0A700EC0CD3 /* NumbersFormatterImpl.m in Sources */,
 				8C45F6631FD01E2D005B3892 /* IntroInteractorImpl.m in Sources */,
-				8C6423521FA0757600A95479 /* GalleryPreviewPageController.m in Sources */,
+				8C6423521FA0757600A95479 /* CarouselPageController.m in Sources */,
 				8C45F6571FD01CD2005B3892 /* IntroViewController.m in Sources */,
 				8CD786391F14F27F00AF7A8D /* ExchangeMoneyServiceImpl.m in Sources */,
 				8C94B4E61F3E162B00B2B9FC /* ExchangeMoneyTitleView.m in Sources */,
 				8CF9641C1F165C31009852B9 /* AppDelegate.m in Sources */,
 				8CD7863E1F14F29000AF7A8D /* XMLParserImpl.m in Sources */,
 				8CC843D01FD5914500EC0CD3 /* BalanceFormatterImpl.m in Sources */,
-				8C6423491FA0747500A95479 /* GalleryPreviewView.m in Sources */,
+				8C6423491FA0747500A95479 /* CarouselView.m in Sources */,
 				8CCE8A4C1FDEC3F7003609F5 /* UITextField+Configuration.m in Sources */,
 				8CD786531F14F7B700AF7A8D /* BaseAssembly.m in Sources */,
 				8CD786201F14F22D00AF7A8D /* ExchangeMoneyPresenter.m in Sources */,

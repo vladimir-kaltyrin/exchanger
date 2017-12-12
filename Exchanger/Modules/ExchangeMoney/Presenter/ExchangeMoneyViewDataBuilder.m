@@ -1,7 +1,7 @@
 #import <ObjectiveSugar/ObjectiveSugar.h>
 #import "ExchangeMoneyViewDataBuilder.h"
 #import "User.h"
-#import "GalleryPreviewData.h"
+#import "CarouselData.h"
 #import "FormatterFactoryImpl.h"
 #import "CurrencyExchangeType.h"
 #import "SafeBlocks.h"
@@ -64,13 +64,13 @@
 
 - (ExchangeMoneyViewData *)build {
     
-    GalleryPreviewData *sourceData = [self previewDataWithCurrencyExchangeType:CurrencyExchangeSourceType
+    CarouselData *sourceData = [self previewDataWithCurrencyExchangeType:CurrencyExchangeSourceType
                                                                           user:self.user
                                                                     currencies:self.currencies
                                                                   targetWallet:self.targetWallet
                                                                   invertedRate:self.invertedRate];
     
-    GalleryPreviewData *targetData = [self previewDataWithCurrencyExchangeType:CurrencyExchangeTargetType
+    CarouselData *targetData = [self previewDataWithCurrencyExchangeType:CurrencyExchangeTargetType
                                                                           user:self.user
                                                                     currencies:self.currencies
                                                                   targetWallet:self.targetWallet
@@ -84,7 +84,7 @@
 
 // MARK: - Private
 
-- (GalleryPreviewPageData *)sourceCurrencyPageDataWithCurrency:(Currency *)currency {
+- (CarouselPageData *)sourceCurrencyPageDataWithCurrency:(Currency *)currency {
     NSString *currencyTitle = currency.currencyCode;
     NSString *remainder = [self balanceWithUser:self.user currencyType:currency.currencyType];
     NSString *rate = @"";
@@ -108,18 +108,18 @@
         input = inputFormatter(self.incomeInput).string;
     };
     
-    GalleryPreviewPageRemainderStyle remainderStyle;
+    CarouselPageRemainderStyle remainderStyle;
     if (self.isDeficiency) {
-        remainderStyle = GalleryPreviewPageRemainderStyleDeficiency;
+        remainderStyle = CarouselPageRemainderStyleDeficiency;
     } else {
-        remainderStyle = GalleryPreviewPageRemainderStyleNormal;
+        remainderStyle = CarouselPageRemainderStyleNormal;
     }
     
     OnTextChange onTextChange = ^(NSString *text) {
         block(self.onInputChange, text, CurrencyExchangeSourceType);
     };
     
-    return [[GalleryPreviewPageData alloc] initWithCurrencyTitle:currencyTitle
+    return [[CarouselPageData alloc] initWithCurrencyTitle:currencyTitle
                                                            input:input
                                                        remainder:remainder
                                                             rate:rate
@@ -129,7 +129,7 @@
     
 }
 
-- (GalleryPreviewPageData *)targetCurrencyPageDataWithCurrency:(Currency *)currency {
+- (CarouselPageData *)targetCurrencyPageDataWithCurrency:(Currency *)currency {
     NSString *currencyTitle = currency.currencyCode;
     NSString *remainder = [self balanceWithUser:self.user currencyType:currency.currencyType];
     NSString *rate = [NSString stringWithFormat:@"%@1 = %@%@",
@@ -156,13 +156,13 @@
         input = inputFormatter(self.expenseInput).string;
     };
     
-    GalleryPreviewPageRemainderStyle remainderStyle = GalleryPreviewPageRemainderStyleNormal;
+    CarouselPageRemainderStyle remainderStyle = CarouselPageRemainderStyleNormal;
     
     OnTextChange onTextChange = ^(NSString *text) {
         block(self.onInputChange, text, CurrencyExchangeSourceType);
     };
     
-    return [[GalleryPreviewPageData alloc] initWithCurrencyTitle:currencyTitle
+    return [[CarouselPageData alloc] initWithCurrencyTitle:currencyTitle
                                                            input:input
                                                        remainder:remainder
                                                             rate:rate
@@ -172,13 +172,13 @@
     
 }
 
-- (GalleryPreviewData *)previewDataWithCurrencyExchangeType:(CurrencyExchangeType)currencyExchangeType
+- (CarouselData *)previewDataWithCurrencyExchangeType:(CurrencyExchangeType)currencyExchangeType
                                                        user:(User *)user
                                                  currencies:(NSArray<Currency *> *)currencies
                                                targetWallet:(Wallet *)targetWallet
                                                invertedRate:(NSNumber *)invertedRate
 {
-    NSArray<GalleryPreviewPageData *> *pages;
+    NSArray<CarouselPageData *> *pages;
     switch (currencyExchangeType) {
         case CurrencyExchangeSourceType:
         {
@@ -211,7 +211,7 @@
         currentPage = 0;
     }
     
-    GalleryPreviewData *viewData = [[GalleryPreviewData alloc] initWithPages:pages
+    CarouselData *viewData = [[CarouselData alloc] initWithPages:pages
                                                                  currentPage:currentPage
                                                                        onTap:nil];
     
