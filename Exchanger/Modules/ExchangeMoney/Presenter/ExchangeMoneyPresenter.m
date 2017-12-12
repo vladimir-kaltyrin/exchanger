@@ -82,9 +82,8 @@
                                    } onError:nil];
     }];
     
-    // TODO: fix retain-reference cycle
     [self.view setOnCancelTap:^{
-        block(self.onFinish);
+        block(weakSelf.onFinish);
     }];
     
     [self.interactor setOnUpdate:^(ExchangeRatesData *data) {
@@ -130,7 +129,7 @@
                              targetCurrency:weakSelf.interactor.targetCurrency
                                    onResult:^(Wallet *targetWallet, NSNumber *invertedRate)
         {
-            BOOL isDeficiency = [weakSelf checkUserHasBalanceDeficiency:user currency:weakSelf.interactor.sourceCurrency];
+            BOOL isDeficiency = [weakSelf checkUserHasBalanceDeficiency:user];
             
             ExchangeMoneyViewDataBuilder *builder = [[ExchangeMoneyViewDataBuilder alloc] initWithUser:user
                                                                                             currencies:ratesData.currencies
@@ -208,7 +207,7 @@
         
         BOOL isEqualCurrencies = sourceCurrency.currencyType == targetCurrency.currencyType;
 
-        BOOL isDeficiency = [weakSelf checkUserHasBalanceDeficiency:user currency:sourceCurrency];
+        BOOL isDeficiency = [weakSelf checkUserHasBalanceDeficiency:user];
         
         BOOL isEnabled = !isDeficiency && !isEqualCurrencies;
         
@@ -216,8 +215,8 @@
     }];
 }
 
-- (BOOL)checkUserHasBalanceDeficiency:(User *)user currency:(Currency *)currency {
-    Wallet *wallet = [user walletWithCurrencyType:currency.currencyType];
+- (BOOL)checkUserHasBalanceDeficiency:(User *)user {
+    Wallet *wallet = [user walletWithCurrencyType:self.interactor.sourceCurrency.currencyType];
     return fabs(self.expenseInput.floatValue) > fabs(wallet.amount.floatValue);
 }
 
