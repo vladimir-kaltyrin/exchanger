@@ -22,6 +22,8 @@ CGFloat const kFontSize = 34.0;
 @property (nonatomic, strong) ExchangeMoneyCurrencyView *sourceCurrencyView;
 @property (nonatomic, strong) ExchangeMoneyCurrencyView *targetCurrencyView;
 @property (nonatomic, assign) CGFloat keyboardHeight;
+@property (nonatomic, strong) OnExchangeTypeChange onExchangeTypeChange;
+@property (nonatomic, assign) CurrencyExchangeType activeExchangeType;
 @end
 
 @implementation ExchangeMoneyView
@@ -61,12 +63,36 @@ CGFloat const kFontSize = 34.0;
     
     __weak typeof(self) weakSelf = self;
     [self.sourceCurrencyView setOnFocus:^{
-        [weakSelf focusOnSourceView];
+        [weakSelf setActiveCurrencyExchangeType:CurrencyExchangeSourceType];
     }];
     
     [self.targetCurrencyView setOnFocus:^{
-        [weakSelf focusOnTargetView];
+        [weakSelf setActiveCurrencyExchangeType:CurrencyExchangeTargetType];
     }];
+}
+
+- (void)setActiveCurrencyExchangeType:(CurrencyExchangeType)exchangeType {
+    
+    CurrencyExchangeType oldValue = self.activeExchangeType;
+    
+    _activeExchangeType = exchangeType;
+    
+    switch (exchangeType) {
+        case CurrencyExchangeSourceType:
+        {
+            [self focusOnSourceView];
+        }
+            break;
+        case CurrencyExchangeTargetType:
+        {
+            [self focusOnTargetView];
+        }
+            break;
+    }
+    
+    if (oldValue != exchangeType) {
+        block(self.onExchangeTypeChange, self.activeExchangeType);
+    }
 }
 
 - (void)updateKeyboardData:(KeyboardData *)keyboardData {
@@ -95,6 +121,10 @@ CGFloat const kFontSize = 34.0;
 - (void)setOnPageChange:(void (^)(CurrencyExchangeType, NSInteger))onPageChange {
     [self.sourceCurrencyView setOnPageChange:onPageChange];
     [self.targetCurrencyView setOnPageChange:onPageChange];
+}
+
+- (void)setOnExchangeTypeChange:(OnExchangeTypeChange)onExchangeTypeChange {
+    _onExchangeTypeChange = onExchangeTypeChange;
 }
 
 // MARK: - Private

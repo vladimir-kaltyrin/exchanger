@@ -113,4 +113,12 @@
     self.exchangeBarButton.barButtonItem.enabled = enabled;
 }
 
+- (void)setActiveCurrencyExchangeType:(CurrencyExchangeType)exchangeType {
+    [self.exchangeMoneyView setActiveCurrencyExchangeType:exchangeType];
+}
+
+- (void)setOnExchangeTypeChange:(OnExchangeTypeChange)onExchangeTypeChange {
+    [self.exchangeMoneyView setOnExchangeTypeChange:onExchangeTypeChange];
+}
+
 @end
