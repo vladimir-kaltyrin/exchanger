@@ -115,11 +115,20 @@
 
 - (void)exchangeWallet:(Wallet *)wallet
         targetCurrency:(Currency *)currency
-              onResult:(void(^)(Wallet *wallet, NSNumber *invertedRate))onResult
+              onResult:(void(^)(Wallet *wallet))onResult
 {
     [self.exchangeMoneyService exchangeWallet:wallet
                                targetCurrency:currency
                                      onResult:onResult];
+}
+
+- (void)convertedCurrencyWithSourceCurrency:(Currency *)sourceCurrency
+                             targetCurrency:(Currency *)targetCurrency
+                                  onConvert:(void(^)(Currency *))onConvert
+{
+    [self.exchangeMoneyService convertedCurrencyWithSourceCurrency:sourceCurrency
+                                                    targetCurrency:targetCurrency
+                                                         onConvert:onConvert];
 }
 
 // MARK: - Private

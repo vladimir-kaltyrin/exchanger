@@ -48,7 +48,7 @@
 
 - (void)exchangeWallet:(Wallet *)wallet
         targetCurrency:(Currency *)currency
-              onResult:(void (^)(Wallet *wallet, NSNumber *invertedRate))onResult
+              onResult:(void (^)(Wallet *wallet))onResult
 {
     __weak typeof(self) welf = self;
     [self convertedCurrencyWithSourceCurrency:wallet.currency
@@ -58,12 +58,7 @@
         Wallet *resultWallet = [welf exchangeMoneyAmount:wallet.amount
                                                 withCurrency:convertedCurrency];
         
-        [welf convertedCurrencyWithSourceCurrency:currency
-                                       targetCurrency:wallet.currency
-                                            onConvert:^(Currency *invertedConvertedCurrency)
-        {
-            block(onResult, resultWallet, invertedConvertedCurrency.rate);
-        }];
+        block(onResult, resultWallet);
     }];
 }
 
