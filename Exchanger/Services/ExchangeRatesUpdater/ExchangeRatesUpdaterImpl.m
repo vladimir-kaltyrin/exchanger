@@ -32,10 +32,12 @@ NSTimeInterval const kUpdateFrequency = 30.0f;
     [self stop];
     
     self.timer = [NSTimer timerWithTimeInterval:kUpdateFrequency target:self selector:@selector(fetch) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
 }
 
 - (void)fetch {
     __weak typeof(self) weakSelf = self;
+    
     [self.exchangeRatesService fetchRates:^(ExchangeRatesData *data) {
         block(weakSelf.onUpdate, data);
     } onError:^(NSError *error) {
