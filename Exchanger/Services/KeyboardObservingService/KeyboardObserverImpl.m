@@ -3,6 +3,7 @@
 #import "KeyboardData.h"
 
 @interface KeyboardObserverImpl()
+@property (nonatomic, strong) NSValue *keyboardFrameBegin;
 @end
 
 @implementation KeyboardObserverImpl
@@ -28,11 +29,15 @@
 
 - (void)keyboardWillShown:(NSNotification *)notification {
     
+    if (self.keyboardFrameBegin != nil) {
+        return;
+    }
+    
     NSDictionary *info = notification.userInfo;
     NSString *keyboardFrameBeginKey = UIKeyboardFrameEndUserInfoKey;
-    NSValue *keyboardFrameBegin = [info objectForKey:keyboardFrameBeginKey];
+    self.keyboardFrameBegin = [info objectForKey:keyboardFrameBeginKey];
     
-    KeyboardData *keyboardData = [[KeyboardData alloc] initWithSize:keyboardFrameBegin.CGRectValue.size];
+    KeyboardData *keyboardData = [[KeyboardData alloc] initWithSize:self.keyboardFrameBegin.CGRectValue.size];
     
     onKeyboardData(keyboardData);
 }
