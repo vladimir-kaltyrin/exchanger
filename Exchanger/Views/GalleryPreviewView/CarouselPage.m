@@ -39,9 +39,9 @@ NS_ASSUME_NONNULL_BEGIN
         self.textField = [[ObservableTextField alloc] init];
         [self.textField setConfiguration:[TextFieldConfiguration inputConfiguration]];
         
-        __weak typeof(self) weakSelf = self;
+        __weak typeof(self) welf = self;
         self.textField.onBeginEditing = ^{
-            block(weakSelf.onFocus);
+            block(welf.onFocus);
         };
         
         [self addSubview:self.currencyTitleLabel];

@@ -24,12 +24,12 @@ static NSString *const kXmlUrl = @"http://www.ecb.europa.eu/stats/eurofxref/euro
     NSURL *url = [[NSURL alloc] initWithString:kXmlUrl];
     NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
-        __weak typeof(self) weakSelf = self;
+        __weak typeof(self) welf = self;
         [self.parser parse:data onComplete:^(NSDictionary *dictionary) {
             
             dispatch_async(dispatch_get_global_queue(0, 0), ^{
                 ExchangeRatesResponse *response = [[ExchangeRatesResponse alloc] initWithDictionary:dictionary];
-                ExchangeRatesData *data = [weakSelf processResponse:response];
+                ExchangeRatesData *data = [welf processResponse:response];
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     onData(data);

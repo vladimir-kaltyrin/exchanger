@@ -38,10 +38,10 @@
     [self.view setStartButtonTitle:@"Start Demo"];
     [self.view setResetButtonTitle:@"About"];
     
-    __weak typeof(self) weakSelf = self;
+    __weak typeof(self) welf = self;
     
     [self.view setOnStartTap:^{
-        [weakSelf.router showDemoWith:^(id<ExchangeMoneyModule> module) {
+        [welf.router showDemoWith:^(id<ExchangeMoneyModule> module) {
             __weak typeof(module) weakModule = module;
             module.onFinish = ^{
                 [weakModule dismissModule];
@@ -50,7 +50,7 @@
     }];
     
     [self.view setOnResetTap:^{
-        [weakSelf.router showAbout];
+        [welf.router showAbout];
     }];
 }
 

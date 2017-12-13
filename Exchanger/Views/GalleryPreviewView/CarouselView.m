@@ -34,13 +34,13 @@
         self.firstResponderTextField.hidden = YES;
         [self addSubview:self.firstResponderTextField];
         
-        __weak typeof(self) weakSelf = self;
+        __weak typeof(self) welf = self;
         [self.carousel setOnPageWillChange:^{
-            [weakSelf.firstResponderTextField becomeFirstResponder];
+            [welf.firstResponderTextField becomeFirstResponder];
         }];
         
         [self.carousel setCheckCanFocus:^BOOL(NSInteger page) {
-            return weakSelf.focusEnabled;
+            return welf.focusEnabled;
         }];
         
         [self setupRecognizer];
@@ -59,10 +59,10 @@
 - (void)setOnPageChange:(void (^)(NSInteger))onPageChange {
     _onPageChange = onPageChange;
     
-    __weak typeof(self) weakSelf = self;
+    __weak typeof(self) welf = self;
     self.carousel.onPageChange = ^(NSInteger current, NSInteger total) {
-        [weakSelf.pageIndicator setCurrentPage:current ofTotal:total];
-        weakSelf.onPageChange(current);
+        [welf.pageIndicator setCurrentPage:current ofTotal:total];
+        welf.onPageChange(current);
     };
 }
 

@@ -61,13 +61,13 @@ CGFloat const kFontSize = 34.0;
 - (void)focusOnStart {
     [self focusOnSourceView];
     
-    __weak typeof(self) weakSelf = self;
+    __weak typeof(self) welf = self;
     [self.sourceCurrencyView setOnFocus:^{
-        [weakSelf setActiveCurrencyExchangeType:CurrencyExchangeSourceType];
+        [welf setActiveCurrencyExchangeType:CurrencyExchangeSourceType];
     }];
     
     [self.targetCurrencyView setOnFocus:^{
-        [weakSelf setActiveCurrencyExchangeType:CurrencyExchangeTargetType];
+        [welf setActiveCurrencyExchangeType:CurrencyExchangeTargetType];
     }];
 }
 

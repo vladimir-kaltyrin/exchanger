@@ -36,12 +36,11 @@ NSTimeInterval const kUpdateFrequency = 30.0f;
 }
 
 - (void)fetch {
-    __weak typeof(self) weakSelf = self;
-    
+    __weak typeof(self) welf = self;
     [self.exchangeRatesService fetchRates:^(ExchangeRatesData *data) {
-        block(weakSelf.onUpdate, data);
+        block(welf.onUpdate, data);
     } onError:^(NSError *error) {
-        block(weakSelf.onError, error);
+        block(welf.onError, error);
     }];
 }
 
