@@ -1,7 +1,7 @@
 #import "ObservableTextField.h"
 #import "SafeBlocks.h"
 
-@interface ObservableTextField() <UITextFieldDelegate>
+@interface ObservableTextField()
 @property (nonatomic, strong) UITextField *textField;
 @end
 
@@ -13,13 +13,14 @@
     self = [super initWithFrame:CGRectZero];
     if (self) {
         self.textField = [[UITextField alloc] initWithFrame:CGRectZero];
-        self.textField.delegate = self;
         
         [self addSubview:self.textField];
         
         [self.textField addTarget:self
                            action:@selector(textFieldDidChange:)
                  forControlEvents:UIControlEventEditingChanged];
+        
+        [self.textField addTarget:self action:@selector(textFieldDidBeginEditing) forControlEvents:UIControlEventEditingDidBegin];
     }
     return self;
 }
@@ -64,22 +65,14 @@
     self.textField.text = text;
 }
 
-// MARK: - UITextFieldDelegate
+// MARK: - Private
 
 - (void)textFieldDidChange:(UITextField *)textField {
     block(self.onTextChange, textField.text);
 }
 
-
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    
+- (void)textFieldDidBeginEditing {
     block(self.onBeginEditing);
-    
-    return YES;
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    return [textField resignFirstResponder];
 }
 
 @end
