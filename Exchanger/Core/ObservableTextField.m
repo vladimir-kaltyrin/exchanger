@@ -3,7 +3,6 @@
 
 @interface ObservableTextField() <UITextFieldDelegate>
 @property (nonatomic, strong) UITextField *textField;
-@property (nonatomic, strong) NSString *text;
 @end
 
 @implementation ObservableTextField
@@ -18,16 +17,11 @@
         
         [self addSubview:self.textField];
         
-        [self.textField addObserver:self
-                         forKeyPath:@"text"
-                            options:NSKeyValueObservingOptionNew
-                            context:nil];
+        [self.textField addTarget:self
+                           action:@selector(textFieldDidChange:)
+                 forControlEvents:UIControlEventEditingChanged];
     }
     return self;
-}
-
-- (void)dealloc {
-    [self.textField removeObserver:self forKeyPath:@"text"];
 }
 
 // MARK: - FirstResponder
@@ -67,45 +61,15 @@
 }
 
 - (void)setText:(NSString *)text {
-    
-    NSString *oldValue = self.text;
-
-    if (self.formatter) {
-        FormatterResultData *data = self.formatter(text);
-        
-        _text = data.string;
-        
-        [self setAttributedText:data.formattedString];
-    } else {
-        
-        _text = text;
-        
-        self.textField.text = self.text;
-    }
-    
-    if (![oldValue isEqualToString:text] && (oldValue != nil)) {
-        block(self.onTextChange, self.text);
-    }
+    self.textField.text = text;
 }
 
 // MARK: - UITextFieldDelegate
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    
-    NSString *resultString = self.text == nil ? @"" : self.text;
-    if ([string isEqualToString:@""]) {
-        if (resultString.length > 0) {
-            resultString = [resultString substringToIndex:resultString.length - 1];
-        }
-    }  else {
-        resultString = [NSString stringWithFormat:@"%@%@", self.text, string];
-    }
-    
-    [self setText:resultString];
-    
-    return NO;
+- (void)textFieldDidChange:(UITextField *)textField {
+    block(self.onTextChange, textField.text);
 }
+
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     

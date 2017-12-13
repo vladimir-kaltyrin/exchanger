@@ -13,8 +13,8 @@
 @interface ExchangeMoneyPresenter()
 @property (nonatomic, strong) ExchangeRatesData *exchangeRatesData;
 @property (nonatomic, assign) CurrencyExchangeType activeExchangeType;
-@property (nonatomic, strong) NSString *expenseInput;
-@property (nonatomic, strong) NSString *incomeInput;
+@property (nonatomic, strong) FormatterResultData *expenseInput;
+@property (nonatomic, strong) FormatterResultData *incomeInput;
 @property (nonatomic, strong) id<ExchangeMoneyInteractor> interactor;
 @property (nonatomic, strong) id<ExchangeMoneyRouter> router;
 @property (nonatomic, strong) id<KeyboardObserver> keyboardObserver;
@@ -55,8 +55,8 @@
     __weak typeof(self) weakSelf = self;
     
     self.activeExchangeType = CurrencyExchangeSourceType;
-    self.incomeInput = @"0";
-    self.expenseInput = @"0";
+    self.incomeInput = [FormatterResultData formatterDataWithString:@"0"];
+    self.expenseInput = [FormatterResultData formatterDataWithString:@"0"];
     
     [self.keyboardObserver setOnKeyboardData:^(KeyboardData *keyboardData) {
         [weakSelf.view updateKeyboardData:keyboardData];
@@ -165,15 +165,7 @@
      {
          
          OnInputChange onInputChange = ^(NSString *text, CurrencyExchangeType exchangeType, CurrencyType currencyType) {
-             [weakSelf handleOnInputChange:text exchangeType:exchangeType currencyType:currencyType];
-         };
-         
-         TextFieldAttributedStringFormatter sourceInputFormatter = ^(NSString *text) {
-             return [weakSelf handleSourceInputFormatter:text targetWallet:targetWallet];
-         };
-         
-         TextFieldAttributedStringFormatter targetInputFormatter = ^(NSString *text) {
-             return [weakSelf handleTargetInputFormatter:text targetWallet:targetWallet];
+             [weakSelf handleOnInputChange:text exchangeType:exchangeType currencyType:currencyType targetWallet:targetWallet];
          };
          
          ExchangeMoneyViewDataBuilder *builder = [[ExchangeMoneyViewDataBuilder alloc] initWithUser:user
@@ -182,12 +174,8 @@
                                                                                        expenseInput:weakSelf.expenseInput
                                                                                      sourceCurrency:weakSelf.interactor.sourceCurrency
                                                                                      targetCurrency:weakSelf.interactor.targetCurrency
-                                                                                       targetWallet:targetWallet
                                                                                        invertedRate:invertedRate
                                                                                        isDeficiency:isDeficiency
-                                                                                 activeExchangeRate:weakSelf.activeExchangeType
-                                                                               sourceInputFormatter:sourceInputFormatter
-                                                                               targetInputFormatter:targetInputFormatter
                                                                                       onInputChange:onInputChange];
          
          ExchangeMoneyViewData *viewData = [builder build];
@@ -198,22 +186,68 @@
      }];
 }
 
-- (void)handleOnInputChange:(NSString *)text exchangeType:(CurrencyExchangeType)exchangeType currencyType:(CurrencyType)currencyType {
+- (void)handleOnInputChange:(NSString *)text exchangeType:(CurrencyExchangeType)exchangeType currencyType:(CurrencyType)currencyType targetWallet:(Wallet *)targetWallet {
     
-    switch (exchangeType) {
+    NSString *numberText = [self.numbersFormatter format:text];
+    
+    Wallet *inputWallet;
+    Currency *targetCurrency;
+    
+    switch (self.activeExchangeType) {
         case CurrencyExchangeSourceType:
-            if (self.interactor.sourceCurrency.currencyType == currencyType) {
-                self.expenseInput = text;
-                [self reloadView];
-            }
+        {
+            inputWallet = [[Wallet alloc] initWithCurrency:self.interactor.sourceCurrency
+                                                    amount:@(numberText.floatValue)];
+            targetCurrency = self.interactor.targetCurrency;
+            
+        }
             break;
         case CurrencyExchangeTargetType:
-            if (self.interactor.targetCurrency.currencyType == currencyType) {
-                self.incomeInput = text;
-                [self reloadView];
-            }
+        {
+            inputWallet = [[Wallet alloc] initWithCurrency:self.interactor.targetCurrency
+                                                    amount:@(numberText.floatValue)];
+            targetCurrency = self.interactor.sourceCurrency;
+        }
             break;
-    }
+    };
+    
+    __weak typeof(self) weakSelf = self;
+    
+    [self.interactor exchangeWallet:inputWallet
+                     targetCurrency:targetCurrency
+                           onResult:^(Wallet *wallet, NSNumber *invertedRate)
+    {
+        switch (exchangeType) {
+            case CurrencyExchangeSourceType:
+            {
+                if (weakSelf.activeExchangeType != CurrencyExchangeSourceType) {
+                    break;
+                }
+                if (weakSelf.interactor.sourceCurrency.currencyType == currencyType) {
+                    weakSelf.expenseInput = [FormatterResultData formatterDataWithString:numberText
+                                                                                    sign:BalanceFormatterSignMinus];
+                    weakSelf.incomeInput = [FormatterResultData formatterDataWithString:wallet.amount.stringValue
+                                                                                   sign:BalanceFormatterSignPlus];
+                    [weakSelf reloadView];
+                }
+            }
+                break;
+            case CurrencyExchangeTargetType:
+            {
+                if (weakSelf.activeExchangeType != CurrencyExchangeTargetType) {
+                    break;
+                }
+                if (weakSelf.interactor.targetCurrency.currencyType == currencyType) {
+                    weakSelf.expenseInput = [FormatterResultData formatterDataWithString:wallet.amount.stringValue
+                                                                                    sign:BalanceFormatterSignMinus];
+                    weakSelf.incomeInput = [FormatterResultData formatterDataWithString:numberText
+                                                                                   sign:BalanceFormatterSignPlus];
+                    [weakSelf reloadView];
+                }
+            }
+                break;
+        }
+    }];
 }
 
 - (FormatterResultData *)handleSourceInputFormatter:(NSString *)text targetWallet:(Wallet *)targetWallet {
@@ -224,7 +258,7 @@
         numberText = targetWallet.amount.stringValue;
     }
     
-    FormatterResultData *data = [self formattedExpenseInput:numberText];
+    FormatterResultData *data = [FormatterResultData formatterDataWithString:numberText sign:BalanceFormatterSignMinus];
     return data;
 }
 
@@ -236,16 +270,8 @@
         numberText = @(fabs(targetWallet.amount.floatValue)).stringValue;
     }
     
-    FormatterResultData *data = [self formattedIncomeInput:numberText];
+    FormatterResultData *data = [FormatterResultData formatterDataWithString:numberText sign:BalanceFormatterSignPlus];
     return data;
-}
-
-- (FormatterResultData *)formattedExpenseInput:(NSString *)expenseInput {
-    return [self.exchangeCurrencyInputFormatter format:expenseInput sign:BalanceFormatterSignMinus];
-}
-
-- (FormatterResultData *)formattedIncomeInput:(NSString *)incomeInput {
-    return [self.exchangeCurrencyInputFormatter format:incomeInput sign:BalanceFormatterSignPlus];
 }
 
 - (void)fetchRatesWithRepeat:(BOOL)repeat onUpdate:(void(^)())onUpdate onError:(void (^)(NSError *))onError {
@@ -282,6 +308,7 @@
 }
 
 - (void)reloadView {
+    NSLog(@"%@", @"RELOAD VIEW");
     [self updateViewWithData:self.exchangeRatesData];
 }
 
