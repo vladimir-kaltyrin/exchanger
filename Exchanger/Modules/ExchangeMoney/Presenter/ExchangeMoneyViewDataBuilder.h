@@ -5,6 +5,7 @@
 #import "CurrencyExchangeType.h"
 
 typedef void(^OnInputChange)(NSString *text, CurrencyExchangeType exchangeType, CurrencyType currencyType);
+typedef FormatterResultData *(^TextFieldAttributedStringFormatter)(NSString *text);
 
 @interface ExchangeMoneyViewDataBuilder : NSObject
 
@@ -12,16 +13,12 @@ typedef void(^OnInputChange)(NSString *text, CurrencyExchangeType exchangeType, 
 
 - (instancetype)initWithUser:(User *)user
                   currencies:(NSArray<Currency *> *)currencies
-                 incomeInput:(NSString *)incomeInput
-                expenseInput:(NSString *)expenseInput
+                 incomeInput:(FormatterResultData *)incomeInput
+                expenseInput:(FormatterResultData *)expenseInput
               sourceCurrency:(Currency *)sourceCurrency
               targetCurrency:(Currency *)targetCurrency
-                targetWallet:(Wallet *)targetWallet
                 invertedRate:(NSNumber *)invertedRate
                 isDeficiency:(BOOL)isDeficiency
-          activeExchangeRate:(CurrencyExchangeType)activeExchangeRate
-        sourceInputFormatter:(TextFieldAttributedStringFormatter)sourceInputFormatter
-        targetInputFormatter:(TextFieldAttributedStringFormatter)targetInputFormatter
                onInputChange:(OnInputChange)onInputChange;
 
 - (ExchangeMoneyViewData *)build;

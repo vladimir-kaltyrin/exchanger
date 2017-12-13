@@ -9,16 +9,12 @@
 @interface ExchangeMoneyViewDataBuilder()
 @property (nonatomic, strong) User *user;
 @property (nonatomic, strong) NSArray<Currency *> *currencies;
-@property (nonatomic, strong) NSString *incomeInput;
-@property (nonatomic, strong) NSString *expenseInput;
+@property (nonatomic, strong) FormatterResultData *incomeInput;
+@property (nonatomic, strong) FormatterResultData *expenseInput;
 @property (nonatomic, strong) Currency *sourceCurrency;
 @property (nonatomic, strong) Currency *targetCurrency;
-@property (nonatomic, strong) Wallet *targetWallet;
 @property (nonatomic, strong) NSNumber *invertedRate;
 @property (nonatomic, assign) BOOL isDeficiency;
-@property (nonatomic, assign) CurrencyExchangeType activeExchangeRate;
-@property (nonatomic, strong) TextFieldAttributedStringFormatter sourceInputFormatter;
-@property (nonatomic, strong) TextFieldAttributedStringFormatter targetInputFormatter;
 @property (nonatomic, strong) OnInputChange onInputChange;
 @property (nonatomic, strong) id<RoundingFormatter> roundingFormatter;
 @end
@@ -29,16 +25,12 @@
 
 - (instancetype)initWithUser:(User *)user
                   currencies:(NSArray<Currency *> *)currencies
-                 incomeInput:(NSString *)incomeInput
-                expenseInput:(NSString *)expenseInput
+                 incomeInput:(FormatterResultData *)incomeInput
+                expenseInput:(FormatterResultData *)expenseInput
               sourceCurrency:(Currency *)sourceCurrency
               targetCurrency:(Currency *)targetCurrency
-                targetWallet:(Wallet *)targetWallet
                 invertedRate:(NSNumber *)invertedRate
                 isDeficiency:(BOOL)isDeficiency
-          activeExchangeRate:(CurrencyExchangeType)activeExchangeRate
-        sourceInputFormatter:(TextFieldAttributedStringFormatter)sourceInputFormatter
-        targetInputFormatter:(TextFieldAttributedStringFormatter)targetInputFormatter
                onInputChange:(OnInputChange)onInputChange
 {
     self = [super init];
@@ -49,12 +41,8 @@
         self.expenseInput = expenseInput;
         self.sourceCurrency = sourceCurrency;
         self.targetCurrency = targetCurrency;
-        self.targetWallet = targetWallet;
         self.invertedRate = invertedRate;
         self.isDeficiency = isDeficiency;
-        self.activeExchangeRate = activeExchangeRate;
-        self.sourceInputFormatter = sourceInputFormatter;
-        self.targetInputFormatter = targetInputFormatter;
         self.onInputChange = onInputChange;
         
         self.roundingFormatter = [[FormatterFactoryImpl instance] roundingFormatter];
@@ -83,13 +71,6 @@
     NSString *remainder = [self balanceWithUser:self.user currencyType:currency.currencyType];
     NSString *rate = @"";
     
-    NSString *input;
-    if (self.activeExchangeRate == CurrencyExchangeSourceType) {
-        input = self.expenseInput;
-    } else {
-        input = self.sourceInputFormatter(self.incomeInput).string;
-    };
-    
     CarouselPageRemainderStyle remainderStyle;
     if (self.isDeficiency) {
         remainderStyle = CarouselPageRemainderStyleDeficiency;
@@ -102,11 +83,10 @@
     };
     
     return [[CarouselPageData alloc] initWithCurrencyTitle:currencyTitle
-                                                           input:input
+                                                           input:self.expenseInput.formattedString
                                                        remainder:remainder
                                                             rate:rate
                                                   remainderStyle:remainderStyle
-                                                  inputFormatter:self.sourceInputFormatter
                                                     onTextChange:onTextChange];
     
 }
@@ -119,13 +99,6 @@
                       self.sourceCurrency.currencySign,
                       [self.roundingFormatter format:self.invertedRate]];
     
-    NSString *input;
-    if (self.activeExchangeRate == CurrencyExchangeTargetType) {
-        input = self.incomeInput;
-    } else {
-        input = self.targetInputFormatter(self.expenseInput).string;
-    };
-    
     CarouselPageRemainderStyle remainderStyle = CarouselPageRemainderStyleNormal;
     
     OnTextChange onTextChange = ^(NSString *text) {
@@ -133,12 +106,11 @@
     };
     
     return [[CarouselPageData alloc] initWithCurrencyTitle:currencyTitle
-                                                           input:input
-                                                       remainder:remainder
-                                                            rate:rate
-                                                  remainderStyle:remainderStyle
-                                                  inputFormatter:self.targetInputFormatter
-                                                    onTextChange:onTextChange];
+                                                     input:self.incomeInput.formattedString
+                                                 remainder:remainder
+                                                      rate:rate
+                                            remainderStyle:remainderStyle
+                                              onTextChange:onTextChange];
     
 }
 

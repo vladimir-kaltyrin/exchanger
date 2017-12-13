@@ -3,11 +3,10 @@
 @implementation CarouselPageData
     
 - (instancetype)initWithCurrencyTitle:(NSString *)currencyTitle
-                                input:(NSString *)input
+                                input:(NSAttributedString *)input
                             remainder:(NSString *)remainder
                                  rate:(NSString *)rate
                        remainderStyle:(CarouselPageRemainderStyle)remainderStyle
-                       inputFormatter:(nonnull TextFieldAttributedStringFormatter)inputFormatter
                          onTextChange:(nonnull OnTextChange)onTextChange
 {
     if (self = [super init]) {
@@ -16,7 +15,6 @@
         _remainder = remainder;
         _rate = rate;
         _remainderStyle = remainderStyle;
-        _inputFormatter = inputFormatter;
         _onTextChange = onTextChange;
     }
     return self;
