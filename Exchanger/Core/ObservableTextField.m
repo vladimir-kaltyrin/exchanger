@@ -17,8 +17,17 @@
         self.textField.delegate = self;
         
         [self addSubview:self.textField];
+        
+        [self.textField addObserver:self
+                         forKeyPath:@"text"
+                            options:NSKeyValueObservingOptionNew
+                            context:nil];
     }
     return self;
+}
+
+- (void)dealloc {
+    [self.textField removeObserver:self forKeyPath:@"text"];
 }
 
 // MARK: - FirstResponder
@@ -60,7 +69,7 @@
 - (void)setText:(NSString *)text {
     
     NSString *oldValue = self.text;
-    
+
     if (self.formatter) {
         FormatterResultData *data = self.formatter(text);
         
