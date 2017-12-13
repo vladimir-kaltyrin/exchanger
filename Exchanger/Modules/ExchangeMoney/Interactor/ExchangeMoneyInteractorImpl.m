@@ -49,22 +49,22 @@
                  onError:(void (^)())onError
 {
     
-    __weak typeof(self) weakSelf = self;
+    __weak typeof(self) welf = self;
     [self.userService currentUser:^(User *user) {
-        Wallet *wallet = [user walletWithCurrencyType:weakSelf.sourceCurrency.currencyType];
+        Wallet *wallet = [user walletWithCurrencyType:welf.sourceCurrency.currencyType];
         
         if (currencyAmount.floatValue > wallet.amount.floatValue) {
             block(onError);
             return;
         }
         
-        [weakSelf.exchangeMoneyService exchangeWithUser:user
+        [welf.exchangeMoneyService exchangeWithUser:user
                                         moneyAmount:currencyAmount
-                                     sourceCurrency:weakSelf.sourceCurrency
-                                     targetCurrency:weakSelf.targetCurrency
+                                     sourceCurrency:welf.sourceCurrency
+                                     targetCurrency:welf.targetCurrency
                                            onResult:^(ExchangeMoneyResult *result) {
                                                
-                                               [weakSelf update:user withExchangeMoneyResult:result];
+                                               [welf update:user withExchangeMoneyResult:result];
 
                                                block(onExchange);
                                            }];

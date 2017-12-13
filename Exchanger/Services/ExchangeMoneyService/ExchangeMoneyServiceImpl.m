@@ -12,20 +12,20 @@
           targetCurrency:(Currency *)targetCurrency
                 onResult:(void (^)(ExchangeMoneyResult *))onResult
 {
-    __weak typeof(self) weakSelf = self;
+    __weak typeof(self) welf = self;
     [self convertedCurrencyWithSourceCurrency:sourceCurrency
                                targetCurrency:targetCurrency
                                     onConvert:^(Currency *convertedCurrency)
     {
         
-        Wallet *sourceWallet = [weakSelf sourceWalletWith:user
+        Wallet *sourceWallet = [welf sourceWalletWith:user
                                                  currency:sourceCurrency
                                               moneyAmount:moneyAmount];
         
-        Wallet *walletDiff = [weakSelf exchangeMoneyAmount:moneyAmount
+        Wallet *walletDiff = [welf exchangeMoneyAmount:moneyAmount
                                         withCurrency:convertedCurrency];
         
-        Wallet *targetWallet = [weakSelf targetWalletWith:user
+        Wallet *targetWallet = [welf targetWalletWith:user
                                                  currency:targetCurrency
                                                walletDiff:walletDiff];
         
@@ -50,15 +50,15 @@
         targetCurrency:(Currency *)currency
               onResult:(void (^)(Wallet *wallet, NSNumber *invertedRate))onResult
 {
-    __weak typeof(self) weakSelf = self;
+    __weak typeof(self) welf = self;
     [self convertedCurrencyWithSourceCurrency:wallet.currency
                                targetCurrency:currency
                                     onConvert:^(Currency *convertedCurrency)
     {
-        Wallet *resultWallet = [weakSelf exchangeMoneyAmount:wallet.amount
+        Wallet *resultWallet = [welf exchangeMoneyAmount:wallet.amount
                                                 withCurrency:convertedCurrency];
         
-        [weakSelf convertedCurrencyWithSourceCurrency:currency
+        [welf convertedCurrencyWithSourceCurrency:currency
                                        targetCurrency:wallet.currency
                                             onConvert:^(Currency *invertedConvertedCurrency)
         {

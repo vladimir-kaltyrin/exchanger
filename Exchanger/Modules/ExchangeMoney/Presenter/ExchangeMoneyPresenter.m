@@ -52,37 +52,37 @@
 
 - (void)setUpView {
     
-    __weak typeof(self) weakSelf = self;
+    __weak typeof(self) welf = self;
     
     self.activeExchangeType = CurrencyExchangeSourceType;
     self.incomeInput = [FormatterResultData formatterDataWithString:@"0"];
     self.expenseInput = [FormatterResultData formatterDataWithString:@"0"];
     
     [self.keyboardObserver setOnKeyboardData:^(KeyboardData *keyboardData) {
-        [weakSelf.view updateKeyboardData:keyboardData];
-        [weakSelf reloadView];
+        [welf.view updateKeyboardData:keyboardData];
+        [welf reloadView];
     }];
     
     [self.view setExchangeButtonEnabled:YES];
     
     [self.view setOnViewDidLoad:^{
-        [weakSelf.view startActivity];
-        [weakSelf.interactor startFetching];
+        [welf.view startActivity];
+        [welf.interactor startFetching];
     }];
     
     [self.view setOnViewWillAppear:^{
-        [weakSelf.view focusOnStart];
-        [weakSelf.view setActiveCurrencyExchangeType:weakSelf.activeExchangeType];
+        [welf.view focusOnStart];
+        [welf.view setActiveCurrencyExchangeType:welf.activeExchangeType];
     }];
     
     [self.view setOnExchangeTypeChange:^(CurrencyExchangeType newExchangeType) {
-        weakSelf.activeExchangeType = newExchangeType;
+        welf.activeExchangeType = newExchangeType;
     }];
     
     [self.view setOnExchangeTap:^{
-        [weakSelf.interactor exchangeCurrency:@(fabs(weakSelf.expenseInput.floatValue))
+        [welf.interactor exchangeCurrency:@(fabs(welf.expenseInput.floatValue))
                                    onExchange:^{
-                                       [weakSelf fetchRatesWithRepeat:NO
+                                       [welf fetchRatesWithRepeat:NO
                                                              onUpdate:nil
                                                               onError:nil];
                                        
@@ -95,8 +95,8 @@
     }];
     
     [self.interactor setOnUpdate:^(ExchangeRatesData *data) {
-        [weakSelf.view stopActivity];
-        [weakSelf updateViewWithData:data];
+        [welf.view stopActivity];
+        [welf updateViewWithData:data];
     }];
     
     [self fetchRatesWithRepeat:YES
@@ -104,10 +104,10 @@
                        onError:nil];
     
     [self.view setOnPageChange:^(CurrencyExchangeType exchangeType, NSInteger current) {
-        [weakSelf update:exchangeType withIndex:current];
-        [weakSelf configureInputsWithText:[weakSelf currentInput].string
-                             exchangeType:[weakSelf activeExchangeType]
-                             currencyType:[weakSelf currentCurrency]];
+        [welf update:exchangeType withIndex:current];
+        [welf configureInputsWithText:[welf currentInput].string
+                             exchangeType:[welf activeExchangeType]
+                             currencyType:[welf currentCurrency]];
     }];
 }
 
@@ -118,20 +118,20 @@
 }
 
 - (void)updateNavigationTitleRate:(void(^)())onUpdate {
-    __weak typeof(self) weakSelf = self;
+    __weak typeof(self) welf = self;
     [self.interactor convertedCurrency:^(Currency *convertedCurrency) {
-        Currency *sourceCurrency = [weakSelf.interactor sourceCurrency];
+        Currency *sourceCurrency = [welf.interactor sourceCurrency];
 
-        [weakSelf.view setExchangeSourceCurrency:sourceCurrency targetCurrency:convertedCurrency];
+        [welf.view setExchangeSourceCurrency:sourceCurrency targetCurrency:convertedCurrency];
         block(onUpdate);
     }];
 }
 
 - (void)updateExchangeRates:(ExchangeRatesData *)ratesData onUpdate:(void(^)())onUpdate {
     
-    __weak typeof(self) weakSelf = self;
+    __weak typeof(self) welf = self;
     [self.interactor fetchUser:^(User *user) {
-        [weakSelf updateViewWithUser:user ratesData:ratesData onUpdate:onUpdate];
+        [welf updateViewWithUser:user ratesData:ratesData onUpdate:onUpdate];
     }];
 }
 
@@ -160,29 +160,29 @@
             break;
     };
     
-    __weak typeof(self) weakSelf = self;
+    __weak typeof(self) welf = self;
     [self.interactor exchangeWallet:inputWallet
                          targetCurrency:targetCurrency
                                onResult:^(Wallet *targetWallet, NSNumber *invertedRate)
      {
          
          OnInputChange onInputChange = ^(NSString *text, CurrencyExchangeType exchangeType, CurrencyType currencyType) {
-             [weakSelf configureInputsWithText:text exchangeType:exchangeType currencyType:currencyType];
+             [welf configureInputsWithText:text exchangeType:exchangeType currencyType:currencyType];
          };
          
          ExchangeMoneyViewDataBuilder *builder = [[ExchangeMoneyViewDataBuilder alloc] initWithUser:user
                                                                                          currencies:ratesData.currencies
-                                                                                        incomeInput:weakSelf.incomeInput
-                                                                                       expenseInput:weakSelf.expenseInput
-                                                                                     sourceCurrency:weakSelf.interactor.sourceCurrency
-                                                                                     targetCurrency:weakSelf.interactor.targetCurrency
+                                                                                        incomeInput:welf.incomeInput
+                                                                                       expenseInput:welf.expenseInput
+                                                                                     sourceCurrency:welf.interactor.sourceCurrency
+                                                                                     targetCurrency:welf.interactor.targetCurrency
                                                                                        invertedRate:invertedRate
                                                                                        isDeficiency:isDeficiency
                                                                                       onInputChange:onInputChange];
          
          ExchangeMoneyViewData *viewData = [builder build];
          
-         [weakSelf.view setViewData:viewData];
+         [welf.view setViewData:viewData];
          
          block(onUpdate);
      }];
@@ -213,7 +213,7 @@
             break;
     };
     
-    __weak typeof(self) weakSelf = self;
+    __weak typeof(self) welf = self;
     
     [self.interactor exchangeWallet:inputWallet
                      targetCurrency:targetCurrency
@@ -222,29 +222,29 @@
         switch (exchangeType) {
             case CurrencyExchangeSourceType:
             {
-                if (weakSelf.activeExchangeType != CurrencyExchangeSourceType) {
+                if (welf.activeExchangeType != CurrencyExchangeSourceType) {
                     break;
                 }
-                if (weakSelf.interactor.sourceCurrency.currencyType == currencyType) {
-                    weakSelf.expenseInput = [FormatterResultData formatterDataWithString:numberText
+                if (welf.interactor.sourceCurrency.currencyType == currencyType) {
+                    welf.expenseInput = [FormatterResultData formatterDataWithString:numberText
                                                                                     sign:BalanceFormatterSignMinus];
-                    weakSelf.incomeInput = [FormatterResultData formatterDataWithString:wallet.amount.stringValue
+                    welf.incomeInput = [FormatterResultData formatterDataWithString:wallet.amount.stringValue
                                                                                    sign:BalanceFormatterSignPlus];
-                    [weakSelf reloadView];
+                    [welf reloadView];
                 }
             }
                 break;
             case CurrencyExchangeTargetType:
             {
-                if (weakSelf.activeExchangeType != CurrencyExchangeTargetType) {
+                if (welf.activeExchangeType != CurrencyExchangeTargetType) {
                     break;
                 }
-                if (weakSelf.interactor.targetCurrency.currencyType == currencyType) {
-                    weakSelf.expenseInput = [FormatterResultData formatterDataWithString:wallet.amount.stringValue
+                if (welf.interactor.targetCurrency.currencyType == currencyType) {
+                    welf.expenseInput = [FormatterResultData formatterDataWithString:wallet.amount.stringValue
                                                                                     sign:BalanceFormatterSignMinus];
-                    weakSelf.incomeInput = [FormatterResultData formatterDataWithString:numberText
+                    welf.incomeInput = [FormatterResultData formatterDataWithString:numberText
                                                                                    sign:BalanceFormatterSignPlus];
-                    [weakSelf reloadView];
+                    [welf reloadView];
                 }
             }
                 break;
@@ -279,14 +279,14 @@
 - (void)fetchRatesWithRepeat:(BOOL)repeat onUpdate:(void(^)())onUpdate onError:(void (^)(NSError *))onError {
     [self.view startActivity];
     
-    __weak typeof(self) weakSelf = self;
+    __weak typeof(self) welf = self;
     [self.interactor fetchRates:^(ExchangeRatesData *data) {
-        weakSelf.exchangeRatesData = data;
-        [weakSelf.view stopActivity];
-        [weakSelf.interactor resetCurrenciesWithData:data onReset:^{
-            [weakSelf reloadView];
+        welf.exchangeRatesData = data;
+        [welf.view stopActivity];
+        [welf.interactor resetCurrenciesWithData:data onReset:^{
+            [welf reloadView];
             if (repeat) {
-                [weakSelf.interactor startFetching];
+                [welf.interactor startFetching];
             }
             block(onUpdate)
         }];
@@ -315,18 +315,18 @@
 }
 
 - (void)updateExchangeButton {
-    __weak typeof(self) weakSelf = self;
+    __weak typeof(self) welf = self;
     [self.interactor fetchUser:^(User *user) {
-        Currency *sourceCurrency = weakSelf.interactor.sourceCurrency;
-        Currency *targetCurrency = weakSelf.interactor.targetCurrency;
+        Currency *sourceCurrency = welf.interactor.sourceCurrency;
+        Currency *targetCurrency = welf.interactor.targetCurrency;
         
         BOOL isEqualCurrencies = sourceCurrency.currencyType == targetCurrency.currencyType;
 
-        BOOL isDeficiency = [weakSelf checkUserHasBalanceDeficiency:user];
+        BOOL isDeficiency = [welf checkUserHasBalanceDeficiency:user];
         
         BOOL isEnabled = !isDeficiency && !isEqualCurrencies;
         
-        [weakSelf.view setExchangeButtonEnabled:isEnabled];
+        [welf.view setExchangeButtonEnabled:isEnabled];
     }];
 }
 

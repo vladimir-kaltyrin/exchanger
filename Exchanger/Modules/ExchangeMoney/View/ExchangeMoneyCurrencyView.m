@@ -60,10 +60,10 @@
 }
 
 - (void)setOnPageChange:(void(^)(CurrencyExchangeType exchangeType, NSInteger current))onPageChange {
-    __weak typeof(self) weakSelf = self;
+    __weak typeof(self) welf = self;
     [self.previewView setOnPageChange:^(NSInteger current) {
-        weakSelf.currentPage = current;
-        block(onPageChange, weakSelf.exchangeType, current);
+        welf.currentPage = current;
+        block(onPageChange, welf.exchangeType, current);
     }];
 }
 
