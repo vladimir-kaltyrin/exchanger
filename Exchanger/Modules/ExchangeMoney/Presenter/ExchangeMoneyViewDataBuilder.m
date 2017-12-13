@@ -17,9 +17,9 @@
 @property (nonatomic, strong) NSNumber *invertedRate;
 @property (nonatomic, assign) BOOL isDeficiency;
 @property (nonatomic, assign) CurrencyExchangeType activeExchangeRate;
+@property (nonatomic, strong) TextFieldAttributedStringFormatter sourceInputFormatter;
+@property (nonatomic, strong) TextFieldAttributedStringFormatter targetInputFormatter;
 @property (nonatomic, strong) OnInputChange onInputChange;
-@property (nonatomic, strong) id<NumbersFormatter> numbersFormatter;
-@property (nonatomic, strong) id<BalanceFormatter> exchangeCurrencyInputFormatter;
 @property (nonatomic, strong) id<RoundingFormatter> roundingFormatter;
 @end
 
@@ -37,6 +37,8 @@
                 invertedRate:(NSNumber *)invertedRate
                 isDeficiency:(BOOL)isDeficiency
           activeExchangeRate:(CurrencyExchangeType)activeExchangeRate
+        sourceInputFormatter:(TextFieldAttributedStringFormatter)sourceInputFormatter
+        targetInputFormatter:(TextFieldAttributedStringFormatter)targetInputFormatter
                onInputChange:(OnInputChange)onInputChange
 {
     self = [super init];
@@ -51,10 +53,10 @@
         self.invertedRate = invertedRate;
         self.isDeficiency = isDeficiency;
         self.activeExchangeRate = activeExchangeRate;
+        self.sourceInputFormatter = sourceInputFormatter;
+        self.targetInputFormatter = targetInputFormatter;
         self.onInputChange = onInputChange;
         
-        self.numbersFormatter = [[FormatterFactoryImpl instance] numbersFormatter];
-        self.exchangeCurrencyInputFormatter = [[FormatterFactoryImpl instance] exchangeCurrencyInputFormatter];
         self.roundingFormatter = [[FormatterFactoryImpl instance] roundingFormatter];
     }
     return self;
@@ -81,23 +83,11 @@
     NSString *remainder = [self balanceWithUser:self.user currencyType:currency.currencyType];
     NSString *rate = @"";
     
-    TextFieldAttributedStringFormatter inputFormatter = ^(NSString *text) {
-        NSString *numberText;
-        if (self.activeExchangeRate == CurrencyExchangeSourceType) {
-            numberText = [self.numbersFormatter format:text];
-        } else {
-            numberText = self.targetWallet.amount.stringValue;
-        }
-        
-        FormatterResultData *data = [self formattedExpenseInput:numberText];
-        return data;
-    };
-    
     NSString *input;
     if (self.activeExchangeRate == CurrencyExchangeSourceType) {
         input = self.expenseInput;
     } else {
-        input = inputFormatter(self.incomeInput).string;
+        input = self.sourceInputFormatter(self.incomeInput).string;
     };
     
     CarouselPageRemainderStyle remainderStyle;
@@ -108,7 +98,7 @@
     }
     
     OnTextChange onTextChange = ^(NSString *text) {
-        block(self.onInputChange, text, CurrencyExchangeSourceType);
+        block(self.onInputChange, text, CurrencyExchangeSourceType, currency.currencyType);
     };
     
     return [[CarouselPageData alloc] initWithCurrencyTitle:currencyTitle
@@ -116,7 +106,7 @@
                                                        remainder:remainder
                                                             rate:rate
                                                   remainderStyle:remainderStyle
-                                                  inputFormatter:inputFormatter
+                                                  inputFormatter:self.sourceInputFormatter
                                                     onTextChange:onTextChange];
     
 }
@@ -129,29 +119,17 @@
                       self.sourceCurrency.currencySign,
                       [self.roundingFormatter format:self.invertedRate]];
     
-    TextFieldAttributedStringFormatter inputFormatter = ^(NSString *text) {
-        NSString *numberText;
-        if (self.activeExchangeRate == CurrencyExchangeTargetType) {
-            numberText = [self.numbersFormatter format:text];
-        } else {
-            numberText = @(fabs(self.targetWallet.amount.floatValue)).stringValue;
-        }
-        
-        FormatterResultData *data = [self formattedIncomeInput:numberText];
-        return data;
-    };
-    
     NSString *input;
     if (self.activeExchangeRate == CurrencyExchangeTargetType) {
         input = self.incomeInput;
     } else {
-        input = inputFormatter(self.expenseInput).string;
+        input = self.targetInputFormatter(self.expenseInput).string;
     };
     
     CarouselPageRemainderStyle remainderStyle = CarouselPageRemainderStyleNormal;
     
     OnTextChange onTextChange = ^(NSString *text) {
-        block(self.onInputChange, text, CurrencyExchangeSourceType);
+        block(self.onInputChange, text, CurrencyExchangeTargetType, currency.currencyType);
     };
     
     return [[CarouselPageData alloc] initWithCurrencyTitle:currencyTitle
@@ -159,7 +137,7 @@
                                                        remainder:remainder
                                                             rate:rate
                                                   remainderStyle:remainderStyle
-                                                  inputFormatter:inputFormatter
+                                                  inputFormatter:self.targetInputFormatter
                                                     onTextChange:onTextChange];
     
 }
@@ -203,14 +181,6 @@
                                                      currentPage:currentPage];
     
     return viewData;
-}
-
-- (FormatterResultData *)formattedExpenseInput:(NSString *)expenseInput {
-    return [self.exchangeCurrencyInputFormatter format:expenseInput sign:BalanceFormatterSignMinus];
-}
-
-- (FormatterResultData *)formattedIncomeInput:(NSString *)incomeInput {
-    return [self.exchangeCurrencyInputFormatter format:incomeInput sign:BalanceFormatterSignPlus];
 }
 
 - (NSString *)balanceWithUser:(User *)user currencyType:(CurrencyType)currencyType {
