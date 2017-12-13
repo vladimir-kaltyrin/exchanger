@@ -55,3 +55,5 @@ gem install xcpretty
 <a name="architecture"/>
 
 ## Architecture
+
+Each screen is represented as VIPER module. There is 
