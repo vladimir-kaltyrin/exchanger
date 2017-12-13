@@ -55,8 +55,8 @@
     __weak typeof(self) welf = self;
     
     self.activeExchangeType = CurrencyExchangeSourceType;
-    self.incomeInput = [FormatterResultData formatterDataWithString:@"0"];
-    self.expenseInput = [FormatterResultData formatterDataWithString:@"0"];
+    self.incomeInput = [FormatterResultData formatterDataWithString:@(0).stringValue];
+    self.expenseInput = [FormatterResultData formatterDataWithString:@(0).stringValue];
     
     [self.keyboardObserver setOnKeyboardData:^(KeyboardData *keyboardData) {
         [welf.view updateKeyboardData:keyboardData];
@@ -83,8 +83,8 @@
         [welf.interactor exchangeCurrency:@(fabs(welf.expenseInput.floatValue))
                                    onExchange:^{
                                        [welf fetchRatesWithRepeat:NO
-                                                             onUpdate:nil
-                                                              onError:nil];
+                                                         onUpdate:nil
+                                                          onError:nil];
                                        
                                    } onError:nil];
     }];
