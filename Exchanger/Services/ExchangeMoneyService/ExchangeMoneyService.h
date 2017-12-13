@@ -14,7 +14,7 @@
 
 - (void)exchangeWallet:(Wallet *)wallet
         targetCurrency:(Currency *)currency
-              onResult:(void(^)(Wallet *wallet, NSNumber *invertedRate))onResult;
+              onResult:(void(^)(Wallet *wallet))onResult;
 
 - (void)convertedCurrencyWithSourceCurrency:(Currency *)sourceCurrency
                              targetCurrency:(Currency *)targetCurrency

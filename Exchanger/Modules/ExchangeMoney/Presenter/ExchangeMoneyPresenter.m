@@ -136,9 +136,7 @@
 }
 
 - (void)updateViewWithUser:(User *)user ratesData:(ExchangeRatesData *)ratesData onUpdate:(void(^)())onUpdate {
-    
-    BOOL isDeficiency = [self checkUserHasBalanceDeficiency:user];
-    
+
     Wallet *inputWallet;
     Currency *targetCurrency;
     
@@ -161,34 +159,50 @@
     };
     
     __weak typeof(self) welf = self;
-    [self.interactor exchangeWallet:inputWallet
-                         targetCurrency:targetCurrency
-                               onResult:^(Wallet *targetWallet, NSNumber *invertedRate)
-     {
-         
-         OnInputChange onInputChange = ^(NSString *text, CurrencyExchangeType exchangeType, CurrencyType currencyType) {
-             [welf configureInputsWithText:text exchangeType:exchangeType currencyType:currencyType];
-         };
-         
-         ExchangeMoneyViewDataBuilder *builder = [[ExchangeMoneyViewDataBuilder alloc] initWithUser:user
-                                                                                         currencies:ratesData.currencies
-                                                                                        incomeInput:welf.incomeInput
-                                                                                       expenseInput:welf.expenseInput
-                                                                                     sourceCurrency:welf.interactor.sourceCurrency
-                                                                                     targetCurrency:welf.interactor.targetCurrency
-                                                                                       invertedRate:invertedRate
-                                                                                       isDeficiency:isDeficiency
-                                                                                      onInputChange:onInputChange];
-         
-         ExchangeMoneyViewData *viewData = [builder build];
-         
-         [welf.view setViewData:viewData];
-         
-         block(onUpdate);
-     }];
+    [self.interactor convertedCurrencyWithSourceCurrency:self.interactor.targetCurrency
+                                          targetCurrency:self.interactor.sourceCurrency
+                                               onConvert:^(Currency *invertedRateCurrency)
+    {
+        BOOL isDeficiency = [welf checkUserHasBalanceDeficiency:user];
+        
+        ExchangeMoneyViewDataBuilder *builder = [welf builderWithUser:user
+                                                           currencies:ratesData.currencies
+                                                         invertedRate:invertedRateCurrency.rate
+                                                         isDeficiency:isDeficiency];
+        
+        ExchangeMoneyViewData *viewData = [builder build];
+        
+        [welf.view setViewData:viewData];
+        
+        block(onUpdate);
+    }];
 }
 
-- (void)configureInputsWithText:(NSString *)text exchangeType:(CurrencyExchangeType)exchangeType currencyType:(CurrencyType)currencyType{
+- (ExchangeMoneyViewDataBuilder *)builderWithUser:(User *)user
+                                       currencies:(NSArray *)currencies
+                                     invertedRate:(NSNumber *)invertedRate
+                                     isDeficiency:(BOOL)isDeficiency
+{
+    __weak typeof(self) welf = self;
+    OnInputChange onInputChange = ^(NSString *text, CurrencyExchangeType exchangeType, CurrencyType currencyType) {
+        [welf configureInputsWithText:text exchangeType:exchangeType currencyType:currencyType];
+    };
+    
+    return [[ExchangeMoneyViewDataBuilder alloc] initWithUser:user
+                                                   currencies:currencies
+                                                  incomeInput:self.incomeInput
+                                                 expenseInput:self.expenseInput
+                                               sourceCurrency:self.interactor.sourceCurrency
+                                               targetCurrency:self.interactor.targetCurrency
+                                                 invertedRate:invertedRate
+                                                 isDeficiency:isDeficiency
+                                                onInputChange:onInputChange];
+}
+
+- (void)configureInputsWithText:(NSString *)text
+                   exchangeType:(CurrencyExchangeType)exchangeType
+                   currencyType:(CurrencyType)currencyType
+{
     
     NSString *numberText = [self.numbersFormatter format:text];
     
@@ -214,10 +228,9 @@
     };
     
     __weak typeof(self) welf = self;
-    
     [self.interactor exchangeWallet:inputWallet
                      targetCurrency:targetCurrency
-                           onResult:^(Wallet *wallet, NSNumber *invertedRate)
+                           onResult:^(Wallet *wallet)
     {
         switch (exchangeType) {
             case CurrencyExchangeSourceType:
@@ -227,9 +240,9 @@
                 }
                 if (welf.interactor.sourceCurrency.currencyType == currencyType) {
                     welf.expenseInput = [FormatterResultData formatterDataWithString:numberText
-                                                                                    sign:BalanceFormatterSignMinus];
+                                                                                sign:BalanceFormatterSignMinus];
                     welf.incomeInput = [FormatterResultData formatterDataWithString:wallet.amount.stringValue
-                                                                                   sign:BalanceFormatterSignPlus];
+                                                                               sign:BalanceFormatterSignPlus];
                     [welf reloadView];
                 }
             }
@@ -241,9 +254,9 @@
                 }
                 if (welf.interactor.targetCurrency.currencyType == currencyType) {
                     welf.expenseInput = [FormatterResultData formatterDataWithString:wallet.amount.stringValue
-                                                                                    sign:BalanceFormatterSignMinus];
+                                                                                sign:BalanceFormatterSignMinus];
                     welf.incomeInput = [FormatterResultData formatterDataWithString:numberText
-                                                                                   sign:BalanceFormatterSignPlus];
+                                                                               sign:BalanceFormatterSignPlus];
                     [welf reloadView];
                 }
             }
@@ -260,7 +273,8 @@
         numberText = targetWallet.amount.stringValue;
     }
     
-    FormatterResultData *data = [FormatterResultData formatterDataWithString:numberText sign:BalanceFormatterSignMinus];
+    FormatterResultData *data = [FormatterResultData formatterDataWithString:numberText
+                                                                        sign:BalanceFormatterSignMinus];
     return data;
 }
 
@@ -272,7 +286,8 @@
         numberText = @(fabs(targetWallet.amount.floatValue)).stringValue;
     }
     
-    FormatterResultData *data = [FormatterResultData formatterDataWithString:numberText sign:BalanceFormatterSignPlus];
+    FormatterResultData *data = [FormatterResultData formatterDataWithString:numberText
+                                                                        sign:BalanceFormatterSignPlus];
     return data;
 }
 
@@ -310,7 +325,6 @@
 }
 
 - (void)reloadView {
-    NSLog(@"%@", @"RELOAD VIEW");
     [self updateViewWithData:self.exchangeRatesData];
 }
 
