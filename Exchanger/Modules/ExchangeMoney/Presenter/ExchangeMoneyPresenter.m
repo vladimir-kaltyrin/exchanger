@@ -105,7 +105,9 @@
     
     [self.view setOnPageChange:^(CurrencyExchangeType exchangeType, NSInteger current) {
         [weakSelf update:exchangeType withIndex:current];
-        [weakSelf reloadView];
+        [weakSelf configureInputsWithText:[weakSelf currentInput].string
+                             exchangeType:[weakSelf activeExchangeType]
+                             currencyType:[weakSelf currentCurrency]];
     }];
 }
 
@@ -165,7 +167,7 @@
      {
          
          OnInputChange onInputChange = ^(NSString *text, CurrencyExchangeType exchangeType, CurrencyType currencyType) {
-             [weakSelf handleOnInputChange:text exchangeType:exchangeType currencyType:currencyType targetWallet:targetWallet];
+             [weakSelf configureInputsWithText:text exchangeType:exchangeType currencyType:currencyType];
          };
          
          ExchangeMoneyViewDataBuilder *builder = [[ExchangeMoneyViewDataBuilder alloc] initWithUser:user
@@ -186,7 +188,7 @@
      }];
 }
 
-- (void)handleOnInputChange:(NSString *)text exchangeType:(CurrencyExchangeType)exchangeType currencyType:(CurrencyType)currencyType targetWallet:(Wallet *)targetWallet {
+- (void)configureInputsWithText:(NSString *)text exchangeType:(CurrencyExchangeType)exchangeType currencyType:(CurrencyType)currencyType{
     
     NSString *numberText = [self.numbersFormatter format:text];
     
@@ -331,6 +333,28 @@
 - (BOOL)checkUserHasBalanceDeficiency:(User *)user {
     Wallet *wallet = [user walletWithCurrencyType:self.interactor.sourceCurrency.currencyType];
     return fabs(self.expenseInput.floatValue) > fabs(wallet.amount.floatValue);
+}
+
+- (FormatterResultData *)currentInput {
+    switch (self.activeExchangeType) {
+        case CurrencyExchangeSourceType:
+            return self.expenseInput;
+            break;
+        case CurrencyExchangeTargetType:
+            return self.incomeInput;
+            break;
+    }
+}
+
+- (CurrencyType)currentCurrency {
+    switch (self.activeExchangeType) {
+        case CurrencyExchangeSourceType:
+            return self.interactor.sourceCurrency.currencyType;
+            break;
+        case CurrencyExchangeTargetType:
+            return self.interactor.targetCurrency.currencyType;
+            break;
+    }
 }
 
 - (void)dismissModule {
