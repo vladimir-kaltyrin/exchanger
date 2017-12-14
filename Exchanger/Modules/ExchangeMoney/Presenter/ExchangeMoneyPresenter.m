@@ -264,11 +264,15 @@
 
 - (FormatterResultData *)handleSourceInputFormatter:(NSString *)text targetWallet:(Wallet *)targetWallet {
     NSString *numberText;
-    if (self.activeExchangeType == CurrencyExchangeSourceType) {
-        numberText = [self.numbersFormatter format:text];
-    } else {
-        numberText = targetWallet.amount.stringValue;
-    }
+    
+    switch (self.activeExchangeType) {
+        case CurrencyExchangeSourceType:
+            numberText = [self.numbersFormatter format:text];
+            break;
+        case CurrencyExchangeTargetType:
+            numberText = targetWallet.amount.stringValue;
+            break;
+    };
     
     return [FormatterResultData formatterDataWithString:numberText
                                                    sign:BalanceFormatterSignMinus];
@@ -276,11 +280,15 @@
 
 - (FormatterResultData *)handleTargetInputFormatter:(NSString *)text targetWallet:(Wallet *)targetWallet {
     NSString *numberText;
-    if (self.activeExchangeType == CurrencyExchangeTargetType) {
-        numberText = [self.numbersFormatter format:text];
-    } else {
-        numberText = @(fabs(targetWallet.amount.floatValue)).stringValue;
-    }
+    
+    switch (self.activeExchangeType) {
+        case CurrencyExchangeSourceType:
+            numberText = @(fabs(targetWallet.amount.floatValue)).stringValue;
+            break;
+        case CurrencyExchangeTargetType:
+            numberText = [self.numbersFormatter format:text];
+            break;
+    };
     
     return [FormatterResultData formatterDataWithString:numberText
                                                    sign:BalanceFormatterSignPlus];
