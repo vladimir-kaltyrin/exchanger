@@ -60,7 +60,6 @@
     
     [self.keyboardObserver setOnKeyboardData:^(KeyboardData *keyboardData) {
         [welf.view updateKeyboardData:keyboardData];
-        [welf reloadView];
     }];
     
     [self.view setExchangeButtonEnabled:YES];
