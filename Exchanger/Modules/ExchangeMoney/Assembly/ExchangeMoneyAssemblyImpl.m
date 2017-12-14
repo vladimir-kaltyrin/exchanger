@@ -17,11 +17,13 @@
 
 - (AssembledViewController *)module {
     
+    self.viewController = [[ExchangeMoneyViewController alloc] init];
+    
     let presenter = [self presenter];
     [self.viewController addDisposable:presenter];
     
     return [[AssembledViewController alloc] initWithViewController:self.viewController
-                                                            module:[self presenter]];
+                                                            module:presenter];
 }
 
 // MARK: - Private
@@ -45,13 +47,6 @@
     presenter.view = [self viewController];
     
     return presenter;
-}
-
-- (ExchangeMoneyViewController *)viewController {
-    if (_viewController == nil) {
-        _viewController = [[ExchangeMoneyViewController alloc] init];
-    }
-    return _viewController;
 }
 
 @end

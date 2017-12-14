@@ -2,7 +2,7 @@
 
 # Exchanger
 
-The Exchanger is a simple iOS application demonstrating one of approaches to implement VIPER 💎 architecture in Objective-C.
+The Exchanger is a simple iOS application demonstrating one of approaches to implement VIPER 💎 architecture in modern Objective-C.
 
 # Table of contents
 
