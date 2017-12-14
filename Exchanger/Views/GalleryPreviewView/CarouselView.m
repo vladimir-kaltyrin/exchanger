@@ -1,3 +1,4 @@
+#import "ConvenientObjC.h"
 #import "CarouselView.h"
 #import "CarouselPageController.h"
 #import "CarouselData.h"
@@ -114,8 +115,8 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 // MARK: - Recognizers
 
 - (void)setupRecognizer {
-    MoveFailableLongPressGestureRecognizer *selectRecognizer = [[MoveFailableLongPressGestureRecognizer alloc] initWithTarget:self
-                                                                                                                       action:@selector(onSelect:)];
+    let selectRecognizer = [[MoveFailableLongPressGestureRecognizer alloc] initWithTarget:self
+                                                                                   action:@selector(onSelect:)];
     selectRecognizer.minimumPressDuration = 0.1;
     selectRecognizer.allowableMovement = 1;
     selectRecognizer.allowableMovementAfterBegan = 1;
