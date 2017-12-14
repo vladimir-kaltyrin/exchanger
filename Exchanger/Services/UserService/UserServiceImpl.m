@@ -24,10 +24,10 @@
                                                   amount:@100];
     
     Wallet *eurWallet = [[Wallet alloc] initWithCurrency:[Currency currencyWithType:CurrencyTypeEUR]
-                                                  amount:@200];
+                                                  amount:@100];
     
     Wallet *gbpWallet = [[Wallet alloc] initWithCurrency:[Currency currencyWithType:CurrencyTypeGBP]
-                                                  amount:@300];
+                                                  amount:@100];
     
     User *user = [[User alloc] initWithWallets:@[usdWallet, eurWallet, gbpWallet]];
     
