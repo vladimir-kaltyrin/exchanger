@@ -7,6 +7,9 @@ The Exchanger is a simple iOS application demonstrating one of approaches to imp
 # Table of contents
 
 * [About](#about)
+    * [CocoaPods](#cocoapods)
+    * [OCLint](#oclint)
+    * [XCPretty](#xcpretty)
 * [Setup](#setup)
 * [Notes on implementation](#notes)
     * [VIPER](#viper)
@@ -24,7 +27,7 @@ The application is a fairly straightforward currency converter. It takes a refer
 When app starts there is a limited balance with 100 units of each currency.
 There are two text inputs on the screen, both are cyclic carousel views for choosing currency to exchange.
 
-YouTube video how it works:
+YouTube video of how it works:
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=SdipG8ApWWc
 " target="_blank"><img src="http://img.youtube.com/vi/SdipG8ApWWc/0.jpg"
@@ -38,6 +41,8 @@ If you have any questions just [email me](mailto:vkasci@gmail.com). Feel free to
 
 ## Setup
 
+<a name="cocoapods"/>
+
 ### Cocoapods
 
 To install all project dependencies just use Cocoapods:
@@ -45,6 +50,8 @@ To install all project dependencies just use Cocoapods:
 ```bash
 pod install
 ```
+
+<a name="oclint"/>
 
 ### OCLint
 
@@ -54,6 +61,8 @@ If OCLint is not installed on your machine then run following commands in Termin
 brew tap oclint/formulae
 brew install oclint
 ```
+
+<a name="xcpretty"/>
 
 ### XCPretty
 
@@ -66,7 +75,6 @@ gem install xcpretty
 <a name="notes"/>
 
 ## Notes on implementation
-
 
 <a name="viper"/>
 
