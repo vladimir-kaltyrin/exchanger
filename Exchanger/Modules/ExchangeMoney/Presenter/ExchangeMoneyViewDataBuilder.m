@@ -1,10 +1,9 @@
-#import <ObjectiveSugar/ObjectiveSugar.h>
+#import "ConvenientObjC.h"
 #import "ExchangeMoneyViewDataBuilder.h"
 #import "User.h"
 #import "CarouselData.h"
 #import "FormatterFactoryImpl.h"
 #import "CurrencyExchangeType.h"
-#import "ConvenientObjC.h"
 
 @interface ExchangeMoneyViewDataBuilder()
 @property (nonatomic, strong) User *user;
@@ -54,22 +53,20 @@
 
 - (ExchangeMoneyViewData *)build {
     
-    CarouselData *sourceData = [self previewDataWithCurrencyExchangeType:CurrencyExchangeSourceType];
+    let sourceData = [self previewDataWithCurrencyExchangeType:CurrencyExchangeSourceType];
     
-    CarouselData *targetData = [self previewDataWithCurrencyExchangeType:CurrencyExchangeTargetType];
+    let targetData = [self previewDataWithCurrencyExchangeType:CurrencyExchangeTargetType];
     
-    ExchangeMoneyViewData *viewData = [[ExchangeMoneyViewData alloc] initWithSourceData:sourceData
-                                                                             targetData:targetData];
-    
-    return viewData;
+    return [[ExchangeMoneyViewData alloc] initWithSourceData:sourceData
+                                                  targetData:targetData];
 }
 
 // MARK: - Private
 
 - (CarouselPageData *)sourceCurrencyPageDataWithCurrency:(Currency *)currency {
-    NSString *currencyTitle = currency.currencyCode;
-    NSString *remainder = [self balanceWithUser:self.user currencyType:currency.currencyType];
-    NSString *rate = @"";
+    let currencyTitle = currency.currencyCode;
+    let remainder = [self balanceWithUser:self.user currencyType:currency.currencyType];
+    let rate = @"";
     
     CarouselPageRemainderStyle remainderStyle;
     if (self.isDeficiency) {
@@ -92,14 +89,14 @@
 }
 
 - (CarouselPageData *)targetCurrencyPageDataWithCurrency:(Currency *)currency {
-    NSString *currencyTitle = currency.currencyCode;
-    NSString *remainder = [self balanceWithUser:self.user currencyType:currency.currencyType];
-    NSString *rate = [NSString stringWithFormat:@"%@1 = %@%@",
-                      currency.currencySign,
-                      self.sourceCurrency.currencySign,
-                      [self.roundingFormatter format:self.invertedRate]];
+    let currencyTitle = currency.currencyCode;
+    let remainder = [self balanceWithUser:self.user currencyType:currency.currencyType];
+    let rate = [NSString stringWithFormat:@"%@1 = %@%@",
+                currency.currencySign,
+                self.sourceCurrency.currencySign,
+                [self.roundingFormatter format:self.invertedRate]];
     
-    CarouselPageRemainderStyle remainderStyle = CarouselPageRemainderStyleNormal;
+    let remainderStyle = CarouselPageRemainderStyleNormal;
     
     OnTextChange onTextChange = ^(NSString *text) {
         safeBlock(self.onInputChange, text, CurrencyExchangeTargetType, currency.currencyType);
@@ -149,15 +146,13 @@
         currentPage = 0;
     }
     
-    CarouselData *viewData = [[CarouselData alloc] initWithPages:pages
-                                                     currentPage:currentPage];
-    
-    return viewData;
+    return [[CarouselData alloc] initWithPages:pages
+                                   currentPage:currentPage];
 }
 
 - (NSString *)balanceWithUser:(User *)user currencyType:(CurrencyType)currencyType {
-    Wallet *wallet = [user walletWithCurrencyType:currencyType];
-    Currency *currency = wallet.currency;
+    let wallet = [user walletWithCurrencyType:currencyType];
+    let currency = wallet.currency;
     return [NSString stringWithFormat:@"You have %@%@",
             currency.currencySign,
             [self.roundingFormatter format:wallet.amount]];

@@ -1,3 +1,4 @@
+#import "ConvenientObjC.h"
 #import "ExchangeMoneyTitleView.h"
 #import "FormatterFactoryImpl.h"
 #import "AttributedStringStyle.h"
@@ -49,25 +50,29 @@
         return;
     }
     
-    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] init];
+    var string = [[NSMutableAttributedString alloc] init];
     
-    AttributedStringStyle *stringStyle = [[AttributedStringStyle alloc] init];
+    var stringStyle = [[AttributedStringStyle alloc] init];
     stringStyle.font = [UIFont systemFontOfSize:18];
     stringStyle.foregroundColor = [UIColor blackColor];
     
-    NSString *sourceCurrencySign = sourceCurrency.currencySign;
-    NSString *sourceText = [NSString stringWithFormat:@"%@1 - ", sourceCurrencySign];
+    let sourceCurrencySign = sourceCurrency.currencySign;
+    let sourceText = [NSString stringWithFormat:@"%@1 - ", sourceCurrencySign];
     
-    NSAttributedString *sourceCurrencyText = [[NSAttributedString alloc] initWithString:sourceText attributes:stringStyle.attributes];
+    let sourceCurrencyText = [[NSAttributedString alloc] initWithString:sourceText
+                                                             attributes:stringStyle.attributes];
     [string appendAttributedString:sourceCurrencyText];
     
-    NSAttributedString *targetCurrencySignText = [[NSAttributedString alloc] initWithString:targetCurrency.currencySign attributes:stringStyle.attributes];
+    let targetCurrencySignText = [[NSAttributedString alloc] initWithString:targetCurrency.currencySign
+                                                                 attributes:stringStyle.attributes];
     [string appendAttributedString:targetCurrencySignText];
     
-    NSString *targetText = [NSString stringWithFormat:@"%@",
-                            targetCurrency.rate.stringValue];
+    let targetText = [NSString stringWithFormat:@"%@",
+                      targetCurrency.rate.stringValue];
     
-    NSAttributedString *targetCurrencyText = [self.currentBalanceFormatter format:targetText sign:BalanceFormatterSignNone].formattedString;
+    let targetCurrencyText = [self.currentBalanceFormatter
+                              format:targetText
+                              sign:BalanceFormatterSignNone].formattedString;
     [string appendAttributedString:targetCurrencyText];
     
     self.titleLabel.attributedText = string;

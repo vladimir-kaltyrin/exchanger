@@ -1,3 +1,4 @@
+#import "ConvenientObjC.h"
 #import "ExchangeMoneyPresenter.h"
 #import "ExchangeRatesData.h"
 #import "ExchangeMoneyViewData.h"
@@ -7,7 +8,6 @@
 #import "KeyboardObserver.h"
 #import "FormatterFactoryImpl.h"
 #import "ExchangeMoneyViewDataBuilder.h"
-#import "ConvenientObjC.h"
 #import "Wallet.h"
 
 @interface ExchangeMoneyPresenter()
@@ -164,12 +164,12 @@
     {
         BOOL isDeficiency = [welf checkUserHasBalanceDeficiency:user];
         
-        ExchangeMoneyViewDataBuilder *builder = [welf builderWithUser:user
-                                                           currencies:ratesData.currencies
-                                                         invertedRate:invertedRateCurrency.rate
-                                                         isDeficiency:isDeficiency];
+        let builder = [welf builderWithUser:user
+                                 currencies:ratesData.currencies
+                               invertedRate:invertedRateCurrency.rate
+                               isDeficiency:isDeficiency];
         
-        ExchangeMoneyViewData *viewData = [builder build];
+        let viewData = [builder build];
         
         [welf.view setViewData:viewData];
         
@@ -272,9 +272,8 @@
         numberText = targetWallet.amount.stringValue;
     }
     
-    FormatterResultData *data = [FormatterResultData formatterDataWithString:numberText
-                                                                        sign:BalanceFormatterSignMinus];
-    return data;
+    return [FormatterResultData formatterDataWithString:numberText
+                                                   sign:BalanceFormatterSignMinus];
 }
 
 - (FormatterResultData *)handleTargetInputFormatter:(NSString *)text targetWallet:(Wallet *)targetWallet {
@@ -285,9 +284,8 @@
         numberText = @(fabs(targetWallet.amount.floatValue)).stringValue;
     }
     
-    FormatterResultData *data = [FormatterResultData formatterDataWithString:numberText
-                                                                        sign:BalanceFormatterSignPlus];
-    return data;
+    return [FormatterResultData formatterDataWithString:numberText
+                                                   sign:BalanceFormatterSignPlus];
 }
 
 - (void)fetchRatesWithRepeat:(BOOL)repeat onUpdate:(void(^)())onUpdate onError:(void (^)(NSError *))onError {
@@ -330,21 +328,19 @@
 - (void)updateExchangeButton {
     __weak typeof(self) welf = self;
     [self.interactor fetchUser:^(User *user) {
-        Currency *sourceCurrency = welf.interactor.sourceCurrency;
-        Currency *targetCurrency = welf.interactor.targetCurrency;
+        let sourceCurrency = welf.interactor.sourceCurrency;
+        let targetCurrency = welf.interactor.targetCurrency;
         
-        BOOL isEqualCurrencies = sourceCurrency.currencyType == targetCurrency.currencyType;
-
-        BOOL isDeficiency = [welf checkUserHasBalanceDeficiency:user];
-        
-        BOOL isEnabled = !isDeficiency && !isEqualCurrencies;
+        let isEqualCurrencies = sourceCurrency.currencyType == targetCurrency.currencyType;
+        let isDeficiency = [welf checkUserHasBalanceDeficiency:user];
+        let isEnabled = !isDeficiency && !isEqualCurrencies;
         
         [welf.view setExchangeButtonEnabled:isEnabled];
     }];
 }
 
 - (BOOL)checkUserHasBalanceDeficiency:(User *)user {
-    Wallet *wallet = [user walletWithCurrencyType:self.interactor.sourceCurrency.currencyType];
+    let wallet = [user walletWithCurrencyType:self.interactor.sourceCurrency.currencyType];
     return fabs(self.expenseInput.floatValue) > fabs(wallet.amount.floatValue);
 }
 

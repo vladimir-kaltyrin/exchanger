@@ -1,8 +1,8 @@
+#import "ConvenientObjC.h"
 #import "CarouselController.h"
 #import "CarouselPageData.h"
 #import "CarouselPageController.h"
 #import "CarouselPage.h"
-#import "ConvenientObjC.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -55,14 +55,13 @@ NS_ASSUME_NONNULL_END
 }
     
 - (void)prepareForReuse {
-    
     self.data = [NSArray array];
     self.delegate = nil;
     self.dataSource = nil;
 }
 
 - (void)focus {
-    CarouselPageController *controller = (CarouselPageController *)[self viewControllerAt:[self currentPage]];
+    let controller = (CarouselPageController *)[self viewControllerAt:[self currentPage]];
     [controller focus];
 }
     
@@ -92,9 +91,9 @@ NS_ASSUME_NONNULL_END
 }
     
 - (NSInteger)currentPage {
-    UIViewController *firstController = self.viewControllers.firstObject;
+    let firstController = self.viewControllers.firstObject;
     if ([firstController isKindOfClass:[CarouselPageController class]]) {
-        NSInteger index = [((CarouselPageController *)firstController) index];
+        let index = [((CarouselPageController *)firstController) index];
         return index;
     }
     return 0;
@@ -108,9 +107,9 @@ NS_ASSUME_NONNULL_END
     if (self.data.count > 1) {
         
         if ([viewController isKindOfClass:[CarouselPageController class]]) {
-            NSInteger currentIndex = [((CarouselPageController *)viewController) index];
+            let currentIndex = [((CarouselPageController *)viewController) index];
             
-            NSInteger index = [self nextIndexBefore:currentIndex];
+            let index = [self nextIndexBefore:currentIndex];
             
             return [self viewControllerAt:index];
         }
@@ -125,9 +124,9 @@ NS_ASSUME_NONNULL_END
     if (self.data.count > 1) {
         
         if ([viewController isKindOfClass:[CarouselPageController class]]) {
-            NSInteger currentIndex = [((CarouselPageController *)viewController) index];
+            let currentIndex = [((CarouselPageController *)viewController) index];
             
-            NSInteger index = [self nextIndexAfter:currentIndex];
+            let index = [self nextIndexAfter:currentIndex];
             
             return [self viewControllerAt:index];
         }
@@ -143,10 +142,10 @@ NS_ASSUME_NONNULL_END
    previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers
        transitionCompleted:(BOOL)completed
 {
-    UIViewController *firstController = self.viewControllers.firstObject;
+    let firstController = self.viewControllers.firstObject;
     if ([firstController isKindOfClass:[CarouselPageController class]]) {
-        CarouselPageController* currentController = (CarouselPageController *)firstController;
-        NSInteger currentIndex = [currentController index];
+        let currentController = (CarouselPageController *)firstController;
+        let currentIndex = [currentController index];
         
         [currentController focus];
         

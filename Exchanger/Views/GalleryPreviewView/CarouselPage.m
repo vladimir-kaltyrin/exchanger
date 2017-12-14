@@ -1,9 +1,9 @@
+#import "ConvenientObjC.h"
 #import "CarouselPage.h"
 #import "CarouselPageData.h"
 #import "UIView+Properties.h"
 #import "UITextField+Configuration.h"
 #import "ObservableTextField.h"
-#import "ConvenientObjC.h"
 
 CGFloat const kBigFontSize = 34.0;
 CGFloat const kSmallFontSize = 12.0;
@@ -100,15 +100,15 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    CGRect contentFrame = UIEdgeInsetsInsetRect(self.bounds, [self contentInsets]);
-    CGFloat verticalOffsetBetweenLabels = 8.f;
+    let contentFrame = UIEdgeInsetsInsetRect(self.bounds, [self contentInsets]);
+    let verticalOffsetBetweenLabels = 8.f;
     
-    CGSize currencyTitleLabelSize = [self.currencyTitleLabel sizeThatFits:contentFrame.size];
+    let currencyTitleLabelSize = [self.currencyTitleLabel sizeThatFits:contentFrame.size];
     self.currencyTitleLabel.size = currencyTitleLabelSize;
     self.currencyTitleLabel.left = contentFrame.origin.x;
     self.currencyTitleLabel.top = contentFrame.origin.y;
     
-    CGSize remainderLabelSize = [self.remainderLabel sizeThatFits:contentFrame.size];
+    let remainderLabelSize = [self.remainderLabel sizeThatFits:contentFrame.size];
     self.remainderLabel.size = remainderLabelSize;
     self.remainderLabel.top = self.currencyTitleLabel.bottom + verticalOffsetBetweenLabels;
     self.remainderLabel.left = self.currencyTitleLabel.x;
@@ -118,7 +118,7 @@ NS_ASSUME_NONNULL_BEGIN
     self.textField.right = contentFrame.origin.x + contentFrame.size.width;
     self.textField.top = self.currencyTitleLabel.top;
     
-    CGSize currencyRateLabelSize = [self.currencyRateLabel sizeThatFits:contentFrame.size];
+    let currencyRateLabelSize = [self.currencyRateLabel sizeThatFits:contentFrame.size];
     self.currencyRateLabel.size = currencyRateLabelSize;
     self.currencyRateLabel.right = self.textField.right;
     self.currencyRateLabel.top = self.remainderLabel.top;

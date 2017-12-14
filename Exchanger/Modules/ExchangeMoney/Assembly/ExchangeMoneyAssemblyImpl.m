@@ -1,5 +1,6 @@
 #import "ExchangeMoneyAssemblyImpl.h"
 #import "ExchangeMoneyInteractor.h"
+#import "ConvenientObjC.h"
 #import "ExchangeMoneyInteractorImpl.h"
 #import "ExchangeMoneyModule.h"
 #import "ExchangeMoneyPresenter.h"
@@ -16,7 +17,7 @@
 
 - (AssembledViewController *)module {
     
-    id<ExchangeMoneyModule> presenter = [self presenter];
+    let presenter = [self presenter];
     [self.viewController addDisposable:presenter];
     
     return [[AssembledViewController alloc] initWithViewController:self.viewController
@@ -38,9 +39,9 @@
 }
 
 - (id<ExchangeMoneyModule>)presenter {
-    ExchangeMoneyPresenter *presenter = [[ExchangeMoneyPresenter alloc] initWithInteractor:[self interactor]
-                                                                                    router:[self router]
-                                                                          keyboardObserver:[self.serviceFactory keyboardObserver]];
+    var presenter = [[ExchangeMoneyPresenter alloc] initWithInteractor:[self interactor]
+                                                                router:[self router]
+                                                      keyboardObserver:[self.serviceFactory keyboardObserver]];
     presenter.view = [self viewController];
     
     return presenter;

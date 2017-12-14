@@ -1,3 +1,4 @@
+#import "ConvenientObjC.h"
 #import "UIView+Debug.h"
 
 @implementation UIView (Debug)
@@ -9,7 +10,7 @@
     }
     
     for (UIView *subView in self.subviews) {
-        UIView *firstResponder = [subView findViewThatIsFirstResponder];
+        let firstResponder = [subView findViewThatIsFirstResponder];
         if (firstResponder != nil) {
             return firstResponder;
         }
@@ -19,9 +20,9 @@
 }
 
 + (UIView *)firstResponderInWindow {
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    let window = [UIApplication sharedApplication].keyWindow;
     
-    UIView *firstResponder = [window findViewThatIsFirstResponder];
+    let firstResponder = [window findViewThatIsFirstResponder];
     
     return firstResponder;
 }

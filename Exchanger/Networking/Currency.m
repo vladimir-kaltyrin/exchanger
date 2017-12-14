@@ -1,4 +1,4 @@
-#import <ObjectiveSugar/ObjectiveSugar.h>
+#import "ConvenientObjC.h"
 #import "Currency.h"
 #import "FormatterFactoryImpl.h"
 
@@ -57,7 +57,7 @@
 }
 
 + (Currency *)currencyWithType:(CurrencyType)currencyType {
-    Currency *currency = [[Currency alloc] init];
+    var currency = [[Currency alloc] init];
     currency.currencyType = currencyType;
     
     return currency;

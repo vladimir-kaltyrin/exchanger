@@ -1,7 +1,7 @@
+#import "ConvenientObjC.h"
 #import "ExchangeMoneyInteractorImpl.h"
 #import "ExchangeRatesUpdater.h"
 #import "ExchangeMoneyService.h"
-#import "ConvenientObjC.h"
 #import "User.h"
 
 @interface ExchangeMoneyInteractorImpl()
@@ -51,7 +51,7 @@
     
     __weak typeof(self) welf = self;
     [self.userService currentUser:^(User *user) {
-        Wallet *wallet = [user walletWithCurrencyType:welf.sourceCurrency.currencyType];
+        let wallet = [user walletWithCurrencyType:welf.sourceCurrency.currencyType];
         
         if (currencyAmount.floatValue > wallet.amount.floatValue) {
             safeBlock(onError);
@@ -139,10 +139,9 @@
 }
 
 - (Currency *)findCurrencyWithType:(CurrencyType)currencyType inData:(ExchangeRatesData *)data {
-    NSInteger indexOfCurrency = [data.currencies indexOfObjectPassingTest:^BOOL(Currency * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        return obj.currencyType == currencyType;
+    return [data.currencies find:^BOOL(Currency *currency) {
+        return currency.currencyType == currencyType;
     }];
-    return [data.currencies objectAtIndex:indexOfCurrency];
 }
 
 @end

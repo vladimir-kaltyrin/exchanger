@@ -1,3 +1,4 @@
+#import "ConvenientObjC.h"
 #import "AppDelegate.h"
 #import "AssemblyFactory.h"
 #import "AssemblyFactoryImpl.h"
@@ -14,7 +15,7 @@
 {
     self.assemblyFactory = [[AssemblyFactoryImpl alloc] init];
     
-    id<IntroAssembly> rootAssembly = [[self assemblyFactory] introAssembly];
+    let rootAssembly = [[self assemblyFactory] introAssembly];
     self.rootModule = [rootAssembly module];
     
     [self makeWindowKeyAndVisibleWith:self.rootModule.viewController];

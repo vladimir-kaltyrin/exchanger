@@ -6,5 +6,4 @@
 @end
 
 @interface ExchangeMoneyRouterImpl : BaseRouter<ExchangeMoneyRouter>
-
 @end

@@ -1,3 +1,4 @@
+#import "ConvenientObjC.h"
 #import "ExchangeRatesResponse.h"
 #import "Currency.h"
 
@@ -21,7 +22,7 @@
 }
 
 - (NSArray *)parse: (NSDictionary *)sourceDictionary {
-    NSDictionary *nextNode = sourceDictionary;
+    var nextNode = sourceDictionary;
     while ([nextNode.allKeys indexOfObject:@"Cube"] != NSNotFound) {
         nextNode = [nextNode objectForKey:@"Cube"];
         if ([nextNode isKindOfClass:[NSArray class]]) {

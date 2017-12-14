@@ -1,3 +1,4 @@
+#import "ConvenientObjC.h"
 #import "BaseUIKitRouter.h"
 
 @interface BaseUIKitRouter()
@@ -24,10 +25,10 @@
     }
     
     if (self.viewController.navigationController != nil) {
-        UINavigationController *navigationController = self.viewController.navigationController;
-        NSInteger index = [navigationController.viewControllers indexOfObject:self.viewController];
+        let navigationController = self.viewController.navigationController;
+        let index = [navigationController.viewControllers indexOfObject:self.viewController];
         if (index > 0) {
-            UIViewController *previousViewController = navigationController.viewControllers[index - 1];
+            let previousViewController = navigationController.viewControllers[index - 1];
             [navigationController popToViewController:previousViewController animated:animated];
         } else {
             [navigationController.presentingViewController dismissViewControllerAnimated:animated
@@ -43,17 +44,31 @@
     return [self dismissCurrentModule:YES];
 }
 
-- (void)push: (UIViewController *)viewController animated:(BOOL)animated {
-    [self.viewController.navigationController pushViewController:viewController animated:animated];
+- (void)push: (UIViewController *)viewController
+    animated:(BOOL)animated
+{
+    [self.viewController.navigationController
+     pushViewController:viewController
+     animated:animated];
 }
 
-- (void)present: (UIViewController *)viewController animated:(BOOL)animated completion:(void(^)())completion {
-    [self.viewController presentViewController:viewController animated:animated completion:completion];
+- (void)present: (UIViewController *)viewController
+       animated:(BOOL)animated
+     completion:(void(^)())completion
+{
+    [self.viewController presentViewController:viewController
+                                      animated:animated
+                                    completion:completion];
 }
 
-- (void)presentWithNavigationController:(UIViewController *)viewController animated:(BOOL)animated completion:(void(^)())completion {
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
-    [self present:navigationController animated:animated completion:completion];
+- (void)presentWithNavigationController:(UIViewController *)viewController
+                               animated:(BOOL)animated
+                             completion:(void(^)())completion
+{
+    let navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    [self present:navigationController
+         animated:animated
+       completion:completion];
 }
 
 @end

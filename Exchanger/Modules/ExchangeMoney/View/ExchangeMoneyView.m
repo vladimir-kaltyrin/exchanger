@@ -1,3 +1,4 @@
+#import "ConvenientObjC.h"
 #import "ExchangeMoneyView.h"
 #import "ExchangeMoneyViewData.h"
 #import "KeyboardObserverImpl.h"
@@ -7,7 +8,6 @@
 #import "KeyboardData.h"
 #import "ObservableTextField.h"
 #import "FormatterFactoryImpl.h"
-#import "ConvenientObjC.h"
 #import "UIView+Properties.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
 
@@ -73,7 +73,7 @@ CGFloat const kFontSize = 34.0;
 
 - (void)setActiveCurrencyExchangeType:(CurrencyExchangeType)exchangeType {
     
-    CurrencyExchangeType oldValue = self.activeExchangeType;
+    let oldValue = self.activeExchangeType;
     
     _activeExchangeType = exchangeType;
     
@@ -148,7 +148,7 @@ CGFloat const kFontSize = 34.0;
     self.overlayView.frame = self.bounds;
     self.activityIndicator.center = self.center;
     
-    CGRect contentsFrame = [self contentsFrame];
+    let contentsFrame = [self contentsFrame];
     
     self.sourceCurrencyView.width = contentsFrame.size.width;
     self.sourceCurrencyView.height = contentsFrame.size.height / 2;
@@ -159,7 +159,7 @@ CGFloat const kFontSize = 34.0;
 }
 
 - (CGRect)contentsFrame {
-    CGRect frame = self.bounds;
+    var frame = self.bounds;
     frame.size.height = frame.size.height - self.keyboardHeight;
     return frame;
 }
