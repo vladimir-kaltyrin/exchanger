@@ -9,6 +9,7 @@ The Exchanger is a simple iOS application demonstrating one of approaches to imp
 * [About](#about)
 * [Setup](#setup)
 * [Notes on implementation](#notes)
+    * [VIPER](##viper)
 
 <a name="about"/>
 
