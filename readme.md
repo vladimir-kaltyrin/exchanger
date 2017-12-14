@@ -9,11 +9,11 @@ The Exchanger is a simple iOS application demonstrating one of approaches to imp
 * [About](#about)
 * [Setup](#setup)
 * [Notes on implementation](#notes)
-    * [VIPER](##viper)
-    * [Type Inference](##typeinference)
-    * [Blocks](##blocks)
-    * [CarouselView](##carouselview)
-    * [Tests](##tests)
+    * [VIPER](#viper)
+    * [Type Inference](#typeinference)
+    * [Blocks](#blocks)
+    * [CarouselView](#carouselview)
+    * [Tests](#tests)
 
 <a name="about"/>
 
