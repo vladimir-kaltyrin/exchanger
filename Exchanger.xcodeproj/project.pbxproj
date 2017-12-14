@@ -177,7 +177,7 @@
 		8C1FEFC31F13A2610024F046 /* lint.sh */ = {isa = PBXFileReference; explicitFileType = text.script.sh; fileEncoding = 4; path = lint.sh; sourceTree = "<group>"; };
 		8C1FEFC91F13A76A0024F046 /* ServiceFactoryImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceFactoryImpl.h; path = Services/ServiceFactoryImpl.h; sourceTree = "<group>"; };
 		8C1FEFCA1F13A76A0024F046 /* ServiceFactoryImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceFactoryImpl.m; path = Services/ServiceFactoryImpl.m; sourceTree = "<group>"; };
-		8C2E1CE41F13818D00DB0FC2 /* Exchanger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Exchanger.app; path = Avito.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C2E1CE41F13818D00DB0FC2 /* Exchanger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exchanger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C2E1CF31F13818D00DB0FC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8C2E1CFD1F13818D00DB0FC2 /* ExchangerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExchangerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C2E1D031F13818D00DB0FC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1399,7 +1399,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Exchanger/Application/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.avito.app;
-				PRODUCT_NAME = Avito;
+				PRODUCT_NAME = Exchanger;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
@@ -1416,7 +1416,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Exchanger/Application/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.avito.app;
-				PRODUCT_NAME = Avito;
+				PRODUCT_NAME = Exchanger;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
