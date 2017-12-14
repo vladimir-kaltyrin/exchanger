@@ -1,8 +1,9 @@
 #import "ObservableTextField.h"
 #import "SafeBlocks.h"
+#import "UIKitBugAvoidingTextField.h"
 
 @interface ObservableTextField()
-@property (nonatomic, strong) UITextField *textField;
+@property (nonatomic, strong) UIKitBugAvoidingTextField *textField;
 @end
 
 @implementation ObservableTextField
@@ -12,7 +13,8 @@
 - (instancetype)init {
     self = [super initWithFrame:CGRectZero];
     if (self) {
-        self.textField = [[UITextField alloc] initWithFrame:CGRectZero];
+        // See UIKitBugAvoidingTextField for implementation details.
+        self.textField = [[UIKitBugAvoidingTextField alloc] init];
         
         [self addSubview:self.textField];
         
@@ -20,7 +22,9 @@
                            action:@selector(textFieldDidChange:)
                  forControlEvents:UIControlEventEditingChanged];
         
-        [self.textField addTarget:self action:@selector(textFieldDidBeginEditing) forControlEvents:UIControlEventEditingDidBegin];
+        [self.textField addTarget:self
+                           action:@selector(textFieldDidBeginEditing)
+                 forControlEvents:UIControlEventEditingDidBegin];
     }
     return self;
 }
