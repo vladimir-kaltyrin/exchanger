@@ -42,6 +42,7 @@
 		8C1858AD1FE28A5D00638DCD /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1858A71FE28A5C00638DCD /* BaseViewController.m */; };
 		8C1858AE1FE28A5D00638DCD /* BaseAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1858AA1FE28A5C00638DCD /* BaseAssembly.m */; };
 		8C1858B11FE28A7100638DCD /* UITextField+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1858B01FE28A7100638DCD /* UITextField+Configuration.m */; };
+		8C1858B61FE29EBA00638DCD /* EXTScope.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1858B41FE29EB900638DCD /* EXTScope.m */; };
 		8C1FEFCB1F13A76A0024F046 /* ServiceFactoryImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1FEFCA1F13A76A0024F046 /* ServiceFactoryImpl.m */; };
 		8C2E1CF41F13818D00DB0FC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C2E1CF31F13818D00DB0FC2 /* Assets.xcassets */; };
 		8C2E1D0D1F13818D00DB0FC2 /* ExchangerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2E1D0C1F13818D00DB0FC2 /* ExchangerUITests.m */; };
@@ -170,10 +171,13 @@
 		8C1858AA1FE28A5C00638DCD /* BaseAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseAssembly.m; path = Core/Base/BaseAssembly.m; sourceTree = "<group>"; };
 		8C1858AF1FE28A7000638DCD /* UITextField+Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITextField+Configuration.h"; path = "Categories/UITextField+Configuration.h"; sourceTree = "<group>"; };
 		8C1858B01FE28A7100638DCD /* UITextField+Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITextField+Configuration.m"; path = "Categories/UITextField+Configuration.m"; sourceTree = "<group>"; };
+		8C1858B31FE29EB900638DCD /* EXTScope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXTScope.h; path = Core/EXTScope.h; sourceTree = "<group>"; };
+		8C1858B41FE29EB900638DCD /* EXTScope.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXTScope.m; path = Core/EXTScope.m; sourceTree = "<group>"; };
+		8C1858B51FE29EB900638DCD /* metamacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = metamacros.h; path = Core/metamacros.h; sourceTree = "<group>"; };
 		8C1FEFC31F13A2610024F046 /* lint.sh */ = {isa = PBXFileReference; explicitFileType = text.script.sh; fileEncoding = 4; path = lint.sh; sourceTree = "<group>"; };
 		8C1FEFC91F13A76A0024F046 /* ServiceFactoryImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceFactoryImpl.h; path = Services/ServiceFactoryImpl.h; sourceTree = "<group>"; };
 		8C1FEFCA1F13A76A0024F046 /* ServiceFactoryImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceFactoryImpl.m; path = Services/ServiceFactoryImpl.m; sourceTree = "<group>"; };
-		8C2E1CE41F13818D00DB0FC2 /* Exchanger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exchanger.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C2E1CE41F13818D00DB0FC2 /* Exchanger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Exchanger.app; path = Avito.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C2E1CF31F13818D00DB0FC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8C2E1CFD1F13818D00DB0FC2 /* ExchangerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExchangerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C2E1D031F13818D00DB0FC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -383,6 +387,16 @@
 			name = Base;
 			sourceTree = "<group>";
 		};
+		8C1858B71FE29EEF00638DCD /* EXTScope */ = {
+			isa = PBXGroup;
+			children = (
+				8C1858B31FE29EB900638DCD /* EXTScope.h */,
+				8C1858B41FE29EB900638DCD /* EXTScope.m */,
+				8C1858B51FE29EB900638DCD /* metamacros.h */,
+			);
+			name = EXTScope;
+			sourceTree = "<group>";
+		};
 		8C1FEFC61F13A6C90024F046 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -500,6 +514,7 @@
 		8C36E98F1F2634B4009BDDC0 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				8C1858B71FE29EEF00638DCD /* EXTScope */,
 				8C1858A21FE28A4D00638DCD /* Base */,
 				8C1858851FE2898800638DCD /* UIKit */,
 				8CD786501F14F7A500AF7A8D /* DI */,
@@ -879,7 +894,7 @@
 			);
 			name = Exchanger;
 			productName = Exchanger;
-			productReference = 8C2E1CE41F13818D00DB0FC2 /* Avito.app */;
+			productReference = 8C2E1CE41F13818D00DB0FC2 /* Exchanger.app */;
 			productType = "com.apple.product-type.application";
 		};
 		8C2E1CFC1F13818D00DB0FC2 /* ExchangerTests */ = {
@@ -1214,6 +1229,7 @@
 				8C1858A01FE28A4A00638DCD /* ObservableTextField.m in Sources */,
 				8C45F6631FD01E2D005B3892 /* IntroInteractorImpl.m in Sources */,
 				8C6423521FA0757600A95479 /* CarouselPageController.m in Sources */,
+				8C1858B61FE29EBA00638DCD /* EXTScope.m in Sources */,
 				8C45F6571FD01CD2005B3892 /* IntroViewController.m in Sources */,
 				8CD786391F14F27F00AF7A8D /* ExchangeMoneyServiceImpl.m in Sources */,
 				8C94B4E61F3E162B00B2B9FC /* ExchangeMoneyTitleView.m in Sources */,
