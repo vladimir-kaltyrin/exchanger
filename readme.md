@@ -105,3 +105,5 @@ There is a C macros to deal with that:
 
 4. CarouselView implementation uses dummy UITextField in order to keep some first responder on the screen.
 It that way the keyboard is always on the screen which is a nice UX.
+
+5. Unit tests are provided for service layer and core layer including formatters. Some folks prefer to write unit tests for Presenter and Interactor. In practice it may be a case of accidental complexity. When business logic is located mainly in services, then unit tests for service layer are appropriate. Interactor just passes values from presenter to services. Presenter's code is often changing and it makes more sense to write UI tests. In this way unit tests for Interactor and Presenter are recommended but there is no strict need to write tests for them meanwhile code keeps to be testable and maintable.
