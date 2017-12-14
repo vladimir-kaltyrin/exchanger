@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
 #import "Wallet.h"
 
-@interface ExchangeMoneyResult : NSObject
+@interface ExchangeMoneyResultData : NSObject
 @property (nonatomic, strong, readonly) Wallet *sourceWallet;
 @property (nonatomic, strong, readonly) Wallet *targetWallet;
 

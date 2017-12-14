@@ -1,11 +1,11 @@
-#import "ExchangeMoneyResult.h"
+#import "ExchangeMoneyResultData.h"
 
-@interface ExchangeMoneyResult()
+@interface ExchangeMoneyResultData()
 @property (nonatomic, strong) Wallet *sourceWallet;
 @property (nonatomic, strong) Wallet *targetWallet;
 @end
 
-@implementation ExchangeMoneyResult
+@implementation ExchangeMoneyResultData
 
 - (instancetype)initWithSourceWallet:(Wallet *)sourceWallet
                         targetWallet:(Wallet *)targetWallet
