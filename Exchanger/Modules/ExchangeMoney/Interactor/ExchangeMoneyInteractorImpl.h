@@ -13,5 +13,4 @@
                exchangeMoneyService:(id<ExchangeMoneyService>)exchangeMoneyService
                exchangeRatesUpdater:(id<ExchangeRatesUpdater>)exchangeRatesUpdater;
 
-
 @end

@@ -1,10 +1,11 @@
+#import "ConvenientObjC.h"
 #import "AttributedStringStyle.h"
 
 @implementation AttributedStringStyle
 
 - (NSDictionary<NSAttributedStringKey,id> *)attributes {
     
-    NSMutableDictionary<NSAttributedStringKey,id> *result = [NSMutableDictionary dictionary];
+    var result = [NSMutableDictionary dictionary];
     
     if (self.foregroundColor != nil) {
         result[NSForegroundColorAttributeName] = self.foregroundColor;
@@ -14,7 +15,7 @@
         result[NSFontAttributeName] = self.font;
     }
     
-    NSParagraphStyle *paragraphStyle = [self paragraphStyle];
+    let paragraphStyle = [self paragraphStyle];
     if (paragraphStyle != nil) {
         result[NSParagraphStyleAttributeName] = paragraphStyle;
     }
@@ -26,9 +27,9 @@
 
 - (NSParagraphStyle *)paragraphStyle {
     
-    BOOL somethingIsSet = NO;
+    var somethingIsSet = NO;
     
-    NSMutableParagraphStyle *result = [[NSMutableParagraphStyle alloc] init];
+    var result = [[NSMutableParagraphStyle alloc] init];
     
     if (self.textAlignment > 0) {
         result.alignment = self.textAlignment;

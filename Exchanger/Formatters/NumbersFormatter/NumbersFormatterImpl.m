@@ -1,3 +1,4 @@
+#import "ConvenientObjC.h"
 #import "NumbersFormatterImpl.h"
 
 @implementation NumbersFormatterImpl
@@ -5,7 +6,7 @@
 // MARK: - NumbersFormatter
 
 - (NSString *)format:(NSString *)string {
-    NSString *result = [self filterNonNumericAndSeparatorCharacters:string];
+    var result = [self filterNonNumericAndSeparatorCharacters:string];
     result = [self filterExtraSeparators:result];
     result = [self filterStringEqualToSeparator:result];
     result = [self filterLeadingZeros:result];
@@ -16,14 +17,14 @@
 // MARK: - Private
 
 - (NSString *)separator {
-    NSLocale *locale = [NSLocale currentLocale];
+    let locale = [NSLocale currentLocale];
     return [locale objectForKey:NSLocaleDecimalSeparator];
 }
 
 - (NSString *)filterNonNumericAndSeparatorCharacters:(NSString *)targetString {
-    NSMutableCharacterSet *set = [NSMutableCharacterSet decimalDigitCharacterSet];
+    var set = [NSMutableCharacterSet decimalDigitCharacterSet];
     
-    NSString *separator = [self separator];
+    let separator = [self separator];
     
     [set addCharactersInString:separator];
     [set invert];
@@ -32,11 +33,11 @@
 }
 
 - (NSString *)filterExtraSeparators:(NSString *)targetString {
-    NSString *separator = [self separator];
-    NSArray *components = [targetString componentsSeparatedByString:separator];
+    let separator = [self separator];
+    let components = [targetString componentsSeparatedByString:separator];
     if (components.count > 2) {
-        NSInteger index = [targetString rangeOfString:separator].location;
-        NSRange range = NSMakeRange(index + 1, targetString.length - index - 1);
+        let index = [targetString rangeOfString:separator].location;
+        let range = NSMakeRange(index + 1, targetString.length - index - 1);
         return [targetString stringByReplacingOccurrencesOfString:separator
                                                                  withString:@""
                                                                     options:0
@@ -46,7 +47,7 @@
 }
 
 - (NSString *)filterStringEqualToSeparator:(NSString *)targetString {
-    NSString *separator = [self separator];
+    let separator = [self separator];
     if ([targetString isEqualToString:separator]) {
         return @"";
     }
@@ -59,8 +60,8 @@
         return targetString;
     }
     
-    NSRange range = [targetString rangeOfString:@"^0*" options:NSRegularExpressionSearch];
-    NSString *result = [targetString stringByReplacingCharactersInRange:range withString:@""];
+    let range = [targetString rangeOfString:@"^0*" options:NSRegularExpressionSearch];
+    let result = [targetString stringByReplacingCharactersInRange:range withString:@""];
     
     return [result isEqualToString:@""] ? @"0" : result;
 }

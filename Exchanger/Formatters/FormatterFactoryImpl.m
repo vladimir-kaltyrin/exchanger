@@ -1,3 +1,4 @@
+#import "ConvenientObjC.h"
 #import "FormatterFactoryImpl.h"
 #import "BalanceFormatterImpl.h"
 #import "CurrencyFormatterImpl.h"
@@ -22,11 +23,11 @@
 
 - (id<BalanceFormatter>)exchangeCurrencyInputFormatter {
     
-    AttributedStringStyle *primaryStringStyle = [[AttributedStringStyle alloc] init];
+    var primaryStringStyle = [[AttributedStringStyle alloc] init];
     primaryStringStyle.font = [UIFont systemFontOfSize:34];
     primaryStringStyle.foregroundColor = [UIColor whiteColor];
     
-    AttributedStringStyle *secondaryStringStyle = [[AttributedStringStyle alloc] init];
+    var secondaryStringStyle = [[AttributedStringStyle alloc] init];
     secondaryStringStyle.font = [UIFont systemFontOfSize:28];
     secondaryStringStyle.foregroundColor = [UIColor whiteColor];
     
@@ -37,11 +38,11 @@
 
 - (id<BalanceFormatter>)currentBalanceFormatter {
     
-    AttributedStringStyle *primaryStringStyle = [[AttributedStringStyle alloc] init];
+    var primaryStringStyle = [[AttributedStringStyle alloc] init];
     primaryStringStyle.font = [UIFont systemFontOfSize:18];
     primaryStringStyle.foregroundColor = [UIColor blackColor];
     
-    AttributedStringStyle *secondaryStringStyle = [[AttributedStringStyle alloc] init];
+    var secondaryStringStyle = [[AttributedStringStyle alloc] init];
     secondaryStringStyle.font = [UIFont systemFontOfSize:15];
     secondaryStringStyle.foregroundColor = [UIColor blackColor];
     

@@ -1,3 +1,4 @@
+#import "ConvenientObjC.h"
 #import "FormatterResultData.h"
 #import "FormatterFactoryImpl.h"
 
@@ -21,7 +22,7 @@
 }
 
 + (FormatterResultData *)formatterDataWithString:(NSString *)string sign:(BalanceFormatterSign)sign {
-    id<BalanceFormatter> formatter = [[FormatterFactoryImpl instance] exchangeCurrencyInputFormatter];
+    let formatter = [[FormatterFactoryImpl instance] exchangeCurrencyInputFormatter];
     return [formatter format:string sign:sign];
 }
 

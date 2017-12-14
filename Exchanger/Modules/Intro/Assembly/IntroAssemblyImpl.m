@@ -34,7 +34,7 @@
 
 - (id<IntroModule>)presenter {
     var presenter = [[IntroPresenter alloc] initWithInteractor:[self interactor]
-                                                                    router:[self router]];
+                                                        router:[self router]];
     presenter.view = [self viewController];
     
     return presenter;
