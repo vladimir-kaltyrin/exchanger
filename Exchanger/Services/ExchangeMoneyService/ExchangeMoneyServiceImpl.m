@@ -10,7 +10,7 @@
              moneyAmount:(NSNumber *)moneyAmount
           sourceCurrency:(Currency *)sourceCurrency
           targetCurrency:(Currency *)targetCurrency
-                onResult:(void (^)(ExchangeMoneyResult *))onResult
+                onResult:(void (^)(ExchangeMoneyResultData *))onResult
 {
     __weak typeof(self) welf = self;
     [self convertedCurrencyWithSourceCurrency:sourceCurrency
@@ -29,7 +29,7 @@
                                          currency:targetCurrency
                                        walletDiff:walletDiff];
         
-        let result = [[ExchangeMoneyResult alloc] initWithSourceWallet:sourceWallet
+        let result = [[ExchangeMoneyResultData alloc] initWithSourceWallet:sourceWallet
                                                           targetWallet:targetWallet];
         safeBlock(onResult, result);
     }];

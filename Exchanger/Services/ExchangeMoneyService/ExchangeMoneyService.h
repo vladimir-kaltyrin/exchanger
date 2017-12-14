@@ -2,7 +2,7 @@
 #import "Wallet.h"
 #import "Currency.h"
 #import "User.h"
-#import "ExchangeMoneyResult.h"
+#import "ExchangeMoneyResultData.h"
 
 @protocol ExchangeMoneyService <NSObject>
 
@@ -10,7 +10,7 @@
              moneyAmount:(NSNumber *)moneyAmount
           sourceCurrency:(Currency *)sourceCurrency
           targetCurrency:(Currency *)targetCurrency
-                onResult:(void(^)(ExchangeMoneyResult *))onResult;
+                onResult:(void(^)(ExchangeMoneyResultData *))onResult;
 
 - (void)exchangeWallet:(Wallet *)wallet
         targetCurrency:(Currency *)currency
