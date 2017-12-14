@@ -8,8 +8,7 @@ The Exchanger is a simple iOS application demonstrating one of approaches to imp
 
 * [About](#about)
 * [Setup](#setup)
-* [Architecture ✘](#architecture)
-* [Testing ✘](#architecture)
+* [Notes on implementation](#notes)
 
 <a name="about"/>
 
@@ -18,6 +17,7 @@ The Exchanger is a simple iOS application demonstrating one of approaches to imp
 The application is a fairly straightforward currency converter. It takes a reference rate from a European Central Bank by parsing its [public XML](http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml) and provides a feature to exchange any currency including EUR, USD and GBP in any combination.
 
 When app starts there is a limited balance with 100 units of each currency.
+There are two text inputs on the screen, both are cyclic carousel views for choosing currency to exchange.
 
 The app core is carefully designed with love ❤️ to SOLID in pure Objective-C using VIPER architecture combined with SOA. Meanwhile, unit tests are written in Swift.
 
@@ -52,8 +52,20 @@ If XCPretty is not installed on your machine then run following commands in Term
 gem install xcpretty
 ```
 
-<a name="architecture"/>
+<a name="notes"/>
 
-## Architecture
+## Notes on implementation
 
-Each screen is represented as VIPER module. There is 
+1. Each screen is represented as VIPER module. In this implementation of VIPER there is a Router
+class for navigation between screens and functional callbacks to interact with module, for example:
+
+```objective-c
+
+@protocol ExchangeMoneyModule <NSObject>
+@property (nonatomic, strong) void(^onFinish)();
+
+- (void)dismissModule;
+
+@end
+
+```
