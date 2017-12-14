@@ -7,10 +7,10 @@ The Exchanger is a simple iOS application demonstrating one of approaches to imp
 # Table of contents
 
 * [About](#about)
+* [Setup](#setup)
     * [CocoaPods](#cocoapods)
     * [OCLint](#oclint)
     * [XCPretty](#xcpretty)
-* [Setup](#setup)
 * [Notes on implementation](#notes)
     * [VIPER](#viper)
     * [Type Inference](#typeinference)
