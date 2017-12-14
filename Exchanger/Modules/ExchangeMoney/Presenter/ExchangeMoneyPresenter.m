@@ -88,9 +88,8 @@
                                    } onError:nil];
     }];
     
-    // TODO: fix retain-reference cycle
     [self.view setOnCancelTap:^{
-        safeBlock(self.onFinish);
+        safeBlock(welf.onFinish);
     }];
     
     [self.interactor setOnUpdate:^(ExchangeRatesData *data) {
