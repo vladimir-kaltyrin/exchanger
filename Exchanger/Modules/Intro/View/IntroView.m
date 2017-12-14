@@ -1,6 +1,6 @@
 #import "IntroView.h"
 #import "UIView+Properties.h"
-#import "SafeBlocks.h"
+#import "ConvenientObjC.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
 
 @interface IntroView()
@@ -62,7 +62,7 @@
     self.backgroundImageView.frame = self.bounds;
     self.overlayView.frame = self.bounds;
     
-    CGSize buttonSize = CGSizeMake(160, 60);
+    let buttonSize = CGSizeMake(160, 60);
     
     self.titleLabel.size = [self.titleLabel sizeThatFits:self.bounds.size];
     self.titleLabel.center = self.center;
@@ -93,11 +93,11 @@
 // MARK: - Actions
 
 - (void)onResetButtonTap:(UIButton *)sender {
-    block(self.onResetTap);
+    safeBlock(self.onResetTap);
 }
 
 - (void)onStartButtonTap:(UIButton *)sender {
-    block(self.onStartTap);
+    safeBlock(self.onStartTap);
 }
 
 @end

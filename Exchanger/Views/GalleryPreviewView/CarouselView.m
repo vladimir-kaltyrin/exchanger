@@ -4,7 +4,7 @@
 #import "CarouselController.h"
 #import "CarouselPageIndicator.h"
 #import "UITextField+Configuration.h"
-#import "SafeBlocks.h"
+#import "ConvenientObjC.h"
 #import "MoveFailableLongPressGestureRecognizer.h"
 
 @interface CarouselView () <UIGestureRecognizerDelegate>
@@ -127,14 +127,14 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 - (void)onSelect:(UIGestureRecognizer *)sender {
     switch (sender.state) {
         case UIGestureRecognizerStateBegan:
-            block(self.onSelect, YES);
+            safeBlock(self.onSelect, YES);
             break;
         case UIGestureRecognizerStateEnded:
-            block(self.onSelect, NO);
+            safeBlock(self.onSelect, NO);
             break;
         case UIGestureRecognizerStateCancelled:
         case UIGestureRecognizerStateFailed:
-            block(self.onSelect, NO);
+            safeBlock(self.onSelect, NO);
             break;
         case UIGestureRecognizerStatePossible:
         case UIGestureRecognizerStateChanged:

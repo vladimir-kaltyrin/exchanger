@@ -3,6 +3,7 @@
 #import "IntroPresenter.h"
 #import "IntroRouterImpl.h"
 #import "IntroInteractorImpl.h"
+#import "ConvenientObjC.h"
 
 @interface IntroAssemblyImpl()
 @property (nonatomic, strong) IntroViewController *viewController;
@@ -12,7 +13,7 @@
 
 - (AssembledViewController *)module {
     
-    id<IntroModule> presenter = [self presenter];
+    let presenter = [self presenter];
     [self.viewController addDisposable:presenter];
     
     return [[AssembledViewController alloc] initWithViewController:self.viewController
@@ -32,7 +33,7 @@
 }
 
 - (id<IntroModule>)presenter {
-    IntroPresenter *presenter = [[IntroPresenter alloc] initWithInteractor:[self interactor]
+    var presenter = [[IntroPresenter alloc] initWithInteractor:[self interactor]
                                                                     router:[self router]];
     presenter.view = [self viewController];
     

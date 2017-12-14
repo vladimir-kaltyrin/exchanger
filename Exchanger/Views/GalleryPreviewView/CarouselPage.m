@@ -3,7 +3,7 @@
 #import "UIView+Properties.h"
 #import "UITextField+Configuration.h"
 #import "ObservableTextField.h"
-#import "SafeBlocks.h"
+#import "ConvenientObjC.h"
 
 CGFloat const kBigFontSize = 34.0;
 CGFloat const kSmallFontSize = 12.0;
@@ -41,7 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
         
         __weak typeof(self) welf = self;
         self.textField.onBeginEditing = ^{
-            block(welf.onFocus);
+            safeBlock(welf.onFocus);
         };
         
         [self addSubview:self.currencyTitleLabel];
@@ -91,7 +91,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)focus {
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         [self.textField becomeFirstResponder];
-        block(self.onFocus);
+        safeBlock(self.onFocus);
     }];
 }
     

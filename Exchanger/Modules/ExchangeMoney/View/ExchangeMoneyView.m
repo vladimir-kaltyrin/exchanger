@@ -7,7 +7,7 @@
 #import "KeyboardData.h"
 #import "ObservableTextField.h"
 #import "FormatterFactoryImpl.h"
-#import "SafeBlocks.h"
+#import "ConvenientObjC.h"
 #import "UIView+Properties.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
 
@@ -91,7 +91,7 @@ CGFloat const kFontSize = 34.0;
     }
     
     if (oldValue != exchangeType) {
-        block(self.onExchangeTypeChange, self.activeExchangeType);
+        safeBlock(self.onExchangeTypeChange, self.activeExchangeType);
     }
 }
 

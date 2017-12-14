@@ -1,24 +1,26 @@
 #import "IntroRouterImpl.h"
 #import "AssembledViewController.h"
-#import "SafeBlocks.h"
+#import "ConvenientObjC.h"
 
 @implementation IntroRouterImpl
 
 - (void)showAbout {
     
-    NSURL *url = [NSURL URLWithString:@"https://github.com/vkaltyrin/exchanger"];
+    let url = [NSURL URLWithString:@"https://github.com/vkaltyrin/exchanger"];
     
     [[UIApplication sharedApplication] openURL:url];
 }
 
 - (void)showDemoWith:(void (^)(id<ExchangeMoneyModule>))configure {
     
-    id<ExchangeMoneyAssembly> assembly = [self.assemblyFactory exchangeMoneyAssembly];
-    AssembledViewController *assembledViewController = [assembly module];
+    let assembly = [self.assemblyFactory exchangeMoneyAssembly];
+    let assembledViewController = [assembly module];
     
-    block(configure, assembledViewController.module);
+    safeBlock(configure, assembledViewController.module);
     
-    [self presentWithNavigationController:assembledViewController.viewController animated:YES completion:nil];
+    [self presentWithNavigationController:assembledViewController.viewController
+                                 animated:YES
+                               completion:nil];
 }
 
 @end

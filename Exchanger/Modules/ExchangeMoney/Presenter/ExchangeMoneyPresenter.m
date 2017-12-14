@@ -7,7 +7,7 @@
 #import "KeyboardObserver.h"
 #import "FormatterFactoryImpl.h"
 #import "ExchangeMoneyViewDataBuilder.h"
-#import "SafeBlocks.h"
+#import "ConvenientObjC.h"
 #import "Wallet.h"
 
 @interface ExchangeMoneyPresenter()
@@ -90,7 +90,7 @@
     
     // TODO: fix retain-reference cycle
     [self.view setOnCancelTap:^{
-        block(self.onFinish);
+        safeBlock(self.onFinish);
     }];
     
     [self.interactor setOnUpdate:^(ExchangeRatesData *data) {
@@ -122,7 +122,7 @@
         Currency *sourceCurrency = [welf.interactor sourceCurrency];
 
         [welf.view setExchangeSourceCurrency:sourceCurrency targetCurrency:convertedCurrency];
-        block(onUpdate);
+        safeBlock(onUpdate);
     }];
 }
 
@@ -173,7 +173,7 @@
         
         [welf.view setViewData:viewData];
         
-        block(onUpdate);
+        safeBlock(onUpdate);
     }];
 }
 
@@ -302,7 +302,7 @@
             if (repeat) {
                 [welf.interactor startFetching];
             }
-            block(onUpdate)
+            safeBlock(onUpdate)
         }];
     } onError:onError];
 }

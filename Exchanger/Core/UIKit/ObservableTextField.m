@@ -1,5 +1,5 @@
 #import "ObservableTextField.h"
-#import "SafeBlocks.h"
+#import "ConvenientObjC.h"
 #import "UIKitBugAvoidingTextField.h"
 
 @interface ObservableTextField()
@@ -72,11 +72,11 @@
 // MARK: - Private
 
 - (void)textFieldDidChange:(UITextField *)textField {
-    block(self.onTextChange, textField.text);
+    safeBlock(self.onTextChange, textField.text);
 }
 
 - (void)textFieldDidBeginEditing {
-    block(self.onBeginEditing);
+    safeBlock(self.onBeginEditing);
 }
 
 @end

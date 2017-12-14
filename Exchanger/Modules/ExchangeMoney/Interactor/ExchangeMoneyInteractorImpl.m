@@ -1,7 +1,7 @@
 #import "ExchangeMoneyInteractorImpl.h"
 #import "ExchangeRatesUpdater.h"
 #import "ExchangeMoneyService.h"
-#import "SafeBlocks.h"
+#import "ConvenientObjC.h"
 #import "User.h"
 
 @interface ExchangeMoneyInteractorImpl()
@@ -54,7 +54,7 @@
         Wallet *wallet = [user walletWithCurrencyType:welf.sourceCurrency.currencyType];
         
         if (currencyAmount.floatValue > wallet.amount.floatValue) {
-            block(onError);
+            safeBlock(onError);
             return;
         }
         
@@ -66,7 +66,7 @@
                                                
                                                [welf update:user withExchangeMoneyResult:result];
 
-                                               block(onExchange);
+                                               safeBlock(onExchange);
                                            }];
     }];
 }
@@ -77,7 +77,7 @@
 
 - (void)setOnUpdate:(void(^)(ExchangeRatesData *))onUpdate; {
     [self.exchangeRatesUpdater setOnUpdate:^(ExchangeRatesData * data) {
-        block(onUpdate, data);
+        safeBlock(onUpdate, data);
     }];
 }
 
@@ -110,7 +110,7 @@
     }
     self.targetCurrency = [self findCurrencyWithType:targetCurrencyType inData:data];
 
-    block(onReset);
+    safeBlock(onReset);
 }
 
 - (void)exchangeWallet:(Wallet *)wallet

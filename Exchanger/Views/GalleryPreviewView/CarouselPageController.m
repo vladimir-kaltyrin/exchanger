@@ -2,7 +2,7 @@
 #import "CarouselPage.h"
 #import "CarouselController.h"
 #import "UIView+Debug.h"
-#import "SafeBlocks.h"
+#import "ConvenientObjC.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_END
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    block(self.onPageWillChange);
+    safeBlock(self.onPageWillChange);
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -36,7 +36,7 @@ NS_ASSUME_NONNULL_END
     
     [self focus];
     
-    block(self.onViewDidAppear);
+    safeBlock(self.onViewDidAppear);
 }
 
 - (void)focus {

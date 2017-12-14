@@ -1,6 +1,6 @@
 #import "ExchangeRatesUpdaterImpl.h"
 #import "ExchangeRatesService.h"
-#import "SafeBlocks.h"
+#import "ConvenientObjC.h"
 
 NSTimeInterval const kUpdateFrequency = 30.0f;
 
@@ -38,9 +38,9 @@ NSTimeInterval const kUpdateFrequency = 30.0f;
 - (void)fetch {
     __weak typeof(self) welf = self;
     [self.exchangeRatesService fetchRates:^(ExchangeRatesData *data) {
-        block(welf.onUpdate, data);
+        safeBlock(welf.onUpdate, data);
     } onError:^(NSError *error) {
-        block(welf.onError, error);
+        safeBlock(welf.onError, error);
     }];
 }
 

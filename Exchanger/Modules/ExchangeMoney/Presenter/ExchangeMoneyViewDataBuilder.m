@@ -4,7 +4,7 @@
 #import "CarouselData.h"
 #import "FormatterFactoryImpl.h"
 #import "CurrencyExchangeType.h"
-#import "SafeBlocks.h"
+#import "ConvenientObjC.h"
 
 @interface ExchangeMoneyViewDataBuilder()
 @property (nonatomic, strong) User *user;
@@ -79,7 +79,7 @@
     }
     
     OnTextChange onTextChange = ^(NSString *text) {
-        block(self.onInputChange, text, CurrencyExchangeSourceType, currency.currencyType);
+        safeBlock(self.onInputChange, text, CurrencyExchangeSourceType, currency.currencyType);
     };
     
     return [[CarouselPageData alloc] initWithCurrencyTitle:currencyTitle
@@ -102,7 +102,7 @@
     CarouselPageRemainderStyle remainderStyle = CarouselPageRemainderStyleNormal;
     
     OnTextChange onTextChange = ^(NSString *text) {
-        block(self.onInputChange, text, CurrencyExchangeTargetType, currency.currencyType);
+        safeBlock(self.onInputChange, text, CurrencyExchangeTargetType, currency.currencyType);
     };
     
     return [[CarouselPageData alloc] initWithCurrencyTitle:currencyTitle
