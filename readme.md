@@ -19,6 +19,10 @@ The Exchanger is a simple iOS application demonstrating one of approaches to imp
 
 ## About
 
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=SdipG8ApWWc
+" target="_blank"><img src="http://img.youtube.com/vi/SdipG8ApWWc/0.jpg"
+alt="Exchanger app video" width="240" height="180" border="10" /></a>
+
 The application is a fairly straightforward currency converter. It takes a reference rate from a European Central Bank by parsing its [public XML](http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml) and provides a feature to exchange any currency including EUR, USD and GBP in any combination.
 
 When app starts there is a limited balance with 100 units of each currency.
