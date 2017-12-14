@@ -69,3 +69,40 @@ class for navigation between screens and functional callbacks to interact with m
 @end
 
 ```
+
+2. Type Inference is a common feature in Swift, but Objective-C by default doesn't provide it. It's easy to avoid this
+issue by using C macroses, as it's provided below:
+
+```objective-c
+#define let __auto_type const
+#define var __auto_type
+```
+
+Without using __auto_type:
+```objective-c
+NSArray<Currency *> *currencies = data.currencies;
+```
+
+With using using __auto_type:
+```objective-c
+let currencies = data.currencies;
+```
+
+3. There is a common pattern in Objective-C to call a block:
+
+```objective-c
+if (block != nil) {
+    block();
+}
+```
+
+With optionals and closures syntax introduced in Swift this syntax looks especially overweighted.
+There is a C macros to deal with that:
+
+```objective-c
+#define safeBlock(block, ...) if (block != nil) { block(__VA_ARGS__); }
+}
+```
+
+4. CarouselView implementation uses dummy UITextField in order to keep some first responder on the screen.
+It that way the keyboard is always on the screen which is a nice UX.
