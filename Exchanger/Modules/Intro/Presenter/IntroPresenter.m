@@ -39,7 +39,6 @@
     [self.view setResetButtonTitle:@"About"];
     
     __weak typeof(self) welf = self;
-    
     [self.view setOnStartTap:^{
         [welf.router showDemoWith:^(id<ExchangeMoneyModule> module) {
             __weak typeof(module) weakModule = module;

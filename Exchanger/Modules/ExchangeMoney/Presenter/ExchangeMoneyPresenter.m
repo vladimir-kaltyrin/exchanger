@@ -51,13 +51,12 @@
 // MARK: - Private
 
 - (void)setUpView {
-    
-    __weak typeof(self) welf = self;
-    
+
     self.activeExchangeType = CurrencyExchangeSourceType;
     self.incomeInput = [FormatterResultData formatterDataWithString:@(0).stringValue];
     self.expenseInput = [FormatterResultData formatterDataWithString:@(0).stringValue];
     
+    __weak typeof(self) welf = self;
     [self.keyboardObserver setOnKeyboardData:^(KeyboardData *keyboardData) {
         [welf.view updateKeyboardData:keyboardData];
     }];
