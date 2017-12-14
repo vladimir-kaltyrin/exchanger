@@ -1,7 +1,7 @@
 #import "DisposeBag.h"
 
 @interface DisposeBag()
-@property (nonatomic, strong) NSMutableArray *disposables;
+@property (nonatomic, strong) NSArray *disposables;
 @end
 
 @implementation DisposeBag
@@ -9,13 +9,13 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.disposables = [NSMutableArray array];
+        self.disposables = [NSArray array];
     }
     return self;
 }
 
 - (void)addDisposable:(id)disposable{
-    [self.disposables addObject:disposable];
+    self.disposables = [self.disposables arrayByAddingObject:disposable];
 }
 
 @end
