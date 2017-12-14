@@ -101,7 +101,6 @@ There is a C macros to deal with that:
 
 ```objective-c
 #define safeBlock(block, ...) if (block != nil) { block(__VA_ARGS__); }
-}
 ```
 
 4. CarouselView implementation uses dummy UITextField in order to keep some first responder on the screen.
