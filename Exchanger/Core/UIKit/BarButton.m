@@ -1,5 +1,5 @@
 #import "BarButton.h"
-#import "SafeBlocks.h"
+#import "ConvenientObjC.h"
 
 @interface BarButton()
 @property (nonatomic, strong) UIBarButtonItem *barButtonItem;
@@ -32,7 +32,7 @@
 // MARK: - Private
 
 - (void)onBarButtonTap:(id)sender {
-    block(self.onBarButtonTap);
+    safeBlock(self.onBarButtonTap);
 }
 
 @end

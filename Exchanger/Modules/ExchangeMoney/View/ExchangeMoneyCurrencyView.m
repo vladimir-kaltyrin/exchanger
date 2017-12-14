@@ -2,7 +2,7 @@
 #import "CarouselView.h"
 #import "CarouselData.h"
 #import "UIView+Properties.h"
-#import "SafeBlocks.h"
+#import "ConvenientObjC.h"
 
 @interface ExchangeMoneyCurrencyView()
 @property (nonatomic, strong) CarouselView *previewView;
@@ -63,7 +63,7 @@
     __weak typeof(self) welf = self;
     [self.previewView setOnPageChange:^(NSInteger current) {
         welf.currentPage = current;
-        block(onPageChange, welf.exchangeType, current);
+        safeBlock(onPageChange, welf.exchangeType, current);
     }];
 }
 

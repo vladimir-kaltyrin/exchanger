@@ -1,6 +1,6 @@
 #import "ExchangeMoneyServiceImpl.h"
 #import "Wallet.h"
-#import "SafeBlocks.h"
+#import "ConvenientObjC.h"
 
 @implementation ExchangeMoneyServiceImpl
 
@@ -18,20 +18,20 @@
                                     onConvert:^(Currency *convertedCurrency)
     {
         
-        Wallet *sourceWallet = [welf sourceWalletWith:user
-                                                 currency:sourceCurrency
-                                              moneyAmount:moneyAmount];
+        let sourceWallet = [welf sourceWalletWith:user
+                                         currency:sourceCurrency
+                                      moneyAmount:moneyAmount];
         
-        Wallet *walletDiff = [welf exchangeMoneyAmount:moneyAmount
-                                        withCurrency:convertedCurrency];
+        let walletDiff = [welf exchangeMoneyAmount:moneyAmount
+                                      withCurrency:convertedCurrency];
         
-        Wallet *targetWallet = [welf targetWalletWith:user
-                                                 currency:targetCurrency
-                                               walletDiff:walletDiff];
+        let targetWallet = [welf targetWalletWith:user
+                                         currency:targetCurrency
+                                       walletDiff:walletDiff];
         
-        ExchangeMoneyResult *result = [[ExchangeMoneyResult alloc] initWithSourceWallet:sourceWallet
-                                                                           targetWallet:targetWallet];
-        block(onResult, result);
+        let result = [[ExchangeMoneyResult alloc] initWithSourceWallet:sourceWallet
+                                                          targetWallet:targetWallet];
+        safeBlock(onResult, result);
     }];
 }
 
@@ -39,11 +39,11 @@
                              targetCurrency:(Currency *)targetCurrency
                                   onConvert:(void (^)(Currency *))onConvert
 {
-    Currency *result = [[Currency alloc] init];
+    var result = [[Currency alloc] init];
     result.currencyType = targetCurrency.currencyType;
     result.rate = [self calculateExchangeRateWithSourceCurrency:sourceCurrency targetCurrency:targetCurrency];
     
-    block(onConvert, result);
+    safeBlock(onConvert, result);
 }
 
 - (void)exchangeWallet:(Wallet *)wallet
@@ -55,10 +55,10 @@
                                targetCurrency:currency
                                     onConvert:^(Currency *convertedCurrency)
     {
-        Wallet *resultWallet = [welf exchangeMoneyAmount:wallet.amount
+        let resultWallet = [welf exchangeMoneyAmount:wallet.amount
                                                 withCurrency:convertedCurrency];
         
-        block(onResult, resultWallet);
+        safeBlock(onResult, resultWallet);
     }];
 }
 
@@ -74,7 +74,7 @@
                     currency:(Currency *)currency
                  moneyAmount:(NSNumber *)moneyAmount
 {
-    Wallet *userSourceWallet = [user walletWithCurrencyType:currency.currencyType];
+    let userSourceWallet = [user walletWithCurrencyType:currency.currencyType];
     
     return [[Wallet alloc] initWithCurrency:currency
                                     amount:@(userSourceWallet.amount.doubleValue - moneyAmount.doubleValue)];
@@ -84,7 +84,7 @@
                     currency:(Currency *)currency
                   walletDiff:(Wallet *)walletDiff
 {
-    Wallet *userTargetWallet = [user walletWithCurrencyType:currency.currencyType];
+    let userTargetWallet = [user walletWithCurrencyType:currency.currencyType];
     
     return [[Wallet alloc] initWithCurrency:currency
                                      amount:@(userTargetWallet.amount.doubleValue + walletDiff.amount.doubleValue)];

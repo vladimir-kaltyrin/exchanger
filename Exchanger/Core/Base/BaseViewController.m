@@ -1,5 +1,5 @@
 #import "BaseViewController.h"
-#import "SafeBlocks.h"
+#import "ConvenientObjC.h"
 #import "DisposeBag.h"
 
 @interface BaseViewController ()
@@ -48,31 +48,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    block(self.onViewDidLoad)
+    safeBlock(self.onViewDidLoad)
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    block(self.onViewDidAppear)
+    safeBlock(self.onViewDidAppear)
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    block(self.onViewWillAppear)
+    safeBlock(self.onViewWillAppear)
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    block(self.onViewWillDisappear)
+    safeBlock(self.onViewWillDisappear)
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     
-    block(self.onViewDidDisappear)
+    safeBlock(self.onViewDidDisappear)
 }
 
 // MARK: - DisposeBagHolder

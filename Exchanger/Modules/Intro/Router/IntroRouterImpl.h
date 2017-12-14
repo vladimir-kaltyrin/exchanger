@@ -3,5 +3,4 @@
 #import "BaseRouter.h"
 
 @interface IntroRouterImpl : BaseRouter<IntroRouter>
-
 @end

@@ -4,5 +4,4 @@
 #import "BaseViewController.h"
 
 @interface IntroViewController : BaseViewController<IntroViewInput>
-
 @end

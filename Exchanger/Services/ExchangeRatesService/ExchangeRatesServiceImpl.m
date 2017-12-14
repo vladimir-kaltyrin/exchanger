@@ -1,6 +1,7 @@
 #import "ExchangeRatesServiceImpl.h"
 #import "ExchangeRatesResponse.h"
 #import "Currency.h"
+#import "ConvenientObjC.h"
 #import "XMLParser.h"
 
 static NSString *const kXmlUrl = @"http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml";
@@ -21,15 +22,16 @@ static NSString *const kXmlUrl = @"http://www.ecb.europa.eu/stats/eurofxref/euro
 - (void)fetchRates:(OnExchangeRatesServiceSuccess)onData
            onError:(OnExchangeRatesServiceFailure)onError
 {
-    NSURL *url = [[NSURL alloc] initWithString:kXmlUrl];
-    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    let url = [[NSURL alloc] initWithString:kXmlUrl];
+    let task = [[NSURLSession sharedSession] dataTaskWithURL:url
+                                           completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
         __weak typeof(self) welf = self;
         [self.parser parse:data onComplete:^(NSDictionary *dictionary) {
             
             dispatch_async(dispatch_get_global_queue(0, 0), ^{
-                ExchangeRatesResponse *response = [[ExchangeRatesResponse alloc] initWithDictionary:dictionary];
-                ExchangeRatesData *data = [welf processResponse:response];
+                let response = [[ExchangeRatesResponse alloc] initWithDictionary:dictionary];
+                let data = [welf processResponse:response];
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     onData(data);
@@ -41,16 +43,16 @@ static NSString *const kXmlUrl = @"http://www.ecb.europa.eu/stats/eurofxref/euro
 }
 
 - (ExchangeRatesData *)processResponse:(ExchangeRatesResponse *)response {
-    NSArray *currencies = [response.currencies filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(Currency * _Nullable currency, NSDictionary<NSString *,id> * _Nullable bindings) {
+    
+    var currencies = [response.currencies select:^BOOL(Currency *currency) {
         switch (currency.currencyType) {
             case CurrencyTypeUSD:
-                return YES;
             case CurrencyTypeGBP:
                 return YES;
             default:
                 return NO;
         }
-    }]];
+    }];
     
     Currency *eur = [Currency currencyWithType:CurrencyTypeEUR];
     eur.rate = @1.0;

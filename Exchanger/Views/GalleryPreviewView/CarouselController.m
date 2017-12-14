@@ -2,7 +2,7 @@
 #import "CarouselPageData.h"
 #import "CarouselPageController.h"
 #import "CarouselPage.h"
-#import "SafeBlocks.h"
+#import "ConvenientObjC.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -150,7 +150,7 @@ NS_ASSUME_NONNULL_END
         
         [currentController focus];
         
-        block(self.onPageChange, currentIndex, self.data.count);
+        safeBlock(self.onPageChange, currentIndex, self.data.count);
     }
 }
 
