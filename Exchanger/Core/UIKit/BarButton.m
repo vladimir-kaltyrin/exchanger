@@ -29,6 +29,14 @@
     return self.barButtonItem.enabled;
 }
 
+- (void)setAccessibilityIdentifier:(NSString *)accessibilityIdentifier {
+    self.barButtonItem.accessibilityIdentifier = accessibilityIdentifier;
+}
+
+- (NSString *)accessibilityIdentifier {
+    return self.barButtonItem.accessibilityIdentifier;
+}
+
 // MARK: - Private
 
 - (void)onBarButtonTap:(id)sender {

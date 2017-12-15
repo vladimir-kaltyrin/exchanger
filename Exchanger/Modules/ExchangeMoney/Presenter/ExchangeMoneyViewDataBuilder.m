@@ -79,12 +79,13 @@
         safeBlock(self.onInputChange, text, CurrencyExchangeSourceType, currency.currencyType);
     };
     
-    return [[CarouselPageData alloc] initWithCurrencyTitle:currencyTitle
-                                                           input:self.expenseInput.formattedString
-                                                       remainder:remainder
-                                                            rate:rate
-                                                  remainderStyle:remainderStyle
-                                                    onTextChange:onTextChange];
+    return [[CarouselPageData alloc] initWithAccessibilityId:@"sourceCurrency"
+                                               currencyTitle:currencyTitle
+                                                       input:self.expenseInput.formattedString
+                                                   remainder:remainder
+                                                        rate:rate
+                                              remainderStyle:remainderStyle
+                                                onTextChange:onTextChange];
     
 }
 
@@ -102,12 +103,13 @@
         safeBlock(self.onInputChange, text, CurrencyExchangeTargetType, currency.currencyType);
     };
     
-    return [[CarouselPageData alloc] initWithCurrencyTitle:currencyTitle
-                                                     input:self.incomeInput.formattedString
-                                                 remainder:remainder
-                                                      rate:rate
-                                            remainderStyle:remainderStyle
-                                              onTextChange:onTextChange];
+    return [[CarouselPageData alloc] initWithAccessibilityId:@"targetCurrency"
+                                               currencyTitle:currencyTitle
+                                                       input:self.incomeInput.formattedString
+                                                   remainder:remainder
+                                                        rate:rate
+                                              remainderStyle:remainderStyle
+                                                onTextChange:onTextChange];
     
 }
 
