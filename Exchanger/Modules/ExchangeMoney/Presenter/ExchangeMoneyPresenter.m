@@ -262,38 +262,6 @@
     }];
 }
 
-- (FormatterResultData *)handleSourceInputFormatter:(NSString *)text targetWallet:(Wallet *)targetWallet {
-    NSString *numberText;
-    
-    switch (self.activeExchangeType) {
-        case CurrencyExchangeSourceType:
-            numberText = [self.numbersFormatter format:text];
-            break;
-        case CurrencyExchangeTargetType:
-            numberText = targetWallet.amount.stringValue;
-            break;
-    };
-    
-    return [FormatterResultData formatterDataWithString:numberText
-                                                   sign:BalanceFormatterSignMinus];
-}
-
-- (FormatterResultData *)handleTargetInputFormatter:(NSString *)text targetWallet:(Wallet *)targetWallet {
-    NSString *numberText;
-    
-    switch (self.activeExchangeType) {
-        case CurrencyExchangeSourceType:
-            numberText = @(fabs(targetWallet.amount.floatValue)).stringValue;
-            break;
-        case CurrencyExchangeTargetType:
-            numberText = [self.numbersFormatter format:text];
-            break;
-    };
-    
-    return [FormatterResultData formatterDataWithString:numberText
-                                                   sign:BalanceFormatterSignPlus];
-}
-
 - (void)fetchRatesWithRepeat:(BOOL)repeat onUpdate:(void(^)())onUpdate onError:(void (^)(NSError *))onError {
     [self.view startActivity];
     
