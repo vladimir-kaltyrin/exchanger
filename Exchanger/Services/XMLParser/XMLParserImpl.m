@@ -1,4 +1,4 @@
-#import <XMLDictionary.h>
+#import "XMLDictionary.h"
 #import "XMLParserImpl.h"
 
 @interface XMLParserImpl()

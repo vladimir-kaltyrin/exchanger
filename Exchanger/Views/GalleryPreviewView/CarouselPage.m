@@ -27,14 +27,17 @@ NS_ASSUME_NONNULL_BEGIN
         self.currencyTitleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         self.currencyTitleLabel.font = [UIFont systemFontOfSize:kBigFontSize];
         self.currencyTitleLabel.textColor = [UIColor whiteColor];
+        self.currencyTitleLabel.accessibilityIdentifier = @"currencyTitle";
         
         self.remainderLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         self.remainderLabel.font = [UIFont systemFontOfSize:kSmallFontSize];
+        self.remainderLabel.accessibilityIdentifier = @"remainder";
         
         self.currencyRateLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         self.currencyRateLabel.font = [UIFont systemFontOfSize:kSmallFontSize];
         self.currencyRateLabel.textColor = [UIColor whiteColor];
         self.currencyRateLabel.textAlignment = NSTextAlignmentRight;
+        self.currencyRateLabel.accessibilityIdentifier = @"currencyRate";
         
         self.textField = [[ObservableTextField alloc] init];
         [self.textField setConfiguration:[TextFieldConfiguration inputConfiguration]];
@@ -63,6 +66,7 @@ NS_ASSUME_NONNULL_BEGIN
 // MARK: - Public
     
 - (void)setViewData:(CarouselPageData *)data {
+    self.accessibilityIdentifier = data.accessibilityId;
     self.currencyTitleLabel.text = data.currencyTitle;
     self.remainderLabel.text = data.remainder;
     self.currencyRateLabel.text = data.rate;

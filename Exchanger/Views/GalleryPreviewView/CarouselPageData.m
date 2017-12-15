@@ -2,14 +2,16 @@
 
 @implementation CarouselPageData
     
-- (instancetype)initWithCurrencyTitle:(NSString *)currencyTitle
-                                input:(NSAttributedString *)input
-                            remainder:(NSString *)remainder
-                                 rate:(NSString *)rate
-                       remainderStyle:(CarouselPageRemainderStyle)remainderStyle
-                         onTextChange:(nonnull OnTextChange)onTextChange
+- (instancetype)initWithAccessibilityId:(NSString *)accessibilityId
+                          currencyTitle:(NSString *)currencyTitle
+                                  input:(NSAttributedString *)input
+                              remainder:(NSString *)remainder
+                                   rate:(NSString *)rate
+                         remainderStyle:(CarouselPageRemainderStyle)remainderStyle
+                           onTextChange:(nonnull OnTextChange)onTextChange
 {
     if (self = [super init]) {
+        _accessibilityId = accessibilityId;
         _currencyTitle = currencyTitle;
         _input = input;
         _remainder = remainder;

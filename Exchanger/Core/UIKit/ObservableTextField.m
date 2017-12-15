@@ -15,6 +15,7 @@
     if (self) {
         // See UIKitBugAvoidingTextField for implementation details.
         self.textField = [[UIKitBugAvoidingTextField alloc] init];
+        self.textField.accessibilityIdentifier = @"textField";
         
         [self addSubview:self.textField];
         
