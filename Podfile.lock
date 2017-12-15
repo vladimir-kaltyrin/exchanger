@@ -8,6 +8,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - EarlGrey (1.12.1)
   - ObjectiveSugar (1.1.0)
   - OHHTTPStubs (6.1.0):
     - OHHTTPStubs/Default (= 6.1.0)
@@ -28,6 +29,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking/UIKit (~> 3.1.0)
+  - EarlGrey (~> 1.12.1)
   - ObjectiveSugar
   - OHHTTPStubs
   - OHHTTPStubs/Swift
@@ -35,10 +37,11 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  EarlGrey: f7774b813c888ebdb9a21e612d67874d17d5a326
   ObjectiveSugar: a6a25f23d657c19df0a0b972466d5b5ca9f5295c
   OHHTTPStubs: 1e21c7d2c084b8153fc53d48400d8919d2d432d0
   XMLDictionary: fa07b6ff422b3a91d47a5de9bc82e3fc04fbd167
 
-PODFILE CHECKSUM: ae206a28859096db421f8bd2214ad7f833da67f0
+PODFILE CHECKSUM: 1552355cd3deac51fc8db7d0c2b3c60cd420078f
 
 COCOAPODS: 1.2.1
