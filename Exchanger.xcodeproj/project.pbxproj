@@ -48,7 +48,6 @@
 		8C1858CB1FE2C68C00638DCD /* Wallet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1858CA1FE2C68C00638DCD /* Wallet.m */; };
 		8C1FEFCB1F13A76A0024F046 /* ServiceFactoryImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1FEFCA1F13A76A0024F046 /* ServiceFactoryImpl.m */; };
 		8C2E1CF41F13818D00DB0FC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C2E1CF31F13818D00DB0FC2 /* Assets.xcassets */; };
-		8C2E1D0D1F13818D00DB0FC2 /* ExchangerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2E1D0C1F13818D00DB0FC2 /* ExchangerUITests.m */; };
 		8C36E9891F261B4F009BDDC0 /* UIView+Properties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C36E9881F261B4F009BDDC0 /* UIView+Properties.m */; };
 		8C43EB6D1FA1EC1900EE87FD /* ExchangeMoneyViewData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C43EB6C1FA1EC1800EE87FD /* ExchangeMoneyViewData.m */; };
 		8C45F6501FD01B8A005B3892 /* IntroAssemblyImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C45F64F1FD01B8A005B3892 /* IntroAssemblyImpl.m */; };
@@ -66,6 +65,7 @@
 		8C6423611FA091D000A95479 /* CarouselData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6423601FA091D000A95479 /* CarouselData.m */; };
 		8C73267E1F3C80B100301720 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C73267D1F3C80B100301720 /* LaunchScreen.storyboard */; };
 		8C7326831F3C8D5800301720 /* UserServiceImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7326821F3C8D5800301720 /* UserServiceImpl.m */; };
+		8C7B138B1FE44C6C001C9318 /* ExchangeMoneyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B138A1FE44C6C001C9318 /* ExchangeMoneyTests.swift */; };
 		8C84A1801FDFE2A00099A666 /* FormatterResultData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C84A17F1FDFE2A00099A666 /* FormatterResultData.m */; };
 		8C84A1831FDFE8B80099A666 /* BalanceParseData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C84A1821FDFE8B80099A666 /* BalanceParseData.m */; };
 		8C84A1861FDFEC0C0099A666 /* FormattedStringData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C84A1851FDFEC0C0099A666 /* FormattedStringData.m */; };
@@ -192,7 +192,6 @@
 		8C2E1CFD1F13818D00DB0FC2 /* ExchangerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExchangerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C2E1D031F13818D00DB0FC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C2E1D081F13818D00DB0FC2 /* ExchangerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExchangerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8C2E1D0C1F13818D00DB0FC2 /* ExchangerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExchangerUITests.m; sourceTree = "<group>"; };
 		8C2E1D0E1F13818D00DB0FC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C304CFA1F13AC8300ACE585 /* CurrencyType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrencyType.h; path = Networking/CurrencyType.h; sourceTree = "<group>"; };
 		8C36E9871F261B4F009BDDC0 /* UIView+Properties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Properties.h"; path = "Categories/UIView+Properties.h"; sourceTree = "<group>"; };
@@ -237,6 +236,8 @@
 		8C7326801F3C8D4700301720 /* UserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserService.h; path = Services/UserService/UserService.h; sourceTree = "<group>"; };
 		8C7326811F3C8D5800301720 /* UserServiceImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserServiceImpl.h; path = Services/UserService/UserServiceImpl.h; sourceTree = "<group>"; };
 		8C7326821F3C8D5800301720 /* UserServiceImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserServiceImpl.m; path = Services/UserService/UserServiceImpl.m; sourceTree = "<group>"; };
+		8C7B13891FE44C6C001C9318 /* ExchangerUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ExchangerUITests-Bridging-Header.h"; sourceTree = "<group>"; };
+		8C7B138A1FE44C6C001C9318 /* ExchangeMoneyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeMoneyTests.swift; sourceTree = "<group>"; };
 		8C84A17E1FDFE2A00099A666 /* FormatterResultData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FormatterResultData.h; path = Formatters/BalanceFormatter/FormatterResultData.h; sourceTree = "<group>"; };
 		8C84A17F1FDFE2A00099A666 /* FormatterResultData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FormatterResultData.m; path = Formatters/BalanceFormatter/FormatterResultData.m; sourceTree = "<group>"; };
 		8C84A1811FDFE8B80099A666 /* BalanceParseData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BalanceParseData.h; path = Formatters/BalanceFormatter/BalanceParseData.h; sourceTree = "<group>"; };
@@ -478,7 +479,7 @@
 		8C2E1D0B1F13818D00DB0FC2 /* ExchangerUITests */ = {
 			isa = PBXGroup;
 			children = (
-				8C2E1D0C1F13818D00DB0FC2 /* ExchangerUITests.m */,
+				8C7B13881FE44BF5001C9318 /* ExchangeMoneyTests */,
 				8C2E1D0E1F13818D00DB0FC2 /* Info.plist */,
 			);
 			path = ExchangerUITests;
@@ -620,6 +621,15 @@
 				8C7326821F3C8D5800301720 /* UserServiceImpl.m */,
 			);
 			name = UserService;
+			sourceTree = "<group>";
+		};
+		8C7B13881FE44BF5001C9318 /* ExchangeMoneyTests */ = {
+			isa = PBXGroup;
+			children = (
+				8C7B138A1FE44C6C001C9318 /* ExchangeMoneyTests.swift */,
+				8C7B13891FE44C6C001C9318 /* ExchangerUITests-Bridging-Header.h */,
+			);
+			path = ExchangeMoneyTests;
 			sourceTree = "<group>";
 		};
 		8CC843C71FD5910E00EC0CD3 /* CurrencyFormatter */ = {
@@ -954,6 +964,7 @@
 					8C2E1D071F13818D00DB0FC2 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 5PHGGKL9UQ;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 8C2E1CE31F13818D00DB0FC2;
 					};
@@ -1252,7 +1263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C2E1D0D1F13818D00DB0FC2 /* ExchangerUITests.m in Sources */,
+				8C7B138B1FE44C6C001C9318 /* ExchangeMoneyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1452,11 +1463,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9389B4E6B11F4B0BB56B0F37 /* Pods-ExchangerUITests.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 5PHGGKL9UQ;
 				INFOPLIST_FILE = ExchangerUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vkaltyrin.ExchangerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ExchangerUITests/ExchangeMoneyTests/ExchangerUITests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Exchanger;
 			};
 			name = Debug;
@@ -1465,11 +1480,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F29A4AD09A77BA9D010BA1AE /* Pods-ExchangerUITests.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 5PHGGKL9UQ;
 				INFOPLIST_FILE = ExchangerUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vkaltyrin.ExchangerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ExchangerUITests/ExchangeMoneyTests/ExchangerUITests-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Exchanger;
 			};
 			name = Release;
