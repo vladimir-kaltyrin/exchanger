@@ -1,0 +1,6 @@
+framework module Pods_ExchangerTests {
+  umbrella header "Pods-ExchangerTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module Pods_Exchanger {
+  umbrella header "Pods-Exchanger-umbrella.h"
+
+  export *
+  module * { export * }
+}
