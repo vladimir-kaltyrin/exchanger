@@ -22,8 +22,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		2D9A60EAD27A2EFF8A0EA557 /* libPods-Exchanger.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A46A0D61B3F31B4C0C77D2B7 /* libPods-Exchanger.a */; };
-		68C8AC0CEC9D9ED7064AFBD1 /* libPods-ExchangerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 065BDAA0B52E5D049A00B783 /* libPods-ExchangerTests.a */; };
+		1D0F00DB70862D77D23C8433 /* Pods_ExchangerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CF406072D80641007C7F5FD /* Pods_ExchangerTests.framework */; };
 		8C076B9F1FD03DF4003F4D42 /* DisposeBag.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C076B9E1FD03DF4003F4D42 /* DisposeBag.m */; };
 		8C076BAB1FD1579F003F4D42 /* ExchangeMoneyResultData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C076BAA1FD1579F003F4D42 /* ExchangeMoneyResultData.m */; };
 		8C0B9F661FD9C36E007CA53A /* ExchangeMoneyServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0B9F651FD9C36E007CA53A /* ExchangeMoneyServiceTests.swift */; };
@@ -98,7 +97,8 @@
 		8CFCEA3D1FDAAF5900202024 /* CurrencyFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFCEA3C1FDAAF5900202024 /* CurrencyFormatterTests.swift */; };
 		8CFCEA411FDAB81900202024 /* RoundingFormatterImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFCEA401FDAB81900202024 /* RoundingFormatterImpl.m */; };
 		8CFCEA441FDAB93C00202024 /* RoundingFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFCEA431FDAB93C00202024 /* RoundingFormatterTests.swift */; };
-		F4B97656FC1AA746D81776B8 /* libPods-ExchangerUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 228D4FAA2C2C7FB35FC8A6FF /* libPods-ExchangerUITests.a */; };
+		975F843DAA7B903A1BF18886 /* Pods_Exchanger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC40EEC7B6A14ED6FD3414BB /* Pods_Exchanger.framework */; };
+		B135C9D511BE7DC8A08F8218 /* Pods_ExchangerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85123DFD2AD6F0FB172A55B7 /* Pods_ExchangerUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,10 +126,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		065BDAA0B52E5D049A00B783 /* libPods-ExchangerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ExchangerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		228D4FAA2C2C7FB35FC8A6FF /* libPods-ExchangerUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ExchangerUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CF406072D80641007C7F5FD /* Pods_ExchangerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExchangerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A61991DAEB98C839D7E3370 /* Pods-Exchanger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Exchanger.release.xcconfig"; path = "Pods/Target Support Files/Pods-Exchanger/Pods-Exchanger.release.xcconfig"; sourceTree = "<group>"; };
 		72F62204F1A8827488E4665A /* Pods-ExchangerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExchangerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExchangerTests/Pods-ExchangerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		85123DFD2AD6F0FB172A55B7 /* Pods_ExchangerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExchangerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C076B9D1FD03DF4003F4D42 /* DisposeBag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DisposeBag.h; path = Core/DisposeBag.h; sourceTree = "<group>"; };
 		8C076B9E1FD03DF4003F4D42 /* DisposeBag.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DisposeBag.m; path = Core/DisposeBag.m; sourceTree = "<group>"; };
 		8C076BA11FD042D7003F4D42 /* ServiceFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ServiceFactory.h; path = Services/ServiceFactory.h; sourceTree = "<group>"; };
@@ -306,9 +306,9 @@
 		8CFCEA421FDAB84500202024 /* RoundingFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RoundingFormatter.h; path = Formatters/RoundingFormatter/RoundingFormatter.h; sourceTree = "<group>"; };
 		8CFCEA431FDAB93C00202024 /* RoundingFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundingFormatterTests.swift; sourceTree = "<group>"; };
 		9389B4E6B11F4B0BB56B0F37 /* Pods-ExchangerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExchangerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExchangerUITests/Pods-ExchangerUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		A46A0D61B3F31B4C0C77D2B7 /* libPods-Exchanger.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Exchanger.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAEDD35F473571BE7C61E79D /* Pods-Exchanger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Exchanger.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Exchanger/Pods-Exchanger.debug.xcconfig"; sourceTree = "<group>"; };
 		B15BF0ACF5593372A8301FB5 /* Pods-ExchangerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExchangerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExchangerTests/Pods-ExchangerTests.release.xcconfig"; sourceTree = "<group>"; };
+		DC40EEC7B6A14ED6FD3414BB /* Pods_Exchanger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Exchanger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F29A4AD09A77BA9D010BA1AE /* Pods-ExchangerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExchangerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExchangerUITests/Pods-ExchangerUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -317,7 +317,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D9A60EAD27A2EFF8A0EA557 /* libPods-Exchanger.a in Frameworks */,
+				975F843DAA7B903A1BF18886 /* Pods_Exchanger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,7 +325,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68C8AC0CEC9D9ED7064AFBD1 /* libPods-ExchangerTests.a in Frameworks */,
+				1D0F00DB70862D77D23C8433 /* Pods_ExchangerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,7 +333,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4B97656FC1AA746D81776B8 /* libPods-ExchangerUITests.a in Frameworks */,
+				B135C9D511BE7DC8A08F8218 /* Pods_ExchangerUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -859,9 +859,9 @@
 		C4D7318F40CE453F21240F76 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A46A0D61B3F31B4C0C77D2B7 /* libPods-Exchanger.a */,
-				065BDAA0B52E5D049A00B783 /* libPods-ExchangerTests.a */,
-				228D4FAA2C2C7FB35FC8A6FF /* libPods-ExchangerUITests.a */,
+				DC40EEC7B6A14ED6FD3414BB /* Pods_Exchanger.framework */,
+				2CF406072D80641007C7F5FD /* Pods_ExchangerTests.framework */,
+				85123DFD2AD6F0FB172A55B7 /* Pods_ExchangerUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

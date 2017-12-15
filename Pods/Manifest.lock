@@ -9,18 +9,36 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - ObjectiveSugar (1.1.0)
+  - OHHTTPStubs (6.1.0):
+    - OHHTTPStubs/Default (= 6.1.0)
+  - OHHTTPStubs/Core (6.1.0)
+  - OHHTTPStubs/Default (6.1.0):
+    - OHHTTPStubs/Core
+    - OHHTTPStubs/JSON
+    - OHHTTPStubs/NSURLSession
+    - OHHTTPStubs/OHPathHelpers
+  - OHHTTPStubs/JSON (6.1.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/NSURLSession (6.1.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/OHPathHelpers (6.1.0)
+  - OHHTTPStubs/Swift (6.1.0):
+    - OHHTTPStubs/Default
   - XMLDictionary (1.4.1)
 
 DEPENDENCIES:
   - AFNetworking/UIKit (~> 3.1.0)
   - ObjectiveSugar
+  - OHHTTPStubs
+  - OHHTTPStubs/Swift
   - XMLDictionary (~> 1.4.1)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   ObjectiveSugar: a6a25f23d657c19df0a0b972466d5b5ca9f5295c
+  OHHTTPStubs: 1e21c7d2c084b8153fc53d48400d8919d2d432d0
   XMLDictionary: fa07b6ff422b3a91d47a5de9bc82e3fc04fbd167
 
-PODFILE CHECKSUM: 5c48b98f144952f37cc53ba2d3a7888d246e9ac4
+PODFILE CHECKSUM: ae206a28859096db421f8bd2214ad7f833da67f0
 
 COCOAPODS: 1.2.1

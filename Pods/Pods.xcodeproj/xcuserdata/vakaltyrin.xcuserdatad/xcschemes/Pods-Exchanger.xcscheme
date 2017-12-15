@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0920"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "68889A4EE8C0864CC7C6D1B1ED04F706"
-               BuildableName = "libPods-Exchanger.a"
+               BlueprintIdentifier = "25774CD164F58095066EE7CA1E92788C"
+               BuildableName = "Pods_Exchanger.framework"
                BlueprintName = "Pods-Exchanger"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
@@ -47,8 +47,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "68889A4EE8C0864CC7C6D1B1ED04F706"
-            BuildableName = "libPods-Exchanger.a"
+            BlueprintIdentifier = "25774CD164F58095066EE7CA1E92788C"
+            BuildableName = "Pods_Exchanger.framework"
             BlueprintName = "Pods-Exchanger"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>

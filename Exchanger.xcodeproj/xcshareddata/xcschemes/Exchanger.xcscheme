@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8C2E1CE31F13818D00DB0FC2"
-               BuildableName = "Avito.app"
+               BuildableName = "Exchanger.app"
                BlueprintName = "Exchanger"
                ReferencedContainer = "container:Exchanger.xcodeproj">
             </BuildableReference>
@@ -54,7 +54,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8C2E1CE31F13818D00DB0FC2"
-            BuildableName = "Avito.app"
+            BuildableName = "Exchanger.app"
             BlueprintName = "Exchanger"
             ReferencedContainer = "container:Exchanger.xcodeproj">
          </BuildableReference>
@@ -78,7 +78,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8C2E1CE31F13818D00DB0FC2"
-            BuildableName = "Avito.app"
+            BuildableName = "Exchanger.app"
             BlueprintName = "Exchanger"
             ReferencedContainer = "container:Exchanger.xcodeproj">
          </BuildableReference>
@@ -97,7 +97,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8C2E1CE31F13818D00DB0FC2"
-            BuildableName = "Avito.app"
+            BuildableName = "Exchanger.app"
             BlueprintName = "Exchanger"
             ReferencedContainer = "container:Exchanger.xcodeproj">
          </BuildableReference>
