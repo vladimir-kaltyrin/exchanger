@@ -1,6 +1,23 @@
 #import "CurrencyFormatterImpl.h"
 
+@interface CurrencyFormatterImpl()
+@property (nonatomic, strong) NSNumberFormatter *numberFormatter;
+@end
+
 @implementation CurrencyFormatterImpl
+
+// MARK: - Init
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.numberFormatter = [[NSNumberFormatter alloc] init];
+        self.numberFormatter.numberStyle = NSNumberFormatterCurrencyStyle;
+    }
+    return self;
+}
+
+// MARK: - Public
 
 - (NSString *)toCodeString:(CurrencyType)currencyType {
     switch (currencyType) {
@@ -18,13 +35,28 @@
 - (NSString *)toSignString:(CurrencyType)currencyType {
     switch (currencyType) {
         case CurrencyTypeEUR:
-            return @"€";
+        {
+            self.numberFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"fr_FR"];
+            return self.numberFormatter.currencySymbol;
+        }
+            break;
         case CurrencyTypeUSD:
-            return @"$";
+        {
+            self.numberFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
+            return self.numberFormatter.currencySymbol;
+        }
+            break;
         case CurrencyTypeGBP:
-            return @"£";
+        {
+            self.numberFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_UK"];
+            return self.numberFormatter.currencySymbol;
+        }
+            break;
         default:
+        {
+            self.numberFormatter.locale = [NSLocale currentLocale];
             return [self toCodeString:currencyType];
+        }
     }
 }
 

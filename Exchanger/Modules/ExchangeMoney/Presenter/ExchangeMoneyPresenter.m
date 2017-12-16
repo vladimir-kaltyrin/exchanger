@@ -53,8 +53,8 @@
 - (void)setUpView {
 
     self.activeExchangeType = CurrencyExchangeSourceType;
-    self.incomeInput = [FormatterData formatterDataWithString:@(0).stringValue];
-    self.expenseInput = [FormatterData formatterDataWithString:@(0).stringValue];
+    self.incomeInput = [FormatterData formatterDataWithNumber:@0];
+    self.expenseInput = [FormatterData formatterDataWithNumber:@0];
     
     __weak typeof(self) welf = self;
     [self.keyboardObserver setOnKeyboardData:^(KeyboardData *keyboardData) {
