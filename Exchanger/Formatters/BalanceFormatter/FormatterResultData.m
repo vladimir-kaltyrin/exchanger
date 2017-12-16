@@ -4,17 +4,21 @@
 
 @implementation FormatterResultData
 
-- (instancetype)initWithFormattedString:(NSAttributedString *)formattedString string:(NSString *)string {
+- (instancetype)initWithFormattedString:(NSAttributedString *)formattedString
+                                 string:(NSString *)string
+                                 number:(NSNumber *)number
+{
     self = [super init];
     if (self) {
         _formattedString = formattedString;
         _string = string;
+        _number = number;
     }
     return self;
 }
 
 - (float)floatValue {
-    return self.string.floatValue;
+    return self.number.floatValue;
 }
 
 + (FormatterResultData *)formatterDataWithString:(NSString *)string {

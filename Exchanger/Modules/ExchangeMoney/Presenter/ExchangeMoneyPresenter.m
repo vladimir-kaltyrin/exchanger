@@ -78,13 +78,13 @@
     }];
     
     [self.view setOnExchangeTap:^{
-        [welf.interactor exchangeCurrency:@(fabs(welf.expenseInput.floatValue))
-                                   onExchange:^{
-                                       [welf fetchRatesWithRepeat:NO
-                                                         onUpdate:nil
-                                                          onError:nil];
-                                       
-                                   } onError:nil];
+        [welf.interactor exchangeCurrency:welf.expenseInput.number
+                               onExchange:^{
+                                   [welf fetchRatesWithRepeat:NO
+                                                     onUpdate:nil
+                                                      onError:nil];
+                                   
+                               } onError:nil];
     }];
     
     [self.view setOnCancelTap:^{
@@ -141,7 +141,7 @@
         case CurrencyExchangeSourceType:
         {
             inputWallet = [[Wallet alloc] initWithCurrency:self.interactor.sourceCurrency
-                                                    amount:@(self.expenseInput.floatValue)];
+                                                    amount:self.expenseInput.number];
             targetCurrency = self.interactor.targetCurrency;
             
         }
@@ -149,7 +149,7 @@
         case CurrencyExchangeTargetType:
         {
             inputWallet = [[Wallet alloc] initWithCurrency:self.interactor.targetCurrency
-                                                    amount:@(self.incomeInput.floatValue)];
+                                                    amount:self.expenseInput.number];
             targetCurrency = self.interactor.sourceCurrency;
         }
             break;
