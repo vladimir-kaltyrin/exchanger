@@ -13,8 +13,8 @@
 @interface ExchangeMoneyPresenter()
 @property (nonatomic, strong) ExchangeRatesData *exchangeRatesData;
 @property (nonatomic, assign) CurrencyExchangeType activeExchangeType;
-@property (nonatomic, strong) FormatterResultData *expenseInput;
-@property (nonatomic, strong) FormatterResultData *incomeInput;
+@property (nonatomic, strong) FormatterData *expenseInput;
+@property (nonatomic, strong) FormatterData *incomeInput;
 @property (nonatomic, strong) id<ExchangeMoneyInteractor> interactor;
 @property (nonatomic, strong) id<ExchangeMoneyRouter> router;
 @property (nonatomic, strong) id<KeyboardObserver> keyboardObserver;
@@ -53,8 +53,8 @@
 - (void)setUpView {
 
     self.activeExchangeType = CurrencyExchangeSourceType;
-    self.incomeInput = [FormatterResultData formatterDataWithString:@(0).stringValue];
-    self.expenseInput = [FormatterResultData formatterDataWithString:@(0).stringValue];
+    self.incomeInput = [FormatterData formatterDataWithString:@(0).stringValue];
+    self.expenseInput = [FormatterData formatterDataWithString:@(0).stringValue];
     
     __weak typeof(self) welf = self;
     [self.keyboardObserver setOnKeyboardData:^(KeyboardData *keyboardData) {
@@ -242,9 +242,9 @@
                     break;
                 }
                 if (welf.interactor.sourceCurrency.currencyType == currencyType) {
-                    welf.expenseInput = [FormatterResultData formatterDataWithString:numbersData.string
+                    welf.expenseInput = [FormatterData formatterDataWithString:numbersData.string
                                                                                 sign:BalanceFormatterSignMinus];
-                    welf.incomeInput = [FormatterResultData formatterDataWithNumber:wallet.amount
+                    welf.incomeInput = [FormatterData formatterDataWithNumber:wallet.amount
                                                                                sign:BalanceFormatterSignPlus];
                     [welf reloadView];
                 }
@@ -256,9 +256,9 @@
                     break;
                 }
                 if (welf.interactor.targetCurrency.currencyType == currencyType) {
-                    welf.expenseInput = [FormatterResultData formatterDataWithNumber:wallet.amount
+                    welf.expenseInput = [FormatterData formatterDataWithNumber:wallet.amount
                                                                                 sign:BalanceFormatterSignMinus];
-                    welf.incomeInput = [FormatterResultData formatterDataWithString:numbersData.string
+                    welf.incomeInput = [FormatterData formatterDataWithString:numbersData.string
                                                                                sign:BalanceFormatterSignPlus];
                     [welf reloadView];
                 }
@@ -324,7 +324,7 @@
     return fabs(self.expenseInput.floatValue) > fabs(wallet.amount.floatValue);
 }
 
-- (FormatterResultData *)currentInput {
+- (FormatterData *)currentInput {
     switch (self.activeExchangeType) {
         case CurrencyExchangeSourceType:
             return self.expenseInput;

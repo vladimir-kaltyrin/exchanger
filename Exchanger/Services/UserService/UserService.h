@@ -5,6 +5,4 @@
 
 - (void)currentUser:(void(^)(User *))onCurrenUser;
 
-- (void)updateUser:(User *)user onUpdate:(void(^)())onUpdate;
-
 @end

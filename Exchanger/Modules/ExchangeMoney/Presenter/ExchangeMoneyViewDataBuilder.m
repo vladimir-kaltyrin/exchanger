@@ -8,8 +8,8 @@
 @interface ExchangeMoneyViewDataBuilder()
 @property (nonatomic, strong) User *user;
 @property (nonatomic, strong) NSArray<Currency *> *currencies;
-@property (nonatomic, strong) FormatterResultData *incomeInput;
-@property (nonatomic, strong) FormatterResultData *expenseInput;
+@property (nonatomic, strong) FormatterData *incomeInput;
+@property (nonatomic, strong) FormatterData *expenseInput;
 @property (nonatomic, strong) Currency *sourceCurrency;
 @property (nonatomic, strong) Currency *targetCurrency;
 @property (nonatomic, strong) NSNumber *invertedRate;
@@ -24,8 +24,8 @@
 
 - (instancetype)initWithUser:(User *)user
                   currencies:(NSArray<Currency *> *)currencies
-                 incomeInput:(FormatterResultData *)incomeInput
-                expenseInput:(FormatterResultData *)expenseInput
+                 incomeInput:(FormatterData *)incomeInput
+                expenseInput:(FormatterData *)expenseInput
               sourceCurrency:(Currency *)sourceCurrency
               targetCurrency:(Currency *)targetCurrency
                 invertedRate:(NSNumber *)invertedRate

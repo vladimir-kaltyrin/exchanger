@@ -62,7 +62,7 @@
                                         moneyAmount:currencyAmount
                                      sourceCurrency:welf.sourceCurrency
                                      targetCurrency:welf.targetCurrency
-                                           onResult:^(ExchangeMoneyResultData *result) {
+                                           onResult:^(ExchangeMoneyData *result) {
                                                
                                                [welf update:user withExchangeMoneyResult:result];
 
@@ -133,7 +133,7 @@
 
 // MARK: - Private
 
-- (void)update:(User *)user withExchangeMoneyResult:(ExchangeMoneyResultData *)result {
+- (void)update:(User *)user withExchangeMoneyResult:(ExchangeMoneyData *)result {
     [user setWallet:result.sourceWallet withCurrencyType:result.sourceWallet.currencyType];
     [user setWallet:result.targetWallet withCurrencyType:result.targetWallet.currencyType];
 }

@@ -6,7 +6,7 @@ typedef NS_ENUM(NSInteger, BalanceFormatterSign) {
     BalanceFormatterSignNone
 };
 
-@interface FormatterResultData : NSObject
+@interface FormatterData : NSObject
 @property (nonatomic, strong) NSAttributedString *formattedString;
 @property (nonatomic, strong) NSString *string;
 @property (nonatomic, strong) NSNumber *number;
@@ -17,10 +17,10 @@ typedef NS_ENUM(NSInteger, BalanceFormatterSign) {
 
 - (float)floatValue;
 
-+ (FormatterResultData *)formatterDataWithString:(NSString *)string;
++ (FormatterData *)formatterDataWithString:(NSString *)string;
 
-+ (FormatterResultData *)formatterDataWithString:(NSString *)string sign:(BalanceFormatterSign)sign;
++ (FormatterData *)formatterDataWithString:(NSString *)string sign:(BalanceFormatterSign)sign;
 
-+ (FormatterResultData *)formatterDataWithNumber:(NSNumber *)number sign:(BalanceFormatterSign)sign;
++ (FormatterData *)formatterDataWithNumber:(NSNumber *)number sign:(BalanceFormatterSign)sign;
 
 @end
