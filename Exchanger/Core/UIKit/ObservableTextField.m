@@ -60,6 +60,7 @@
     self.textField.tintColor = configuration.tintColor;
     self.textField.textAlignment = configuration.textAlignment;
     self.textField.keyboardType = configuration.keyboardType;
+    self.textField.adjustsFontSizeToFitWidth = configuration.adjustsFontSizeToFitWidth;
 }
 
 - (void)setAttributedText:(NSAttributedString *)text {

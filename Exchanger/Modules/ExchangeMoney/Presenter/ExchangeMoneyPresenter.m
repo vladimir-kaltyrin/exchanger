@@ -200,8 +200,14 @@
                    exchangeType:(CurrencyExchangeType)exchangeType
                    currencyType:(CurrencyType)currencyType
 {
+    NSString *inputText;
+    if ([self isInputValid:text]) {
+        inputText = text;
+    } else {
+        inputText = [self currentInput].string;
+    }
     
-    NumbersFormatterData *numbersData = [self.numbersFormatter format:text];
+    NumbersFormatterData *numbersData = [self.numbersFormatter format:inputText];
     
     Wallet *inputWallet;
     Currency *targetCurrency;
@@ -338,6 +344,10 @@
             return self.interactor.targetCurrency.currencyType;
             break;
     }
+}
+
+- (BOOL)isInputValid:(NSString *)input {
+    return input.length <= 9;
 }
 
 - (void)dismissModule {
