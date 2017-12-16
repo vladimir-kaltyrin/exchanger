@@ -27,6 +27,7 @@
         
         self.numberFormatter = [[NSNumberFormatter alloc] init];
         self.numberFormatter.minimumIntegerDigits = 1;
+        self.numberFormatter.roundingMode = NSNumberFormatterRoundDown;
         
         switch (self.formatterStyle) {
             case BalanceFormatterStyleHundredths:
@@ -93,8 +94,7 @@
 
 - (NSString *)formatBalance:(NSString *)balance sign:(BalanceFormatterSign)sign {
     
-    let number = @(fabs(balance.floatValue));
-    
+    let number = [self.numberFormatter numberFromString:balance];
     var formattedBalance = [self.numberFormatter stringFromNumber:number];
     formattedBalance = [self applySign:sign text:formattedBalance];
     
