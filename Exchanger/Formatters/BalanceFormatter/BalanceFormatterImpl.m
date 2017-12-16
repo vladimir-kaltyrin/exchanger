@@ -53,7 +53,7 @@
     
     NSAttributedString *formattedString;
     NSString *string;
-    let parseData = [self parseBalance:inputString];
+    let parseData = [self parseText:inputString];
     switch (parseData.parsingResult) {
         case ParsingResultZero:
         case ParsingResultInteger:
@@ -70,8 +70,7 @@
             formattedString = [self attributedFormatText:inputString
                                                parseData:parseData
                                                     sign:sign];
-            let unsignedFloatText = [self formatFloatText:inputString];
-            string = [self applySign:sign text:unsignedFloatText];
+            string = [self applySign:sign text:inputString];
         }
             break;
     }
@@ -112,14 +111,6 @@
     return string;
 }
 
-- (NSString *)formatFloatText:(NSString *)floatText{
-    
-    let number = [self.numberFormatter numberFromString:floatText];
-    var formattedBalance = [self.numberFormatter stringFromNumber:number];
-    
-    return formattedBalance;
-}
-
 - (NSString *)applySign:(BalanceFormatterSign)sign text:(NSString *)text {
     
     if (text.floatValue != 0) {
@@ -135,13 +126,6 @@
         }
     }
     return text;
-}
-
-- (BalanceParseData *)parseBalance:(NSString *)balance {
-    
-    let formattedBalance = [self formatFloatText:balance];
-    
-    return [self parseText:formattedBalance];
 }
 
 - (BalanceParseData *)parseText:(NSString *)text {
