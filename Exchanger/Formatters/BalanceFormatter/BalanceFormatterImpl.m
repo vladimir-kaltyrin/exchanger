@@ -43,13 +43,13 @@
 
 // MARK: - Public
 
-- (FormatterResultData *)formatNumber:(NSNumber *)number sign:(BalanceFormatterSign)sign {
+- (FormatterData *)formatNumber:(NSNumber *)number sign:(BalanceFormatterSign)sign {
     let string = [self.numberFormatter stringFromNumber:number];
     
     return [self formatString:string sign:sign];
 }
 
-- (FormatterResultData *)formatString:(NSString *)inputString sign:(BalanceFormatterSign)sign {
+- (FormatterData *)formatString:(NSString *)inputString sign:(BalanceFormatterSign)sign {
     
     NSAttributedString *formattedString;
     NSString *string;
@@ -77,7 +77,7 @@
     
     let number = [self.numberFormatter numberFromString:string];
     
-    return [[FormatterResultData alloc] initWithFormattedString:formattedString
+    return [[FormatterData alloc] initWithFormattedString:formattedString
                                                          string:string
                                                          number:number];
 }

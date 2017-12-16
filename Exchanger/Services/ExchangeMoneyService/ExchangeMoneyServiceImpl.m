@@ -10,7 +10,7 @@
              moneyAmount:(NSNumber *)moneyAmount
           sourceCurrency:(Currency *)sourceCurrency
           targetCurrency:(Currency *)targetCurrency
-                onResult:(void (^)(ExchangeMoneyResultData *))onResult
+                onResult:(void (^)(ExchangeMoneyData *))onResult
 {
     let unsignedMoneyAmount = @(fabs(moneyAmount.floatValue));
     
@@ -31,7 +31,7 @@
                                          currency:targetCurrency
                                        walletDiff:walletDiff];
         
-        let result = [[ExchangeMoneyResultData alloc] initWithSourceWallet:sourceWallet
+        let result = [[ExchangeMoneyData alloc] initWithSourceWallet:sourceWallet
                                                               targetWallet:targetWallet];
         safeBlock(onResult, result);
     }];

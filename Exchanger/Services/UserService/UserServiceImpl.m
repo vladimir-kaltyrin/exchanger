@@ -41,9 +41,4 @@
     onCurrenUser(self.user);
 }
 
-- (void)updateUser:(User *)user onUpdate:(void (^)())onUpdate {
-    self.user = user;
-    onUpdate();
-}
-
 @end

@@ -1,8 +1,8 @@
 #import "ConvenientObjC.h"
-#import "FormatterResultData.h"
+#import "FormatterData.h"
 #import "FormatterFactoryImpl.h"
 
-@implementation FormatterResultData
+@implementation FormatterData
 
 - (instancetype)initWithFormattedString:(NSAttributedString *)formattedString
                                  string:(NSString *)string
@@ -21,16 +21,16 @@
     return self.number.floatValue;
 }
 
-+ (FormatterResultData *)formatterDataWithString:(NSString *)string {
-    return [FormatterResultData formatterDataWithString:string sign:BalanceFormatterSignNone];
++ (FormatterData *)formatterDataWithString:(NSString *)string {
+    return [FormatterData formatterDataWithString:string sign:BalanceFormatterSignNone];
 }
 
-+ (FormatterResultData *)formatterDataWithString:(NSString *)string sign:(BalanceFormatterSign)sign {
++ (FormatterData *)formatterDataWithString:(NSString *)string sign:(BalanceFormatterSign)sign {
     let formatter = [[FormatterFactoryImpl instance] exchangeCurrencyInputFormatter];
     return [formatter formatString:string sign:sign];
 }
 
-+ (FormatterResultData *)formatterDataWithNumber:(NSNumber *)number sign:(BalanceFormatterSign)sign {
++ (FormatterData *)formatterDataWithNumber:(NSNumber *)number sign:(BalanceFormatterSign)sign {
     let formatter = [[FormatterFactoryImpl instance] exchangeCurrencyInputFormatter];
     return [formatter formatNumber:number sign:sign];
 }

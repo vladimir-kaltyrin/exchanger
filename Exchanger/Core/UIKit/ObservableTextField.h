@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 #import "TextFieldConfiguration.h"
-#import "FormatterResultData.h"
+#import "FormatterData.h"
 
 typedef void(^OnTextChange)(NSString *);
 typedef void(^OnBeginEditing)();

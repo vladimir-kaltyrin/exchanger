@@ -4,5 +4,5 @@
 @protocol NumbersFormatter
 - (nonnull NumbersFormatterData *)format:(nonnull NSString *)string;
 
-- (void)setLocale:(NSLocale *)locale;
+- (void)setLocale:(NSLocale *_Nonnull)locale;
 @end

@@ -8,6 +8,20 @@
 
 @implementation ServiceFactoryImpl
 
+// MARK: - Init
+
++ (instancetype)instance
+{
+    static dispatch_once_t once;
+    static id instance;
+    dispatch_once(&once, ^{
+        instance = [[self alloc] init];
+    });
+    return instance;
+}
+
+// MARK: - ServiceFactory
+
 - (id<KeyboardObserver>)keyboardObserver {
     return [[KeyboardObserverImpl alloc] init];
 }
