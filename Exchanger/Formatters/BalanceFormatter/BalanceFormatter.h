@@ -3,6 +3,8 @@
 
 @protocol BalanceFormatter
 
-- (FormatterResultData *)format:(NSString *)balance sign:(BalanceFormatterSign)sign;
+- (FormatterResultData *)formatString:(NSString *)string sign:(BalanceFormatterSign)sign;
+
+- (FormatterResultData *)formatNumber:(NSNumber *)number sign:(BalanceFormatterSign)sign;
 
 @end

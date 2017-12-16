@@ -7,6 +7,7 @@ typedef void(^OnBarButtonTap)();
 @property (nonatomic, strong, readonly) UIBarButtonItem *barButtonItem;
 @property (nonatomic, strong) OnBarButtonTap onBarButtonTap;
 @property (nonatomic, assign) BOOL enabled;
+@property (nonatomic, strong) NSString *accessibilityIdentifier;
 
 - (instancetype)initWithTitle:(NSString *)title;
 

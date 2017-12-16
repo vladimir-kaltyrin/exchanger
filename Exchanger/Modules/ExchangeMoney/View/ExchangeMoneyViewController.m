@@ -23,7 +23,10 @@
     if (self) {
         self.exchangeMoneyView = [[ExchangeMoneyView alloc] init];
         self.exchangeBarButton = [[BarButton alloc] initWithTitle:@"Exchange"];
+        self.exchangeBarButton.accessibilityIdentifier = @"ExchangeButton";
+        
         self.cancelBarButton = [[BarButton alloc] initWithTitle:@"Cancel"];
+        self.cancelBarButton.accessibilityIdentifier = @"CancelButton";
         
         self.exchangeMoneyTitleView = [[ExchangeMoneyTitleView alloc] init];
         self.exchangeMoneyTitleView.frame = CGRectMake(0, 0, 150, 36);

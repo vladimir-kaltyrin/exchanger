@@ -5,7 +5,6 @@
 
 @interface ExchangeMoneyTitleView()
 @property (nonatomic, strong) UILabel *titleLabel;
-@property (nonatomic, strong) id<NumbersFormatter> numbersFormatter;
 @property (nonatomic, strong) id<BalanceFormatter> currentBalanceFormatter;
 @end
 
@@ -15,10 +14,10 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        self.numbersFormatter = [[FormatterFactoryImpl instance] numbersFormatter];
         self.currentBalanceFormatter = [[FormatterFactoryImpl instance] currentBalanceFormatter];
         
         self.titleLabel = [[UILabel alloc] init];
+        self.titleLabel.accessibilityIdentifier = @"navigationTitle";
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:self.titleLabel];
         self.titleLabel.backgroundColor = [UIColor clearColor];
@@ -67,11 +66,8 @@
                                                                  attributes:stringStyle.attributes];
     [string appendAttributedString:targetCurrencySignText];
     
-    let targetText = [NSString stringWithFormat:@"%@",
-                      targetCurrency.rate.stringValue];
-    
     let targetCurrencyText = [self.currentBalanceFormatter
-                              format:targetText
+                              formatNumber:targetCurrency.rate
                               sign:BalanceFormatterSignNone].formattedString;
     [string appendAttributedString:targetCurrencyText];
     

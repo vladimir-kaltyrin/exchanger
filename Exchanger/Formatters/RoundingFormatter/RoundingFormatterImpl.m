@@ -6,15 +6,25 @@
 
 @implementation RoundingFormatterImpl
 
+// MARK: - RoundingFormatter
+
 - (NSString *)format:(NSNumber *)number {
-    
-    if (self.numberFormatter == nil) {
-        self.numberFormatter = [[NSNumberFormatter alloc] init];
-        self.numberFormatter.minimumIntegerDigits = 1;
-        self.numberFormatter.maximumFractionDigits = 2;
-    }
-    
     return [self.numberFormatter stringFromNumber:number];
+}
+
+- (void)setLocale:(NSLocale *)locale {
+    self.numberFormatter.locale = locale;
+}
+
+// MARK: - Private
+
+- (NSNumberFormatter *)numberFormatter {
+    if (_numberFormatter == nil) {
+        _numberFormatter = [[NSNumberFormatter alloc] init];
+        _numberFormatter.minimumIntegerDigits = 1;
+        _numberFormatter.maximumFractionDigits = 2;
+    }
+    return _numberFormatter;
 }
 
 @end

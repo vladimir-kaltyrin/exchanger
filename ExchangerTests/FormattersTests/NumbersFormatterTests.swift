@@ -6,8 +6,9 @@ class NumbersFormatterTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        
+
         formatter = FormatterFactoryImpl.instance().numbersFormatter()
+        formatter.setLocale(Locale(identifier: "en_US"))
     }
     
     override func tearDown() {
@@ -20,7 +21,8 @@ class NumbersFormatterTests: XCTestCase {
         // When
         let output = formatter.format(input)
         // Then
-        XCTAssert(output == "0")
+        XCTAssert(output.string == "0")
+        XCTAssert(output.number == 0)
     }
     
     func testInputIsAlphanumericString() {
@@ -29,7 +31,8 @@ class NumbersFormatterTests: XCTestCase {
         // When
         let output = formatter.format(input)
         // Then
-        XCTAssert(output == "12.5479")
+        XCTAssert(output.string == "12.5479")
+        XCTAssert(output.number == 12.5479)
     }
     
     func testInputIsNumberWithSeparator() {
@@ -38,7 +41,8 @@ class NumbersFormatterTests: XCTestCase {
         // When
         let output = formatter.format(input)
         // Then
-        XCTAssert(output == input)
+        XCTAssert(output.string == input)
+        XCTAssert(output.number == 1)
     }
     
     func testInputDoesNotContainDigits() {
@@ -47,7 +51,8 @@ class NumbersFormatterTests: XCTestCase {
         // When
         let output = formatter.format(input)
         // Then
-        XCTAssert(output == "0")
+        XCTAssert(output.string == "0")
+        XCTAssert(output.number == 0)
     }
     
     func testInputContainsoOnlyLeadingZerosAtBeginning() {
@@ -56,7 +61,8 @@ class NumbersFormatterTests: XCTestCase {
         // When
         let output = formatter.format(input)
         // Then
-        XCTAssert(output == "0")
+        XCTAssert(output.string == "0")
+        XCTAssert(output.number == 0)
     }
     
     func testInputContainsLeadingZerosAtBeginning() {
@@ -65,7 +71,8 @@ class NumbersFormatterTests: XCTestCase {
         // When
         let output = formatter.format(input)
         // Then
-        XCTAssert(output == "57.7")
+        XCTAssert(output.string == "57.7")
+        XCTAssert(output.number == 57.7)
     }
     
 }

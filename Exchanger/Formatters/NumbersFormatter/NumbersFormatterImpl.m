@@ -1,24 +1,51 @@
 #import "ConvenientObjC.h"
 #import "NumbersFormatterImpl.h"
 
+@interface NumbersFormatterImpl()
+@property (nonatomic, strong) NSNumberFormatter *formatter;
+@property (nonatomic, strong) NSLocale *locale;
+@end
+
 @implementation NumbersFormatterImpl
+
+// MARK: - Init
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.formatter = [[NSNumberFormatter alloc] init];
+        self.locale = [NSLocale currentLocale];
+    }
+    return self;
+}
 
 // MARK: - NumbersFormatter
 
-- (NSString *)format:(NSString *)string {
-    var result = [self filterNonNumericAndSeparatorCharacters:string];
-    result = [self filterExtraSeparators:result];
-    result = [self filterStringEqualToSeparator:result];
-    result = [self filterLeadingZeros:result];
+- (nonnull NumbersFormatterData *)format:(nonnull NSString *)string; {
+    var resultString = [self filterNonNumericAndSeparatorCharacters:string];
+    resultString = [self filterExtraSeparators:resultString];
+    resultString = [self filterStringEqualToSeparator:resultString];
+    resultString = [self filterLeadingZeros:resultString];
+    
+    let resultNumber = [self.formatter numberFromString:resultString];
+    
+    var result = [[NumbersFormatterData alloc] init];
+    result.string = resultString;
+    result.number = resultNumber;
     
     return result;
+}
+
+- (void)setLocale:(NSLocale *)locale {
+    _locale = locale;
+    
+    self.formatter.locale = self.locale;
 }
 
 // MARK: - Private
 
 - (NSString *)separator {
-    let locale = [NSLocale currentLocale];
-    return [locale objectForKey:NSLocaleDecimalSeparator];
+    return [self.locale objectForKey:NSLocaleDecimalSeparator];
 }
 
 - (NSString *)filterNonNumericAndSeparatorCharacters:(NSString *)targetString {

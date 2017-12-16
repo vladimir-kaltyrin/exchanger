@@ -27,13 +27,28 @@
         
         self.numberFormatter = [[NSNumberFormatter alloc] init];
         self.numberFormatter.minimumIntegerDigits = 1;
+        
+        switch (self.formatterStyle) {
+            case BalanceFormatterStyleHundredths:
+                self.numberFormatter.maximumFractionDigits = 2;
+                break;
+            case BalanceFormatterStyleTenThousandths:
+                self.numberFormatter.maximumFractionDigits = 6;
+                break;
+        }
     }
     return self;
 }
 
 // MARK: - Public
 
-- (FormatterResultData *)format:(NSString *)balance sign:(BalanceFormatterSign)sign {
+- (FormatterResultData *)formatNumber:(NSNumber *)number sign:(BalanceFormatterSign)sign {
+    let string = [self.numberFormatter stringFromNumber:number];
+    
+    return [self formatString:string sign:sign];
+}
+
+- (FormatterResultData *)formatString:(NSString *)balance sign:(BalanceFormatterSign)sign {
     
     let formattedString = [self attributedFormatBalance:balance sign:sign];
     
@@ -79,15 +94,6 @@
 - (NSString *)formatBalance:(NSString *)balance sign:(BalanceFormatterSign)sign {
     
     let number = @(fabs(balance.floatValue));
-    
-    switch (self.formatterStyle) {
-        case BalanceFormatterStyleHundredths:
-            self.numberFormatter.maximumFractionDigits = 2;
-            break;
-        case BalanceFormatterStyleTenThousandths:
-            self.numberFormatter.maximumFractionDigits = 6;
-            break;
-    }
     
     var formattedBalance = [self.numberFormatter stringFromNumber:number];
     formattedBalance = [self applySign:sign text:formattedBalance];
