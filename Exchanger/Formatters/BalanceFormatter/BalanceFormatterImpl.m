@@ -65,7 +65,11 @@
             break;
     }
     
-    return [[FormatterResultData alloc] initWithFormattedString:formattedString string:newBalance];
+    let number = [self.numberFormatter numberFromString:newBalance];
+    
+    return [[FormatterResultData alloc] initWithFormattedString:formattedString
+                                                         string:newBalance
+                                                         number:number];
 }
 
 // MARK: - Private

@@ -12,6 +12,8 @@
           targetCurrency:(Currency *)targetCurrency
                 onResult:(void (^)(ExchangeMoneyResultData *))onResult
 {
+    let unsignedMoneyAmount = @(fabs(moneyAmount.floatValue));
+    
     __weak typeof(self) welf = self;
     [self convertedCurrencyWithSourceCurrency:sourceCurrency
                                targetCurrency:targetCurrency
@@ -20,9 +22,9 @@
         
         let sourceWallet = [welf sourceWalletWith:user
                                          currency:sourceCurrency
-                                      moneyAmount:moneyAmount];
+                                      moneyAmount:unsignedMoneyAmount];
         
-        let walletDiff = [welf exchangeMoneyAmount:moneyAmount
+        let walletDiff = [welf exchangeMoneyAmount:unsignedMoneyAmount
                                       withCurrency:convertedCurrency];
         
         let targetWallet = [welf targetWalletWith:user
@@ -30,7 +32,7 @@
                                        walletDiff:walletDiff];
         
         let result = [[ExchangeMoneyResultData alloc] initWithSourceWallet:sourceWallet
-                                                          targetWallet:targetWallet];
+                                                              targetWallet:targetWallet];
         safeBlock(onResult, result);
     }];
 }
@@ -56,7 +58,7 @@
                                     onConvert:^(Currency *convertedCurrency)
     {
         let resultWallet = [welf exchangeMoneyAmount:wallet.amount
-                                                withCurrency:convertedCurrency];
+                                        withCurrency:convertedCurrency];
         
         safeBlock(onResult, resultWallet);
     }];

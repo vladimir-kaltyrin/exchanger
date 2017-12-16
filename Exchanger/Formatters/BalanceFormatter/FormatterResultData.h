@@ -9,8 +9,11 @@ typedef NS_ENUM(NSInteger, BalanceFormatterSign) {
 @interface FormatterResultData : NSObject
 @property (nonatomic, strong) NSAttributedString *formattedString;
 @property (nonatomic, strong) NSString *string;
+@property (nonatomic, strong) NSNumber *number;
 
-- (instancetype)initWithFormattedString:(NSAttributedString *)formattedString string:(NSString *)balance;
+- (instancetype)initWithFormattedString:(NSAttributedString *)formattedString
+                                 string:(NSString *)balance
+                                 number:(NSNumber *)number;
 
 - (float)floatValue;
 
