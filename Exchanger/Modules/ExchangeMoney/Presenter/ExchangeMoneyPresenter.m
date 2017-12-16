@@ -201,7 +201,7 @@
                    currencyType:(CurrencyType)currencyType
 {
     
-    NSString *numberText = [self.numbersFormatter format:text];
+    NumbersFormatterData *numbersData = [self.numbersFormatter format:text];
     
     Wallet *inputWallet;
     Currency *targetCurrency;
@@ -210,7 +210,7 @@
         case CurrencyExchangeSourceType:
         {
             inputWallet = [[Wallet alloc] initWithCurrency:self.interactor.sourceCurrency
-                                                    amount:@(numberText.floatValue)];
+                                                    amount:numbersData.number];
             targetCurrency = self.interactor.targetCurrency;
             
         }
@@ -218,7 +218,7 @@
         case CurrencyExchangeTargetType:
         {
             inputWallet = [[Wallet alloc] initWithCurrency:self.interactor.targetCurrency
-                                                    amount:@(numberText.floatValue)];
+                                                    amount:numbersData.number];
             targetCurrency = self.interactor.sourceCurrency;
         }
             break;
@@ -236,9 +236,9 @@
                     break;
                 }
                 if (welf.interactor.sourceCurrency.currencyType == currencyType) {
-                    welf.expenseInput = [FormatterResultData formatterDataWithString:numberText
+                    welf.expenseInput = [FormatterResultData formatterDataWithString:numbersData.string
                                                                                 sign:BalanceFormatterSignMinus];
-                    welf.incomeInput = [FormatterResultData formatterDataWithString:wallet.amount.stringValue
+                    welf.incomeInput = [FormatterResultData formatterDataWithNumber:wallet.amount
                                                                                sign:BalanceFormatterSignPlus];
                     [welf reloadView];
                 }
@@ -250,9 +250,9 @@
                     break;
                 }
                 if (welf.interactor.targetCurrency.currencyType == currencyType) {
-                    welf.expenseInput = [FormatterResultData formatterDataWithString:wallet.amount.stringValue
+                    welf.expenseInput = [FormatterResultData formatterDataWithNumber:wallet.amount
                                                                                 sign:BalanceFormatterSignMinus];
-                    welf.incomeInput = [FormatterResultData formatterDataWithString:numberText
+                    welf.incomeInput = [FormatterResultData formatterDataWithString:numbersData.string
                                                                                sign:BalanceFormatterSignPlus];
                     [welf reloadView];
                 }

@@ -66,6 +66,7 @@
 		8C73267E1F3C80B100301720 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C73267D1F3C80B100301720 /* LaunchScreen.storyboard */; };
 		8C7326831F3C8D5800301720 /* UserServiceImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7326821F3C8D5800301720 /* UserServiceImpl.m */; };
 		8C7B138B1FE44C6C001C9318 /* ExchangeMoneyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B138A1FE44C6C001C9318 /* ExchangeMoneyTests.swift */; };
+		8C7B138E1FE502E5001C9318 /* NumbersFormatterData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B138D1FE502E5001C9318 /* NumbersFormatterData.m */; };
 		8C84A1801FDFE2A00099A666 /* FormatterResultData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C84A17F1FDFE2A00099A666 /* FormatterResultData.m */; };
 		8C84A1831FDFE8B80099A666 /* BalanceParseData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C84A1821FDFE8B80099A666 /* BalanceParseData.m */; };
 		8C84A1861FDFEC0C0099A666 /* FormattedStringData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C84A1851FDFEC0C0099A666 /* FormattedStringData.m */; };
@@ -238,6 +239,8 @@
 		8C7326821F3C8D5800301720 /* UserServiceImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserServiceImpl.m; path = Services/UserService/UserServiceImpl.m; sourceTree = "<group>"; };
 		8C7B13891FE44C6C001C9318 /* ExchangerUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ExchangerUITests-Bridging-Header.h"; sourceTree = "<group>"; };
 		8C7B138A1FE44C6C001C9318 /* ExchangeMoneyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeMoneyTests.swift; sourceTree = "<group>"; };
+		8C7B138C1FE502E5001C9318 /* NumbersFormatterData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NumbersFormatterData.h; path = Formatters/NumbersFormatter/NumbersFormatterData.h; sourceTree = "<group>"; };
+		8C7B138D1FE502E5001C9318 /* NumbersFormatterData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = NumbersFormatterData.m; path = Formatters/NumbersFormatter/NumbersFormatterData.m; sourceTree = "<group>"; };
 		8C84A17E1FDFE2A00099A666 /* FormatterResultData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FormatterResultData.h; path = Formatters/BalanceFormatter/FormatterResultData.h; sourceTree = "<group>"; };
 		8C84A17F1FDFE2A00099A666 /* FormatterResultData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FormatterResultData.m; path = Formatters/BalanceFormatter/FormatterResultData.m; sourceTree = "<group>"; };
 		8C84A1811FDFE8B80099A666 /* BalanceParseData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BalanceParseData.h; path = Formatters/BalanceFormatter/BalanceParseData.h; sourceTree = "<group>"; };
@@ -468,6 +471,7 @@
 		8C2E1D001F13818D00DB0FC2 /* ExchangerTests */ = {
 			isa = PBXGroup;
 			children = (
+				8C7B138F1FE5096E001C9318 /* Helpers */,
 				8CFCEA391FDAA43300202024 /* FormattersTests */,
 				8C2E1D031F13818D00DB0FC2 /* Info.plist */,
 				8C0B9F621FD9C35A007CA53A /* ExchangerTests-Bridging-Header.h */,
@@ -632,6 +636,13 @@
 			path = ExchangeMoneyTests;
 			sourceTree = "<group>";
 		};
+		8C7B138F1FE5096E001C9318 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		8CC843C71FD5910E00EC0CD3 /* CurrencyFormatter */ = {
 			isa = PBXGroup;
 			children = (
@@ -664,6 +675,8 @@
 				8CC843DC1FD6A06F00EC0CD3 /* NumbersFormatter.h */,
 				8CC843DD1FD6A0A700EC0CD3 /* NumbersFormatterImpl.h */,
 				8CC843DE1FD6A0A700EC0CD3 /* NumbersFormatterImpl.m */,
+				8C7B138C1FE502E5001C9318 /* NumbersFormatterData.h */,
+				8C7B138D1FE502E5001C9318 /* NumbersFormatterData.m */,
 			);
 			name = NumbersFormatter;
 			sourceTree = "<group>";
@@ -1201,6 +1214,7 @@
 				8CD7861A1F14F22600AF7A8D /* ExchangeMoneyInteractorImpl.m in Sources */,
 				8C1858C81FE2C5E200638DCD /* User.m in Sources */,
 				8C1FEFCB1F13A76A0024F046 /* ServiceFactoryImpl.m in Sources */,
+				8C7B138E1FE502E5001C9318 /* NumbersFormatterData.m in Sources */,
 				8C1858C11FE2C54E00638DCD /* KeyboardObserverImpl.m in Sources */,
 				8C6423551FA0758C00A95479 /* CarouselPage.m in Sources */,
 				8C7326831F3C8D5800301720 /* UserServiceImpl.m in Sources */,

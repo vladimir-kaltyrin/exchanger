@@ -23,7 +23,12 @@
 
 + (FormatterResultData *)formatterDataWithString:(NSString *)string sign:(BalanceFormatterSign)sign {
     let formatter = [[FormatterFactoryImpl instance] exchangeCurrencyInputFormatter];
-    return [formatter format:string sign:sign];
+    return [formatter formatString:string sign:sign];
+}
+
++ (FormatterResultData *)formatterDataWithNumber:(NSNumber *)number sign:(BalanceFormatterSign)sign {
+    let formatter = [[FormatterFactoryImpl instance] exchangeCurrencyInputFormatter];
+    return [formatter formatNumber:number sign:sign];
 }
 
 @end
