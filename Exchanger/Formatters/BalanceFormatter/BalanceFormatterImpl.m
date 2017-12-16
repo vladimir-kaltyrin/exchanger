@@ -49,39 +49,55 @@
     return [self formatString:string sign:sign];
 }
 
-- (FormatterResultData *)formatString:(NSString *)balance sign:(BalanceFormatterSign)sign {
+- (FormatterResultData *)formatString:(NSString *)inputString sign:(BalanceFormatterSign)sign {
     
-    let formattedString = [self attributedFormatBalance:balance sign:sign];
-    
-    NSString *newBalance;
-    let parseData = [self parseBalance:balance sign:sign];
+    NSAttributedString *formattedString;
+    NSString *string;
+    let parseData = [self parseBalance:inputString];
     switch (parseData.parsingResult) {
         case ParsingResultZero:
         case ParsingResultInteger:
-            newBalance = [self applySign:sign text:balance];
+        {
+            let integerParseData = [self parseText:inputString];
+            formattedString = [self attributedFormatText:inputString
+                                               parseData:integerParseData
+                                                    sign:sign];
+            string = [self applySign:sign text:inputString];
+        }
             break;
         case ParsingResultFloat:
-            newBalance = [self formatBalance:balance sign:sign];
+        {
+            formattedString = [self attributedFormatText:inputString
+                                               parseData:parseData
+                                                    sign:sign];
+            let unsignedFloatText = [self formatFloatText:inputString];
+            string = [self applySign:sign text:unsignedFloatText];
+        }
             break;
     }
     
-    let number = [self.numberFormatter numberFromString:newBalance];
+    let number = [self.numberFormatter numberFromString:string];
     
     return [[FormatterResultData alloc] initWithFormattedString:formattedString
-                                                         string:newBalance
+                                                         string:string
                                                          number:number];
 }
 
 // MARK: - Private
 
-- (NSAttributedString *)attributedFormatBalance:(NSString *)balance sign:(BalanceFormatterSign)sign {
+- (NSAttributedString *)attributedFormatText:(NSString *)text
+                                   parseData:(BalanceParseData *)parseData
+                                        sign:(BalanceFormatterSign)sign
+{
     
     var string = [[NSMutableAttributedString alloc] init];
     
-    let formattedString = [self formattedStringWithBalance:balance sign:sign];
+    let formattedString = [self formattedStringWithText:text
+                                              parseData:parseData];
     
     if (formattedString.primaryString != nil) {
-        let primaryAttributedString = [[NSAttributedString alloc] initWithString:formattedString.primaryString
+        let signedPrimaryString = [self applySign:sign text:formattedString.primaryString];
+        let primaryAttributedString = [[NSAttributedString alloc] initWithString:signedPrimaryString
                                                                       attributes:self.primaryPartStyle.attributes];
         [string appendAttributedString:primaryAttributedString];
     }
@@ -96,11 +112,10 @@
     return string;
 }
 
-- (NSString *)formatBalance:(NSString *)balance sign:(BalanceFormatterSign)sign {
+- (NSString *)formatFloatText:(NSString *)floatText{
     
-    let number = [self.numberFormatter numberFromString:balance];
+    let number = [self.numberFormatter numberFromString:floatText];
     var formattedBalance = [self.numberFormatter stringFromNumber:number];
-    formattedBalance = [self applySign:sign text:formattedBalance];
     
     return formattedBalance;
 }
@@ -122,14 +137,16 @@
     return text;
 }
 
-- (BalanceParseData *)parseBalance:(NSString *)balance sign:(BalanceFormatterSign)sign {
-    let locale = [NSLocale currentLocale];
-    let separator = (NSString *)[locale objectForKey:NSLocaleDecimalSeparator];
+- (BalanceParseData *)parseBalance:(NSString *)balance {
     
-    let formattedBalance = [self formatBalance:balance sign:sign];
+    let formattedBalance = [self formatFloatText:balance];
     
+    return [self parseText:formattedBalance];
+}
+
+- (BalanceParseData *)parseText:(NSString *)text {
     ParsingResult result;
-    let components = [formattedBalance componentsSeparatedByString:separator];
+    let components = [text componentsSeparatedByString:[self separator]];
     if (components.count == 0) {
         result = ParsingResultZero;
     } else if (components.count == 1) {
@@ -145,12 +162,17 @@
     return data;
 }
 
-- (FormattedStringData *)formattedStringWithBalance:(NSString *)balance sign:(BalanceFormatterSign)sign {
-    let data = [self parseBalance:balance sign:sign];
-    
+- (NSString *)separator {
+    let locale = [NSLocale currentLocale];
+    return [locale objectForKey:NSLocaleDecimalSeparator];
+}
+
+- (FormattedStringData *)formattedStringWithText:(NSString *)text
+                                       parseData:(BalanceParseData *)parseData
+{
     var formattedString = [[FormattedStringData alloc] init];
     
-    switch (data.parsingResult) {
+    switch (parseData.parsingResult) {
         case ParsingResultZero:
         {
             formattedString.primaryString = nil;
@@ -159,16 +181,13 @@
             break;
         case ParsingResultInteger:
         {
-            formattedString.primaryString = [self applySign:sign text:balance];
+            formattedString.primaryString = text;
             formattedString.secondaryString = nil;
         }
             break;
         case ParsingResultFloat:
         {
-            let components = data.components;
-            
-            let locale = [NSLocale currentLocale];
-            let separator = (NSString *)[locale objectForKey:NSLocaleDecimalSeparator];
+            let components = parseData.components;
             
             NSString *primaryString;
             NSString *secondaryString;
@@ -176,15 +195,19 @@
             switch (self.formatterStyle) {
                 case BalanceFormatterStyleHundredths:
                 {
-                    primaryString = [NSString stringWithFormat:@"%@%@", components.firstObject, separator];
+                    primaryString = [NSString stringWithFormat:@"%@%@", components.firstObject, [self separator]];
                     secondaryString = components[1];
+                    
+                    if (secondaryString.length > 2) {
+                        secondaryString = [secondaryString substringToIndex:2];
+                    }
                 }
                     break;
                 case BalanceFormatterStyleTenThousandths:
                 {
-                    let location = [balance rangeOfString:separator].location + 3;
-                    primaryString = [balance substringToIndex:location];
-                    secondaryString = [balance substringFromIndex:location + 1];
+                    let location = [text rangeOfString:[self separator]].location + 3;
+                    primaryString = [text substringToIndex:location];
+                    secondaryString = [text substringFromIndex:location + 1];
                 }
                     break;
             }
