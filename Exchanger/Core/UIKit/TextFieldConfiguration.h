@@ -7,6 +7,7 @@
 @property (nonatomic, strong) UIColor *tintColor;
 @property (nonatomic, assign) NSTextAlignment textAlignment;
 @property (nonatomic, assign) UIKeyboardType keyboardType;
+@property (nonatomic, assign) BOOL adjustsFontSizeToFitWidth;
 
 + (TextFieldConfiguration *)inputConfiguration;
 
