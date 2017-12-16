@@ -19,6 +19,8 @@ typedef NS_ENUM(NSInteger, BalanceFormatterSign) {
 
 + (FormatterData *)formatterDataWithString:(NSString *)string;
 
++ (FormatterData *)formatterDataWithNumber:(NSString *)number;
+
 + (FormatterData *)formatterDataWithString:(NSString *)string sign:(BalanceFormatterSign)sign;
 
 + (FormatterData *)formatterDataWithNumber:(NSNumber *)number sign:(BalanceFormatterSign)sign;
