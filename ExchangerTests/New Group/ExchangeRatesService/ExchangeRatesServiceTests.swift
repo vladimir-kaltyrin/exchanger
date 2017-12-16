@@ -15,8 +15,6 @@ class ExchangeRatesServiceTests: TestCase {
     
     func testFetchRatesRequestAndParsing() {
         // Given
-        
-        // given
         stub(condition: isPath(urlString)) { _ in
             return OHHTTPStubsResponse(
                 fileAtPath: OHPathForFile("rates.xml", type(of: self))!,
@@ -37,7 +35,7 @@ class ExchangeRatesServiceTests: TestCase {
             
         }, onError: { _ in })
         
-        // then
+        // Then
         waitForExpectations(timeout: timeout) { _ in
             if let expectedData = expectedData {
                 let currencies = expectedData.currencies

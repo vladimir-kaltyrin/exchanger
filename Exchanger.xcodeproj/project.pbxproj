@@ -481,7 +481,6 @@
 			children = (
 				8C7B13941FE5407E001C9318 /* TestCase.swift */,
 				8C7B13901FE53EE1001C9318 /* Services */,
-				8C7B138F1FE5096E001C9318 /* Helpers */,
 				8CFCEA391FDAA43300202024 /* Formatters */,
 				8C2E1D031F13818D00DB0FC2 /* Info.plist */,
 				8C0B9F621FD9C35A007CA53A /* ExchangerTests-Bridging-Header.h */,
@@ -661,13 +660,6 @@
 				8C7B13891FE44C6C001C9318 /* ExchangerUITests-Bridging-Header.h */,
 			);
 			path = ExchangeMoneyTests;
-			sourceTree = "<group>";
-		};
-		8C7B138F1FE5096E001C9318 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 		8C7B13901FE53EE1001C9318 /* Services */ = {
