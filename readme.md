@@ -26,7 +26,7 @@ The Exchanger is a simple iOS application demonstrating one of approaches to imp
 
 ## About
 
-The application is a fairly straightforward currency converter. It takes a reference rate from a European Central Bank by parsing its [public XML](http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml) and provides a feature to exchange any currency including EUR, USD and GBP in any combination.
+The application is a fairly straightforward currency converter. It takes a reference rate from a European Central Bank by parsing its [public XML](http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml) and provides a feature to exchange any currency including EUR, USD and GBP in any combination. The exchange rate is automatically updated each 30 seconds.
 
 When app starts there is a limited balance with 100 units of each currency.
 There are two text inputs on the screen, both are cyclic carousel views for choosing currency to exchange.
