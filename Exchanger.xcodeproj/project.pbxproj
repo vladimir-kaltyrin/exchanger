@@ -83,6 +83,12 @@
 		8C75D6FE1FE7C10900A4EC77 /* CoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D6FD1FE7C10900A4EC77 /* CoreDataStack.m */; };
 		8C75D7011FE7C56E00A4EC77 /* NSManagedObjectContext+CoreDataManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D7001FE7C56E00A4EC77 /* NSManagedObjectContext+CoreDataManagement.m */; };
 		8C75D7051FE7C9C200A4EC77 /* UserDataStorageImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D7041FE7C9C200A4EC77 /* UserDataStorageImpl.m */; };
+		8C75D7121FE7EE1D00A4EC77 /* ManagedCurrency+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D7111FE7EE1D00A4EC77 /* ManagedCurrency+Mapping.m */; };
+		8C75D7151FE7EE7D00A4EC77 /* ManagedWallet+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D7141FE7EE7D00A4EC77 /* ManagedWallet+Mapping.m */; };
+		8C75D7181FE7F01A00A4EC77 /* ManagedUser+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D7171FE7F01A00A4EC77 /* ManagedUser+Mapping.m */; };
+		8C75D71F1FE7F6A600A4EC77 /* User+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D71E1FE7F6A600A4EC77 /* User+CoreData.m */; };
+		8C75D7221FE7F6BC00A4EC77 /* Currency+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D7211FE7F6BC00A4EC77 /* Currency+CoreData.m */; };
+		8C75D7251FE7F6D600A4EC77 /* Wallet+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D7241FE7F6D600A4EC77 /* Wallet+CoreData.m */; };
 		8C7B138B1FE44C6C001C9318 /* ExchangeMoneyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B138A1FE44C6C001C9318 /* ExchangeMoneyTests.swift */; };
 		8C7B13951FE5407E001C9318 /* TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B13941FE5407E001C9318 /* TestCase.swift */; };
 		8C94B4E61F3E162B00B2B9FC /* ExchangeMoneyTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C94B4E51F3E162B00B2B9FC /* ExchangeMoneyTitleView.m */; };
@@ -284,6 +290,18 @@
 		8C75D7031FE7C9C200A4EC77 /* UserDataStorageImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UserDataStorageImpl.h; path = Core/Database/UserDataStorageImpl.h; sourceTree = "<group>"; };
 		8C75D7041FE7C9C200A4EC77 /* UserDataStorageImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = UserDataStorageImpl.m; path = Core/Database/UserDataStorageImpl.m; sourceTree = "<group>"; };
 		8C75D7061FE7CA1D00A4EC77 /* CoreDataHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CoreDataHeaders.h; path = Core/Database/CoreData/CoreDataHeaders.h; sourceTree = "<group>"; };
+		8C75D7101FE7EE1D00A4EC77 /* ManagedCurrency+Mapping.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ManagedCurrency+Mapping.h"; path = "Core/Database/CoreData/ManagedCurrency+Mapping.h"; sourceTree = "<group>"; };
+		8C75D7111FE7EE1D00A4EC77 /* ManagedCurrency+Mapping.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "ManagedCurrency+Mapping.m"; path = "Core/Database/CoreData/ManagedCurrency+Mapping.m"; sourceTree = "<group>"; };
+		8C75D7131FE7EE7D00A4EC77 /* ManagedWallet+Mapping.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ManagedWallet+Mapping.h"; path = "Core/Database/CoreData/ManagedWallet+Mapping.h"; sourceTree = "<group>"; };
+		8C75D7141FE7EE7D00A4EC77 /* ManagedWallet+Mapping.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "ManagedWallet+Mapping.m"; path = "Core/Database/CoreData/ManagedWallet+Mapping.m"; sourceTree = "<group>"; };
+		8C75D7161FE7F01A00A4EC77 /* ManagedUser+Mapping.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ManagedUser+Mapping.h"; path = "Core/Database/CoreData/ManagedUser+Mapping.h"; sourceTree = "<group>"; };
+		8C75D7171FE7F01A00A4EC77 /* ManagedUser+Mapping.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "ManagedUser+Mapping.m"; path = "Core/Database/CoreData/ManagedUser+Mapping.m"; sourceTree = "<group>"; };
+		8C75D71D1FE7F6A600A4EC77 /* User+CoreData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "User+CoreData.h"; path = "Core/Database/CoreData/Objects+CoreData/User+CoreData.h"; sourceTree = "<group>"; };
+		8C75D71E1FE7F6A600A4EC77 /* User+CoreData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "User+CoreData.m"; path = "Core/Database/CoreData/Objects+CoreData/User+CoreData.m"; sourceTree = "<group>"; };
+		8C75D7201FE7F6BC00A4EC77 /* Currency+CoreData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Currency+CoreData.h"; path = "Core/Database/CoreData/Objects+CoreData/Currency+CoreData.h"; sourceTree = "<group>"; };
+		8C75D7211FE7F6BC00A4EC77 /* Currency+CoreData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Currency+CoreData.m"; path = "Core/Database/CoreData/Objects+CoreData/Currency+CoreData.m"; sourceTree = "<group>"; };
+		8C75D7231FE7F6D600A4EC77 /* Wallet+CoreData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Wallet+CoreData.h"; path = "Core/Database/CoreData/Objects+CoreData/Wallet+CoreData.h"; sourceTree = "<group>"; };
+		8C75D7241FE7F6D600A4EC77 /* Wallet+CoreData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Wallet+CoreData.m"; path = "Core/Database/CoreData/Objects+CoreData/Wallet+CoreData.m"; sourceTree = "<group>"; };
 		8C7B13891FE44C6C001C9318 /* ExchangerUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ExchangerUITests-Bridging-Header.h"; sourceTree = "<group>"; };
 		8C7B138A1FE44C6C001C9318 /* ExchangeMoneyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeMoneyTests.swift; sourceTree = "<group>"; };
 		8C7B138C1FE502E5001C9318 /* NumbersFormatterData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NumbersFormatterData.h; path = Formatters/NumbersFormatter/NumbersFormatterData.h; sourceTree = "<group>"; };
@@ -727,6 +745,8 @@
 		8C75D6811FE7B8BF00A4EC77 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				8C75D71C1FE7F68B00A4EC77 /* Objects+CoreData */,
+				8C75D71A1FE7F65900A4EC77 /* ManagedObjects+Mapping */,
 				8C75D6821FE7B8D000A4EC77 /* model.xcdatamodeld */,
 				8C75D7061FE7CA1D00A4EC77 /* CoreDataHeaders.h */,
 				8C75D6FC1FE7C10900A4EC77 /* CoreDataStack.h */,
@@ -797,6 +817,32 @@
 				8C75D6A71FE7B93300A4EC77 /* RoundingFormatterImpl.m */,
 			);
 			name = RoundingFormatter;
+			sourceTree = "<group>";
+		};
+		8C75D71A1FE7F65900A4EC77 /* ManagedObjects+Mapping */ = {
+			isa = PBXGroup;
+			children = (
+				8C75D7101FE7EE1D00A4EC77 /* ManagedCurrency+Mapping.h */,
+				8C75D7111FE7EE1D00A4EC77 /* ManagedCurrency+Mapping.m */,
+				8C75D7131FE7EE7D00A4EC77 /* ManagedWallet+Mapping.h */,
+				8C75D7141FE7EE7D00A4EC77 /* ManagedWallet+Mapping.m */,
+				8C75D7161FE7F01A00A4EC77 /* ManagedUser+Mapping.h */,
+				8C75D7171FE7F01A00A4EC77 /* ManagedUser+Mapping.m */,
+			);
+			name = "ManagedObjects+Mapping";
+			sourceTree = "<group>";
+		};
+		8C75D71C1FE7F68B00A4EC77 /* Objects+CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				8C75D71D1FE7F6A600A4EC77 /* User+CoreData.h */,
+				8C75D71E1FE7F6A600A4EC77 /* User+CoreData.m */,
+				8C75D7201FE7F6BC00A4EC77 /* Currency+CoreData.h */,
+				8C75D7211FE7F6BC00A4EC77 /* Currency+CoreData.m */,
+				8C75D7231FE7F6D600A4EC77 /* Wallet+CoreData.h */,
+				8C75D7241FE7F6D600A4EC77 /* Wallet+CoreData.m */,
+			);
+			name = "Objects+CoreData";
 			sourceTree = "<group>";
 		};
 		8C7B13881FE44BF5001C9318 /* ExchangeMoneyTests */ = {
@@ -1358,7 +1404,9 @@
 				8CD786251F14F23400AF7A8D /* ExchangeMoneyView.m in Sources */,
 				8CC705FA1F27CF51008770E2 /* ExchangeRatesData.m in Sources */,
 				8C389F3F1FE7AD5400D1C0F3 /* AssembledViewController.m in Sources */,
+				8C75D7151FE7EE7D00A4EC77 /* ManagedWallet+Mapping.m in Sources */,
 				8C75D6951FE7B8FF00A4EC77 /* BalanceFormatterImpl.m in Sources */,
+				8C75D7221FE7F6BC00A4EC77 /* Currency+CoreData.m in Sources */,
 				8C64234C1FA0753500A95479 /* CarouselController.m in Sources */,
 				8CCE8A3E1FDADB99003609F5 /* ExchangeMoneyViewDataBuilder.m in Sources */,
 				8C75D6FE1FE7C10900A4EC77 /* CoreDataStack.m in Sources */,
@@ -1378,9 +1426,11 @@
 				8CD786491F14F2B800AF7A8D /* Currency.m in Sources */,
 				8CD786161F14F21F00AF7A8D /* ExchangeMoneyAssemblyImpl.m in Sources */,
 				8CD786291F14F23C00AF7A8D /* ExchangeMoneyRouter.m in Sources */,
+				8C75D71F1FE7F6A600A4EC77 /* User+CoreData.m in Sources */,
 				8C389F3D1FE7AD5400D1C0F3 /* UIView+Properties.m in Sources */,
 				8CD7861A1F14F22600AF7A8D /* ExchangeMoneyInteractorImpl.m in Sources */,
 				8C1858C81FE2C5E200638DCD /* User.m in Sources */,
+				8C75D7251FE7F6D600A4EC77 /* Wallet+CoreData.m in Sources */,
 				8C1FEFCB1F13A76A0024F046 /* ServiceFactoryImpl.m in Sources */,
 				8C389F421FE7AD5400D1C0F3 /* DisposeBag.m in Sources */,
 				8C1858C11FE2C54E00638DCD /* KeyboardObserverImpl.m in Sources */,
@@ -1412,12 +1462,14 @@
 				8C45F6571FD01CD2005B3892 /* IntroViewController.m in Sources */,
 				8C389F381FE7AD5400D1C0F3 /* BaseRouter.m in Sources */,
 				8CD786391F14F27F00AF7A8D /* ExchangeMoneyServiceImpl.m in Sources */,
+				8C75D7121FE7EE1D00A4EC77 /* ManagedCurrency+Mapping.m in Sources */,
 				8C389F441FE7AD5400D1C0F3 /* AttributedStringStyle.m in Sources */,
 				8C75D6A91FE7B93300A4EC77 /* RoundingFormatterImpl.m in Sources */,
 				8C75D6A41FE7B92200A4EC77 /* NumbersFormatterData.m in Sources */,
 				8C94B4E61F3E162B00B2B9FC /* ExchangeMoneyTitleView.m in Sources */,
 				8CF9641C1F165C31009852B9 /* AppDelegate.m in Sources */,
 				8CD7863E1F14F29000AF7A8D /* XMLParserImpl.m in Sources */,
+				8C75D7181FE7F01A00A4EC77 /* ManagedUser+Mapping.m in Sources */,
 				8C1858C51FE2C56700638DCD /* ExchangeRatesResponse.m in Sources */,
 				8C6423491FA0747500A95479 /* CarouselView.m in Sources */,
 				8C389F461FE7AD5400D1C0F3 /* MoveFailableLongPressGestureRecognizer.m in Sources */,

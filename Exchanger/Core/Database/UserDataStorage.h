@@ -6,6 +6,6 @@ typedef void(^OnUser)(User *);
 
 - (void)saveUser:(User *)user;
 
-- (void)savedUser:(OnUser)onUser;
+- (void)user:(OnUser)onUser;
 
 @end
