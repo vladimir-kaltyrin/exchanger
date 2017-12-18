@@ -5,6 +5,8 @@
 #import "ExchangeMoneyServiceImpl.h"
 #import "XMLParserImpl.h"
 #import "UserServiceImpl.h"
+#import "UserDataStorageImpl.h"
+#import "NetworkClientImpl.h"
 
 @implementation ServiceFactoryImpl
 
@@ -39,11 +41,19 @@
 }
 
 - (id<UserService>)userService {
-    return [[UserServiceImpl alloc] init];
+    return [[UserServiceImpl alloc] initWithUserDataStorage:[self userDataStorage]];
 }
 
 - (id<XMLParser>)xmlParser {
     return [[XMLParserImpl alloc] init];
+}
+            
+- (id<UserDataStorage>)userDataStorage {
+    return [[UserDataStorageImpl alloc] init];
+}
+
+- (id<NetworkClient>)networkClient {
+    return [[NetworkClientImpl alloc] initWithParser:[self xmlParser]];
 }
 
 @end

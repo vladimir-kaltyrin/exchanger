@@ -1,5 +1,7 @@
 [![Build Status](https://www.bitrise.io/app/db9b8a614ca81158/status.svg?token=pnK66giJ4HQm8cRamwvSvQ&branch=develop)](https://www.bitrise.io/app/db9b8a614ca81158)
 
+![Exchanger](https://github.com/vkaltyrin/exchanger/blob/develop/exchanger.png)
+
 # Exchanger
 
 The Exchanger is a simple iOS application demonstrating one of approaches to implement VIPER 💎 architecture in modern Objective-C.
@@ -12,17 +14,19 @@ The Exchanger is a simple iOS application demonstrating one of approaches to imp
     * [OCLint](#oclint)
     * [XCPretty](#xcpretty)
 * [Notes on implementation](#notes)
+    * [Architecture](#architecture)
     * [VIPER](#viper)
     * [Type Inference](#typeinference)
     * [Blocks](#blocks)
     * [CarouselView](#carouselview)
+    * [Persistance](#persistance)
     * [Tests](#tests)
 
 <a name="about"/>
 
 ## About
 
-The application is a fairly straightforward currency converter. It takes a reference rate from a European Central Bank by parsing its [public XML](http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml) and provides a feature to exchange any currency including EUR, USD and GBP in any combination.
+The application is a fairly straightforward currency converter. It takes a reference rate from a European Central Bank by parsing its [public XML](http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml) and provides a feature to exchange any currency including EUR, USD and GBP in any combination. The exchange rate is automatically updated each 30 seconds.
 
 When app starts there is a limited balance with 100 units of each currency.
 There are two text inputs on the screen, both are cyclic carousel views for choosing currency to exchange.
@@ -75,6 +79,14 @@ gem install xcpretty
 <a name="notes"/>
 
 ## Notes on implementation
+
+### Architecture
+
+<a name="architecture"/>
+
+The app is intended to implement the clean architecture.
+
+![Clean architecture](https://github.com/vkaltyrin/exchanger/blob/develop/architecture.png)
 
 <a name="viper"/>
 
@@ -141,6 +153,12 @@ There is a C macros to deal with that:
 
 CarouselView implementation uses dummy UITextField in order to keep some first responder on the screen.
 It that way the keyboard is always on the screen which is a nice UX.
+
+<a name="persistance"/>
+
+### Persistance
+
+App saves the state using simple Core Data storage.
 
 <a name="Tests"/>
 

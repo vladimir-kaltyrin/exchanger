@@ -2,6 +2,9 @@
 #import "Wallet.h"
 #import "ConvenientObjC.h"
 
+@interface ExchangeMoneyServiceImpl()
+@end
+
 @implementation ExchangeMoneyServiceImpl
 
 // MARK: - ExchangeMoneyService

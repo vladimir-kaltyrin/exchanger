@@ -1,0 +1,6 @@
+#import "CoreDataStack.h"
+#import "model+CoreDataModel.h"
+#import "ManagedCurrency+Mapping.h"
+#import "ManagedWallet+Mapping.h"
+#import "ManagedUser+Mapping.h"
+#import "NSManagedObjectContext+CoreDataManagement.h"
