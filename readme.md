@@ -12,10 +12,12 @@ The Exchanger is a simple iOS application demonstrating one of approaches to imp
     * [OCLint](#oclint)
     * [XCPretty](#xcpretty)
 * [Notes on implementation](#notes)
+    * [Architecture](#architecture)
     * [VIPER](#viper)
     * [Type Inference](#typeinference)
     * [Blocks](#blocks)
     * [CarouselView](#carouselview)
+    * [Persistance](#persistance)
     * [Tests](#tests)
 
 <a name="about"/>
@@ -75,6 +77,14 @@ gem install xcpretty
 <a name="notes"/>
 
 ## Notes on implementation
+
+### Architecture
+
+<a name="architecture"/>
+
+The app is intended to implement the clean architecture.
+
+![Clean architecture](https://github.com/vkaltyrin/exchanger/architecture.png)
 
 <a name="viper"/>
 
@@ -141,6 +151,12 @@ There is a C macros to deal with that:
 
 CarouselView implementation uses dummy UITextField in order to keep some first responder on the screen.
 It that way the keyboard is always on the screen which is a nice UX.
+
+<a name="persistance"/>
+
+### Persistance
+
+App saves the state using simple Core Data storage.
 
 <a name="Tests"/>
 
