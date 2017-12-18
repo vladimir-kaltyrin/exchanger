@@ -82,6 +82,7 @@
 		8C75D6A91FE7B93300A4EC77 /* RoundingFormatterImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D6A71FE7B93300A4EC77 /* RoundingFormatterImpl.m */; };
 		8C75D6FE1FE7C10900A4EC77 /* CoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D6FD1FE7C10900A4EC77 /* CoreDataStack.m */; };
 		8C75D7011FE7C56E00A4EC77 /* NSManagedObjectContext+CoreDataManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D7001FE7C56E00A4EC77 /* NSManagedObjectContext+CoreDataManagement.m */; };
+		8C75D7051FE7C9C200A4EC77 /* UserDataStorageImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D7041FE7C9C200A4EC77 /* UserDataStorageImpl.m */; };
 		8C7B138B1FE44C6C001C9318 /* ExchangeMoneyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B138A1FE44C6C001C9318 /* ExchangeMoneyTests.swift */; };
 		8C7B13951FE5407E001C9318 /* TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B13941FE5407E001C9318 /* TestCase.swift */; };
 		8C94B4E61F3E162B00B2B9FC /* ExchangeMoneyTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C94B4E51F3E162B00B2B9FC /* ExchangeMoneyTitleView.m */; };
@@ -279,6 +280,9 @@
 		8C75D6FD1FE7C10900A4EC77 /* CoreDataStack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CoreDataStack.m; path = Core/Database/CoreData/CoreDataStack.m; sourceTree = "<group>"; };
 		8C75D6FF1FE7C56E00A4EC77 /* NSManagedObjectContext+CoreDataManagement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSManagedObjectContext+CoreDataManagement.h"; path = "Core/Database/CoreData/NSManagedObjectContext+CoreDataManagement.h"; sourceTree = "<group>"; };
 		8C75D7001FE7C56E00A4EC77 /* NSManagedObjectContext+CoreDataManagement.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSManagedObjectContext+CoreDataManagement.m"; path = "Core/Database/CoreData/NSManagedObjectContext+CoreDataManagement.m"; sourceTree = "<group>"; };
+		8C75D7021FE7C9AE00A4EC77 /* UserDataStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UserDataStorage.h; path = Core/Database/UserDataStorage.h; sourceTree = "<group>"; };
+		8C75D7031FE7C9C200A4EC77 /* UserDataStorageImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UserDataStorageImpl.h; path = Core/Database/UserDataStorageImpl.h; sourceTree = "<group>"; };
+		8C75D7041FE7C9C200A4EC77 /* UserDataStorageImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = UserDataStorageImpl.m; path = Core/Database/UserDataStorageImpl.m; sourceTree = "<group>"; };
 		8C7B13891FE44C6C001C9318 /* ExchangerUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ExchangerUITests-Bridging-Header.h"; sourceTree = "<group>"; };
 		8C7B138A1FE44C6C001C9318 /* ExchangeMoneyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeMoneyTests.swift; sourceTree = "<group>"; };
 		8C7B138C1FE502E5001C9318 /* NumbersFormatterData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NumbersFormatterData.h; path = Formatters/NumbersFormatter/NumbersFormatterData.h; sourceTree = "<group>"; };
@@ -712,6 +716,9 @@
 			isa = PBXGroup;
 			children = (
 				8C75D6811FE7B8BF00A4EC77 /* CoreData */,
+				8C75D7021FE7C9AE00A4EC77 /* UserDataStorage.h */,
+				8C75D7031FE7C9C200A4EC77 /* UserDataStorageImpl.h */,
+				8C75D7041FE7C9C200A4EC77 /* UserDataStorageImpl.m */,
 			);
 			name = Database;
 			sourceTree = "<group>";
@@ -1363,6 +1370,7 @@
 				8C6423611FA091D000A95479 /* CarouselData.m in Sources */,
 				8C75D6971FE7B8FF00A4EC77 /* FormatterData.m in Sources */,
 				8C75D6941FE7B8FF00A4EC77 /* FormattedStringData.m in Sources */,
+				8C75D7051FE7C9C200A4EC77 /* UserDataStorageImpl.m in Sources */,
 				8C389F481FE7AD5400D1C0F3 /* TextFieldConfiguration.m in Sources */,
 				8C389F3B1FE7AD5400D1C0F3 /* UITextField+Configuration.m in Sources */,
 				8CD786491F14F2B800AF7A8D /* Currency.m in Sources */,
