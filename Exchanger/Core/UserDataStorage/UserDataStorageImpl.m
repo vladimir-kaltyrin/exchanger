@@ -3,6 +3,8 @@
 #import "ConvenientObjC.h"
 #import "User+CoreData.h"
 
+typedef void(^OnDeleteUser)();
+
 @interface UserDataStorageImpl()
 @property (nonatomic, strong) CoreDataStack *coreDataStack;
 @end
@@ -38,9 +40,11 @@
     
     [context performBlock:^{
         
-        [ManagedUser userWithUser:user insertInContext:context];
-        
-        [context saveToPersistentStoreWithCompletion:nil];
+        [self deleteUser:^{
+            [ManagedUser userWithUser:user insertInContext:context];
+            
+            [context saveToPersistentStoreWithCompletion:nil];
+        }];
     }];
     
 }
@@ -49,7 +53,9 @@
     
     let context = self.coreDataStack.newChildContext;
     if (context == nil) {
-        safeBlock(onUser, nil);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            safeBlock(onUser, nil);
+        });
         return;
     }
     
@@ -58,15 +64,20 @@
         let request = [[NSFetchRequest alloc] initWithEntityName:@"ManagedUser"];
         
         NSError *error;
-        let savedUsers = [context executeFetchRequest:request error:&error];
+        NSArray<ManagedUser *> *savedUsers = [context executeFetchRequest:request error:&error];
         
         if (error) {
-            safeBlock(onUser, nil);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                safeBlock(onUser, nil);
+            });
             return;
         }
         
-        let managedUser = savedUsers.firstObject;
-        let user = [User userWithManagedUser:managedUser];
+        User *user;
+        if (savedUsers.count > 0) {
+            let managedUser = savedUsers.firstObject;
+            user = [User userWithManagedUser:managedUser];
+        }
         
         dispatch_async(dispatch_get_main_queue(), ^{
             safeBlock(onUser, user);
@@ -76,5 +87,35 @@
 }
 
 // MARK: - Private
+
+- (void)deleteUser:(OnDeleteUser)onDeleteUser {
+    
+    let context = self.coreDataStack.newChildContext;
+    if (context == nil) {
+        safeBlock(onDeleteUser);
+        return;
+    }
+    
+    [context performBlock:^{
+        
+        let request = [[NSFetchRequest alloc] initWithEntityName:@"ManagedUser"];
+        
+        NSError *error;
+        NSArray<ManagedUser *> *savedUsers = [context executeFetchRequest:request error:&error];
+        
+        if (error) {
+            safeBlock(onDeleteUser);
+            return;
+        }
+        
+        for (ManagedUser *user in savedUsers) {
+            [context deleteObject:user];
+        }
+        
+        safeBlock(onDeleteUser);
+        
+        [context saveToPersistentStoreWithCompletion:nil];
+    }];
+}
 
 @end
