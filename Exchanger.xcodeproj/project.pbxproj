@@ -89,6 +89,7 @@
 		8C75D75D1FE7FC4F00A4EC77 /* User+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D7501FE7FC4F00A4EC77 /* User+CoreData.m */; };
 		8C75D75E1FE7FC4F00A4EC77 /* Wallet+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D7521FE7FC4F00A4EC77 /* Wallet+CoreData.m */; };
 		8C75D75F1FE7FC4F00A4EC77 /* UserDataStorageImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D7551FE7FC4F00A4EC77 /* UserDataStorageImpl.m */; };
+		8C75D7631FE81A2100A4EC77 /* NetworkClientImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D7621FE81A2100A4EC77 /* NetworkClientImpl.m */; };
 		8C7B138B1FE44C6C001C9318 /* ExchangeMoneyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B138A1FE44C6C001C9318 /* ExchangeMoneyTests.swift */; };
 		8C7B13951FE5407E001C9318 /* TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B13941FE5407E001C9318 /* TestCase.swift */; };
 		8C94B4E61F3E162B00B2B9FC /* ExchangeMoneyTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C94B4E51F3E162B00B2B9FC /* ExchangeMoneyTitleView.m */; };
@@ -302,6 +303,9 @@
 		8C75D7531FE7FC4F00A4EC77 /* UserDataStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDataStorage.h; sourceTree = "<group>"; };
 		8C75D7541FE7FC4F00A4EC77 /* UserDataStorageImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDataStorageImpl.h; sourceTree = "<group>"; };
 		8C75D7551FE7FC4F00A4EC77 /* UserDataStorageImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDataStorageImpl.m; sourceTree = "<group>"; };
+		8C75D7601FE81A0A00A4EC77 /* NetworkClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NetworkClient.h; path = Core/NetworkClient/NetworkClient.h; sourceTree = "<group>"; };
+		8C75D7611FE81A2100A4EC77 /* NetworkClientImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NetworkClientImpl.h; path = Core/NetworkClient/NetworkClientImpl.h; sourceTree = "<group>"; };
+		8C75D7621FE81A2100A4EC77 /* NetworkClientImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = NetworkClientImpl.m; path = Core/NetworkClient/NetworkClientImpl.m; sourceTree = "<group>"; };
 		8C7B13891FE44C6C001C9318 /* ExchangerUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ExchangerUITests-Bridging-Header.h"; sourceTree = "<group>"; };
 		8C7B138A1FE44C6C001C9318 /* ExchangeMoneyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeMoneyTests.swift; sourceTree = "<group>"; };
 		8C7B13941FE5407E001C9318 /* TestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCase.swift; sourceTree = "<group>"; };
@@ -735,6 +739,9 @@
 		8C75D7261FE7FB3A00A4EC77 /* NetworkClient */ = {
 			isa = PBXGroup;
 			children = (
+				8C75D7601FE81A0A00A4EC77 /* NetworkClient.h */,
+				8C75D7611FE81A2100A4EC77 /* NetworkClientImpl.h */,
+				8C75D7621FE81A2100A4EC77 /* NetworkClientImpl.m */,
 			);
 			name = NetworkClient;
 			sourceTree = "<group>";
@@ -1333,6 +1340,7 @@
 				8C1858C81FE2C5E200638DCD /* User.m in Sources */,
 				8C1FEFCB1F13A76A0024F046 /* ServiceFactoryImpl.m in Sources */,
 				8C389F421FE7AD5400D1C0F3 /* DisposeBag.m in Sources */,
+				8C75D7631FE81A2100A4EC77 /* NetworkClientImpl.m in Sources */,
 				8C1858C11FE2C54E00638DCD /* KeyboardObserverImpl.m in Sources */,
 				8C389F3E1FE7AD5400D1C0F3 /* UIViewController+Extensions.m in Sources */,
 				8C389F391FE7AD5400D1C0F3 /* BaseUIKitRouter.m in Sources */,
