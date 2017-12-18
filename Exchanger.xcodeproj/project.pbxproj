@@ -283,6 +283,7 @@
 		8C75D7021FE7C9AE00A4EC77 /* UserDataStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UserDataStorage.h; path = Core/Database/UserDataStorage.h; sourceTree = "<group>"; };
 		8C75D7031FE7C9C200A4EC77 /* UserDataStorageImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UserDataStorageImpl.h; path = Core/Database/UserDataStorageImpl.h; sourceTree = "<group>"; };
 		8C75D7041FE7C9C200A4EC77 /* UserDataStorageImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = UserDataStorageImpl.m; path = Core/Database/UserDataStorageImpl.m; sourceTree = "<group>"; };
+		8C75D7061FE7CA1D00A4EC77 /* CoreDataHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CoreDataHeaders.h; path = Core/Database/CoreData/CoreDataHeaders.h; sourceTree = "<group>"; };
 		8C7B13891FE44C6C001C9318 /* ExchangerUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ExchangerUITests-Bridging-Header.h"; sourceTree = "<group>"; };
 		8C7B138A1FE44C6C001C9318 /* ExchangeMoneyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeMoneyTests.swift; sourceTree = "<group>"; };
 		8C7B138C1FE502E5001C9318 /* NumbersFormatterData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NumbersFormatterData.h; path = Formatters/NumbersFormatter/NumbersFormatterData.h; sourceTree = "<group>"; };
@@ -727,6 +728,7 @@
 			isa = PBXGroup;
 			children = (
 				8C75D6821FE7B8D000A4EC77 /* model.xcdatamodeld */,
+				8C75D7061FE7CA1D00A4EC77 /* CoreDataHeaders.h */,
 				8C75D6FC1FE7C10900A4EC77 /* CoreDataStack.h */,
 				8C75D6FD1FE7C10900A4EC77 /* CoreDataStack.m */,
 				8C75D6FF1FE7C56E00A4EC77 /* NSManagedObjectContext+CoreDataManagement.h */,

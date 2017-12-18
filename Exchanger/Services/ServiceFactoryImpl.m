@@ -5,6 +5,7 @@
 #import "ExchangeMoneyServiceImpl.h"
 #import "XMLParserImpl.h"
 #import "UserServiceImpl.h"
+#import "UserDataStorageImpl.h"
 
 @implementation ServiceFactoryImpl
 
@@ -39,11 +40,15 @@
 }
 
 - (id<UserService>)userService {
-    return [[UserServiceImpl alloc] init];
+    return [[UserServiceImpl alloc] initWithUserDataStorage:[self userDataStorage]];
 }
 
 - (id<XMLParser>)xmlParser {
     return [[XMLParserImpl alloc] init];
+}
+            
+- (id<UserDataStorage>)userDataStorage {
+    return [[UserDataStorageImpl alloc] init];
 }
 
 @end

@@ -134,8 +134,7 @@
 // MARK: - Private
 
 - (void)update:(User *)user withExchangeMoneyResult:(ExchangeMoneyData *)result {
-    [user setWallet:result.sourceWallet withCurrencyType:result.sourceWallet.currencyType];
-    [user setWallet:result.targetWallet withCurrencyType:result.targetWallet.currencyType];
+    [self.userService updateUserWithExchangeMoneyData:result];
 }
 
 - (Currency *)findCurrencyWithType:(CurrencyType)currencyType inData:(ExchangeRatesData *)data {
