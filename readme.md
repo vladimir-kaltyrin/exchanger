@@ -84,7 +84,7 @@ gem install xcpretty
 
 The app is intended to implement the clean architecture.
 
-![Clean architecture](https://github.com/vkaltyrin/exchanger/architecture.png)
+![Clean architecture](https://github.com/vkaltyrin/exchanger/blob/develop/architecture.png)
 
 <a name="viper"/>
 
