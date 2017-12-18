@@ -12,6 +12,15 @@
 
 - (instancetype)initWithModelName:(NSString *)modelName
                          storeUrl:(NSURL *)storeUrl
+{
+    return [self initWithModelName:modelName
+                          storeUrl:storeUrl
+                            bundle:[NSBundle mainBundle]
+                         storeType:NSSQLiteStoreType];
+}
+
+- (instancetype)initWithModelName:(NSString *)modelName
+                         storeUrl:(NSURL *)storeUrl
                            bundle:(NSBundle *)bundle
                         storeType:(NSString *)storeType
 {
