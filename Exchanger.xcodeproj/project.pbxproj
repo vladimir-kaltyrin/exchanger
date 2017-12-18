@@ -80,6 +80,8 @@
 		8C75D6A31FE7B92200A4EC77 /* NumbersFormatterImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D6A11FE7B92200A4EC77 /* NumbersFormatterImpl.m */; };
 		8C75D6A41FE7B92200A4EC77 /* NumbersFormatterData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D6A21FE7B92200A4EC77 /* NumbersFormatterData.m */; };
 		8C75D6A91FE7B93300A4EC77 /* RoundingFormatterImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D6A71FE7B93300A4EC77 /* RoundingFormatterImpl.m */; };
+		8C75D6FE1FE7C10900A4EC77 /* CoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D6FD1FE7C10900A4EC77 /* CoreDataStack.m */; };
+		8C75D7011FE7C56E00A4EC77 /* NSManagedObjectContext+CoreDataManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D7001FE7C56E00A4EC77 /* NSManagedObjectContext+CoreDataManagement.m */; };
 		8C7B138B1FE44C6C001C9318 /* ExchangeMoneyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B138A1FE44C6C001C9318 /* ExchangeMoneyTests.swift */; };
 		8C7B13951FE5407E001C9318 /* TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B13941FE5407E001C9318 /* TestCase.swift */; };
 		8C94B4E61F3E162B00B2B9FC /* ExchangeMoneyTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C94B4E51F3E162B00B2B9FC /* ExchangeMoneyTitleView.m */; };
@@ -273,6 +275,10 @@
 		8C75D6A61FE7B93300A4EC77 /* RoundingFormatterImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RoundingFormatterImpl.h; path = Core/Formatters/RoundingFormatter/RoundingFormatterImpl.h; sourceTree = "<group>"; };
 		8C75D6A71FE7B93300A4EC77 /* RoundingFormatterImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RoundingFormatterImpl.m; path = Core/Formatters/RoundingFormatter/RoundingFormatterImpl.m; sourceTree = "<group>"; };
 		8C75D6A81FE7B93300A4EC77 /* RoundingFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RoundingFormatter.h; path = Core/Formatters/RoundingFormatter/RoundingFormatter.h; sourceTree = "<group>"; };
+		8C75D6FC1FE7C10900A4EC77 /* CoreDataStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CoreDataStack.h; path = Core/Database/CoreData/CoreDataStack.h; sourceTree = "<group>"; };
+		8C75D6FD1FE7C10900A4EC77 /* CoreDataStack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CoreDataStack.m; path = Core/Database/CoreData/CoreDataStack.m; sourceTree = "<group>"; };
+		8C75D6FF1FE7C56E00A4EC77 /* NSManagedObjectContext+CoreDataManagement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSManagedObjectContext+CoreDataManagement.h"; path = "Core/Database/CoreData/NSManagedObjectContext+CoreDataManagement.h"; sourceTree = "<group>"; };
+		8C75D7001FE7C56E00A4EC77 /* NSManagedObjectContext+CoreDataManagement.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSManagedObjectContext+CoreDataManagement.m"; path = "Core/Database/CoreData/NSManagedObjectContext+CoreDataManagement.m"; sourceTree = "<group>"; };
 		8C7B13891FE44C6C001C9318 /* ExchangerUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ExchangerUITests-Bridging-Header.h"; sourceTree = "<group>"; };
 		8C7B138A1FE44C6C001C9318 /* ExchangeMoneyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeMoneyTests.swift; sourceTree = "<group>"; };
 		8C7B138C1FE502E5001C9318 /* NumbersFormatterData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NumbersFormatterData.h; path = Formatters/NumbersFormatter/NumbersFormatterData.h; sourceTree = "<group>"; };
@@ -714,6 +720,10 @@
 			isa = PBXGroup;
 			children = (
 				8C75D6821FE7B8D000A4EC77 /* model.xcdatamodeld */,
+				8C75D6FC1FE7C10900A4EC77 /* CoreDataStack.h */,
+				8C75D6FD1FE7C10900A4EC77 /* CoreDataStack.m */,
+				8C75D6FF1FE7C56E00A4EC77 /* NSManagedObjectContext+CoreDataManagement.h */,
+				8C75D7001FE7C56E00A4EC77 /* NSManagedObjectContext+CoreDataManagement.m */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -1342,6 +1352,7 @@
 				8C75D6951FE7B8FF00A4EC77 /* BalanceFormatterImpl.m in Sources */,
 				8C64234C1FA0753500A95479 /* CarouselController.m in Sources */,
 				8CCE8A3E1FDADB99003609F5 /* ExchangeMoneyViewDataBuilder.m in Sources */,
+				8C75D6FE1FE7C10900A4EC77 /* CoreDataStack.m in Sources */,
 				8CF9645A1F1CD11B009852B9 /* ExchangeMoneyCurrencyView.m in Sources */,
 				8C389F371FE7AD5400D1C0F3 /* BaseAssembly.m in Sources */,
 				8C75D6961FE7B8FF00A4EC77 /* BalanceParseData.m in Sources */,
@@ -1386,6 +1397,7 @@
 				8C45F6631FD01E2D005B3892 /* IntroInteractorImpl.m in Sources */,
 				8C389F401FE7AD5400D1C0F3 /* AssemblyFactoryImpl.m in Sources */,
 				8C6423521FA0757600A95479 /* CarouselPageController.m in Sources */,
+				8C75D7011FE7C56E00A4EC77 /* NSManagedObjectContext+CoreDataManagement.m in Sources */,
 				8C389F451FE7AD5400D1C0F3 /* BarButton.m in Sources */,
 				8C45F6571FD01CD2005B3892 /* IntroViewController.m in Sources */,
 				8C389F381FE7AD5400D1C0F3 /* BaseRouter.m in Sources */,
