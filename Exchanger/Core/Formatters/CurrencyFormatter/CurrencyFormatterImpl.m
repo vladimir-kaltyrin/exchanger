@@ -22,13 +22,29 @@
 - (NSString *)toCodeString:(CurrencyType)currencyType {
     switch (currencyType) {
         case CurrencyTypeEUR:
-            return @"EUR";
+        {
+            self.numberFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"fr_FR"];
+            return self.numberFormatter.currencyCode;
+        }
+            break;
         case CurrencyTypeUSD:
-            return @"USD";
+        {
+            self.numberFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
+            return self.numberFormatter.currencyCode;
+        }
+            break;
         case CurrencyTypeGBP:
-            return @"GBP";
+        {
+            self.numberFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_UK"];
+            return self.numberFormatter.currencyCode;
+        }
+            break;
         case CurrencyTypeNotFound:
+        {
+            self.numberFormatter.locale = [NSLocale currentLocale];
             return nil;
+        }
+            
     }
 }
 
