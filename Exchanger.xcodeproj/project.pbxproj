@@ -1072,8 +1072,7 @@
 				TargetAttributes = {
 					8C2E1CE31F13818D00DB0FC2 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 5PHGGKL9UQ;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					8C2E1CFC1F13818D00DB0FC2 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1532,8 +1531,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5PHGGKL9UQ;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Exchanger/Application/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.avito.app;
@@ -1549,8 +1548,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5PHGGKL9UQ;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Exchanger/Application/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.avito.app;

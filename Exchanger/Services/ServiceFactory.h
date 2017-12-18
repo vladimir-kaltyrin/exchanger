@@ -6,6 +6,7 @@
 #import "KeyboardObserver.h"
 #import "XMLParser.h"
 #import "UserService.h"
+#import "UserDataStorage.h"
 
 @protocol ServiceFactory <NSObject>
 - (id<KeyboardObserver>)keyboardObserver;
@@ -14,4 +15,5 @@
 - (id<ExchangeMoneyService>)exchangeMoneyService;
 - (id<UserService>)userService;
 - (id<XMLParser>)xmlParser;
+- (id<UserDataStorage>)userDataStorage;
 @end
