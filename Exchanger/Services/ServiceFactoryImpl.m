@@ -6,6 +6,7 @@
 #import "XMLParserImpl.h"
 #import "UserServiceImpl.h"
 #import "UserDataStorageImpl.h"
+#import "NetworkClientImpl.h"
 
 @implementation ServiceFactoryImpl
 
@@ -49,6 +50,10 @@
             
 - (id<UserDataStorage>)userDataStorage {
     return [[UserDataStorageImpl alloc] init];
+}
+
+- (id<NetworkClient>)networkClient {
+    return [[NetworkClientImpl alloc] initWithParser:[self xmlParser]];
 }
 
 @end
