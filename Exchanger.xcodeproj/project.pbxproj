@@ -47,7 +47,6 @@
 		8C389F401FE7AD5400D1C0F3 /* AssemblyFactoryImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C389F201FE7AD5300D1C0F3 /* AssemblyFactoryImpl.m */; };
 		8C389F411FE7AD5400D1C0F3 /* AssemblySeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C389F221FE7AD5300D1C0F3 /* AssemblySeed.m */; };
 		8C389F421FE7AD5400D1C0F3 /* DisposeBag.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C389F241FE7AD5300D1C0F3 /* DisposeBag.m */; };
-		8C389F431FE7AD5400D1C0F3 /* EXTScope.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C389F271FE7AD5300D1C0F3 /* EXTScope.m */; };
 		8C389F441FE7AD5400D1C0F3 /* AttributedStringStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C389F2B1FE7AD5300D1C0F3 /* AttributedStringStyle.m */; };
 		8C389F451FE7AD5400D1C0F3 /* BarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C389F2D1FE7AD5300D1C0F3 /* BarButton.m */; };
 		8C389F461FE7AD5400D1C0F3 /* MoveFailableLongPressGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C389F2F1FE7AD5300D1C0F3 /* MoveFailableLongPressGestureRecognizer.m */; };
@@ -196,9 +195,6 @@
 		8C389F231FE7AD5300D1C0F3 /* DisposeBag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisposeBag.h; sourceTree = "<group>"; };
 		8C389F241FE7AD5300D1C0F3 /* DisposeBag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisposeBag.m; sourceTree = "<group>"; };
 		8C389F251FE7AD5300D1C0F3 /* DisposeBagHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisposeBagHolder.h; sourceTree = "<group>"; };
-		8C389F261FE7AD5300D1C0F3 /* EXTScope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXTScope.h; sourceTree = "<group>"; };
-		8C389F271FE7AD5300D1C0F3 /* EXTScope.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXTScope.m; sourceTree = "<group>"; };
-		8C389F281FE7AD5300D1C0F3 /* metamacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = metamacros.h; sourceTree = "<group>"; };
 		8C389F2A1FE7AD5300D1C0F3 /* AttributedStringStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributedStringStyle.h; sourceTree = "<group>"; };
 		8C389F2B1FE7AD5300D1C0F3 /* AttributedStringStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributedStringStyle.m; sourceTree = "<group>"; };
 		8C389F2C1FE7AD5300D1C0F3 /* BarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarButton.h; sourceTree = "<group>"; };
@@ -501,9 +497,6 @@
 				8C389F231FE7AD5300D1C0F3 /* DisposeBag.h */,
 				8C389F241FE7AD5300D1C0F3 /* DisposeBag.m */,
 				8C389F251FE7AD5300D1C0F3 /* DisposeBagHolder.h */,
-				8C389F261FE7AD5300D1C0F3 /* EXTScope.h */,
-				8C389F271FE7AD5300D1C0F3 /* EXTScope.m */,
-				8C389F281FE7AD5300D1C0F3 /* metamacros.h */,
 				8C389F291FE7AD5300D1C0F3 /* UIKit */,
 				8C389F361FE7AD5300D1C0F3 /* ViewLifeCycleObservable.h */,
 			);
@@ -1248,7 +1241,6 @@
 				8C076BAB1FD1579F003F4D42 /* ExchangeMoneyData.m in Sources */,
 				8C43EB6D1FA1EC1900EE87FD /* ExchangeMoneyViewData.m in Sources */,
 				8C389F411FE7AD5400D1C0F3 /* AssemblySeed.m in Sources */,
-				8C389F431FE7AD5400D1C0F3 /* EXTScope.m in Sources */,
 				8C389F471FE7AD5400D1C0F3 /* ObservableTextField.m in Sources */,
 				8C45F6661FD01F17005B3892 /* IntroRouterImpl.m in Sources */,
 				8C1858C21FE2C54E00638DCD /* KeyboardData.m in Sources */,
