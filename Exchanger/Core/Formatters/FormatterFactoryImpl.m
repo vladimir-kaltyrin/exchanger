@@ -33,7 +33,8 @@
     
     return [[BalanceFormatterImpl alloc] initWithPrimaryPartStyle:primaryStringStyle
                                                secondaryPartStyle:secondaryStringStyle
-                                                   formatterStyle:BalanceFormatterStyleHundredths];
+                                                   formatterStyle:BalanceFormatterStyleHundredths
+                                            numberFilterFormatter:[self numbersFormatter]];
 }
 
 - (id<BalanceFormatter>)currentBalanceFormatter {
@@ -48,7 +49,8 @@
     
     return [[BalanceFormatterImpl alloc] initWithPrimaryPartStyle:primaryStringStyle
                                                secondaryPartStyle:secondaryStringStyle
-                                                   formatterStyle:BalanceFormatterStyleTenThousandths];
+                                                   formatterStyle:BalanceFormatterStyleTenThousandths
+                                            numberFilterFormatter:[self numbersFormatter]];
 }
 
 - (id<CurrencyFormatter>)currencyFormatter {

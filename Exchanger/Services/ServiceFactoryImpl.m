@@ -29,7 +29,7 @@
 }
 
 - (id<ExchangeRatesService>)exchangeRatesService {
-    return [[ExchangeRatesServiceImpl alloc] initWithParser:[self xmlParser]];
+    return [[ExchangeRatesServiceImpl alloc] initWithNetworkClient:[self networkClient]];
 }
 
 - (id<ExchangeRatesUpdater>)exchangeRatesUpdater {

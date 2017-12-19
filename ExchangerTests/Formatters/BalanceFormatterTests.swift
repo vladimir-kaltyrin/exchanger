@@ -1,35 +1,49 @@
-//
-//  BalanceFormatterTests.swift
-//  ExchangerTests
-//
-//  Created by Калтырин Владимир on 08.12.17.
-//  Copyright © 2017 Vladimir Kaltyrin. All rights reserved.
-//
-
 import XCTest
 
-class BalanceFormatterTests: XCTestCase {
+class BalanceFormatterTests: TestCase {
+    
+    var formatter: BalanceFormatter!
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        formatter = FormatterFactoryImpl.instance().exchangeCurrencyInputFormatter()
+    }
+
+    func testFormatZero() {
+        // Given
+        let number = NSNumber(value: 0.0)
+        let sign = BalanceFormatterSign.plus
+        // When
+        let data = formatter.formatNumber(number, sign: sign)
+        // Then
+        XCTAssertTrue(data?.number.floatValue == 0)
+        XCTAssertTrue(data?.formattedString.string == "0")
+        XCTAssertTrue(data?.string == "0")
     }
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
+    func testWrongInput() {
+        // Given
+        let number = NSNumber(value: -25.5)
+        let sign = BalanceFormatterSign.plus
+        // When
+        let data = formatter.formatNumber(number, sign: sign)
+        // Then
+        XCTAssertNil(data?.number)
+        XCTAssertNil(data?.formattedString)
+        XCTAssertNil(data?.string)
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testFormatPositiveNumber() {
+        // Given
+        let number = NSNumber(value: 25.5)
+        let sign = BalanceFormatterSign.plus
+        // When
+        let data = formatter.formatNumber(number, sign: sign)
+        // Then
+        XCTAssertTrue(data?.number.floatValue == 25.5)
+        XCTAssertTrue(data?.formattedString.string == "+25.5")
+        XCTAssertTrue(data?.string == "+25.5")
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
+
 }

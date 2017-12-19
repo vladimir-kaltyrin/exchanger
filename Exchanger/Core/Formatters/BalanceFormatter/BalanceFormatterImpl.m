@@ -3,12 +3,14 @@
 #import "BalanceFormatterImpl.h"
 #import "BalanceParseData.h"
 #import "FormattedStringData.h"
+#import "NumbersFormatter.h"
 
 @interface BalanceFormatterImpl()
 @property (nonatomic, strong) AttributedStringStyle *primaryPartStyle;
 @property (nonatomic, strong) AttributedStringStyle *secondaryPartStyle;
 @property (nonatomic, assign) BalanceFormatterStyle formatterStyle;
 @property (nonatomic, strong) NSNumberFormatter *numberFormatter;
+@property (nonatomic, strong) id<NumbersFormatter> numberFilterFormatter;
 @end
 
 @implementation BalanceFormatterImpl
@@ -18,12 +20,14 @@
 - (instancetype)initWithPrimaryPartStyle:(AttributedStringStyle *)primaryPartStyle
                       secondaryPartStyle:(AttributedStringStyle *)secondaryPartStyle
                           formatterStyle:(BalanceFormatterStyle)formatterStyle
+                   numberFilterFormatter:(id<NumbersFormatter>)numberFilterFormatter
 {
     self = [super init];
     if (self) {
         self.primaryPartStyle = primaryPartStyle;
         self.secondaryPartStyle = secondaryPartStyle;
         self.formatterStyle = formatterStyle;
+        self.numberFilterFormatter = numberFilterFormatter;
         
         self.numberFormatter = [[NSNumberFormatter alloc] init];
         self.numberFormatter.minimumIntegerDigits = 1;
@@ -75,7 +79,8 @@
             break;
     }
     
-    let number = [self.numberFormatter numberFromString:string];
+    let filteredString = [self.numberFilterFormatter format:string].string;
+    let number = [self.numberFormatter numberFromString:filteredString];
     
     return [[FormatterData alloc] initWithFormattedString:formattedString
                                                          string:string

@@ -1,6 +1,7 @@
 #import <Foundation/Foundation.h>
 #import "AttributedStringStyle.h"
 #import "BalanceFormatter.h"
+#import "NumbersFormatter.h"
 
 typedef NS_ENUM(NSInteger, BalanceFormatterStyle) {
     BalanceFormatterStyleHundredths,
@@ -13,6 +14,7 @@ typedef NS_ENUM(NSInteger, BalanceFormatterStyle) {
 
 - (instancetype)initWithPrimaryPartStyle:(AttributedStringStyle *)primaryPartStyle
                       secondaryPartStyle:(AttributedStringStyle *)secondaryPartStyle
-                          formatterStyle:(BalanceFormatterStyle)formatterStyle;
+                          formatterStyle:(BalanceFormatterStyle)formatterStyle
+                   numberFilterFormatter:(id<NumbersFormatter>)numberFilterFormatter;
 
 @end
