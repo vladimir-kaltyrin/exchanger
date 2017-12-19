@@ -5,6 +5,8 @@
 #import "UserDataStorage.h"
 #import "ConvenientObjC.h"
 
+typedef void(^OnSetup)();
+
 @interface UserServiceImpl()
 @property (nonatomic, strong) id<UserDataStorage> userDataStorage;
 @property (nonatomic, strong) User *currentUser;
@@ -17,15 +19,13 @@
 - (instancetype)initWithUserDataStorage:(id<UserDataStorage>)userDataStorage {
     if (self = [super init]) {
         self.userDataStorage = userDataStorage;
-        
-        [self setUp];
     }
     return self;
 }
 
 // MARK: - Private
 
-- (void)setUp {
+- (void)setUpWithCompletion:(OnSetup)onSetup {
     __weak typeof(self) welf = self;
     [self.userDataStorage user:^(User *user) {
         if (user == nil) {
@@ -38,18 +38,29 @@
             let gbpWallet = [[Wallet alloc] initWithCurrency:[Currency currencyWithType:CurrencyTypeGBP]
                                                           amount:@100];
             
-            User *user = [[User alloc] initWithWallets:@[usdWallet, eurWallet, gbpWallet]];
+            welf.currentUser = [[User alloc] initWithWallets:@[usdWallet, eurWallet, gbpWallet]];
             
-            [welf.userDataStorage saveUser:user];
+            [welf.userDataStorage saveUser:welf.currentUser];
+            
+        } else {
+            welf.currentUser = user;
         }
-        welf.currentUser = user;
+        
+        safeBlock(onSetup);
     }];
 }
 
 // MARK: - UserService
 
 - (void)currentUser:(void (^)(User *))onCurrenUser {
-    safeBlock(onCurrenUser, self.currentUser);
+    if (self.currentUser == nil) {
+        __weak typeof(self) welf = self;
+        [self setUpWithCompletion:^{
+            safeBlock(onCurrenUser, welf.currentUser);
+        }];
+    } else {
+        safeBlock(onCurrenUser, self.currentUser);
+    }
 }
 
 - (void)updateUserWithExchangeMoneyData:(ExchangeMoneyData *)data {
