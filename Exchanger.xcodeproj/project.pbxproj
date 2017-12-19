@@ -92,7 +92,6 @@
 		8C75D7631FE81A2100A4EC77 /* NetworkClientImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D7621FE81A2100A4EC77 /* NetworkClientImpl.m */; };
 		8C75D7681FE84A0A00A4EC77 /* XMLParserImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D7671FE84A0A00A4EC77 /* XMLParserImpl.m */; };
 		8C75D7701FE901AC00A4EC77 /* MockUserDataStorageImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D76F1FE901AC00A4EC77 /* MockUserDataStorageImpl.swift */; };
-		8C7B138B1FE44C6C001C9318 /* ExchangeMoneyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B138A1FE44C6C001C9318 /* ExchangeMoneyTests.swift */; };
 		8C7B13951FE5407E001C9318 /* TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B13941FE5407E001C9318 /* TestCase.swift */; };
 		8C94B4E61F3E162B00B2B9FC /* ExchangeMoneyTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C94B4E51F3E162B00B2B9FC /* ExchangeMoneyTitleView.m */; };
 		8CC705FA1F27CF51008770E2 /* ExchangeRatesData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC705F91F27CF51008770E2 /* ExchangeRatesData.m */; };
@@ -115,7 +114,6 @@
 		8CFCEA3D1FDAAF5900202024 /* CurrencyFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFCEA3C1FDAAF5900202024 /* CurrencyFormatterTests.swift */; };
 		8CFCEA441FDAB93C00202024 /* RoundingFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFCEA431FDAB93C00202024 /* RoundingFormatterTests.swift */; };
 		975F843DAA7B903A1BF18886 /* Pods_Exchanger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC40EEC7B6A14ED6FD3414BB /* Pods_Exchanger.framework */; };
-		B135C9D511BE7DC8A08F8218 /* Pods_ExchangerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85123DFD2AD6F0FB172A55B7 /* Pods_ExchangerUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,13 +125,6 @@
 			remoteInfo = Exchanger;
 		};
 		8C2E1CFE1F13818D00DB0FC2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8C2E1CDC1F13818D00DB0FC2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8C2E1CE31F13818D00DB0FC2;
-			remoteInfo = Exchanger;
-		};
-		8C2E1D091F13818D00DB0FC2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8C2E1CDC1F13818D00DB0FC2 /* Project object */;
 			proxyType = 1;
@@ -175,8 +166,6 @@
 		8C2E1CF31F13818D00DB0FC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8C2E1CFD1F13818D00DB0FC2 /* ExchangerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExchangerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C2E1D031F13818D00DB0FC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8C2E1D081F13818D00DB0FC2 /* ExchangerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExchangerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8C2E1D0E1F13818D00DB0FC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C304CFA1F13AC8300ACE585 /* CurrencyType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrencyType.h; path = Networking/CurrencyType.h; sourceTree = "<group>"; };
 		8C36E9941F26451B009BDDC0 /* ExchangeRatesUpdaterImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ExchangeRatesUpdaterImpl.h; path = Services/ExchangeRatesUpdater/ExchangeRatesUpdaterImpl.h; sourceTree = "<group>"; };
 		8C36E9951F264587009BDDC0 /* ExchangeRatesServiceImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ExchangeRatesServiceImpl.h; path = Services/ExchangeRatesService/ExchangeRatesServiceImpl.h; sourceTree = "<group>"; };
@@ -311,8 +300,6 @@
 		8C75D7661FE84A0A00A4EC77 /* XMLParserImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLParserImpl.h; sourceTree = "<group>"; };
 		8C75D7671FE84A0A00A4EC77 /* XMLParserImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLParserImpl.m; sourceTree = "<group>"; };
 		8C75D76F1FE901AC00A4EC77 /* MockUserDataStorageImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserDataStorageImpl.swift; sourceTree = "<group>"; };
-		8C7B13891FE44C6C001C9318 /* ExchangerUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ExchangerUITests-Bridging-Header.h"; sourceTree = "<group>"; };
-		8C7B138A1FE44C6C001C9318 /* ExchangeMoneyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeMoneyTests.swift; sourceTree = "<group>"; };
 		8C7B13941FE5407E001C9318 /* TestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCase.swift; sourceTree = "<group>"; };
 		8C94B4E41F3E162B00B2B9FC /* ExchangeMoneyTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeMoneyTitleView.h; path = Modules/ExchangeMoney/View/ExchangeMoneyTitleView.h; sourceTree = "<group>"; };
 		8C94B4E51F3E162B00B2B9FC /* ExchangeMoneyTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExchangeMoneyTitleView.m; path = Modules/ExchangeMoney/View/ExchangeMoneyTitleView.m; sourceTree = "<group>"; };
@@ -375,14 +362,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D0F00DB70862D77D23C8433 /* Pods_ExchangerTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8C2E1D051F13818D00DB0FC2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B135C9D511BE7DC8A08F8218 /* Pods_ExchangerUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,7 +449,6 @@
 				8C1FEFC31F13A2610024F046 /* lint.sh */,
 				8C2E1CE61F13818D00DB0FC2 /* Exchanger */,
 				8C2E1D001F13818D00DB0FC2 /* ExchangerTests */,
-				8C2E1D0B1F13818D00DB0FC2 /* ExchangerUITests */,
 				8C2E1CE51F13818D00DB0FC2 /* Products */,
 				25B80CD0B0D63B7F3B934078 /* Pods */,
 				C4D7318F40CE453F21240F76 /* Frameworks */,
@@ -482,7 +460,6 @@
 			children = (
 				8C2E1CE41F13818D00DB0FC2 /* Exchanger.app */,
 				8C2E1CFD1F13818D00DB0FC2 /* ExchangerTests.xctest */,
-				8C2E1D081F13818D00DB0FC2 /* ExchangerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -512,15 +489,6 @@
 				8C0B9F621FD9C35A007CA53A /* ExchangerTests-Bridging-Header.h */,
 			);
 			path = ExchangerTests;
-			sourceTree = "<group>";
-		};
-		8C2E1D0B1F13818D00DB0FC2 /* ExchangerUITests */ = {
-			isa = PBXGroup;
-			children = (
-				8C7B13881FE44BF5001C9318 /* ExchangeMoneyTests */,
-				8C2E1D0E1F13818D00DB0FC2 /* Info.plist */,
-			);
-			path = ExchangerUITests;
 			sourceTree = "<group>";
 		};
 		8C389F071FE7AD5300D1C0F3 /* Utils */ = {
@@ -852,15 +820,6 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
-		8C7B13881FE44BF5001C9318 /* ExchangeMoneyTests */ = {
-			isa = PBXGroup;
-			children = (
-				8C7B138A1FE44C6C001C9318 /* ExchangeMoneyTests.swift */,
-				8C7B13891FE44C6C001C9318 /* ExchangerUITests-Bridging-Header.h */,
-			);
-			path = ExchangeMoneyTests;
-			sourceTree = "<group>";
-		};
 		8CD785EC1F14EE3900AF7A8D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -1066,27 +1025,6 @@
 			productReference = 8C2E1CFD1F13818D00DB0FC2 /* ExchangerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		8C2E1D071F13818D00DB0FC2 /* ExchangerUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8C2E1D171F13818D00DB0FC2 /* Build configuration list for PBXNativeTarget "ExchangerUITests" */;
-			buildPhases = (
-				11A13FEE4C6B4AF8ED6F41C1 /* [CP] Check Pods Manifest.lock */,
-				8C2E1D041F13818D00DB0FC2 /* Sources */,
-				8C2E1D051F13818D00DB0FC2 /* Frameworks */,
-				8C2E1D061F13818D00DB0FC2 /* Resources */,
-				C5BFA68F4F66D294361B828C /* [CP] Embed Pods Frameworks */,
-				1EA391346FE2C33C709AE9D9 /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8C2E1D0A1F13818D00DB0FC2 /* PBXTargetDependency */,
-			);
-			name = ExchangerUITests;
-			productName = ExchangerUITests;
-			productReference = 8C2E1D081F13818D00DB0FC2 /* ExchangerUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1104,13 +1042,6 @@
 						CreatedOnToolsVersion = 8.2.1;
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Manual;
-						TestTargetID = 8C2E1CE31F13818D00DB0FC2;
-					};
-					8C2E1D071F13818D00DB0FC2 = {
-						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 5PHGGKL9UQ;
-						LastSwiftMigration = 0920;
-						ProvisioningStyle = Automatic;
 						TestTargetID = 8C2E1CE31F13818D00DB0FC2;
 					};
 					8C2E1D1A1F1384DE00DB0FC2 = {
@@ -1135,7 +1066,6 @@
 			targets = (
 				8C2E1CE31F13818D00DB0FC2 /* Exchanger */,
 				8C2E1CFC1F13818D00DB0FC2 /* ExchangerTests */,
-				8C2E1D071F13818D00DB0FC2 /* ExchangerUITests */,
 				8C2E1D1A1F1384DE00DB0FC2 /* OCLint */,
 			);
 		};
@@ -1159,31 +1089,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8C2E1D061F13818D00DB0FC2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		11A13FEE4C6B4AF8ED6F41C1 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
 		1AE08A7BCEB697B2CB4F8190 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1197,21 +1105,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ExchangerTests/Pods-ExchangerTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1EA391346FE2C33C709AE9D9 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ExchangerUITests/Pods-ExchangerUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3D166C22C9647A8D8D01D530 /* [CP] Embed Pods Frameworks */ = {
@@ -1300,21 +1193,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ExchangerTests/Pods-ExchangerTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C5BFA68F4F66D294361B828C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ExchangerUITests/Pods-ExchangerUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1421,14 +1299,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8C2E1D041F13818D00DB0FC2 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8C7B138B1FE44C6C001C9318 /* ExchangeMoneyTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1441,11 +1311,6 @@
 			isa = PBXTargetDependency;
 			target = 8C2E1CE31F13818D00DB0FC2 /* Exchanger */;
 			targetProxy = 8C2E1CFE1F13818D00DB0FC2 /* PBXContainerItemProxy */;
-		};
-		8C2E1D0A1F13818D00DB0FC2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8C2E1CE31F13818D00DB0FC2 /* Exchanger */;
-			targetProxy = 8C2E1D091F13818D00DB0FC2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1637,39 +1502,6 @@
 			};
 			name = Release;
 		};
-		8C2E1D181F13818D00DB0FC2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9389B4E6B11F4B0BB56B0F37 /* Pods-ExchangerUITests.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 5PHGGKL9UQ;
-				INFOPLIST_FILE = ExchangerUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = vkaltyrin.ExchangerUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "ExchangerUITests/ExchangeMoneyTests/ExchangerUITests-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = Exchanger;
-			};
-			name = Debug;
-		};
-		8C2E1D191F13818D00DB0FC2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F29A4AD09A77BA9D010BA1AE /* Pods-ExchangerUITests.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 5PHGGKL9UQ;
-				INFOPLIST_FILE = ExchangerUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = vkaltyrin.ExchangerUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "ExchangerUITests/ExchangeMoneyTests/ExchangerUITests-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = Exchanger;
-			};
-			name = Release;
-		};
 		8C2E1D1B1F1384DF00DB0FC2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1712,15 +1544,6 @@
 			buildConfigurations = (
 				8C2E1D151F13818D00DB0FC2 /* Debug */,
 				8C2E1D161F13818D00DB0FC2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		8C2E1D171F13818D00DB0FC2 /* Build configuration list for PBXNativeTarget "ExchangerUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8C2E1D181F13818D00DB0FC2 /* Debug */,
-				8C2E1D191F13818D00DB0FC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
