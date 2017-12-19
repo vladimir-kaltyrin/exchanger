@@ -41,9 +41,8 @@
             User *user = [[User alloc] initWithWallets:@[usdWallet, eurWallet, gbpWallet]];
             
             [welf.userDataStorage saveUser:user];
-            
-            welf.currentUser = user;
         }
+        welf.currentUser = user;
     }];
 }
 
