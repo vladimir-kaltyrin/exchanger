@@ -91,6 +91,7 @@
 		8C75D75F1FE7FC4F00A4EC77 /* UserDataStorageImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D7551FE7FC4F00A4EC77 /* UserDataStorageImpl.m */; };
 		8C75D7631FE81A2100A4EC77 /* NetworkClientImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D7621FE81A2100A4EC77 /* NetworkClientImpl.m */; };
 		8C75D7681FE84A0A00A4EC77 /* XMLParserImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D7671FE84A0A00A4EC77 /* XMLParserImpl.m */; };
+		8C75D7701FE901AC00A4EC77 /* MockUserDataStorageImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D76F1FE901AC00A4EC77 /* MockUserDataStorageImpl.swift */; };
 		8C7B138B1FE44C6C001C9318 /* ExchangeMoneyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B138A1FE44C6C001C9318 /* ExchangeMoneyTests.swift */; };
 		8C7B13951FE5407E001C9318 /* TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B13941FE5407E001C9318 /* TestCase.swift */; };
 		8C94B4E61F3E162B00B2B9FC /* ExchangeMoneyTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C94B4E51F3E162B00B2B9FC /* ExchangeMoneyTitleView.m */; };
@@ -309,6 +310,7 @@
 		8C75D7651FE84A0A00A4EC77 /* XMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLParser.h; sourceTree = "<group>"; };
 		8C75D7661FE84A0A00A4EC77 /* XMLParserImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLParserImpl.h; sourceTree = "<group>"; };
 		8C75D7671FE84A0A00A4EC77 /* XMLParserImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLParserImpl.m; sourceTree = "<group>"; };
+		8C75D76F1FE901AC00A4EC77 /* MockUserDataStorageImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserDataStorageImpl.swift; sourceTree = "<group>"; };
 		8C7B13891FE44C6C001C9318 /* ExchangerUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ExchangerUITests-Bridging-Header.h"; sourceTree = "<group>"; };
 		8C7B138A1FE44C6C001C9318 /* ExchangeMoneyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeMoneyTests.swift; sourceTree = "<group>"; };
 		8C7B13941FE5407E001C9318 /* TestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCase.swift; sourceTree = "<group>"; };
@@ -468,6 +470,7 @@
 			isa = PBXGroup;
 			children = (
 				8C7B13941FE5407E001C9318 /* TestCase.swift */,
+				8C75D76C1FE9017600A4EC77 /* Mocks */,
 				8C7B13901FE53EE1001C9318 /* Services */,
 				8CFCEA391FDAA43300202024 /* Formatters */,
 				8C2E1D031F13818D00DB0FC2 /* Info.plist */,
@@ -822,6 +825,14 @@
 			);
 			name = XMLParser;
 			path = Core/XMLParser;
+			sourceTree = "<group>";
+		};
+		8C75D76C1FE9017600A4EC77 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				8C75D76F1FE901AC00A4EC77 /* MockUserDataStorageImpl.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		8C7B13881FE44BF5001C9318 /* ExchangeMoneyTests */ = {
@@ -1396,6 +1407,7 @@
 				8CFCEA441FDAB93C00202024 /* RoundingFormatterTests.swift in Sources */,
 				8C0B9F661FD9C36E007CA53A /* ExchangeMoneyServiceTests.swift in Sources */,
 				8C7B13951FE5407E001C9318 /* TestCase.swift in Sources */,
+				8C75D7701FE901AC00A4EC77 /* MockUserDataStorageImpl.swift in Sources */,
 				8CFCEA3B1FDAA45200202024 /* NumbersFormatterTests.swift in Sources */,
 				8CFCEA3D1FDAAF5900202024 /* CurrencyFormatterTests.swift in Sources */,
 				8CCE8A401FDAE92C003609F5 /* BalanceFormatterTests.swift in Sources */,
@@ -1461,6 +1473,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1480,7 +1493,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_MODULE_NAME = Exchanger;
 				SDKROOT = iphoneos;
+				SWIFT_INCLUDE_PATHS = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1515,6 +1530,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1527,7 +1543,9 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_MODULE_NAME = Exchanger;
 				SDKROOT = iphoneos;
+				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1541,9 +1559,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Exchanger/Application/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MODULEMAP_FILE = "";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.avito.app;
 				PRODUCT_NAME = Exchanger;
 				PROVISIONING_PROFILE = "";
@@ -1558,9 +1578,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Exchanger/Application/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MODULEMAP_FILE = "";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.avito.app;
 				PRODUCT_NAME = Exchanger;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1573,11 +1595,14 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ExchangerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "$(SRCROOT)/module.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = vkaltyrin.ExchangerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ExchangerTests/ExchangerTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1591,11 +1616,14 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ExchangerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "$(SRCROOT)/module.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = vkaltyrin.ExchangerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ExchangerTests/ExchangerTests-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Exchanger.app/Exchanger";
