@@ -9,6 +9,8 @@ class RoundingFormatterTests: XCTestCase {
         
         let numberFormatter = NumberFormatter()
         numberFormatter.locale = Locale(identifier: "en_US")
+        numberFormatter.minimumIntegerDigits = 1
+        numberFormatter.maximumFractionDigits = 2
         
         formatter = RoundingFormatterImpl(numberFormatter: numberFormatter)
     }
