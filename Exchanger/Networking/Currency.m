@@ -59,6 +59,7 @@
 + (Currency *)currencyWithType:(CurrencyType)currencyType {
     var currency = [[Currency alloc] init];
     currency.currencyType = currencyType;
+    currency.rate = @1.0;
     
     return currency;
 }

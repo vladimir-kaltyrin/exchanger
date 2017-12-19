@@ -1,11 +1,11 @@
 #import <Foundation/Foundation.h>
 #import "ExchangeRatesService.h"
-#import "XMLParser.h"
+#import "NetworkClient.h"
 
 @interface ExchangeRatesServiceImpl : NSObject<ExchangeRatesService>
 
 - (instancetype)init __attribute__((unavailable("init not available")));
 
-- (instancetype)initWithParser:(id<XMLParser>)parser;
+- (instancetype)initWithNetworkClient:(id<NetworkClient>)networkClient;
 
 @end
