@@ -1,3 +1,7 @@
 #import "ServiceFactoryImpl.h"
 #import "FormatterFactoryImpl.h"
 #import "UserServiceImpl.h"
+#import "NumberFilterFormatterImpl.h"
+#import "RoundingFormatterImpl.h"
+#import "BalanceFormatterImpl.h"
+#import "NumberFilterFormatterImpl.h"

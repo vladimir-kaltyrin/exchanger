@@ -3,24 +3,25 @@
 #import "BalanceFormatterImpl.h"
 #import "BalanceParseData.h"
 #import "FormattedStringData.h"
-#import "NumbersFormatter.h"
+#import "NumberFilterFormatter.h"
 
 @interface BalanceFormatterImpl()
-@property (nonatomic, strong) AttributedStringStyle *primaryPartStyle;
-@property (nonatomic, strong) AttributedStringStyle *secondaryPartStyle;
+@property (nonatomic, strong, nullable) AttributedStringStyle *primaryPartStyle;
+@property (nonatomic, strong, nullable) AttributedStringStyle *secondaryPartStyle;
 @property (nonatomic, assign) BalanceFormatterStyle formatterStyle;
+@property (nonatomic, strong) id<NumberFilterFormatter> numberFilterFormatter;
 @property (nonatomic, strong) NSNumberFormatter *numberFormatter;
-@property (nonatomic, strong) id<NumbersFormatter> numberFilterFormatter;
 @end
 
 @implementation BalanceFormatterImpl
 
 // MARK: - Init
 
-- (instancetype)initWithPrimaryPartStyle:(AttributedStringStyle *)primaryPartStyle
+- (instancetype)initWithPrimaryPartStyle:(AttributedStringStyle * )primaryPartStyle
                       secondaryPartStyle:(AttributedStringStyle *)secondaryPartStyle
                           formatterStyle:(BalanceFormatterStyle)formatterStyle
-                   numberFilterFormatter:(id<NumbersFormatter>)numberFilterFormatter
+                   numberFilterFormatter:(id<NumberFilterFormatter>)numberFilterFormatter
+                                  locale:(NSLocale *)locale
 {
     self = [super init];
     if (self) {
@@ -30,6 +31,7 @@
         self.numberFilterFormatter = numberFilterFormatter;
         
         self.numberFormatter = [[NSNumberFormatter alloc] init];
+        self.numberFormatter.locale = locale;
         self.numberFormatter.minimumIntegerDigits = 1;
         self.numberFormatter.roundingMode = NSNumberFormatterRoundDown;
         
@@ -55,26 +57,31 @@
 
 - (FormatterData *)formatString:(NSString *)inputString sign:(BalanceFormatterSign)sign {
     
+    if ([self isWrongInputWithString:inputString sign:sign]) {
+        return nil;
+    }
+    
     NSAttributedString *formattedString;
     NSString *string;
-    let parseData = [self parseText:inputString];
+    let unsignedString = [self unsignedString:inputString sign:sign];
+    let parseData = [self parseText:unsignedString];
     switch (parseData.parsingResult) {
         case ParsingResultZero:
         case ParsingResultInteger:
         {
-            let integerParseData = [self parseText:inputString];
-            formattedString = [self attributedFormatText:inputString
+            let integerParseData = [self parseText:unsignedString];
+            formattedString = [self attributedFormatText:unsignedString
                                                parseData:integerParseData
                                                     sign:sign];
-            string = [self applySign:sign text:inputString];
+            string = [self applySign:sign text:unsignedString];
         }
             break;
         case ParsingResultFloat:
         {
-            formattedString = [self attributedFormatText:inputString
+            formattedString = [self attributedFormatText:unsignedString
                                                parseData:parseData
                                                     sign:sign];
-            string = [self applySign:sign text:inputString];
+            string = [self applySign:sign text:unsignedString];
         }
             break;
     }
@@ -83,8 +90,8 @@
     let number = [self.numberFormatter numberFromString:filteredString];
     
     return [[FormatterData alloc] initWithFormattedString:formattedString
-                                                         string:string
-                                                         number:number];
+                                                   string:string
+                                                   number:number];
 }
 
 // MARK: - Private
@@ -152,8 +159,7 @@
 }
 
 - (NSString *)separator {
-    let locale = [NSLocale currentLocale];
-    return [locale objectForKey:NSLocaleDecimalSeparator];
+    return [self.numberFormatter.locale objectForKey:NSLocaleDecimalSeparator];
 }
 
 - (FormattedStringData *)formattedStringWithText:(NSString *)text
@@ -208,6 +214,34 @@
     }
     
     return formattedString;
+}
+
+- (BOOL)isWrongInputWithString:(NSString *)string sign:(BalanceFormatterSign)sign {
+    switch (sign) {
+        case BalanceFormatterSignNone:
+            return ([string containsString:@"+"]) || ([string containsString:@"-"]);
+            break;
+        case BalanceFormatterSignPlus:
+            return [string containsString:@"-"];
+            break;
+        case BalanceFormatterSignMinus:
+            return [string containsString:@"+"];
+            break;
+    }
+}
+
+- (NSString *)unsignedString:(NSString *)string sign:(BalanceFormatterSign)sign {
+    switch (sign) {
+        case BalanceFormatterSignNone:
+            return string;
+            break;
+        case BalanceFormatterSignPlus:
+            return [string stringByReplacingOccurrencesOfString:@"+" withString:@""];
+            break;
+        case BalanceFormatterSignMinus:
+            return [string stringByReplacingOccurrencesOfString:@"-" withString:@""];
+            break;
+    }
 }
 
 @end

@@ -68,8 +68,6 @@
 		8C75D6961FE7B8FF00A4EC77 /* BalanceParseData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D68E1FE7B8FE00A4EC77 /* BalanceParseData.m */; };
 		8C75D6971FE7B8FF00A4EC77 /* FormatterData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D6921FE7B8FF00A4EC77 /* FormatterData.m */; };
 		8C75D69C1FE7B90C00A4EC77 /* CurrencyFormatterImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D69B1FE7B90B00A4EC77 /* CurrencyFormatterImpl.m */; };
-		8C75D6A31FE7B92200A4EC77 /* NumbersFormatterImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D6A11FE7B92200A4EC77 /* NumbersFormatterImpl.m */; };
-		8C75D6A41FE7B92200A4EC77 /* NumbersFormatterData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D6A21FE7B92200A4EC77 /* NumbersFormatterData.m */; };
 		8C75D6A91FE7B93300A4EC77 /* RoundingFormatterImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D6A71FE7B93300A4EC77 /* RoundingFormatterImpl.m */; };
 		8C75D7361FE7FBC600A4EC77 /* CarouselController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D7291FE7FBC600A4EC77 /* CarouselController.m */; };
 		8C75D7371FE7FBC600A4EC77 /* CarouselData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C75D72B1FE7FBC600A4EC77 /* CarouselData.m */; };
@@ -94,6 +92,8 @@
 		8C7B13951FE5407E001C9318 /* TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B13941FE5407E001C9318 /* TestCase.swift */; };
 		8C94B4E61F3E162B00B2B9FC /* ExchangeMoneyTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C94B4E51F3E162B00B2B9FC /* ExchangeMoneyTitleView.m */; };
 		8CC705FA1F27CF51008770E2 /* ExchangeRatesData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC705F91F27CF51008770E2 /* ExchangeRatesData.m */; };
+		8CCB22921FE92CCF00F1887F /* NumberFilterFormatterData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB228F1FE92CCF00F1887F /* NumberFilterFormatterData.m */; };
+		8CCB22931FE92CCF00F1887F /* NumberFilterFormatterImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB22911FE92CCF00F1887F /* NumberFilterFormatterImpl.m */; };
 		8CCE8A3E1FDADB99003609F5 /* ExchangeMoneyViewDataBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCE8A3D1FDADB99003609F5 /* ExchangeMoneyViewDataBuilder.m */; };
 		8CCE8A401FDAE92C003609F5 /* BalanceFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCE8A3F1FDAE92C003609F5 /* BalanceFormatterTests.swift */; };
 		8CD786161F14F21F00AF7A8D /* ExchangeMoneyAssemblyImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD786151F14F21F00AF7A8D /* ExchangeMoneyAssemblyImpl.m */; };
@@ -109,7 +109,7 @@
 		8CF9641C1F165C31009852B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF964191F165C31009852B9 /* AppDelegate.m */; };
 		8CF9641E1F165C31009852B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF9641B1F165C31009852B9 /* main.m */; };
 		8CF9645A1F1CD11B009852B9 /* ExchangeMoneyCurrencyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF964591F1CD11B009852B9 /* ExchangeMoneyCurrencyView.m */; };
-		8CFCEA3B1FDAA45200202024 /* NumbersFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFCEA3A1FDAA45200202024 /* NumbersFormatterTests.swift */; };
+		8CFCEA3B1FDAA45200202024 /* NumberFilterFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFCEA3A1FDAA45200202024 /* NumberFilterFormatterTests.swift */; };
 		8CFCEA3D1FDAAF5900202024 /* CurrencyFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFCEA3C1FDAAF5900202024 /* CurrencyFormatterTests.swift */; };
 		8CFCEA441FDAB93C00202024 /* RoundingFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFCEA431FDAB93C00202024 /* RoundingFormatterTests.swift */; };
 		975F843DAA7B903A1BF18886 /* Pods_Exchanger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC40EEC7B6A14ED6FD3414BB /* Pods_Exchanger.framework */; };
@@ -246,11 +246,6 @@
 		8C75D6991FE7B90B00A4EC77 /* CurrencyFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrencyFormatter.h; path = Core/Formatters/CurrencyFormatter/CurrencyFormatter.h; sourceTree = "<group>"; };
 		8C75D69A1FE7B90B00A4EC77 /* CurrencyFormatterImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrencyFormatterImpl.h; path = Core/Formatters/CurrencyFormatter/CurrencyFormatterImpl.h; sourceTree = "<group>"; };
 		8C75D69B1FE7B90B00A4EC77 /* CurrencyFormatterImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrencyFormatterImpl.m; path = Core/Formatters/CurrencyFormatter/CurrencyFormatterImpl.m; sourceTree = "<group>"; };
-		8C75D69E1FE7B92200A4EC77 /* NumbersFormatterData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NumbersFormatterData.h; path = Core/Formatters/NumbersFormatter/NumbersFormatterData.h; sourceTree = "<group>"; };
-		8C75D69F1FE7B92200A4EC77 /* NumbersFormatterImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NumbersFormatterImpl.h; path = Core/Formatters/NumbersFormatter/NumbersFormatterImpl.h; sourceTree = "<group>"; };
-		8C75D6A01FE7B92200A4EC77 /* NumbersFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NumbersFormatter.h; path = Core/Formatters/NumbersFormatter/NumbersFormatter.h; sourceTree = "<group>"; };
-		8C75D6A11FE7B92200A4EC77 /* NumbersFormatterImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NumbersFormatterImpl.m; path = Core/Formatters/NumbersFormatter/NumbersFormatterImpl.m; sourceTree = "<group>"; };
-		8C75D6A21FE7B92200A4EC77 /* NumbersFormatterData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NumbersFormatterData.m; path = Core/Formatters/NumbersFormatter/NumbersFormatterData.m; sourceTree = "<group>"; };
 		8C75D6A61FE7B93300A4EC77 /* RoundingFormatterImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RoundingFormatterImpl.h; path = Core/Formatters/RoundingFormatter/RoundingFormatterImpl.h; sourceTree = "<group>"; };
 		8C75D6A71FE7B93300A4EC77 /* RoundingFormatterImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RoundingFormatterImpl.m; path = Core/Formatters/RoundingFormatter/RoundingFormatterImpl.m; sourceTree = "<group>"; };
 		8C75D6A81FE7B93300A4EC77 /* RoundingFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RoundingFormatter.h; path = Core/Formatters/RoundingFormatter/RoundingFormatter.h; sourceTree = "<group>"; };
@@ -301,6 +296,11 @@
 		8C94B4E51F3E162B00B2B9FC /* ExchangeMoneyTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExchangeMoneyTitleView.m; path = Modules/ExchangeMoney/View/ExchangeMoneyTitleView.m; sourceTree = "<group>"; };
 		8CC705F81F27CF51008770E2 /* ExchangeRatesData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeRatesData.h; path = Services/ExchangeRatesService/ExchangeRatesData.h; sourceTree = "<group>"; };
 		8CC705F91F27CF51008770E2 /* ExchangeRatesData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExchangeRatesData.m; path = Services/ExchangeRatesService/ExchangeRatesData.m; sourceTree = "<group>"; };
+		8CCB228D1FE92CCF00F1887F /* NumberFilterFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberFilterFormatter.h; sourceTree = "<group>"; };
+		8CCB228E1FE92CCF00F1887F /* NumberFilterFormatterData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberFilterFormatterData.h; sourceTree = "<group>"; };
+		8CCB228F1FE92CCF00F1887F /* NumberFilterFormatterData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberFilterFormatterData.m; sourceTree = "<group>"; };
+		8CCB22901FE92CCF00F1887F /* NumberFilterFormatterImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberFilterFormatterImpl.h; sourceTree = "<group>"; };
+		8CCB22911FE92CCF00F1887F /* NumberFilterFormatterImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberFilterFormatterImpl.m; sourceTree = "<group>"; };
 		8CCE8A3C1FDADB99003609F5 /* ExchangeMoneyViewDataBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ExchangeMoneyViewDataBuilder.h; path = Modules/ExchangeMoney/Presenter/ExchangeMoneyViewDataBuilder.h; sourceTree = "<group>"; };
 		8CCE8A3D1FDADB99003609F5 /* ExchangeMoneyViewDataBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ExchangeMoneyViewDataBuilder.m; path = Modules/ExchangeMoney/Presenter/ExchangeMoneyViewDataBuilder.m; sourceTree = "<group>"; };
 		8CCE8A3F1FDAE92C003609F5 /* BalanceFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceFormatterTests.swift; sourceTree = "<group>"; };
@@ -334,7 +334,7 @@
 		8CF9641B1F165C31009852B9 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Application/main.m; sourceTree = "<group>"; };
 		8CF964581F1CD11B009852B9 /* ExchangeMoneyCurrencyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeMoneyCurrencyView.h; path = Modules/ExchangeMoney/View/ExchangeMoneyCurrencyView.h; sourceTree = "<group>"; };
 		8CF964591F1CD11B009852B9 /* ExchangeMoneyCurrencyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExchangeMoneyCurrencyView.m; path = Modules/ExchangeMoney/View/ExchangeMoneyCurrencyView.m; sourceTree = "<group>"; };
-		8CFCEA3A1FDAA45200202024 /* NumbersFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersFormatterTests.swift; sourceTree = "<group>"; };
+		8CFCEA3A1FDAA45200202024 /* NumberFilterFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFilterFormatterTests.swift; sourceTree = "<group>"; };
 		8CFCEA3C1FDAAF5900202024 /* CurrencyFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatterTests.swift; sourceTree = "<group>"; };
 		8CFCEA431FDAB93C00202024 /* RoundingFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundingFormatterTests.swift; sourceTree = "<group>"; };
 		9389B4E6B11F4B0BB56B0F37 /* Pods-ExchangerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExchangerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExchangerUITests/Pods-ExchangerUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -658,8 +658,8 @@
 		8C75D6851FE7B8D300A4EC77 /* Formatters */ = {
 			isa = PBXGroup;
 			children = (
+				8CCB228C1FE92CCF00F1887F /* NumberFilterFormatter */,
 				8C75D6A51FE7B92500A4EC77 /* RoundingFormatter */,
-				8C75D69D1FE7B90D00A4EC77 /* NumbersFormatter */,
 				8C75D6981FE7B90000A4EC77 /* CurrencyFormatter */,
 				8C75D68A1FE7B8ED00A4EC77 /* BalanceFormatter */,
 				8C75D6871FE7B8E700A4EC77 /* FormatterFactory.h */,
@@ -693,18 +693,6 @@
 				8C75D69B1FE7B90B00A4EC77 /* CurrencyFormatterImpl.m */,
 			);
 			name = CurrencyFormatter;
-			sourceTree = "<group>";
-		};
-		8C75D69D1FE7B90D00A4EC77 /* NumbersFormatter */ = {
-			isa = PBXGroup;
-			children = (
-				8C75D6A01FE7B92200A4EC77 /* NumbersFormatter.h */,
-				8C75D69E1FE7B92200A4EC77 /* NumbersFormatterData.h */,
-				8C75D6A21FE7B92200A4EC77 /* NumbersFormatterData.m */,
-				8C75D69F1FE7B92200A4EC77 /* NumbersFormatterImpl.h */,
-				8C75D6A11FE7B92200A4EC77 /* NumbersFormatterImpl.m */,
-			);
-			name = NumbersFormatter;
 			sourceTree = "<group>";
 		};
 		8C75D6A51FE7B92500A4EC77 /* RoundingFormatter */ = {
@@ -811,6 +799,19 @@
 				8C75D76F1FE901AC00A4EC77 /* MockUserDataStorageImpl.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		8CCB228C1FE92CCF00F1887F /* NumberFilterFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				8CCB228D1FE92CCF00F1887F /* NumberFilterFormatter.h */,
+				8CCB228E1FE92CCF00F1887F /* NumberFilterFormatterData.h */,
+				8CCB228F1FE92CCF00F1887F /* NumberFilterFormatterData.m */,
+				8CCB22901FE92CCF00F1887F /* NumberFilterFormatterImpl.h */,
+				8CCB22911FE92CCF00F1887F /* NumberFilterFormatterImpl.m */,
+			);
+			name = NumberFilterFormatter;
+			path = Core/Formatters/NumberFilterFormatter;
 			sourceTree = "<group>";
 		};
 		8CD785EC1F14EE3900AF7A8D /* Modules */ = {
@@ -956,7 +957,7 @@
 		8CFCEA391FDAA43300202024 /* Formatters */ = {
 			isa = PBXGroup;
 			children = (
-				8CFCEA3A1FDAA45200202024 /* NumbersFormatterTests.swift */,
+				8CFCEA3A1FDAA45200202024 /* NumberFilterFormatterTests.swift */,
 				8CFCEA3C1FDAAF5900202024 /* CurrencyFormatterTests.swift */,
 				8CFCEA431FDAB93C00202024 /* RoundingFormatterTests.swift */,
 				8CCE8A3F1FDAE92C003609F5 /* BalanceFormatterTests.swift */,
@@ -1210,6 +1211,7 @@
 				8C75D6961FE7B8FF00A4EC77 /* BalanceParseData.m in Sources */,
 				8C75D75A1FE7FC4F00A4EC77 /* model.xcdatamodeld in Sources */,
 				8CD786261F14F23400AF7A8D /* ExchangeMoneyViewController.m in Sources */,
+				8CCB22921FE92CCF00F1887F /* NumberFilterFormatterData.m in Sources */,
 				8C75D7571FE7FC4F00A4EC77 /* ManagedCurrency+Mapping.m in Sources */,
 				8C389F3A1FE7AD5400D1C0F3 /* BaseViewController.m in Sources */,
 				8C75D6891FE7B8E700A4EC77 /* FormatterFactoryImpl.m in Sources */,
@@ -1263,14 +1265,13 @@
 				8C389F441FE7AD5400D1C0F3 /* AttributedStringStyle.m in Sources */,
 				8C75D7381FE7FBC600A4EC77 /* CarouselPage.m in Sources */,
 				8C75D6A91FE7B93300A4EC77 /* RoundingFormatterImpl.m in Sources */,
-				8C75D6A41FE7B92200A4EC77 /* NumbersFormatterData.m in Sources */,
 				8C94B4E61F3E162B00B2B9FC /* ExchangeMoneyTitleView.m in Sources */,
 				8CF9641C1F165C31009852B9 /* AppDelegate.m in Sources */,
 				8C75D7371FE7FBC600A4EC77 /* CarouselData.m in Sources */,
+				8CCB22931FE92CCF00F1887F /* NumberFilterFormatterImpl.m in Sources */,
 				8C1858C51FE2C56700638DCD /* ExchangeRatesResponse.m in Sources */,
 				8C389F461FE7AD5400D1C0F3 /* MoveFailableLongPressGestureRecognizer.m in Sources */,
 				8CD786201F14F22D00AF7A8D /* ExchangeMoneyPresenter.m in Sources */,
-				8C75D6A31FE7B92200A4EC77 /* NumbersFormatterImpl.m in Sources */,
 				8C75D73C1FE7FBC600A4EC77 /* CarouselView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1283,7 +1284,7 @@
 				8CFCEA441FDAB93C00202024 /* RoundingFormatterTests.swift in Sources */,
 				8C7B13951FE5407E001C9318 /* TestCase.swift in Sources */,
 				8C75D7701FE901AC00A4EC77 /* MockUserDataStorageImpl.swift in Sources */,
-				8CFCEA3B1FDAA45200202024 /* NumbersFormatterTests.swift in Sources */,
+				8CFCEA3B1FDAA45200202024 /* NumberFilterFormatterTests.swift in Sources */,
 				8C190C011FE90F8A0093FA91 /* UserServiceTests.swift in Sources */,
 				8CFCEA3D1FDAAF5900202024 /* CurrencyFormatterTests.swift in Sources */,
 				8C190BFE1FE90F8A0093FA91 /* ExchangeMoneyServiceTests.swift in Sources */,

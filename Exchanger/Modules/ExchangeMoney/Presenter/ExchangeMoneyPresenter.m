@@ -18,7 +18,7 @@
 @property (nonatomic, strong) id<ExchangeMoneyInteractor> interactor;
 @property (nonatomic, strong) id<ExchangeMoneyRouter> router;
 @property (nonatomic, strong) id<KeyboardObserver> keyboardObserver;
-@property (nonatomic, strong) id<NumbersFormatter> numbersFormatter;
+@property (nonatomic, strong) id<NumberFilterFormatter> numberFilterFormatter;
 @property (nonatomic, strong) id<BalanceFormatter> exchangeCurrencyInputFormatter;
 @end
 
@@ -35,7 +35,7 @@
         self.router = router;
         self.keyboardObserver = keyboardObserver;
         
-        self.numbersFormatter = [[FormatterFactoryImpl instance] numbersFormatter];
+        self.numberFilterFormatter = [[FormatterFactoryImpl instance] numberFilterFormatter];
         self.exchangeCurrencyInputFormatter = [[FormatterFactoryImpl instance] exchangeCurrencyInputFormatter];
     }
     
@@ -207,7 +207,7 @@
         inputText = [self currentInput].string;
     }
     
-    NumbersFormatterData *numbersData = [self.numbersFormatter format:inputText];
+    NumberFilterFormatterData *numbersData = [self.numberFilterFormatter format:inputText];
     
     Wallet *inputWallet;
     Currency *targetCurrency;
