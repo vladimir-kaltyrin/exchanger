@@ -7,7 +7,7 @@ class UserServiceTests: TestCase {
     override func setUp() {
         super.setUp()
         
-        userService = ServiceFactoryImpl.instance().userService()
+        userService = UserServiceImpl(userDataStorage: MockUserDataStorageImpl())
     }
     
     func testInitialUser() {
@@ -45,11 +45,4 @@ class UserServiceTests: TestCase {
             }
         }
     }
-    
-    func testUpdateUser() {
-        // Given
-        let 
-        let callbackCalled = expectation(description: "callback is called")
-    }
-
 }
