@@ -3,7 +3,7 @@ import OHHTTPStubs
 
 class ExchangeRatesServiceTests: TestCase {
     
-    private let urlString = "http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"
+    private let urlString = "/stats/eurofxref/eurofxref-daily.xml"
     
     var service: ExchangeRatesService!
     

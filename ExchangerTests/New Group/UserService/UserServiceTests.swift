@@ -7,7 +7,7 @@ class UserServiceTests: TestCase {
     override func setUp() {
         super.setUp()
         
-        userService = ServiceFactoryImpl.instance().userService()
+        userService = UserServiceImpl(userDataStorage: MockUserDataStorageImpl())
     }
     
     func testInitialUser() {
