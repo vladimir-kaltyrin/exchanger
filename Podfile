@@ -12,9 +12,4 @@ target 'Exchanger' do
     pod 'OHHTTPStubs/Swift'
   end
 
-  target 'ExchangerUITests' do
-    inherit! :search_paths
-    pod 'EarlGrey', '~> 1.12.1'
-  end
-
 end
