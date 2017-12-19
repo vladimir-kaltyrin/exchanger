@@ -1,14 +1,16 @@
 import XCTest
 
-class NumbersFormatterTests: XCTestCase {
+class NumberFilterFormatterTests: XCTestCase {
     
-    var formatter: NumbersFormatter!
+    var formatter: NumberFilterFormatter!
     
     override func setUp() {
         super.setUp()
+        
+        let numberFormatter = NumberFormatter()
+        numberFormatter.locale = Locale(identifier: "en_US")
 
-        formatter = FormatterFactoryImpl.instance().numbersFormatter()
-        formatter.setLocale(Locale(identifier: "en_US"))
+        formatter = NumberFilterFormatterImpl(numberFormatter: numberFormatter)
     }
     
     override func tearDown() {

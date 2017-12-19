@@ -2,7 +2,7 @@
 #import "FormatterFactoryImpl.h"
 #import "BalanceFormatterImpl.h"
 #import "CurrencyFormatterImpl.h"
-#import "NumbersFormatterImpl.h"
+#import "NumberFilterFormatterImpl.h"
 #import "RoundingFormatterImpl.h"
 
 @implementation FormatterFactoryImpl
@@ -34,7 +34,8 @@
     return [[BalanceFormatterImpl alloc] initWithPrimaryPartStyle:primaryStringStyle
                                                secondaryPartStyle:secondaryStringStyle
                                                    formatterStyle:BalanceFormatterStyleHundredths
-                                            numberFilterFormatter:[self numbersFormatter]];
+                                            numberFilterFormatter:[self numberFilterFormatter]
+                                                           locale:[NSLocale currentLocale]];
 }
 
 - (id<BalanceFormatter>)currentBalanceFormatter {
@@ -50,19 +51,24 @@
     return [[BalanceFormatterImpl alloc] initWithPrimaryPartStyle:primaryStringStyle
                                                secondaryPartStyle:secondaryStringStyle
                                                    formatterStyle:BalanceFormatterStyleTenThousandths
-                                            numberFilterFormatter:[self numbersFormatter]];
+                                            numberFilterFormatter:[self numberFilterFormatter]
+                                                           locale:[NSLocale currentLocale]];
 }
 
 - (id<CurrencyFormatter>)currencyFormatter {
     return [[CurrencyFormatterImpl alloc] init];
 }
 
-- (id<NumbersFormatter>)numbersFormatter {
-    return [[NumbersFormatterImpl alloc] init];
+- (id<NumberFilterFormatter>)numberFilterFormatter {
+    let numberFormatter = [[NSNumberFormatter alloc] init];
+    
+    return [[NumberFilterFormatterImpl alloc] initWithNumberFormatter:numberFormatter];
 }
 
 - (id<RoundingFormatter>)roundingFormatter {
-    return [[RoundingFormatterImpl alloc] init];
+    let numberFormatter = [[NSNumberFormatter alloc] init];
+    
+    return [[RoundingFormatterImpl alloc] initWithNumberFormatter:numberFormatter];
 }
 
 @end

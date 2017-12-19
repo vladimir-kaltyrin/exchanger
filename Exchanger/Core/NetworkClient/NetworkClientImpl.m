@@ -68,7 +68,6 @@ static let kRequestTimeout = 30.f;
     }];
     
     Currency *eur = [Currency currencyWithType:CurrencyTypeEUR];
-    
     currencies = [currencies arrayByAddingObject:eur];
     
     return [[ExchangeRatesData alloc] initWithCurrencies:currencies];;

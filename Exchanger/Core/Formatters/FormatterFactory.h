@@ -2,14 +2,14 @@
 
 #import "BalanceFormatter.h"
 #import "CurrencyFormatter.h"
-#import "NumbersFormatter.h"
+#import "NumberFilterFormatter.h"
 #import "RoundingFormatter.h"
 
 @protocol FormatterFactory <NSObject>
 - (id<BalanceFormatter>)exchangeCurrencyInputFormatter;
 - (id<BalanceFormatter>)currentBalanceFormatter;
 - (id<CurrencyFormatter>)currencyFormatter;
-- (id<NumbersFormatter>)numbersFormatter;
+- (id<NumberFilterFormatter>)numberFilterFormatter;
 - (id<RoundingFormatter>)roundingFormatter;
 
 @end

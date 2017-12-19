@@ -7,8 +7,10 @@ class RoundingFormatterTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        formatter = FormatterFactoryImpl.instance().roundingFormatter()
-        formatter.setLocale(Locale(identifier: "en_US"))
+        let numberFormatter = NumberFormatter()
+        numberFormatter.locale = Locale(identifier: "en_US")
+        
+        formatter = RoundingFormatterImpl(numberFormatter: numberFormatter)
     }
     
     override func tearDown() {

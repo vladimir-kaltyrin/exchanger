@@ -1,51 +1,43 @@
 #import "ConvenientObjC.h"
-#import "NumbersFormatterImpl.h"
+#import "NumberFilterFormatterImpl.h"
 
-@interface NumbersFormatterImpl()
-@property (nonatomic, strong) NSNumberFormatter *formatter;
-@property (nonatomic, strong) NSLocale *locale;
+@interface NumberFilterFormatterImpl()
+@property (nonatomic, strong) NSNumberFormatter *numberFormatter;
 @end
 
-@implementation NumbersFormatterImpl
+@implementation NumberFilterFormatterImpl
 
 // MARK: - Init
 
-- (instancetype)init {
+- (instancetype)initWithNumberFormatter:(NSNumberFormatter *)numberFormatter {
     self = [super init];
     if (self) {
-        self.formatter = [[NSNumberFormatter alloc] init];
-        self.locale = [NSLocale currentLocale];
+        self.numberFormatter = numberFormatter;
     }
     return self;
 }
 
-// MARK: - NumbersFormatter
+// MARK: - NumberFilterFormatter
 
-- (nonnull NumbersFormatterData *)format:(nonnull NSString *)string; {
+- (nonnull NumberFilterFormatterData *)format:(nonnull NSString *)string; {
     var resultString = [self filterNonNumericAndSeparatorCharacters:string];
     resultString = [self filterExtraSeparators:resultString];
     resultString = [self filterStringEqualToSeparator:resultString];
     resultString = [self filterLeadingZeros:resultString];
     
-    let resultNumber = [self.formatter numberFromString:resultString];
+    let resultNumber = [self.numberFormatter numberFromString:resultString];
     
-    var result = [[NumbersFormatterData alloc] init];
+    var result = [[NumberFilterFormatterData alloc] init];
     result.string = resultString;
     result.number = resultNumber;
     
     return result;
 }
 
-- (void)setLocale:(NSLocale *)locale {
-    _locale = locale;
-    
-    self.formatter.locale = self.locale;
-}
-
 // MARK: - Private
 
 - (NSString *)separator {
-    return [self.locale objectForKey:NSLocaleDecimalSeparator];
+    return [self.numberFormatter.locale objectForKey:NSLocaleDecimalSeparator];
 }
 
 - (NSString *)filterNonNumericAndSeparatorCharacters:(NSString *)targetString {
