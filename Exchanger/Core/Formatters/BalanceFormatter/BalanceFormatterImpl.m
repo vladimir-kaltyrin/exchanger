@@ -57,13 +57,13 @@
 
 - (FormatterData *)formatString:(NSString *)inputString sign:(BalanceFormatterSign)sign {
     
-//    if ([self isWrongInputWithString:inputString sign:sign]) {
-//        return nil;
-//    }
+    if ([self isWrongInputWithString:inputString sign:sign]) {
+        return nil;
+    }
     
     NSAttributedString *formattedString;
     NSString *string;
-    let unsignedString = inputString;//[self unsignedString:inputString sign:sign];
+    let unsignedString = [self unsignedString:inputString sign:sign];
     let parseData = [self parseText:unsignedString];
     switch (parseData.parsingResult) {
         case ParsingResultZero:
@@ -86,10 +86,8 @@
             break;
     }
     
-//    let filteredString = [self.numberFilterFormatter format:string].string;
-//    let number = [self.numberFormatter numberFromString:filteredString];
-//
-    let number = [self.numberFormatter numberFromString:string];
+    let filteredString = [self.numberFilterFormatter format:string].string;
+    let number = [self.numberFormatter numberFromString:filteredString];
     
     return [[FormatterData alloc] initWithFormattedString:formattedString
                                                    string:string
