@@ -67,6 +67,8 @@
 
 - (id<RoundingFormatter>)roundingFormatter {
     let numberFormatter = [[NSNumberFormatter alloc] init];
+    numberFormatter.minimumIntegerDigits = 1;
+    numberFormatter.maximumFractionDigits = 2;
     
     return [[RoundingFormatterImpl alloc] initWithNumberFormatter:numberFormatter];
 }
