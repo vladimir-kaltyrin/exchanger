@@ -22,15 +22,4 @@
     return [self.numberFormatter stringFromNumber:number];
 }
 
-// MARK: - Private
-
-- (NSNumberFormatter *)numberFormatter {
-    if (_numberFormatter == nil) {
-        _numberFormatter = [[NSNumberFormatter alloc] init];
-        _numberFormatter.minimumIntegerDigits = 1;
-        _numberFormatter.maximumFractionDigits = 2;
-    }
-    return _numberFormatter;
-}
-
 @end
