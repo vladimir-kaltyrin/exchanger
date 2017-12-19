@@ -35,13 +35,12 @@ static let kRequestTimeout = 30.f;
 {
     
     let url = [[NSURL alloc] initWithString:kApiUrl];
+    
+    __weak typeof(self) welf = self;
     let task = [self.session dataTaskWithURL:url
                            completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
                                
-                               __weak typeof(self) welf = self;
-                               
                                [self.parser parse:data onComplete:^(NSDictionary *dictionary) {
-                                   
                                    dispatch_async(dispatch_get_global_queue(0, 0), ^{
                                        let response = [[ExchangeRatesResponse alloc] initWithDictionary:dictionary];
                                        let data = [welf processResponse:response];
