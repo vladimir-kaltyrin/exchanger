@@ -47,9 +47,9 @@ If you have any questions just [email me](mailto:vkasci@gmail.com). Feel free to
 
 <a name="cocoapods"/>
 
-### Cocoapods
+### CocoaPods
 
-To install all project dependencies just use Cocoapods:
+To install all project dependencies just use CocoaPods:
 
 ```bash
 pod install
